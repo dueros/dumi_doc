@@ -1,0 +1,47 @@
+{
+    "status":0,
+    "msg":"ok",
+    "se_query":"原始query", 
+    "logid":"xxxx1234354", 
+    "id":"id12334235",
+    "user_id":"",
+    "cuid":"",
+    "ctime":1482226019,
+    "result":{
+        "cards":{},
+        "intent":{},
+        "resource":{
+            "type":"news",
+            "data":{
+                "list":[
+                    {
+                        "id":"xxx1234bbb",
+                        "title":"河北首次启动区域红色应急响应 雾霾笼罩",
+                        "summary":"河北首次启动区域红色应急响应 雾霾笼罩",
+                        "content":"霾是什么？雾是什么？都是怎么形成的？它们的关系是什么？气温丶湿度丶风力丶风向丶地形丶地表丶温湿度丶灰尘丶烟尘丶粉尘丶扬尘那个危害更大，这些都应当弄清了，再谈霾和雾，不要把霾字前加雾字。这本来就是两种截然不同的两种物质。只是它们互相影响而已。把它们混为一谈。就是错的引导。霾在四五年前就已经开始了。只是越来越严重而已。它是随着汽车进入家庭而伴生的。",
+                        "url":"http://headline.baidu.com/doc/detail?app_from=dumi_news&url_key=http%3A//news.163.com/photoview/00AP0001/2216510.html",
+                        "image" : "http://ztd00.photos.bdimg.com/ztd/whfpf%3D160%2C120%2C50%3Bq%3D70/sign=1a96a9f0f41f4134e062563e4322a4fc/d000baa1cd11728bfb98b831c1fcc3cec3fd2c6f.jpg",
+                        "thumb":"http://ztd00.photos.bdimg.com/ztd/whfpf%3D160%2C120%2C50%3Bq%3D70/sign=1a96a9f0f41f4134e062563e4322a4fc/d000baa1cd11728bfb98b831c1fcc3cec3fd2c6f.jpg",
+                        "pubtime":"2016-12-20 20:01:01"
+                    },
+                    {
+                        "id":"xxx1234bbb",
+                        "title":"河北首次启动区域红色应急响应 雾霾笼罩",
+                        "summary":"河北首次启动区域红色应急响应 雾霾笼罩",
+                        "content":"霾是什么？雾是什么？都是怎么形成的？它们的关系是什么？气温丶湿度丶风力丶风向丶地形丶地表丶温湿度丶灰尘丶烟尘丶粉尘丶扬尘那个危害更大，这些都应当弄清了，再谈霾和雾，不要把霾字前加雾字。这本来就是两种截然不同的两种物质。只是它们互相影响而已。把它们混为一谈。就是错的引导。霾在四五年前就已经开始了。只是越来越严重而已。它是随着汽车进入家庭而伴生的。",
+                        "url":"http://headline.baidu.com/doc/detail?app_from=dumi_news&url_key=http%3A//news.163.com/photoview/00AP0001/2216510.html",
+                        "image":"http://ztd00.photos.bdimg.com/ztd/whfpf%3D160%2C120%2C50%3Bq%3D70/sign=1a96a9f0f41f4134e062563e4322a4fc/d000baa1cd11728bfb98b831c1fcc3cec3fd2c6f.jpg",
+                        "thumb":"http://ztd00.photos.bdimg.com/ztd/whfpf%3D160%2C120%2C50%3Bq%3D70/sign=1a96a9f0f41f4134e062563e4322a4fc/d000baa1cd11728bfb98b831c1fcc3cec3fd2c6f.jpg",
+                        "pubtime":"2016-12-20 20:01:01"
+                    }
+                ]
+            }
+        },
+        "speech": {
+            "type": "Text",  
+            "content": "为您播放周杰伦的歌曲"
+        }
+    }
+}
+
+

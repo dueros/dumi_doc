@@ -1,0 +1,73 @@
+{
+    "status":0,
+    "msg":"ok",
+    "se_query":"原始query", 
+    "logid":"xxxx1234354", 
+    "id":"id12334235",
+    "user_id":"",
+    "cuid":"",
+    "ctime":1482226019,
+    "result":{
+        "cards":{},
+        "intent":{},
+        "resource":{
+            "type":"weather",
+            "data":{
+                "city": "北京",
+                "current_temp": "-1℃",
+                "pm25": "426",
+                "temp": "-3℃~5℃",
+                "time": "周二 12月20日",
+                "weather": "雾",
+                "weather_all": "雾，-3℃~5℃，微风",
+                "wind": "微风",
+                "weather_info": [
+                    {
+                        "current_temp": "-1℃",
+                        "icon": "http://s1.bdstatic.com/r/www/aladdin/img/new_weath/bigicon/4.png",
+                        "pm25": "426",
+                        "pm_level": "严重污染",
+                        "temp": "-3℃~5℃",
+                        "time": "周二 12月20日",
+                        "weather": "雾",
+                        "wind": "微风"
+                    },
+                    {
+                        "icon": "http://s1.bdstatic.com/r/www/aladdin/img/new_weath/icon/7.png",
+                        "temp": "-3℃~3℃",
+                        "time": "周三 12月21日",
+                        "weather": "霾",
+                        "wind": "微风"
+                    },
+                    {
+                        "icon": "http://s1.bdstatic.com/r/www/aladdin/img/new_weath/icon/1.png",
+                        "temp": "-5℃~6℃",
+                        "time": "周四 12月22日",
+                        "weather": "晴",
+                        "wind": "北风3-4级"
+                    },
+                    {
+                        "icon": "http://s1.bdstatic.com/r/www/aladdin/img/new_weath/icon/1.png",
+                        "temp": "-6℃~3℃",
+                        "time": "周五 12月23日",
+                        "weather": "晴转多云",
+                        "wind": "北风微风"
+                    },
+                    {
+                        "icon": "http://s1.bdstatic.com/r/www/aladdin/img/new_weath/icon/5.png",
+                        "temp": "-5℃~3℃",
+                        "time": "周六 12月24日",
+                        "weather": "多云转霾",
+                        "wind": "北风微风"
+                    }
+                ]
+            }
+        },
+        "speech": {
+            "type": "Text",  
+            "content": "为您播放周杰伦的歌曲"
+        }
+    }
+}
+
+
