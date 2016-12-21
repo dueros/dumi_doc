@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title":"度秘ws的返回值",
+    "type": "object",
+    "properties": {
+        "result": {
+            "type":"object",
+            "properties":{
+                "hint":{
+                    "type":"array",
+                    "items": { "type": "string" }
+                },
+                "cards":{
+                    "$ref":"#/definitions/cards"
+                },
+                "directives":{
+                    "$ref":"#/definitions/directives"
+                },
+                "resource":{
+                    "$ref":"#/definitions/resource"
+                },
+                "intent":{
+                    "$ref":"#/definitions/intent"
+                },
+                "speech":{
+                    "$ref":"#/definitions/speech"
+                }
+            },
+            "required": ["cards","speech","intent"],
+            "additionalProperties":false
+        },
+        "ctime": {
+            "type":"integer"
+        },
+        "cuid": {
+            "type":"string"
+        },
+        "user_id": {
+            "type":"string"
+        },
+        "id": {
+            "type":"string"
+        },
+        "logid": {
+            "type":"string"
+        },
+        "se_query": {
+            "type":"string"
+        },
+        "status": {
+            "type":"integer"
+        },
+        "msg": {
+            "type":"string"
+        }
+    },
+    "definitions": {
+        "directives": {
+            "type":"object",
+            "properties":{
+            }
+        },
+        "resource": {
+            "type":"object",
+            "properties":{
+            }
+        },
+        "intent": {
+            "type":"object",
+            "properties":{
+            }
+        },
+        "cards": {
+            "type":"object",
+            "properties":{
+            }
+        },
+        "speech": {
+            "type":"object",
+            "properties":{
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [ "result","ctime","id","cuid","logid","se_query","status","msg"]
+}
