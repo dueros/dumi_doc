@@ -8,7 +8,7 @@
     "cuid":"",
     "ctime":1482226019,
     "result":{
-        "cards":{},
+        "cards":[],
         "intent":{},
         "resource":{
             "type":"news",

@@ -8,7 +8,49 @@
     "cuid":"",
     "ctime":1482226019,
     "result":{
-        "cards":{},
+        "cards":[
+
+            {
+                "type":"txt",
+                "content":"为你推荐如下热门资讯",    
+                "url":"http://www.baidu.com"
+            },
+            {
+                "type":"list",
+                "list":[
+                    {
+                        "title": "你来我家接我吧",
+                        "summary": "这是女神与高富帅之间的对话",
+                        "image": "http://nodeapi.cloudfoundry.com/qrcode.jpg",
+                        "url":  "http://nodeapi.cloudfoundry.com/"
+                    },
+                    {
+                        "title": "你来我家接我吧",
+                        "summary": "这是女神与高富帅之间的对话",
+                        "image": "http://nodeapi.cloudfoundry.com/qrcode.jpg",
+                        "url":  "http://nodeapi.cloudfoundry.com/"
+                    }
+                ]
+            },
+            {
+                "type": "image",
+                "list": [
+                    {
+                        "src":"http://c.hiphotos.baidu.com/image/pic/item/7af40ad162d9f2d38d7056c8acec8a136327ccb0.jpg",
+                        "thumb":"http://c.hiphotos.baidu.com/image/pic/item/7af40ad162d9f2d38d7056c8acec8a136327ccb0.jpg"
+                    },
+                    {
+                        "src":"http://b.hiphotos.baidu.com/image/pic/item/b21bb051f8198618df86c5424eed2e738ad4e637.jpg",
+                        "thumb":"http://c.hiphotos.baidu.com/image/pic/item/7af40ad162d9f2d38d7056c8acec8a136327ccb0.jpg"
+                    },
+                    {
+                        "src":"http://c.hiphotos.baidu.com/image/pic/item/83025aafa40f4bfbc9c817b9074f78f0f63618c6.jpg",
+                        "thumb":"http://c.hiphotos.baidu.com/image/pic/item/7af40ad162d9f2d38d7056c8acec8a136327ccb0.jpg"
+                    }
+                ]
+            }
+
+        ],
         "intent":{},
         "resource":{
             "type":"weather",

@@ -7,6 +7,7 @@
 ```shell
 npm install -g ajv-cli
 ```
+  * 执行test.sh跑测试的数据
 
 
 ##### php库  #####
@@ -18,3 +19,5 @@ composer require justinrainbow/json-schema
 ```
   * 示例程序是test.php
 
+##### C++库 #####
+待调研，还没空，可参考 [http://json-schema.org/](http://json-schema.org/)
