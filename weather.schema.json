@@ -1,0 +1,41 @@
+{
+    "type":"object",
+    "id":"https://xiaodu.baidu.com/schema/weather.schema.json",
+    "properties":{
+        "type":{
+            "type":"string",
+            "enum":["weather"]
+        },
+        "data":{
+            "type":"object",
+            "properties":{
+                "city":{"type":"string"},
+                "current_temp":{"type":"string"},
+                "pm25":{"type":"string"},
+                "temp":{"type":"string"},
+                "time":{"type":"string"},
+                "weather":{"type":"string"},
+                "weather_all":{"type":"string"},
+                "wind":{"type":"string"},
+                "weather_info":{
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "current_temp":{"type":"string"} ,
+                            "icon":{"type":"string"},
+                            "pm25":{"type":"string"},
+                            "pm_level":{"type":"string"},
+                            "temp":{"type":"string"},
+                            "time":{"type":"string"},
+                            "weather":{"type":"string"},
+                            "wind":{"type":"string"}
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+}

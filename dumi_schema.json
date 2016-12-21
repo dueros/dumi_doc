@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
+    "id":"https://xiaodu.baidu.com/schema/dumi_schema.json",
     "title":"度秘ws的返回值",
     "type": "object",
     "properties": {
@@ -7,22 +8,28 @@
             "type":"object",
             "properties":{
                 "hint":{
+                    "description":"用户接下去可以输入的query建议",
                     "type":"array",
                     "items": { "type": "string" }
                 },
                 "cards":{
+                    "description":"展示用的卡片",
                     "$ref":"#/definitions/cards"
                 },
                 "directives":{
+                    "description":"展示用的卡片",
                     "$ref":"#/definitions/directives"
                 },
                 "resource":{
+                    "description":"数据资源",
                     "$ref":"#/definitions/resource"
                 },
                 "intent":{
+                    "description":"使用的da结果",
                     "$ref":"#/definitions/intent"
                 },
                 "speech":{
+                    "description":"语音播报tts用的数据",
                     "$ref":"#/definitions/speech"
                 }
             },
@@ -62,8 +69,10 @@
         },
         "resource": {
             "type":"object",
-            "properties":{
-            }
+            "oneOf":[
+                {"$ref":"weather.schema.json"},
+                {"$ref":"news.schema.json"}
+            ]
         },
         "intent": {
             "type":"object",
@@ -78,6 +87,13 @@
         "speech": {
             "type":"object",
             "properties":{
+                "type":{
+                    "type":"string",
+                    "enum":["Text","SSML"]
+                },
+                "content":{
+                    "type":"string"
+                }
             }
         }
     },
