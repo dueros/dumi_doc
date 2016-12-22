@@ -8,7 +8,7 @@
     "cuid":"",
     "ctime":1482226019,
     "result":{
-        "cards":[
+        "views":[
 
             {
                 "type":"txt",
@@ -51,7 +51,12 @@
             }
 
         ],
-        "intent":{},
+        "intent":{
+            "name": "Audio.Music.Play",
+            "slots": {
+                "singer": "周杰伦"
+            }
+        },
         "resource":{
             "type":"weather",
             "data":{

@@ -12,9 +12,9 @@
                     "type":"array",
                     "items": { "type": "string" }
                 },
-                "cards":{
+                "views":{
                     "description":"展示用的卡片",
-                    "$ref":"#/definitions/cards"
+                    "$ref":"#/definitions/views"
                 },
                 "directives":{
                     "description":"展示用的卡片",
@@ -33,7 +33,7 @@
                     "$ref":"#/definitions/speech"
                 }
             },
-            "required": ["cards","speech","intent"],
+            "required": ["views","speech","intent"],
             "additionalProperties":false
         },
         "ctime": {
@@ -76,10 +76,17 @@
         },
         "intent": {
             "type":"object",
+            "required": ["name"],
             "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "slot":{
+                    "type":"object"
+                }
             }
         },
-        "cards": {
+        "views": {
             "type":"array",
             "items":{
                 "type":"object",

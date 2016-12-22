@@ -8,8 +8,13 @@
     "cuid":"",
     "ctime":1482226019,
     "result":{
-        "cards":[],
-        "intent":{},
+        "views":[],
+        "intent":{
+            "name": "Audio.Music.Play",
+            "slots": {
+                "singer": "周杰伦"
+            }
+        },
         "resource":{
             "type":"news",
             "data":{
