@@ -8,7 +8,7 @@
             "type":"object",
             "properties":{
                 "bot_id":{
-                    "description":"下游服务的id",
+                    "description":"下游服务的id，其实就是老协议里的source_type",
                     "type":"string"
                 },
                 "bot_meta":{
@@ -50,7 +50,8 @@
             "required": ["views","speech","nlu","bot_id","bot_meta"],
             "additionalProperties":false
         },
-        "ctime": {
+        "time": {
+            "description":"服务端当前时间戳",
             "type":"integer"
         },
         "cuid": {
@@ -77,8 +78,13 @@
     },
     "definitions": {
         "directives": {
-            "type":"object",
-            "properties":{
+            "type":"array",
+            "items":{
+                "type":"object",
+                "properties":{
+                    "header":{"type":"object"},
+                    "payload":{"type":"object"}
+                }
             }
         },
         "resource": {
@@ -187,5 +193,5 @@
         }
     },
     "additionalProperties": false,
-    "required": [ "result","ctime","id","cuid","logid","se_query","status","msg"]
+    "required": [ "result","time","id","cuid","logid","se_query","status","msg"]
 }
