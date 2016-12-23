@@ -91,6 +91,7 @@
             "type":"object",
             "oneOf":[
                 {"$ref":"weather.schema.json"},
+                {"$ref":"music.schema.json"},
                 {"$ref":"news.schema.json"}
             ]
         },
