@@ -1,0 +1,11 @@
+{
+    "type":"object",
+    "id":"https://xiaodu.baidu.com/schema/music.schema.json",
+    "properties":{
+        "type":{
+            "type":"string",
+            "enum":["music"]
+        }
+    }
+}
+
