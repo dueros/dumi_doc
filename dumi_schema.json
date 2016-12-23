@@ -7,6 +7,20 @@
         "result": {
             "type":"object",
             "properties":{
+                "bot_id":{
+                    "description":"下游服务的id",
+                    "type":"string"
+                },
+                "bot_meta":{
+                    "description":"下游服务的信息",
+                    "type":"object",
+                    "required":["type","version"],
+                    "properties":{
+                        "description":{"type":"string"},
+                        "type":{"type":"string","enum":["天气","音乐","新闻","其他"]},
+                        "version":{"type":"string"}
+                    }
+                },
                 "hint":{
                     "description":"用户接下去可以输入的query建议",
                     "type":"array",
@@ -24,16 +38,16 @@
                     "description":"数据资源",
                     "$ref":"#/definitions/resource"
                 },
-                "intent":{
+                "nlu":{
                     "description":"使用的da结果",
-                    "$ref":"#/definitions/intent"
+                    "$ref":"#/definitions/nlu"
                 },
                 "speech":{
                     "description":"语音播报tts用的数据",
                     "$ref":"#/definitions/speech"
                 }
             },
-            "required": ["views","speech","intent"],
+            "required": ["views","speech","nlu","bot_id","bot_meta"],
             "additionalProperties":false
         },
         "ctime": {
@@ -74,14 +88,18 @@
                 {"$ref":"news.schema.json"}
             ]
         },
-        "intent": {
+        "nlu": {
+            "additionalProperties":false,
             "type":"object",
-            "required": ["name"],
+            "required": ["domain","intent"],
             "properties":{
-                "name":{
+                "domain":{
                     "type":"string"
                 },
-                "slot":{
+                "intent":{
+                    "type":"string"
+                },
+                "slots":{
                     "type":"object"
                 }
             }
@@ -92,6 +110,7 @@
                 "type":"object",
                 "oneOf":[
                     {
+                        "additionalProperties":false,
                         "type":"object",
                         "properties":{
                             "type":{
@@ -107,6 +126,7 @@
                         }
                     },
                     {
+                        "additionalProperties":false,
                         "type":"object",
                         "properties":{
                             "type":{
@@ -116,6 +136,7 @@
                             "list":{
                                 "type":"array",
                                 "items":{
+                                    "additionalProperties":false,
                                     "type":"object",
                                     "properties":{
                                         "title":{"type":"string"},
@@ -128,6 +149,7 @@
                         }
                     },
                     {
+                        "additionalProperties":false,
                         "type":"object",
                         "properties":{
                             "type":{
@@ -137,6 +159,7 @@
                             "list":{
                                 "type":"array",
                                 "items":{
+                                    "additionalProperties":false,
                                     "type":"object",
                                     "properties":{
                                         "src":{"type":"string"},
@@ -150,6 +173,7 @@
             }
         },
         "speech": {
+            "additionalProperties":false,
             "type":"object",
             "properties":{
                 "type":{

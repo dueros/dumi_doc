@@ -8,6 +8,11 @@
     "cuid":"",
     "ctime":1482226019,
     "result":{
+        "bot_id":"duer_weather",
+        "bot_meta":{
+            "version":"1.0.0",
+            "type":"天气"
+        },
         "views":[
 
             {
@@ -51,8 +56,9 @@
             }
 
         ],
-        "intent":{
-            "name": "Audio.Music.Play",
+        "nlu": {
+            "domain": "Audio.Music",
+            "intent": "Audio.Music.Play",
             "slots": {
                 "singer": "周杰伦"
             }
