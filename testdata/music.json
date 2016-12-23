@@ -1,0 +1,77 @@
+{
+    "status":0,
+    "msg":"ok",
+    "se_query":"我要听周杰伦的歌", 
+    "logid":"xxxx1234354", 
+    "id":"id12334235",
+    "user_id":"",
+    "cuid":"",
+    "time":1482226019,
+    "result":{
+        "bot_id":"duer_music",
+        "bot_meta":{
+            "version":"1.0.0",
+            "type":"音乐"
+        },
+        "views":[
+            {
+                "type":"list",
+                "list":[
+                    {
+                        "title": "东方破",
+                        "image": "http://nodeapi.cloudfoundry.com/qrcode.jpg",
+                        "url":  "http://nodeapi.cloudfoundry.com/"
+                    },
+                    {
+                        "title": "双截棍",
+                        "image": "http://nodeapi.cloudfoundry.com/qrcode.jpg",
+                        "url":  "http://nodeapi.cloudfoundry.com/"
+                    }
+                ]
+            }        
+        ],
+        "directives":[
+            {
+                "header": {
+                    "namespace": "AudioPlayer",
+                    "name": "Play"
+                },
+                "payload": {
+                    "play_behavior": "REPLACE_ALL",
+                    "audio_item": {
+                        "audio_item_id": "156",
+                        "stream": {
+                            "url": "http://yinyueshiting.baidu.com/data2/music/124088643/124088643.mp3?xcode=57462f29cfc176f86a37d80a2c02fc5b",
+                            "stream_format": "AUDIO_MP3",
+                            "offset_ms": 0,
+                            "token": "156",
+                            "progress_report_interval_ms": 10000  
+                        }
+                    }
+                }
+            }
+        ],
+
+        "nlu": {
+            "domain": "Audio.Music",
+            "intent": "Audio.Music.Play",
+            "slots": {
+                "singer": "周杰伦"
+            }
+        },
+        "resource":{
+            "type":"weather",
+            "data":{
+
+
+            }
+        },
+        "speech": {
+            "type": "Text",  
+            "content": "为您播放周杰伦的歌曲"
+        }
+    }
+}
+
+
+
