@@ -1,0 +1,23 @@
+[
+    {
+        "id":"talk_service",
+        "is_session_enable":1,
+        "is_uic_enable":1,
+        "is_base_uic_enable":1,
+        "private_field":["identity","family_name"],
+        "sessions":[
+            {
+                "name":"dumi_decision_info",
+                "type":"string",
+                "private":1
+            },
+            {
+                "name":"phone",
+                "type":"string",
+                "private":1
+            }
+        ]
+
+    }
+
+]
