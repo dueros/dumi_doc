@@ -5,11 +5,18 @@
         "is_uic_enable":1,
         "is_base_uic_enable":1,
         "private_field":["identity","family_name"],
+        "server":{
+            "type":"bns",
+            "protocal":"mcpack",
+            "bns_node_name": "",
+            "bns_timeout": 1000,
+            "bns_node_info_file":"sac_dumi_nj.file"
+        },
         "sessions":[
             {
                 "name":"dumi_decision_info",
                 "type":"string",
-                "private":1
+                "private":0
             },
             {
                 "name":"phone",
@@ -17,7 +24,28 @@
                 "private":1
             }
         ]
-
+    },
+    {
+        "id":"phone",
+        "is_session_enable":1,
+        "is_uic_enable":1,
+        "is_base_uic_enable":1,
+        "server":{
+            "type":"ipport",
+            "protocal":"http",
+            "machine":[
+                {
+                    "ip":"1.2.3.4",
+                    "port":1234
+                }
+            ]
+        },
+        "sessions":[
+            {
+                "name":"phone",
+                "type":"hash",
+                "private":1
+            }
+        ]
     }
-
 ]

@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id":"https://xiaodu.baidu.com/schema/bots.json",
+    "title":"bot列表的定义",
+    "type":"array",
+    "items":{
+        "type":"object",
+        "properties":{
+            "id":{"type":"string"},
+            "is_session_enable":{"type":"integer"},
+            "is_uic_enable":{"type":"integer"},
+            "is_base_uic_enable":{"type":"integer"},
+            "private_field":{
+                "description":"这个估计是调用用户画像服务的参数",
+                "type":"array",
+                "items":{"type":"string"}
+            },
+            "server":{
+                "oneOf":[
+                    {"$ref":"#/definitions/ipport_server"},
+                    {"$ref":"#/definitions/bns_server"}
+                ]
+            },
+            "sessions":{
+                "type":"array",
+                "items":{
+                    "type":"object",
+                    "properties":{
+                        "name":{"type":"string"},
+                        "type":{"type":"string","enum":["string","list","hash"]},
+                        "private":{"type":"integer","enum":[0,1]}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ipport_server":{
+            "type":"object",
+            "properties":{
+                "machine":{
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "ip":{"type":"string"},
+                            "port":{"type":"integer"}
+                        }
+                    }
+                },
+                "protocal":{"type":"string","enum":["http","http_post","mcpack"]},
+                "type":{"type":"string","enum":["ipport"]}
+            }
+        },
+        "bns_server":{
+            "type":"object",
+            "properties":{
+                "protocal":{"type":"string","enum":["http","http_post","mcpack"]},
+                "bns_node_name":{"type":"string"},
+                "bns_timeout": {"type":"integer","description":"单位是毫秒"},
+                "bns_node_info_file":{"type":"string","description":"TODO 文件名，还不知道是干什么的，晓鸣也不知道"},
+                "type":{"type":"string","enum":["bns"]}
+            }
+        }
+    }
+
+}
