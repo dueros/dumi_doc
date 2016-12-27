@@ -5,6 +5,7 @@
     "type":"array",
     "items":{
         "type":"object",
+        "required":["id","server"],
         "properties":{
             "id":{"type":"string"},
             "is_session_enable":{"type":"integer"},
@@ -37,11 +38,13 @@
     "definitions": {
         "ipport_server":{
             "type":"object",
+            "required":["machine","protocal","type"],
             "properties":{
                 "machine":{
                     "type":"array",
                     "items":{
                         "type":"object",
+                        "required":["ip","port"],
                         "properties":{
                             "ip":{"type":"string"},
                             "port":{"type":"integer"}
@@ -54,6 +57,7 @@
         },
         "bns_server":{
             "type":"object",
+            "required":["protocal","bns_node_name","type"],
             "properties":{
                 "protocal":{"type":"string","enum":["http","http_post","mcpack"]},
                 "bns_node_name":{"type":"string"},

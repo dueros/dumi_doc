@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id":"https://xiaodu.baidu.com/schema/appid.json",
+    "title":"appid的定义，包含appid对bots的映射",
+    "type":"array",
+    "items":{
+        "type":"object",
+        "properties":{
+            "bots":{
+                "type":"array",
+                "items":{
+                    "type":"object",
+                    "properties":{
+                        "params":{"type":"object","description":"请求bot带上的参数，不作限制"},
+                        "version":{"type":"string","description":"请求bot的指定版本，默认可填0，就是最新版本"},
+                        "id":{"type":"string"}
+                    }
+                }
+            },
+            "appname":{"type":"string"},
+            "appid":{"type":"string"},
+            "appkey":{"type":"string"},
+            "qps":{"type":"integer","description":"每秒最大请求次数"},
+            "qpd":{"type":"integer","description":"每天最大请求次数"},
+            "ctime":{"type":"integer","description":"创建时间，unix时间戳"},
+            "strategy":{"type":"string","description":"排序策略"},
+            "version":{"type":"string","description":"客户端版本，一个客户端可按客户端版本不同，存在多份配置"}
+        }
+    }
+}
