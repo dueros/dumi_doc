@@ -19,8 +19,8 @@ cat >querys <<END
 刘德华的老婆
 END
 
-
-mkdir -p testdata
+OUTPUT_DIR=output
+mkdir -p $OUTPUT_DIR
 for query in $(cat querys)
 do
     cat >request <<END
@@ -28,6 +28,6 @@ do
 END
     #curl 'http://nj03-rp-m22nlp156.nj03.baidu.com:8186/saiya/ws2' -d "$(cat request)" > testdata/${query}.json
     #exit 0
-    curl 'http://nj03-rp-m22nlp156.nj03.baidu.com:8186/saiya/ws2' -s -d "$(cat request)" > testdata/${query}.json
-    ./check.sh testdata/${query}.json
+    curl 'http://nj03-rp-m22nlp156.nj03.baidu.com:8186/saiya/ws2' -s -d "$(cat request)" > ${OUTPUT_DIR}/${query}.json
+    ./check.sh ${OUTPUT_DIR}/${query}.json
 done
