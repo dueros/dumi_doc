@@ -19,6 +19,8 @@ cat >querys <<END
 刘德华的老婆
 END
 
+cp test_querys querys
+
 OUTPUT_DIR=output
 mkdir -p $OUTPUT_DIR
 for query in $(cat querys)
