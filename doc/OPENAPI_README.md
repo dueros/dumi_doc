@@ -360,8 +360,22 @@ sysprofile_service | 系统画像
 
 
 ### nlu
-包含query解析结果的结构化数据
+####包含query解析结果的结构化数据
 
+描述|domain|intent|slots(可用的槽位)|example
+----|------|------|-----------------|-------
+火车票|22|22|end_point(终点站),start_point(起点站),search_type(如：高铁),start_time(时间)|给我买张到武汉的高铁票
+天气|duer_weather|sys_weather|loc_city(城市),loc_county(国家),loc_province(省),time(时间)|北京明天天气如何
+地址查询类需求|lbs|poi|poi(地址字符串)|射阳在哪儿
+音乐类需求|music|music|action_type(0. 关闭 1. 打开 2. 播放 3. 暂停 4. 下一首 5. 上一首 6. 换一首 7. 重播),song(歌名),singer(歌手),music_language(语言),music_emotion(情感，如悲伤、欢快等),music_tag,music_type(嘻哈、摇滚、儿歌等)|
+让度秘唱歌，类似调戏|music|music_sing|CommandAccepter,action_type(0. 关闭 1. 打开 2. 播放 3. 暂停 4. 下一首 5. 上一首 6. 换一首 7. 重播),song(歌名),singer(歌手)|
+联系人查询需求|phone|contact|action_type(1：查看 0：新建 2：发送),pinyin_for_view(要查看的联系人的拼音),name_for_view(要查看的联系人的名字),pinyin_to_send(要发送的联系人的拼音),name_to_send(要发送的联系人的名字)|告诉我张凤仪的电话号码,庞翔宇的电话号码发给张凤仪
+打开网址|phone|open_website|action_type,name,website_url|携程火车票
+发短信|phone|sms|content(短信内容),number(目标号码),name(目标姓名),pinyin(目标姓名拼音)|短信发给15140559455
+提醒、闹钟|remind|remind|action,event_title,intent,remind_time,remind_type_message,remind_type_phone,remind_type_dumi,remind_type_clock,remind_time_type,remind_time_value,remind_time_data,status|设置提醒每天晚上9点半洗衣服。
+美食、团购|restaurant_bot|find|catetag,fragment,location,sortby,cuisine,crowd,groupon|附近有什么好吃的饭馆
+
+###以下是跑出来的一批nlu数据的例子
 ```javascript
 ["10月21号早上九点提醒我开会",{"domain":"remind","intent":"remind","slots":{"event_title":"开会","intent":"设置","remind_time":"{\"month\":\"10\",\"day\":\"21\",\"hour\":\"9\",\"apm\":\"am\"}","__intent__":"setup","__id__":"1483430617165_fu6tll","remind_type_message":"否","remind_type_phone":"否","remind_type_dumi":"否","remind_type_clock":"否","remind_time_type":"abstime","remind_time_data":"1508547600","status":"create_confirm"}}]
 ["10月22号晚上11点提醒我爱康",{"domain":"remind","intent":"remind","slots":{"remind_type_message":"否","remind_type_phone":"否","remind_type_dumi":"否","remind_type_clock":"否","status":"cancel","da_system_not_understand":"2"}}]
