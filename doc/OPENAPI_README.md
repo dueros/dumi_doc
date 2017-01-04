@@ -1,5 +1,33 @@
 # 度秘开放平台-OpenApi使用说明
 
+Table of Contents
+=================
+
+   * [度秘开放平台-OpenApi使用说明](#度秘开放平台-openapi使用说明)
+      * [整体格式说明](#整体格式说明)
+         * [架构描述](#架构描述)
+         * [概念解释](#概念解释)
+         * [正常返回的结果](#正常返回的结果)
+         * [常见的错误返回](#常见的错误返回)
+      * [数据格式分块详细说明](#数据格式分块详细说明)
+         * [bot_id、bot_meta](#bot_idbot_meta)
+         * [views](#views)
+            * [文本卡片](#文本卡片)
+            * [图文卡片](#图文卡片)
+            * [图片卡片](#图片卡片)
+         * [resource](#resource)
+            * [天气](#天气)
+            * [新闻](#新闻)
+            * [音乐](#音乐)
+         * [speech](#speech)
+         * [directive](#directive)
+         * [hint](#hint)
+         * [nlu](#nlu)
+            * [包含query解析结果的结构化数据](#包含query解析结果的结构化数据)
+            * [以下是跑出来的一批nlu数据的例子](#以下是跑出来的一批nlu数据的例子)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## 整体格式说明
 
 ### 架构描述
