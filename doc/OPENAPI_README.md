@@ -363,7 +363,8 @@ sysprofile_service | 系统画像
 
 
 ### nlu
-####包含query解析结果的结构化数据
+
+#### 包含query解析结果的结构化数据
 
 描述|domain|intent|slots(可用的槽位)|example
 ----|------|------|-----------------|-------
@@ -378,7 +379,8 @@ sysprofile_service | 系统画像
 提醒、闹钟|remind|remind|action,event_title,intent,remind_time,remind_type_message,remind_type_phone,remind_type_dumi,remind_type_clock,remind_time_type,remind_time_value,remind_time_data,status|设置提醒每天晚上9点半洗衣服。
 美食、团购|restaurant_bot|find|catetag,fragment,location,sortby,cuisine,crowd,groupon|附近有什么好吃的饭馆
 
-###以下是跑出来的一批nlu数据的例子
+#### 以下是跑出来的一批nlu数据的例子
+
 ```javascript
 ["10月21号早上九点提醒我开会",{"domain":"remind","intent":"remind","slots":{"event_title":"开会","intent":"设置","remind_time":"{\"month\":\"10\",\"day\":\"21\",\"hour\":\"9\",\"apm\":\"am\"}","__intent__":"setup","__id__":"1483430617165_fu6tll","remind_type_message":"否","remind_type_phone":"否","remind_type_dumi":"否","remind_type_clock":"否","remind_time_type":"abstime","remind_time_data":"1508547600","status":"create_confirm"}}]
 ["10月22号晚上11点提醒我爱康",{"domain":"remind","intent":"remind","slots":{"remind_type_message":"否","remind_type_phone":"否","remind_type_dumi":"否","remind_type_clock":"否","status":"cancel","da_system_not_understand":"2"}}]
