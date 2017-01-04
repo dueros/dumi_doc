@@ -3,6 +3,7 @@
 ## 整体格式说明
 
 ### 架构描述
+![dumi_system](img/system.png)
 
 ### 概念解释
 
@@ -18,7 +19,9 @@ appkey | 每个合作方的密钥
 appqps | 合作方的每秒访问次数限制
 appqps | 合作方的每天访问次数限制
 
+
 ### 正常返回的结果
+以下是一次典型请求中，sdk（客户端）收到的完整json数据
 
 ```javascript
 {
