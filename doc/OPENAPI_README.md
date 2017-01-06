@@ -4,6 +4,7 @@ Table of Contents
 =================
 
    * [度秘开放平台-OpenApi使用说明](#度秘开放平台-openapi使用说明)
+      * [客户端sdk下载](#客户端sdk下载)
       * [整体格式说明](#整体格式说明)
          * [架构描述](#架构描述)
          * [概念解释](#概念解释)
@@ -28,13 +29,13 @@ Table of Contents
             * [以下是跑出来的一批nlu数据的例子](#以下是跑出来的一批nlu数据的例子)
 
 
-
-## 整体格式说明
-
-### 客户端sdk下载
+## 客户端sdk下载
 内有demo工程和可测试的apk，外网用户请下载连线上环境的版本
    * [连线上环境](sdk/sdk_v2_online.zip)
    * [连线下环境](sdk/sdk_v2_offline.zip)
+
+## 整体格式说明
+
 
 ### 架构描述
 ![dumi_system](img/system.png)
