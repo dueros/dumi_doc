@@ -377,7 +377,8 @@ sysprofile_service | 系统画像
 },
 ```
 
-####新闻
+#### 新闻
+
 一次查询会返回多条新闻，现在是10条，新闻内容（content字段）如果太长会被截断
 ```javascript
 "resource":{
@@ -409,7 +410,8 @@ sysprofile_service | 系统画像
 },
 ```
 
-####音乐
+#### 音乐
+
 ```javascript
 "resource":{
     "type":"music",
