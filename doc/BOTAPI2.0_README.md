@@ -87,7 +87,7 @@
 
 ### 未来的响应格式
 
-里面的result结构中的views、resource、nlu、speech、directives、hint都和对外输出的格式里的定义一致
+里面的result结构中的views、resource、nlu、speech、directives、hint都和对外输出的格式里的定义一致，详细结构可见([度秘API2.0文档](http://gitlab.baidu.com/wangpeng20/dumi_schema/blob/master/doc/OPENAPI_README.md))
 
 ```javascript
 {
