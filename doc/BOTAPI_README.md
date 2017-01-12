@@ -59,6 +59,7 @@
     "intervene_from": "na",
     "sc_response": "{}"
   },
+  //完整的地址信息
   "location": {
     "la": 40.0433,
     "lo": 116.269,
@@ -84,6 +85,7 @@
   },
   "page_cnt": 10,
   "page_num": 1,
+  //没有多轮就可以忽略session字段
   "sessions": [
     {
       "action": "get",
@@ -97,6 +99,7 @@
       "hash_sessions": []
     }
   ],
+  //如果是百度登录用户的话，会有信息
   "user_info": {
     "user_id": "",
     "extra": []
@@ -122,7 +125,7 @@
         ]
       }
     ],
-    "params": [ //其他几个qu结果的原始数据
+    "params": [ //其他几个qu结果的原始数据，一般情况都不用看
       {
         "key": "nlu_responce",
         "value": "{\"analysis\":{},\"parsed_text\":\"张 岩\",\"raw_text\":\"张岩\",\"results\":[{\"demand\":0,\"domain\":\"universal_search\",\"intent\":\"search\",\"object\":{},\"pushleft_switch\":\"0\",\"score\":1,\"str_result_content\":{},\"str_result_type\":\"\"}],\"sugs\":\"张岩\",\"sugs_types\":\"PAT_EC\"}\n"
@@ -148,18 +151,18 @@
   "status": 0,
   "msg": "ok",
   "data": {
-    "directives": null,
-    "speech": null,
-    "resource": null,
-    "cards": null,
     "result_list": [
       {
+        //置信度和槽位置信度，都可以不传
         "confidence": 300,
         "form_confidence": 0,
+        //bot的id，必须有
         "source_type": "phone",
+        //统计字段，可以用来给bot的返回值分类，可以不传
         "source_sub_type": "contact",
-        //真正拼的消息其实是这个content字段，现在对外返回的resource、directives等字段都放在这个里面，和result_list平级
+        //真正拼的消息其实是这个content字段，现在对外返回的resource、directives等字段都放在这个里面，和result_list平级，下一段详细讲这个content
         "content": "{\"result_list\":[{\"result_content\":{\"answer\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"},\"result_type\":\"txt\",\"source_type\":\"phone\",\"source_sub_type\":\"contact\",\"voice\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"}],\"type\":\"server\",\"generator\":\"phone_function\",\"user_id\":\"3101\"}",
+        //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
           "raw_answer": [
             {
@@ -172,9 +175,11 @@
         }
       }
     ],
+    //页码，总页数，总结果数，都可以不传
     "page_num": 1,
     "page_cnt": 1,
     "result_num": 1,
+    ////和请求中的da_query_info格式一致，表示下游bot实际使用的da_query_info（也可以说就是把请求中不使用的），可以为空
     "service_query_info": [
       {
         "query": "张岩",
@@ -242,6 +247,7 @@
     ],
     "server_query_intent": "\"\""
   },
+  /////如果不是多轮，此字段可没有
   "sessions": [
     {
       "status": 0,
@@ -259,51 +265,77 @@
 
 ```
 
-
-### 未来的请求格式
-
+所以，极简单情况下（没有多轮，没有使用da结果），bot可以只返回以下结构
 ```javascript
 {
-    "query":"",  //string
-    "last_query":"",  //string, not ready 
-    "user_id":"",  //string
-    "location":[   //array
-    ],
-
-    //还没有的
-    "da_query_info":[],
+  "status": 0,
+  "msg": "ok",
+  "data": {
+    "result_list": [
+      {
+        //置信度和槽位置信度，都可以不传
+        "confidence": 300,
+        "form_confidence": 0,
+        //bot的id，必须有
+        "source_type": "phone",
+        //真正拼的消息其实是这个content字段，现在对外返回的resource、directives等字段都放在这个里面，和result_list平级，下一段详细讲这个content
+        "content": "{\"result_list\":[{\"result_content\":{\"answer\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"},\"result_type\":\"txt\",\"source_type\":\"phone\",\"source_sub_type\":\"contact\",\"voice\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"}],\"type\":\"server\",\"generator\":\"phone_function\",\"user_id\":\"3101\"}",
+        //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
+        "stategy_middle_data": {
+          "raw_answer": [
+            {
+              "title": "",
+              "subtitle": "",
+              "answer": "<SYSTEM-NAME>为你查看联系人“张岩”",
+              "url": ""
+            }
+          ]
+        }
+      }
+    ]
+  }
 }
+
 ```
 
-### 未来的响应格式
+### 正常返回的字段中，content字段的解释
+
+.data.result_list[].content字段，是一个json_encode后的字符串
+
+下面是这个json展开后的结构
+
+内部可以加入新协议的字段，如resource、speech、views等等，但一定要有一个result_list。
+  * 如果有传views、speech、resource等字段，result_list的内容可以随意，不会在新的输出接口中生效
+  * 如果不传views、speech、resource等字段，api2.0接口输出时，会把result_list按一定规则转换成这些新字段
+  * views、speech、resource等字段的数据结构，参见[度秘api2.0文档](http://gitlab.baidu.com/wangpeng20/dumi_schema/blob/master/doc/OPENAPI_README.md#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%88%86%E5%9D%97%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E)
+  * 老的result_list内部的详细格式，可参考[度秘api1.0文档](http://agroup.baidu.com/duer/md/article/17301)，主要是定义了result_list可以放的卡片格式
 
 ```javascript
 {
-  "status" : 0,  //0 success，other fail 
-  "msg" : "string",  //status 0，msg "success"，status not 0，msg explaining reason
-  "data" : {
-    //response data
-    "result_list":[
-        {
-            "source_type":"your_app_name",  //string，bot name
-            "result_type":"txt",  //string，card type
-            "result_content":{
-                "answer":"",  //string，text answer
-            },
-            "voice":"",  //string，tts text
-        }
-    ],
-    //还没有的
-    "result":{
-        "views",
-        "resource",
-        "nlu",
-        "speech",
-        "directives",
-        "hint",
-    },
-    "session":{},
-  } 
+  //result_list是老的结构，现在无论如何要传一个
+  "result_list": [
+    {
+      "result_content": {
+        "answer": "<SYSTEM-NAME>为你查看联系人“张岩”"
+      },
+      "result_type": "txt",
+      "source_type": "phone",
+      //可选，用于统计
+      "source_sub_type": "contact",
+      //语音播报的内容，可选
+      "voice": "<SYSTEM-NAME>为你查看联系人“张岩”"
+    }
+  ],
+  //可选，内容见api2.0接口
+  views:[],
+  //可选，内容见api2.0接口
+  resource:{},
+  //可选，内容见api2.0接口
+  speech:{},
+  //可选，内容见api2.0接口
+  directives:{},
+  //可选，内容见api2.0接口
+  hint:[],
+  "type": "server"
 }
-
 ```
