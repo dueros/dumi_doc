@@ -181,39 +181,60 @@ appqps | 合作方的每天访问次数限制
         ],
 
         "nlu": {   //query解析的结果
-            "domain": "Audio.Music",  
-            "intent": "Audio.Music.Play",  //domain + intent确定一种解析结果的类型
+            "domain": "music",  
+            "intent": "music",  //domain + intent确定一种解析结果的类型
             "slots": {   //从query中提取出来的槽位信息
+                "action_type":"1",
                 "singer": "周杰伦"
             }
         },
         "resource":{ //数据资源，可选字段
-            "type":"music",//资源类型，目前已经有music/news/weather等资源类型
-            "data":{   //实际资源数据，包含的字段由资源类型决定
-                "duration":256,
-                "name":"千里之外",
-                "alias":"千里外",
-                "singer_name":"羽泉",
-                "all_singer_name":"陈羽凡,胡海泉",
-                "genre":"复古",
-                "tag":"港台,励志,流行,合唱,摇滚",
-                "language":"华语",
-                "original_singer":"周杰伦,费玉清",
-                "composer":"周杰伦",
-                "lyricist":"lyricist",
-                "lyric":"屋檐如悬崖 风铃如沧海 我等燕归来 时间被安排 演一场意外 你悄然走开 故事在城外 浓雾散不开 看不清对白 你听不出来 风声不存在 是我在感慨 梦醒来 是谁在窗台 把结局打开 那薄如蝉翼的未来 经不起谁来拆 我送你离开 千里之外 你无声黑白 沉默年代 或许不该 太遥远的相爱 我送你离开 天涯之外 你是否还在",
-                "url":"http://music.baidu.com/song/s/04071175dd9085630382f",
-                "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5",
-                "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
-                "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
-                "album_name":"十一月的肖邦",
-                "album_url":"http://music.baidu.com/album/234211111",
-                "score":63,
-                "publish_time":"2011-09-01",
-                "publish_company":"飞碟",
-                "is_need_pay_listen":0,
-                "from_site":1,
-                "hot":12345
+            "type":"music_ref",//资源类型，目前已经有music/news/weather等资源类型
+            "data":{
+                "api": {
+                    "method": "GET",
+                    "url": "http: //s.xiaodu.baidu.com/v20161223/resource/music?user_id=888"
+                }
+                //以上地址，可以增加page参数来翻页，如 http://s.xiaodu.baidu.com/v20161223/resource/music?user_id=888&page=2
+                //抓取以上api地址后会返回如下格式
+/*
+{
+  "status": 0,
+  "code": null,
+  "data": {
+    "page": 1,
+    "total_page": 5,
+    "list": [
+      {
+        "duration": "238",
+        "name": "恋红尘",
+        "alias": "",
+        "singer_name": "祁隆,彭丽嘉",
+        "all_singer_name": "",
+        "genre": "流行",
+        "tag": "好听,新歌,网络歌曲",
+        "language": "",
+        "original_singer": "",
+        "composer": "",
+        "lyricist": "",
+        "url": "http://music.baidu.com/song/271665582?fm=altg_new3",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E6%81%8B%E7%BA%A2%E5%B0%98",
+        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/a1d4eca5675d21e6e0b3dad002de5c1d/271665733/271665733.mp3?x
+code=2e387ebc099d9e5aa0d51cfc739c1004",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/25b1faff5bf89f84b6491593e31381ed/271665166/271665166.jpg",
+        "album_name": "恋红尘",
+        "album_url": "",
+        "score": "0",
+        "publish_time": "2016-09-20",
+        "publish_company": "华宇世博",
+        "is_need_pay_listen": "0",
+        "from_site": "1",
+        "hot": "237391"
+      }...
+    ]
+  }
+}
+*/
             }
         },
         "speech": {  //TTS播报用的数据
