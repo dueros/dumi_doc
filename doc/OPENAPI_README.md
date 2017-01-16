@@ -1,10 +1,13 @@
 # 度秘开放平台-OpenApi使用说明
 
-Table of Contents
-=================
+## Table of Contents
 
    * [度秘开放平台-OpenApi使用说明](#度秘开放平台-openapi使用说明)
-      * [客户端sdk下载](#客户端sdk下载)
+      * [Table of Contents](#table-of-contents)
+      * [客户端sdk](#客户端sdk)
+         * [下载](#下载)
+         * [介绍](#介绍)
+         * [常见问题](#常见问题)
       * [整体格式说明](#整体格式说明)
          * [架构描述](#架构描述)
          * [概念解释](#概念解释)
@@ -29,10 +32,26 @@ Table of Contents
             * [以下是跑出来的一批nlu数据的例子](#以下是跑出来的一批nlu数据的例子)
 
 
-## 客户端sdk下载
+## 客户端sdk
+
+### 下载
+
 内有demo工程和可测试的apk，外网用户请下载连线上环境的版本
    * [连线上环境](sdk/sdk_v2_online.zip)
    * [连线下环境](sdk/sdk_v2_offline.zip)
+
+### 介绍
+
+内部含有文件
+
+   * app-release.apk 这个是demo app，可以安装到手机，可以试用度秘的语音识别、TTS、query理解等功能
+   * demo_src.zip 这个是demo app的源代码，是一个android studio工程，可以直接打开、编译。调用sdk的代码请参考此工程
+   * duersdk_library.zip  这个是sdk库，可以导入到已有工程中使用
+
+### 常见问题
+
+   * 如何更改appid、appkey
+    * 请看demo工程代码中的 app/src/main/java/com/baidu/duersdkdemo/DemoApplication.java 
 
 ## 整体格式说明
 
@@ -434,35 +453,56 @@ sysprofile_service | 系统画像
 #### 音乐
 
 ```javascript
-"resource":{
-    "type":"music",
+
+"resource":{ //数据资源，可选字段
+    "type":"music_ref",//资源类型，目前已经有music/news/weather等资源类型
     "data":{
-        "duration":256, //歌曲时长（秒）
-        "name":"千里之外", //歌曲名
-        "alias":"千里外", //别名
-        "singer_name":"羽泉",
-        "all_singer_name":"陈羽凡,胡海泉",
-        "genre":"复古", //类型
-        "tag":"港台,励志,流行,合唱,摇滚",
-        "language":"华语", //语言分类
-        "original_singer":"周杰伦,费玉清",//原唱
-        "composer":"周杰伦", //作曲
-        "lyricist":"lyricist",  //作词
-        "lyric":"屋檐如悬崖 风铃如沧海 我等燕归来 时间被安排 演一场意外 你悄然走开 故事在城外 浓雾散不开 看不清对白 你听不出来 风声不存在 是我在感慨 梦醒来 是谁在窗台 把结局打开 那薄如蝉翼的未来 经不起谁来拆 我送你离开 千里之外 你无声黑白 沉默年代 或许不该 太遥远的相爱 我送你离开 天涯之外 你是否还在",  //歌词，纯文本
-        "url":"http://music.baidu.com/song/s/04071175dd9085630382f", //歌曲地址
-        "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5", // 同名其他歌曲页url
-        "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
-        "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg", 
-        "album_name":"十一月的肖邦", //专辑名称
-        "album_url":"http://music.baidu.com/album/234211111",  //专辑地址
-        "score":63,  //歌曲质量得分
-        "publish_time":"2011-09-01", //发布日期
-        "publish_company":"飞碟",  //唱片公司
-        "is_need_pay_listen":0, //是否付费收听，0表示否，1表示是
-        "from_site":1, //来源站点，1:百度,2:QQ,3:网易云,4:虾米,5:一听,6:酷我
-        "hot":12345   //用整数表示的热度
+        "api": {
+            "method": "GET",
+            "url": "http://s.xiaodu.baidu.com/v20161223/resource/music?user_id=888"
+        }
+        //以上地址，可以增加page参数来翻页，如 http://s.xiaodu.baidu.com/v20161223/resource/music?user_id=888&page=2
+        //抓取以上api地址后会返回如下格式
+        /*
+        {
+          "status": 0,
+          "code": null,
+          "data": {
+            "page": 1,
+            "total_page": 5,
+            "list": [
+              {
+                "duration":256, //歌曲时长（秒）
+                "name":"千里之外", //歌曲名
+                "alias":"千里外", //别名
+                "singer_name":"羽泉",
+                "all_singer_name":"陈羽凡,胡海泉",
+                "genre":"复古", //类型
+                "tag":"港台,励志,流行,合唱,摇滚",
+                "language":"华语", //语言分类
+                "original_singer":"周杰伦,费玉清",//原唱
+                "composer":"周杰伦", //作曲
+                "lyricist":"lyricist",  //作词
+                "url":"http://music.baidu.com/song/s/04071175dd9085630382f", //歌曲地址
+                "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5", // 同名其他歌曲页url
+                "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
+                "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg", 
+                "album_name":"十一月的肖邦", //专辑名称
+                "album_url":"http://music.baidu.com/album/234211111",  //专辑地址
+                "score":"63",  //歌曲质量得分
+                "publish_time":"2011-09-01", //发布日期
+                "publish_company":"飞碟",  //唱片公司
+                "is_need_pay_listen":"0", //是否付费收听，0表示否，1表示是
+                "from_site":"1", //来源站点，1:百度,2:QQ,3:网易云,4:虾米,5:一听,6:酷我
+                "hot":"12345"   //用整数表示的热度
+              }...
+            ]
+          }
+        }
+        */
     }
 }
+
 ```
 
 ### speech
