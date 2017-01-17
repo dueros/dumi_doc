@@ -81,8 +81,8 @@ appqps | 合作方的每天访问次数限制
 ```javascript
 {
     //==========以下是开放sdk会有的字段========================
-    "appid": "dm5C60F68C963F4A66", 
-    "appkey": "675C78EA90BF418D875317CEA172A7AE", 
+    "appid": "650DEBC2B99A4dA4", 
+    "appkey": "2F4B662AF2064323A16122D702160F15", 
     "sdk_ui": "no", 
     "sdk_init": "no", 
     "appname": "com.baidu.duersdk.xiaomi",
