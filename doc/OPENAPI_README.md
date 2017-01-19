@@ -529,10 +529,15 @@ sysprofile_service | 系统画像
     }
 ]
 ```
-
 现在有以下domain指令可能返回
+
+#### AudioPlayer
   * [AudioPlayer](directives/AudioPlayer.md) 音乐播放相关指令
+
+#### Speaker
   * [Speaker](directives/Speaker.md) 扬声器控制、设置相关指令
+
+#### SpeechSynthesizer
   * [SpeechSynthesizer](directives/SpeechSynthesizer.md) 语音播报（TTS）相关指令
 
 
