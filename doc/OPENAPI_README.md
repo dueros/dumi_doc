@@ -515,8 +515,26 @@ sysprofile_service | 系统画像
 }
 ```
 
-### directive
-//TODO 请世权写一下
+### directives
+基础结构：
+```javascript
+"directives":[   //指令，用于控制给客户端、目标硬件下达命令，可选字段，一个结果可包含多条啊指令
+    {
+        "header": {  
+            "namespace": "",//指令的分类
+            "name": "" //指令的名字
+        },
+        "payload":{ //指令的参数
+        }
+    }
+]
+```
+
+现在有以下domain指令可能返回
+  * [AudioPlayer](directives/AudioPlayer.md) 音乐播放相关指令
+  * [Speaker](directives/Speaker.md) 扬声器控制、设置相关指令
+  * [SpeechSynthesizer](directives/SpeechSynthesizer.md) 语音播报（TTS）相关指令
+
 
 
 ### hint
