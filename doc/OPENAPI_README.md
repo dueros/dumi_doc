@@ -26,7 +26,7 @@
             * [新闻](#新闻)
             * [音乐](#音乐)
          * [speech](#speech)
-         * [directive](#directive)
+         * [directives](#directives)
          * [hint](#hint)
          * [nlu](#nlu)
             * [包含query解析结果的结构化数据](#包含query解析结果的结构化数据)
