@@ -138,7 +138,10 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 #### ProgressReportIntervalElapsed事件
 如果Play指令设置了progress_report_interval_ms的值，那么客户端需要周期性的每隔一段时间上报一次当前的播放进度，
 直到歌曲播放结束。注意歌曲开始播放和歌曲结束播放的时候，可以不上报这个事件。
+
 情况1：假如progress_report_interval_ms的值为3000，Play指令的offset_ms值为0， 从音频流的0位置算起，如果播放位置到达3000的整数倍，就上报一次事件。
+
 情况2：假如progress_report_interval_ms的值为3000，Play指令的offset_ms值为1000， 从音频流的0位置算起，如果播放位置到达3000的整数倍，就上报一次事件。
+
 这2种情况，上报事件时所处的播放位置是一样的，跟offset_ms的值没有关系，因为是从音频流的0位置算起。
 云端收到这个事件后，可能会返回给客户端一条指令，需要客户端执行之，比如Stop指令、AdjustVolume指令等。利用这个特性可以实现助眠模式。
