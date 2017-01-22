@@ -81,7 +81,7 @@ slot key|slot value
 timeout|时间（分钟）
 
 
-1分钟后关闭屏幕
+1分钟之后关闭屏幕
 ```javascript
 {
   "domain": "fridge",
