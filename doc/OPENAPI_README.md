@@ -532,7 +532,7 @@ sysprofile_service | 系统画像
     }
 ]
 ```
-现在有以下domain指令可能返回
+现在有以下namespace指令可能返回
 
 #### AudioPlayer
   * [AudioPlayer](directives/AudioPlayer.md) 音乐播放相关指令
@@ -573,3 +573,97 @@ sysprofile_service | 系统画像
 #### 以下是跑出来的一批nlu数据的例子
 
 [Examples](nlu/example.md)
+
+
+## 下游服务介绍
+
+bot_id|描述|测试query
+------|----|---------
+aries_general|通用信息查询|周杰伦是谁
+life_common|生活服务；鲜花、美容、理发、导航、周边、路况|附近堵车么;故宫在哪里;附近的饭馆
+sac|通用服务入口|我要买火车票
+restaurant_bot|美食服务|北京哪里的烤鸭好吃
+remind|提醒、闹钟|5分钟之后提醒我
+recommend_service_wireless|笑话、新闻|讲个笑话
+sysprofile_service|系统画像（可根据端类型自定义返回内容）|你是什么星座的
+phone|电话指令、打开app、网页、通信录、我的位置|
+movie_satisfy|电影|
+o2o_satisfy|外卖|
+duer_game|游戏|
+rent_car|打车|
+image_satisfy|图片搜索（多模sdk）|
+duer_gaokao_server|高考|
+drama_satisfy|电视剧|琅琊榜
+travel_server|旅游，景点，hi周末|最近有什么演唱会？
+recharge|手机充值（必须登录）|帮我充值
+online_shopping|在线购物|网购高露洁
+hotel|酒店|附近的酒店
+duer_short_video|短视频?|
+sport_server|部分NBA功能|
+nba_search|NBA|
+baojie|保洁|
+duer_weather|天气|
+talk_service|开放集合聊天|
+doudi_server|聊天封闭集合兜底|
+smart_tv|电视（有电视剧）|
+speaker_hardware|扬声器控制|声音大一点
+audio_news|新闻|英特尔的最新新闻
+audio_music|音乐|放一首周杰伦的歌
+audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
+audio_scene|场景化垂类|进入助眠模式
+audio_live|直播垂类|
+fridge|冰箱指令|
+cookbook|菜谱|
+dietqa|饮食问答|
+
+
+### 特别需要垂类开发指引的：
+
+  * remind
+  * sysprofile_service
+  * audio_music
+  * audio_unicast
+  * phone
+  * rent_car
+  * o2o_satisfy
+  * restaurant_bot
+
+### 需要拆成几个bot的
+  * remind
+  * phone
+  * recommend_service_wireless
+  * life_common
+
+### 需要适配resource的
+  * restaurant_bot
+  * life_common
+  * duer_weather
+  * o2o_satisfy
+  * movie_satisfy
+  * hotel
+  * drama_satisfy
+  * travel_server
+  * smart_tv
+
+### 需要适配nlu的
+  * duer_weather
+
+### 有多轮的
+  * phone
+  * remind
+  * restaurant_bot
+  * o2o_satisfy ?
+  * rent_car
+  * duer_gaokao_server
+  * recharge
+
+### 强需求登录的
+  * rent_car
+
+### 需要location的
+  * rent_car
+  * life_common
+  * hotel
+
+### 特殊
+  * image_satisfy
