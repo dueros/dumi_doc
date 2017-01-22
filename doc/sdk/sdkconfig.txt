@@ -1,0 +1,13 @@
+{
+	"appid": "dmB729C8CCA9A74C15",
+	"appkey": "1A3A7F412CE14B808117DFF019CEFAC4",
+	"openLog": "true",
+	"openWriteLog": "false",
+	"openWriteAllLog": "false",
+	"writeLogTag": [
+		"DuerSDK-VoiceImpl2",
+		"DuerSDK-AppConfigTime"
+	],
+	"appOffline": "true",
+  	"appOfflineUrl": "http://xiaodu.baidu.com/saiya/ws2"
+}
