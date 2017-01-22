@@ -55,7 +55,7 @@
 ### 常见问题
 
    * 如何更改appid、appkey
-    * 请看demo工程代码中的 app/src/main/java/com/baidu/duersdkdemo/DemoApplication.java 
+    * 请看demo工程代码中的 app/src/main/java/com/baidu/duersdkdemo/DemoApplication.java
 
 ## 整体格式说明
 
@@ -85,19 +85,19 @@ appqps | 合作方的每天访问次数限制
 ```javascript
 {
     //==========以下是开放sdk会有的字段========================
-    "appid": "650DEBC2B99A4dA4", 
-    "appkey": "2F4B662AF2064323A16122D702160F15", 
-    "sdk_ui": "no", 
-    "sdk_init": "no", 
+    "appid": "650DEBC2B99A4dA4",
+    "appkey": "2F4B662AF2064323A16122D702160F15",
+    "sdk_ui": "no",
+    "sdk_init": "no",
     "appname": "com.baidu.duersdk.xiaomi",
-    "from_client": "sdk", 
+    "from_client": "sdk",
     //========================================================
-    //string 用户id, 如有Cookie则不需要此字段 
+    //string 用户id, 如有Cookie则不需要此字段
     "request_uid": "string",
     //string 输入来源,0-语音输入，1-键盘输入，2-编辑query，3-引导query，4-重新发送，7-用户上传图片，8-点击导航图标输入，9-applink方式传参数发送，10-自动回复，11-未知，13-手百插件新用户引导浮层点击，14-feed流拉取
     "query_type": "string",
     //默认为空,类型string， 多个以逗号分隔， 为空可以不填该字段
-    "hint_id": "用户选中hint的id" 
+    "hint_id": "用户选中hint的id"
     //string 机器id
     "CUID": "string",
     //double 经度
@@ -108,7 +108,7 @@ appqps | 合作方的每天访问次数限制
     "location_type": "wgs84",
     //当前定位数据坐标系统，取值为：”bd09ll”（百度球面坐标）或”wgs84”（GPS球面坐标）或”bd09mc”（百度墨卡托坐标）。默认是wgs84
     "location_system"："wgs84"
-    //如果用户是语音输入的，存语音输入的id 
+    //如果用户是语音输入的，存语音输入的id
     "speech_id":"xxxx",
     //string 请求类型，-1-手百插件注册(query为空), 0-输入框输入，1-鼠标点击输入，2-查看聊天历史，3-写入聊天历史，4-注册用户信息，5-查看用户信息，6-查看熊成长信息，7-更改熊身上装备，8-检查是否可以修改昵称, 9-app从后台恢复
     "request_type": "string",
@@ -121,14 +121,14 @@ appqps | 合作方的每天访问次数限制
     //int 调试标记，1-测试消息 0或字段不存在表示线上消息
     "debug": int,
     //int 消息模式， 1-3D演示模式 0或字段不存在为默认状态
-    "mode": int, 
+    "mode": int,
     //操作系统， 可选，android/ios
-    "operation_system": "ios", 
+    "operation_system": "ios",
     "operation_system_version":"7.0.0", //操作系统版本号（目前只有对外sdk有该字段），ios取[[[UIDevice currentDevice] systemVersion] floatValue]，安卓取android.os.Build.VERSION.RELEASE
     "device_brand":"apple", //设备品牌 （目前只有对外sdk有该字段），ios写死"apple"，安卓取android.os.Build.BRAND
     "device_model":"iphone 6s", //设备具体型号 （目前只有对外sdk有该字段）ios取 设备型号字符串 sysctlbyname("hw.machine", name, &size, NULL, 0);，安卓取android.os.Build.MODEL
     //app_ver app版本号
-    "app_ver": "1.0.10", 
+    "app_ver": "1.0.10",
     "searchbox_ver":"8.0",//宿主版本号，只存在于插件形式，比如手百、地图、浏览器
     //string 可选，默认值是"txt"，可用的值现在有txt / image，消息内容的类型，会决定服务端如何解析request_query
     "content_type": "image",
@@ -490,7 +490,7 @@ sysprofile_service | 系统画像
                 "url":"http://music.baidu.com/song/s/04071175dd9085630382f", //歌曲地址
                 "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5", // 同名其他歌曲页url
                 "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
-                "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg", 
+                "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
                 "album_name":"十一月的肖邦", //专辑名称
                 "album_url":"http://music.baidu.com/album/234211111",  //专辑地址
                 "score":"63",  //歌曲质量得分
@@ -573,3 +573,4 @@ sysprofile_service | 系统画像
 #### 以下是跑出来的一批nlu数据的例子
 
 [Examples](nlu/example.md)
+[海尔冰箱-剧本](bot/FRIDGE_PLAY_README.md)
