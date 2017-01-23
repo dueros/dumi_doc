@@ -34,6 +34,7 @@
          * [nlu](#nlu)
             * [包含query解析结果的结构化数据](#包含query解析结果的结构化数据)
             * [以下是跑出来的一批nlu数据的例子](#以下是跑出来的一批nlu数据的例子)
+      * [下游服务介绍](#下游服务介绍)
 
 
 ## 客户端sdk
@@ -590,7 +591,7 @@ phone|电话指令、打开app、网页、通信录、我的位置|
 movie_satisfy|电影|
 o2o_satisfy|外卖|
 duer_game|游戏|
-rent_car|打车|
+rent_car|打车|我要打车
 image_satisfy|图片搜索（多模sdk）|
 duer_gaokao_server|高考|
 drama_satisfy|电视剧|琅琊榜
@@ -599,21 +600,21 @@ recharge|手机充值（必须登录）|帮我充值
 online_shopping|在线购物|网购高露洁
 hotel|酒店|附近的酒店
 duer_short_video|短视频?|
-sport_server|部分NBA功能|
-nba_search|NBA|
-baojie|保洁|
-duer_weather|天气|
-talk_service|开放集合聊天|
-doudi_server|聊天封闭集合兜底|
-smart_tv|电视（有电视剧）|
+sport_server|部分NBA功能？|
+nba_search|NBA|nba
+baojie|保洁|帮我找个保洁
+duer_weather|天气|今天天气怎么样
+talk_service|开放集合聊天|（兜底服务）
+doudi_server|聊天封闭集合兜底|（兜底服务）
+smart_tv|电视（有电视剧）|我想看琅琊榜
 speaker_hardware|扬声器控制|声音大一点
 audio_news|新闻|英特尔的最新新闻
 audio_music|音乐|放一首周杰伦的歌
 audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
 audio_scene|场景化垂类|进入助眠模式
-audio_live|直播垂类|
+audio_live|直播垂类|播放北京文艺广播
 [fridge](bot/fridge.md)|冰箱指令|
 [cookbook](bot/cookbook.md)|菜谱|
-dietqa|饮食问答|
+scene_satisfaction|明星|周杰伦的最新专辑
 
 
