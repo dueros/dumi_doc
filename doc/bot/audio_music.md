@@ -105,7 +105,7 @@ intent::audio.music.songlist|歌单管理|歌曲名|song|这首歌
 
 
 
-### resource部分的解释说明
+### resource 部分的解释说明
 
 .result.resource.type==music_ref的resource，是一个播放列表的地址，支持翻页
 ```javascript

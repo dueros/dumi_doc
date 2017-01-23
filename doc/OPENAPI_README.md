@@ -456,59 +456,7 @@ sysprofile_service | 系统画像
 ```
 
 #### 音乐
-
-```javascript
-
-"resource":{ //数据资源，可选字段
-    "type":"music_ref",//资源类型，目前已经有music/news/weather等资源类型
-    "data":{
-        "api": {
-            "method": "GET",
-            "url": "http://s.xiaodu.baidu.com/v20161223/resource/music?user_id=888"
-        }
-        //以上地址，可以增加page参数来翻页，如 http://s.xiaodu.baidu.com/v20161223/resource/music?user_id=888&page=2
-        //抓取以上api地址后会返回如下格式
-        /*
-        {
-          "status": 0,
-          "code": null,
-          "data": {
-            "page": 1,
-            "total_page": 5,
-            "list": [
-              {
-                "duration":256, //歌曲时长（秒）
-                "name":"千里之外", //歌曲名
-                "alias":"千里外", //别名
-                "singer_name":"羽泉",
-                "all_singer_name":"陈羽凡,胡海泉",
-                "genre":"复古", //类型
-                "tag":"港台,励志,流行,合唱,摇滚",
-                "language":"华语", //语言分类
-                "original_singer":"周杰伦,费玉清",//原唱
-                "composer":"周杰伦", //作曲
-                "lyricist":"lyricist",  //作词
-                "url":"http://music.baidu.com/song/s/04071175dd9085630382f", //歌曲地址
-                "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5", // 同名其他歌曲页url
-                "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
-                "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
-                "album_name":"十一月的肖邦", //专辑名称
-                "album_url":"http://music.baidu.com/album/234211111",  //专辑地址
-                "score":"63",  //歌曲质量得分
-                "publish_time":"2011-09-01", //发布日期
-                "publish_company":"飞碟",  //唱片公司
-                "is_need_pay_listen":"0", //是否付费收听，0表示否，1表示是
-                "from_site":"1", //来源站点，1:百度,2:QQ,3:网易云,4:虾米,5:一听,6:酷我
-                "hot":"12345"   //用整数表示的热度
-              }...
-            ]
-          }
-        }
-        */
-    }
-}
-
-```
+[音乐垂类的resource说明](bot/audio_music.md#resource%20%E9%83%A8%E5%88%86%E7%9A%84%E8%A7%A3%E9%87%8A%E8%AF%B4%E6%98%8E)
 
 ### speech
 目前仅返回Text类型，SSML类型在开发中，[SSML的说明](https://www.w3.org/TR/speech-synthesis/)
