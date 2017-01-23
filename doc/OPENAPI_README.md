@@ -609,7 +609,7 @@ doudi_server|聊天封闭集合兜底|（兜底服务）
 smart_tv|电视（有电视剧）|我想看琅琊榜
 speaker_hardware|扬声器控制|声音大一点
 audio_news|新闻|英特尔的最新新闻
-audio_music|音乐|放一首周杰伦的歌
+[audio_music](bot/audio_music.md)|音乐|放一首周杰伦的歌
 audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
 audio_scene|场景化垂类|进入助眠模式
 audio_live|直播垂类|播放北京文艺广播
