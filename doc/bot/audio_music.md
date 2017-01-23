@@ -74,24 +74,25 @@
 ### nlu部分的说明
 intent|slot|slot_name|slot_value
 ------|----|---------|----------
-intent::audio.music.play|音乐播放|歌手/乐队名|singer|周杰伦/二手玫瑰
-|歌曲名|song|听妈妈的话
-|专辑名|album|依然范特西
-|排序类型|sort_type|sort_new(最新)|/|sort_hot(最热)
-|单位|unit|歌曲、专辑（用于区分“播放周杰伦的歌曲”和“播放周杰伦的专辑”）
-|标签|tag|好听、悲伤、80后、摇滚
-|榜单名|top_name|热歌榜、原创音乐榜
-|歌单名|list_name|让音乐撞见你的心事;别让时间消磨掉你的青春
-|作词人|lyricist|方文山
-|作曲人|composer|周杰伦
-intent::audio.music.ask|知识问答|歌手名|singer|有值代表有询问需求；空代表无询问需求
-|专辑名|album|有值代表有询问需求；空代表无询问需求
-|歌曲名|song|有值代表有询问需求；空代表无询问需求
-intent::audio.music.favorite|收藏歌曲|动作|action|like(收藏)/unlike(取消收藏)
-|歌名|name|这首歌，这个
-intent::audio.music.songlist|歌单管理|歌曲名|song|这首歌
-|动作|action|add(加入歌单)/delete(删除歌单)
-|歌单名|list_name|小清新
+intent::audio.music.play音乐播放|歌手/乐队名|singer|周杰伦/二手玫瑰
+ |歌曲名|song|听妈妈的话
+ |专辑名|album|依然范特西
+ |排序类型|sort_type|sort_new(最新)|/|sort_hot(最热)
+ |单位|unit|歌曲、专辑（用于区分“播放周杰伦的歌曲”和“播放周杰伦的专辑”）
+ |标签|tag|好听、悲伤、80后、摇滚
+ |榜单名|top_name|热歌榜、原创音乐榜
+ |歌单名|list_name|让音乐撞见你的心事;别让时间消磨掉你的青春
+ |作词人|lyricist|方文山
+ |作曲人|composer|周杰伦
+intent::audio.music.ask 知识问答|歌手名|singer|有值代表有询问需求；空代表无询问需求
+ |专辑名|album|有值代表有询问需求；空代表无询问需求
+ |歌曲名|song|有值代表有询问需求；空代表无询问需求
+intent::audio.music.favorite 收藏歌曲|动作|action|like(收藏)/unlike(取消收藏)
+ |歌名|name|这首歌，这个
+intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
+ |动作|action|add(加入歌单)/delete(删除歌单)
+ |歌单名|list_name|小清新
+
 
 
 
