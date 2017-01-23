@@ -574,7 +574,6 @@ sysprofile_service | 系统画像
 
 [Examples](nlu/example.md)
 
-<<<<<<< HEAD
 
 ## 下游服务介绍
 
@@ -613,59 +612,8 @@ audio_music|音乐|放一首周杰伦的歌
 audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
 audio_scene|场景化垂类|进入助眠模式
 audio_live|直播垂类|
-fridge|冰箱指令|
-cookbook|菜谱|
+[fridge](bot/fridge.md)|冰箱指令|
+[cookbook](bot/cookbook.md)|菜谱|
 dietqa|饮食问答|
 
-
-### 特别需要垂类开发指引的：
-
-  * remind
-  * sysprofile_service
-  * audio_music
-  * audio_unicast
-  * phone
-  * rent_car
-  * o2o_satisfy
-  * restaurant_bot
-
-### 需要拆成几个bot的
-  * remind
-  * phone
-  * recommend_service_wireless
-  * life_common
-
-### 需要适配resource的
-  * restaurant_bot
-  * life_common
-  * duer_weather
-  * o2o_satisfy
-  * movie_satisfy
-  * hotel
-  * drama_satisfy
-  * travel_server
-  * smart_tv
-
-### 需要适配nlu的
-  * duer_weather
-
-### 有多轮的
-  * phone
-  * remind
-  * restaurant_bot
-  * o2o_satisfy ?
-  * rent_car
-  * duer_gaokao_server
-  * recharge
-
-### 强需求登录的
-  * rent_car
-
-### 需要location的
-  * rent_car
-  * life_common
-  * hotel
-
-### 特殊
-  * image_satisfy
 
