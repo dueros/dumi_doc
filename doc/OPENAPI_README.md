@@ -536,12 +536,11 @@ remind|提醒、闹钟|5分钟之后提醒我
 recommend_service_wireless|笑话、新闻|讲个笑话
 sysprofile_service|系统画像（可根据端类型自定义返回内容）|你是什么星座的
 phone|电话指令、打开app、网页、通信录、我的位置|
-movie_satisfy|电影|
-o2o_satisfy|外卖|
-duer_game|游戏|
+movie_satisfy|电影|正在上映的电影
+o2o_satisfy|外卖|帮我叫个外卖
 rent_car|打车|我要打车
-image_satisfy|图片搜索（多模sdk）|
-duer_gaokao_server|高考|
+image_satisfy|图片搜索（多模sdk）|（用多模sdk上传图片）
+duer_gaokao_server|高考志愿填报|我要报志愿;北京650分能上什么大学
 drama_satisfy|电视剧|琅琊榜
 travel_server|旅游，景点，hi周末|最近有什么演唱会？
 recharge|手机充值（必须登录）|帮我充值
