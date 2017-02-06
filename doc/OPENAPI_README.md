@@ -546,7 +546,6 @@ travel_server|旅游，景点，hi周末|最近有什么演唱会？
 recharge|手机充值（必须登录）|帮我充值
 online_shopping|在线购物|网购高露洁
 hotel|酒店|附近的酒店
-duer_short_video|短视频?|
 sport_server|部分NBA功能？|
 nba_search|NBA|nba
 baojie|保洁|帮我找个保洁
