@@ -1,6 +1,6 @@
-﻿#Phone bot输出
+﻿# phone bot输出schema
 
-##打电话(intent：telephone)
+## 打电话(intent：telephone)
 打电话返回的完整例子:
 ```javascript
 //query=打电话给测试薛斌
@@ -56,11 +56,11 @@
 |status|cancel|取消|
 
 
-###多轮状态机
+### 多轮状态机
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/b21b32af56cea9946daec3283726f62fb64b13ed)
 
 
-##发短信（intent：sms）
+## 发短信（intent：sms）
 发短信返回的完整例子:
 ```javascript
 //query=发短信给测试度秘
@@ -113,10 +113,10 @@
 |status|cancel、confirm|确认、取消|
 |content|短信内容|Eg：今晚加班晚点回家|
 
-###多轮状态机
+### 多轮状态机
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/2c3ddea49eb9abbdc2161c4bb51a34e516b2361f)
 
-##通讯录(intent：contact)
+## 通讯录(intent：contact)
 通讯录返回的完整例子:
 ```javascript
 //query=把李四的名片发给张三
@@ -174,7 +174,7 @@
 |number | 电话号码 | eg:新建薛斌的号码是1868979721897，number填1868979721897 | 
 
 
-##手机设置(intent：phone_settings)
+## 手机设置(intent：phone_settings)
 手机设置返回的完整例子:
 ```javascript
 //query=打开蓝牙
@@ -250,7 +250,7 @@
 | |  | 3：调小 | 
 | |  | 4：重启 | 
 
-##打开应用(intent：open_app)
+## 打开应用(intent：open_app)
 打开应用返回的完整例子:
 ```javascript
 //query=打开支付宝
@@ -312,7 +312,7 @@
 | |  | 3：下载 | 
 | |  | 4：搜索 | 
 
-##打开网页(intent：open_website)
+## 打开网页(intent：open_website)
 打开网页返回的完整例子:
 ```javascript
 //query=打开新浪网
