@@ -511,6 +511,8 @@ sysprofile_service | 系统画像
 火车票|22|22|end_point(终点站), start_point(起点站), search_type(如：高铁), start_time(时间)|给我买张到武汉的高铁票
 天气|duer_weather|sys_weather|loc_city(城市), loc_county(国家), loc_province(省), time(时间)|北京明天天气如何
 地址查询类需求|lbs|poi|poi(地址字符串)|射阳在哪儿
+周边查询类需求|lbs|nearby|start_point(出发地),start_point_bd_la(出发地纬度),start_point_bd_lo(出发地经度),user_location_city(用户当前所在城市),end_point(目的地),travel_type(出行方式),坐标类型为bd09ll(百度经纬度坐标)|附近的飞机场
+导航查询类需求|lbs|navigation/route/traffic_condition|start_point(出发地),start_point_bd_la(出发地纬度),start_point_bd_lo(出发地经度),user_location_city(用户当前所在城市),end_point(目的地),travel_type(出行方式),坐标类型为bd09ll(百度经纬度坐标)|导航从北京到上海
 音乐类需求|music|music|action_type(0. 关闭 1. 打开 2. 播放 3. 暂停 4. 下一首 5. 上一首 6. 换一首 7. 重播), song(歌名), singer(歌手), music_language(语言), music_emotion(情感，如悲伤、欢快等), music_tag, music_type(嘻哈、摇滚、儿歌等)|
 让度秘唱歌，类似调戏|music|music_sing|CommandAccepter, action_type(0. 关闭 1. 打开 2. 播放 3. 暂停 4. 下一首 5. 上一首 6. 换一首 7. 重播), song(歌名), singer(歌手)|
 联系人查询需求|phone|contact|action_type(1：查看 0：新建 2：发送), pinyin_for_view(要查看的联系人的拼音), name_for_view(要查看的联系人的名字), pinyin_to_send(要发送的联系人的拼音), name_to_send(要发送的联系人的名字)|告诉我张凤仪的电话号码, 庞翔宇的电话号码发给张凤仪
@@ -543,13 +545,13 @@ image_satisfy|图片搜索（多模sdk）|（用多模sdk上传图片）
 duer_gaokao_server|高考志愿填报|我要报志愿;北京650分能上什么大学
 drama_satisfy|电视剧|琅琊榜
 travel_server|旅游，景点，hi周末|最近有什么演唱会？
-recharge|手机充值（必须登录）|帮我充值
+recharge|手机充值（必须登录）|帮我充值话费
 online_shopping|在线购物|网购高露洁
 hotel|酒店|附近的酒店
 duer_short_video|短视频?|
 sport_server|部分NBA功能？|
 nba_search|NBA|nba
-baojie|保洁|帮我找个保洁
+baojie|保洁（必须登陆）|帮我找个保洁
 duer_weather|天气|今天天气怎么样
 talk_service|开放集合聊天|（兜底服务）
 doudi_server|聊天封闭集合兜底|（兜底服务）
