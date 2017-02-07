@@ -537,7 +537,7 @@ restaurant_bot|美食服务|北京哪里的烤鸭好吃
 remind|提醒、闹钟|5分钟之后提醒我
 recommend_service_wireless|笑话、新闻|讲个笑话
 sysprofile_service|系统画像（可根据端类型自定义返回内容）|你是什么星座的
-phone|电话指令、打开app、网页、通信录、我的位置|
+[phone](bot/phone.md)|电话指令、打开app、网页、通信录、我的位置|
 movie_satisfy|电影|正在上映的电影
 o2o_satisfy|外卖|帮我叫个外卖
 rent_car|打车|我要打车
@@ -548,7 +548,6 @@ travel_server|旅游，景点，hi周末|最近有什么演唱会？
 recharge|手机充值（必须登录）|帮我充值话费
 online_shopping|在线购物|网购高露洁
 hotel|酒店|附近的酒店
-duer_short_video|短视频?|
 sport_server|部分NBA功能？|
 nba_search|NBA|nba
 baojie|保洁（必须登陆）|帮我找个保洁
