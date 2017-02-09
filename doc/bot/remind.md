@@ -57,6 +57,8 @@
   "status": 0
 }
 ```
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/9e8135793278ff82185f76691894b6be29686c97)
+
 ### nlu部分的说明
 
 |slot |desc | value | 
@@ -67,4 +69,58 @@
 |remind_time_data | 提醒设置的时间 | 1486598400| 
 |remind_type_clock | 提醒触达方式闹钟 | 是|
 |status| create |创建|
+
+
+## 查看提醒(intent：remind_manage)
+打电话返回的完整例子:
+```javascript
+//query=查看我明天上午开会的提醒
+{
+  "result": {
+    "bot_id": "remind",
+    "bot_meta": {
+      "version": "1.0.0",
+      "type": "其他",
+      "description": "desc"
+    },
+    "views": [
+      {
+        "type": "txt",
+        "content": "暂时没有提醒哦，有任何需求可以告诉我，语音助手帮你记下来。"
+      }
+    ],
+    "nlu": {
+      "domain": "remind",
+      "intent": "remind_manage",
+      "slots": {
+        "remind_type_message": "否",
+        "remind_type_phone": "否",
+        "remind_type_dumi": "否",
+        "remind_type_clock": "否"
+      }
+    },
+    "speech": {
+      "type": "Text",
+      "content": "暂时没有提醒哦，有任何需求可以告诉我，语音助手帮你记下来。"
+    }
+  },
+  "id": "1486549266_6504f3o6a",
+  "logid": "14865492666785",
+  "user_id": "test",
+  "time": 1486549266,
+  "cuid": null,
+  "se_query": "查看我明天上午开会的提醒",
+  "msg": "ok",
+  "status": 0
+}
+```
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/b36ad686d4452b4f6ac92f816241c8f87e738cc5)
+
+### nlu部分的说明
+
+|slot |desc | value | 
+|---|---|---|
+|name | 名字 | 中文名 | 
+|event_title | 提醒标题 | eg:起床| 
+|event_type | 提醒事件类型 | eg:wakeup| 
 
