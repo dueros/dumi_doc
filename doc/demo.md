@@ -1,5 +1,9 @@
 
 
+[下载demo](sdk/sdk_v2_online.zip)
+解压后安装里面的app-release.apk
+
+
 ![demo1](img/demo1.png)
 点语音识别
 ![demo2](img/demo2.png)
