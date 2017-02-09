@@ -57,7 +57,7 @@
   "status": 0
 }
 ```
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/9e8135793278ff82185f76691894b6be29686c97)
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/31437e8a2e37920819aaac3fd443dd6d8821ea26)
 
 ### nlu部分的说明
 
