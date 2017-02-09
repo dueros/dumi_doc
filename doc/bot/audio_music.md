@@ -160,3 +160,122 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
   },
   "message": null
 }
+```
+
+
+
+### 获取歌单列表
+  * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist?page=1&page_size=10
+  * page：页码
+  * page_size：每页请求歌单数量，默认为10
+
+返回结果
+
+```javascript
+{
+     status: 0,
+     code: null,
+     data: 
+        {
+            "page" : 1,        //当前页
+            "total_page" : 10,  //总页数
+            "list" 
+               [
+                 {
+                   "sheet_id" : 121,   //歌单id
+                   "name":"【环球之音】一听就上瘾的欧美节奏",   //歌单名字
+                   "pic":"http://musicugc.cdn.qianqian.com/ugcdiy/pic/7d584d4298a6584be32f0cd115722280.jpg",    //歌单封面
+                   "desc":"环球旗下的顶尖歌手们，正用他们开拓的创新精神引领着这个时代的音乐潮流。节奏是一首歌的心跳，更是嘻哈音乐和电子音乐的灵魂，这样的节奏足够精彩到让人流连忘返。",   //歌单简介
+                   "tag":"欧美 说唱 电子"     //歌单标签           
+                },
+                {
+                   "sheet_id" : 122,
+                   "name":"【环球之音】一听就上瘾的欧美节奏",
+                   "pic":"http://musicugc.cdn.qianqian.com/ugcdiy/pic/7d584d4298a6584be32f0cd115722280.jpg",
+                   "desc":"环球旗下的顶尖歌手们，正用他们开拓的创新精神引领着这个时代的音乐潮流。节奏是一首歌的心跳，更是嘻哈音乐和电子音乐的灵魂，这样的节奏足够精彩到让人流连忘返。",
+                   "tag":"欧美 说唱 电子"               
+                }
+             ]
+       },
+    message: null
+}
+```
+其中status 为0返回正常，其它异常
+
+
+### 获取某个歌单下的歌曲列表
+
+请求参数
+  * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetmusic?sheet_id=1000&page=1&page_size=10
+  * sheet_id：歌单id
+  * page：页码     
+  * page_size：每页歌曲数量，默认为10
+
+返回值：
+```javascript
+{
+     status: 0,
+     code: null,
+     data: 
+        {
+            "page" : 1,        //当前页
+            "total_page" : 10,  //总页数
+            "list" 
+               [
+                 {
+                   "duration":256,
+                   "name":"千里之外",
+                   "alias":"千里外",
+                   "singer_name":"羽泉",
+                   "all_singer_name":"陈羽凡,胡海泉",
+                   "genre":"复古",
+                   "tag":"港台,励志,流行,合唱,摇滚",
+                   "language":"华语",
+                   "original_singer":"周杰伦,费玉清",
+                   "composer":"周杰伦",
+                   "lyricist":"lyricist",
+                   "url":"http://music.baidu.com/song/s/04071175dd9085630382f",
+                   "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5",
+                   "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
+                   "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
+                   "album_name":"十一月的肖邦",
+                   "album_url":"http://music.baidu.com/album/234211111",
+                   "score":63,
+                   "publish_time":"2011-09-01",
+                   "publish_company":"飞碟",
+                   "is_need_pay_listen":0,
+                   "from_site":1,
+                   "hot":12345
+                },
+                {
+                   "duration":256,
+                   "name":"千里之外",
+                   "alias":"千里外",
+                   "singer_name":"羽泉",
+                   "all_singer_name":"陈羽凡,胡海泉",
+                   "genre":"复古",
+                   "tag":"港台,励志,流行,合唱,摇滚",
+                   "language":"华语",
+                   "original_singer":"周杰伦,费玉清",
+                   "composer":"周杰伦",
+                   "lyricist":"lyricist",
+                   "url":"http://music.baidu.com/song/s/04071175dd9085630382f",
+                   "same_name_url":"http://music.baidu.com/search?key=%E4%BD%A0%E5%BF%AB%E5%9B%9E%E6%9D%A5",
+                   "streaming_vedio_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
+                   "head_image_url":"http://neisou.baidu.com/images/headportrait/zhangwenbo/0_112.jpg",
+                   "album_name":"十一月的肖邦",
+                   "album_url":"http://music.baidu.com/album/234211111",
+                   "score":63,
+                   "publish_time":"2011-09-01",
+                   "publish_company":"飞碟",
+                   "is_need_pay_listen":0,
+                   "from_site":1,
+                   "hot":12345
+                }
+             ]
+       },
+    message: null
+}
+```
+ 其中status 为0返回正常，其它异常
+
