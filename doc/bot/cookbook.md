@@ -212,7 +212,6 @@ dish|菜名
   "domain": "cookbook",
   "intent": "cookbook.collect",
   "slots": {
-    "collect": "收藏"
   }
 }
 ```
