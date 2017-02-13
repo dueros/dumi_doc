@@ -68,6 +68,9 @@ ai.dueros.control.hardware.ControlPower|control.hardware|control.hardware.power|
 ai.dueros.control.hardware.ControlScreen|control.hardware|control.hardware.screen|
 ai.dueros.control.hardware.ControlVolume|control.hardware|control.hardware.volume|
 ai.dueros.cookbook.Open|cookbook|cookbook.open|
+ai.dueros.cookbook.Collect|cookbook|cookbook.collect|
+ai.dueros.cookbook.Step|cookbook|cookbook.step|
+ai.dueros.cookbook.Video|cookbook|cookbook.video|
 ai.dueros.fridge.BindPhone|fridge|fridge.setting.phone_bind|
 ai.dueros.fridge.CheckService|fridge|fridge.info.service|
 ai.dueros.fridge.CheckSytemVersion|fridge|fridge.info.version|
