@@ -56,7 +56,7 @@
   "status": 0
 }
 ```
-![remind_create](img/remind_create.png)
+![remind_create](../img/remind_create.png)
 
 ### nlu部分的说明
 
@@ -116,7 +116,7 @@
   "status": 0
 }
 ```
-![remind_manage](img/remind_manage.png)
+![remind_manage](../img/remind_manage.png)
 
 ### nlu部分的说明
 
