@@ -47,12 +47,18 @@ slot key|slot value
 material|食材
 system|菜系
 dish|菜名
+tag|类别：热门、特色、当季
+season|季节
+flavor|口味
+holiday|节日
+people|人群
+symptom|症状
 
+- 怎么做菜
+- 看看菜谱
+- 教我做饭吧
+- 今天做点啥菜呢
 
-怎么做菜
-看看菜谱
-教我做饭吧
-今天做点啥菜呢
 ```javascript
 {
   "domain": "cookbook",
@@ -62,11 +68,11 @@ dish|菜名
 ```
 
 
+- 好吃的川菜
+- 好吃的川菜做法
+- 好吃的川菜大全
+- 好吃的川菜菜谱
 
-好吃的川菜
-好吃的川菜做法
-好吃的川菜大全
-好吃的川菜菜谱
 ```javascript
 {
   "domain": "cookbook",
@@ -77,9 +83,8 @@ dish|菜名
 }
 ```
 
+- 草鱼怎么做好吃
 
-
-草鱼怎么做好吃
 ```javascript
 {
   "domain": "cookbook",
@@ -90,13 +95,142 @@ dish|菜名
 }
 ```
 
+- 查找热门食谱
+- 特色食谱教学
+- 当季菜做法大全
 
-做水煮鱼的步骤
-水煮鱼做法
 ```javascript
 {
   "domain": "cookbook",
   "intent": "cookbook.open",
+  "slots": {
+    "tag": "热门"
+  }
+}
+```
+
+- 夏至适合吃的菜
+- 大暑适合吃的菜
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.open",
+  "slots": {
+    "season": "夏至"
+  }
+}
+```
+
+- 看看川味儿菜谱
+- 教我做酸甜口味的菜吧
+- 口味偏甜的菜有哪些
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.open",
+  "slots": {
+    "flavor": "酸甜口味"
+  }
+}
+```
+
+- 年夜饭做啥菜呢
+- 春节吃什么好
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.open",
+  "slots": {
+    "holiday": "春节"
+  }
+}
+```
+
+- 适合老年人吃的菜
+- 适合做饭初学者的菜谱
+- 孕妇菜谱大全
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.open",
+  "slots": {
+    "people": "孕妇"
+  }
+}
+```
+
+- 补肾食谱
+- 美白应该吃什么
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.open",
+  "slots": {
+    "symptom": "补肾"
+  }
+}
+```
+
+
+### cookbook.step
+精确菜名的步骤播报
+
+slot key|slot value
+--------|----------
+dish|菜名
+
+- 做水煮鱼的步骤
+- 水煮鱼步骤详解
+- 水煮鱼的做法和步骤
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.step",
+  "slots": {
+    "dish": "水煮鱼"
+  }
+}
+```
+
+### cookbook.collect
+查看收藏
+
+- 查看收藏
+- 打开收藏的菜谱
+- 看看收藏菜谱
+- 我收藏了哪些菜
+- 打开收藏菜谱
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.collect",
+  "slots": {
+  }
+}
+```
+
+### cookbook.video
+食谱视频
+
+
+slot key|slot value
+--------|----------
+dish|菜名
+
+- 水煮鱼的视频
+- 水煮鱼视频教学
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.video",
   "slots": {
     "dish": "水煮鱼"
   }
