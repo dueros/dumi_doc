@@ -12,7 +12,7 @@ ai.dueros.bot.system_profile|sysprofile_service|系统画像（可根据端类�
 ai.dueros.bot.phone(x)|[phone](bot/phone.md)|电话指令、打开app、网页、通信录、我的位置|
 ai.dueros.bot.movie|movie_satisfy|电影|正在上映的电影
 ai.dueros.bot.take_out|o2o_satisfy|外卖|帮我叫个外卖
-ai.dueros.bot.texi_order|rent_car|打车|我要打车
+ai.dueros.bot.taxi_order|rent_car|打车|我要打车
 ai.dueros.bot.image_search|image_satisfy|图片搜索（多模sdk）|（用多模sdk上传图片）
 ai.dueros.bot.gaokao|duer_gaokao_server|高考志愿填报|我要报志愿;北京650分能上什么大学
 ai.dueros.bot.tv_play_info|drama_satisfy|电视剧|琅琊榜
@@ -27,7 +27,7 @@ ai.dueros.bot.weather|duer_weather|天气|今天天气怎么样
 ai.dueros.bot.smart_talk|talk_service|开放集合聊天|（兜底服务）
 ai.dueros.bot.small_talk|doudi_server|聊天封闭集合兜底|（兜底服务）
 ai.dueros.bot.smart_tv|smart_tv|电视（有电视剧）|我想看琅琊榜
-ai.dueros.bot.speaker_hardware|speaker_hardware|扬声器控制|声音大一点
+ai.dueros.bot.speaker_hardware_control|speaker_hardware|扬声器控制|声音大一点
 ai.dueros.bot.audio_news|audio_news|新闻|英特尔的最新新闻
 ai.dueros.bot.audio_music|[audio_music](bot/audio_music.md)|音乐|放一首周杰伦的歌
 ai.dueros.bot.audio_cast|audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
@@ -51,8 +51,6 @@ ai.dueros.audio.PlayAudioCast|audio.unicast|audio.unicast.play|
 ai.dueros.audio.PlayAudioLive|audio.live|audio.live.play|
 ai.dueros.audio.PlayAudioNews|audio.news|audio.news.play|
 ai.dueros.audio.PlayMusic|audio.music|audio.music.play|
-ai.dueros.audio_cast.Ask|audio.unicast|audio.unicast.ask|
-ai.dueros.audio_live.Ask|audio.live|audio.live.ask|
 ai.dueros.control.common.Collect|control.common|control.common.collect|
 ai.dueros.control.common.ControlApps|control.common|control.common.apps|
 ai.dueros.control.common.ControlPage|control.common|control.common.page|
@@ -62,12 +60,12 @@ ai.dueros.control.common.Play|control.common|control.common.play|
 ai.dueros.control.common.SetPlayMode|control.common|control.common.play_mode|
 ai.dueros.control.common.Switch|control.common|control.common.switch|
 ai.dueros.control.hardware.ControlBluetooth|control.hardware|control.hardware.bluetooth|
-ai.dueros.control.hardware.ControlBright|control.hardware|control.hardware.bright|
+ai.dueros.control.hardware.ControlBrightness|control.hardware|control.hardware.bright|
 ai.dueros.control.hardware.ControlContrast|control.hardware|control.hardware.contrast|
 ai.dueros.control.hardware.ControlPower|control.hardware|control.hardware.power|
 ai.dueros.control.hardware.ControlScreen|control.hardware|control.hardware.screen|
 ai.dueros.control.hardware.ControlVolume|control.hardware|control.hardware.volume|
-ai.dueros.cookbook.Open|cookbook|cookbook.open|
+ai.dueros.cookbook.OpenBook|cookbook|cookbook.open|
 ai.dueros.cookbook.Collect|cookbook|cookbook.collect|
 ai.dueros.cookbook.Step|cookbook|cookbook.step|
 ai.dueros.cookbook.Video|cookbook|cookbook.video|
@@ -106,8 +104,8 @@ ai.dueros.restaurant.Find|restaurant_bot|find|美食、团购|catetag, fragment,
 ai.dueros.system_profile.AskConstellation|sysprofile|sysprofile.constellation|
 ai.dueros.system_profile.AskLanguage|sysprofile|sysprofile.language|
 ai.dueros.system_profile.AskVersion|sysprofile|sysprofile.version|
-ai.dueros.system_profile.Ask|sys_profile|sys_profile|
-ai.dueros.system_profile.Ask|sysprofile|sysprofile.common_ask|
+ai.dueros.system_profile.AskSystemProfile|sys_profile|sys_profile|
+ai.dueros.system_profile.AskSystemProfile|sysprofile|sysprofile.common_ask|
 ai.dueros.system_profile.GetFavouriteManStar|sysprofile|sysprofile.like_man_star|
 ai.dueros.system_profile.GetFavouritePerson|sysprofile|sysprofile.like_person|
 ai.dueros.system_profile.GetFavouriteSinger|sysprofile|sysprofile.like_singer|
@@ -115,14 +113,14 @@ ai.dueros.system_profile.GetFavouriteSport|sysprofile|sysprofile.like_sport|
 ai.dueros.system_profile.GetFavouriteWomanStar|sysprofile|sysprofile.like_woman_star|
 ai.dueros.system_profile.GetFeature|sysprofile|sysprofile.function|
 ai.dueros.system_profile.fridge.AskWarranty|sysprofile|sysprofile.fridge.maintenance_period|
-ai.dueros.system_profile.fridge.GetAbnormal|sysprofile|sysprofile.fridge.abnormal|
+ai.dueros.system_profile.fridge.GetAbnormality|sysprofile|sysprofile.fridge.abnormal|
 ai.dueros.system_profile.fridge.GetCustomerService|sysprofile|sysprofile.fridge.customer_service|
 ai.dueros.system_profile.fridge.GetRepair|sysprofile|sysprofile.fridge.repair|
-ai.dueros.texi_order.CallDriver|rent_car|rent_car.call_driver|
-ai.dueros.texi_order.CancelOrder|rent_car|rent_car.cancel_order|
-ai.dueros.texi_order.CheckOrder|rent_car|rent_car.query_status|
-ai.dueros.texi_order.Order|rent_car|rent_car.book|
-ai.dueros.texi_order.WaitOrder|rent_car|rent_car.wait_order|
+ai.dueros.taxi_order.CallDriver|rent_car|rent_car.call_driver|
+ai.dueros.taxi_order.CancelOrder|rent_car|rent_car.cancel_order|
+ai.dueros.taxi_order.CheckOrder|rent_car|rent_car.query_status|
+ai.dueros.taxi_order.Order|rent_car|rent_car.book|
+ai.dueros.taxi_order.WaitOrder|rent_car|rent_car.wait_order|
 ai.dueros.ticket.BookFlightTicket|travel_ticket|flight_ticket|
 ai.dueros.ticket.BookTrainTicket|22|22|火车票|end_point(终点站), start_point(起点站), search_type(如：高铁), start_time(时间)|给我买张到武汉的高铁票
 ai.dueros.ticket.BookTrainTicket|travel_ticket|train_ticket|
