@@ -56,7 +56,7 @@
   "status": 0
 }
 ```
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/deb734fb10ff834d2ead5d8b78635243ba55a8f2)
+![remind_create](img/remind_create.png)
 
 ### nlu部分的说明
 
@@ -93,8 +93,8 @@
       "intent": "remind_manage",
       "slots": {
         "action": "list",
-        "event_title": "起床",
-        "remind_time": "{\"day\":\"next\",\"hour\":\"8\",\"apm\":\"am\"}",
+        "event_title": "开会",
+        "remind_time": "{\"day\":\"next\",\"apm\":\"am\"}",
         "remind_type_message": "否",
         "remind_type_phone": "否",
         "remind_type_dumi": "否",
@@ -116,7 +116,7 @@
   "status": 0
 }
 ```
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/0a57137bf8381b24d4e11a6680d06d7e3e1960d8)
+![remind_manage](img/remind_manage.png)
 
 ### nlu部分的说明
 
