@@ -144,8 +144,8 @@
 |special_calendar|lunar|string. 农历|
 
 ### 闹钟数据同步
-如果使用度秘的存储保存闹钟数据，通过请求度秘获取闹钟数据
-URL: http://xiaodu.baidu.com/saiya/events/Index/clock 
+ * 如果使用度秘的存储保存闹钟数据，通过请求度秘获取闹钟数据
+ * URL: http://xiaodu.baidu.com/saiya/events/Index/clock 
 
 ```javascript
 {
@@ -174,7 +174,6 @@ URL: http://xiaodu.baidu.com/saiya/events/Index/clock
             },
            
             "time": 1479686400, //闹钟响铃的时间 时间戳
-            "startTime": 1479106860,
             "terminal": null,
             "id": 525568,
             "title": "吃饭",
