@@ -130,15 +130,14 @@
 ###时间json内字段说明
 |Key |Value |说明|
 |---|---|---|
-|minute |3, +2, -1|string. 3分，2分钟后，1分钟前
-|hour|2, +1, -3|string. 2点，1小时后，3小时前
-|day|1, +2, -3, -1,next, +0|string. 1号，2天后，3天前，昨天，明天，今天
-|month|1, +2, -3, +0|string. 1月，2个月后，3个月前，这个月
-|year|1984, +1, -2, +0|string. 1984年，明年，2年前，今年
-|week|+1, -1, 2, 3, 2+1|string. 下周，上一周，星期二，周三, 下周二
-|apm|am, pm|string. 上午，下午
-|const|recent, awhile|string. 刚刚，一会儿
-|repeat|day, month, year|string. 每天，每月，每年
-|special_day |weekend, weekday|string. 周末，工作日，节气，节日
-|special_calendar|lunar|string. 农历
-
+|minute |3, +2, -1|string. 3分，2分钟后，1分钟前|
+|hour|2, +1, -3|string. 2点，1小时后，3小时前|
+|day|1, +2, -3, -1,next, +0|string. 1号，2天后，3天前，昨天，明天，今天|
+|month|1, +2, -3, +0|string. 1月，2个月后，3个月前，这个月|
+|year|1984, +1, -2, +0|string. 1984年，明年，2年前，今年|
+|week|+1, -1, 2, 3, 2+1|string. 下周，上一周，星期二，周三, 下周二|
+|apm|am, pm|string. 上午，下午|
+|const|recent, awhile|string. 刚刚，一会儿|
+|repeat|day, month, year|string. 每天，每月，每年|
+|special_day |weekend, weekday|string. 周末，工作日，节气，节日|
+|special_calendar|lunar|string. 农历|
