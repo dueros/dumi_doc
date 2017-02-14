@@ -56,7 +56,7 @@
   "status": 0
 }
 ```
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/0a57137bf8381b24d4e11a6680d06d7e3e1960d8)
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/deb734fb10ff834d2ead5d8b78635243ba55a8f2)
 
 ### nlu部分的说明
 
@@ -116,7 +116,7 @@
   "status": 0
 }
 ```
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/b36ad686d4452b4f6ac92f816241c8f87e738cc5)
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/0a57137bf8381b24d4e11a6680d06d7e3e1960d8)
 
 ### nlu部分的说明
 
