@@ -142,3 +142,70 @@
 |repeat|day, month, year|string. 每天，每月，每年|
 |special_day |weekend, weekday|string. 周末，工作日，节气，节日|
 |special_calendar|lunar|string. 农历|
+
+### 闹钟数据同步
+如果使用度秘的存储保存闹钟数据，通过请求度秘获取闹钟数据
+URL: http://xiaodu.baidu.com/saiya/events/Index/clock 
+
+```javascript
+{
+    "status": 0,
+    "msg": "",
+    "data": [
+        //一次性的提醒，type : abstime
+        {
+            "type": "abstime",
+            "time": 1482019200,  //闹钟响铃的时间 时间戳
+            "id": "359482_1482019200",  
+            "title": "我的生日",  // 闹钟的内容
+            "clock_type": "normal"   //闹钟的类型：普通normal，还有叫早wakeup; 计时器timer 
+        },
+
+        //or
+        //周期重复type:repeat_mult,  周 工作日  月  年 
+        {
+            "type": "repeat_mult",  
+            "repeat_mult": {
+                "name": "每周",
+                "type": "week",  //week: 周， weekday:工作日，month：月， year：年
+                "value": [
+                    1    //周级别 1~7，   月 1~31，   年 101 ~1231 
+                ]
+            },
+           
+            "time": 1479686400, //闹钟响铃的时间 时间戳
+            "startTime": 1479106860,
+            "terminal": null,
+            "id": 525568,
+            "title": "吃饭",
+            "clock_type": "normal"
+        },
+
+        //or
+        //每天重复type: absinterval  
+        //其实考虑有每几天的重复，目前只每天
+        {
+            "terminal": "na_ios",
+            "type": "absinterval",  //类型
+            "repeat": {
+                "type": "每天", 
+                "value": 86400   //每多久触发一次，时间戳 ，单位：秒
+            },
+            "time": 1481241600,
+            "id": 604866,
+            "title": "吃饭",
+            "clock_type": "normal"
+        }
+    ]
+}
+```
+### 闹钟数据字段说明
+
+|key |value|desc | 
+|---|---|---|
+|title | 吃饭| 提醒的title | 
+|type | 重复类型 | eg:abstime| 
+|time | 提醒时间 | 时间戳 | 
+|clock_type | 闹钟类型 | eg:timer、normal、wakeup，分别为计时器、普通闹钟、起床闹钟| 
+
+
