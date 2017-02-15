@@ -27,7 +27,7 @@ ai.dueros.bot.weather|duer_weather|天气|今天天气怎么样
 ai.dueros.bot.smart_talk|talk_service|开放集合聊天|（兜底服务）
 ai.dueros.bot.small_talk|doudi_server|聊天封闭集合兜底|（兜底服务）
 ai.dueros.bot.smart_tv|smart_tv|电视（有电视剧）|我想看琅琊榜
-ai.dueros.bot.speaker_hardware_control|speaker_hardware|扬声器控制|声音大一点
+ai.dueros.bot.speaker_hardware_control|[speaker_hardware](bot/speaker_hardware.md)|扬声器控制|声音大一点
 ai.dueros.bot.audio_news|audio_news|新闻|英特尔的最新新闻
 ai.dueros.bot.audio_music|[audio_music](bot/audio_music.md)|音乐|放一首周杰伦的歌
 ai.dueros.bot.audio_cast|audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
