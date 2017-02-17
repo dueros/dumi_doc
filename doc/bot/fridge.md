@@ -76,23 +76,6 @@ temp_up_size|温度增加幅度
 }
 ```
 
-### fridge.setting.timeout_off  定时关屏幕
-slot key|slot value
---------|----------
-timeout|时间（分钟）
-
-
-1分钟之后关闭屏幕
-```javascript
-{
-  "domain": "fridge",
-  "intent": "fridge.setting.timeout_off",
-  "slots": {
-    "timeout":"1"
-  }
-}
-```
-
 ### fridge.app.market 商城相关
 打开商城
 ```javascript
@@ -103,9 +86,33 @@ timeout|时间（分钟）
 }
 ```
 
-  * 我要买虾
-  * 我要买水果
+查看订单
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.app.market",
+  "slots": {
+    "order": "查看订单"
+  }
+}
+```
+
+查看购物车
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.app.market",
+  "slots": {
+    "cart": "查看购物车"
+  }
+}
+```
+
+- 我要买虾
+- 我要买水果
+
 这类query用online_shopping bot来满足
+
 会返回的nlu：
 
 ```javascript
@@ -126,43 +133,56 @@ timeout|时间（分钟）
 slot key|slot value
 --------|----------
 name|食材名字
+add|添加
+del|删除
 expire_day|过期时间(天)
 
 
 帮我添加苹果
-```javascript
-{
-  "domain": "fridge",
-  "intent": "fridge.food.manage",
-  "slots": {
-    "name": "苹果"
-  }
-}
-```
-今天买个苹果,保质期1天
-```javascript
-{
-  "domain": "fridge",
-  "intent": "fridge.food.manage",
-  "slots": {
-    "expire_day": "1",
-    "name": "苹果"
-  }
-}
-```
 把苹果放入冰箱
 ```javascript
 {
   "domain": "fridge",
   "intent": "fridge.food.manage",
   "slots": {
+    "add": "添加",
     "name": "苹果"
   }
 }
 ```
 
+删除苹果
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.food.manage",
+  "slots": {
+    "del": "删除",
+    "name": "苹果"
+  }
+}
+```
+
+今天买个苹果,保质期1天
+```javascript
+{
+  "domain": "fridge",
+   "intent": "fridge.food.manage",
+   "slots": {
+     "add": "买",
+     "expire_day": "1",
+     "name": "苹果"
+   }
+}
+```
+
 
 ### fridge.food.search 食材查询
+slot key|slot value
+--------|----------
+name|食材名字
+expire|过期
+
 冰箱里有什么呀？
 ```javascript
 {
@@ -172,6 +192,28 @@ expire_day|过期时间(天)
 }
 ```
 
+有哪些食材快过期了
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.food.search",
+  "slots": {
+    "expire": "过期"
+  }
+}
+```
+
+鸡蛋什么时候过期
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.food.search",
+  "slots": {
+    "expire": "过期",
+    "name": "鸡蛋"
+  }
+}
+```
 
 ### fridge.info.agreement 查看用户协议
 看看用户协议
@@ -260,6 +302,17 @@ mode| 自动 智能 速冻 休眠 假日 速冷 微冻 零度 冷饮 干货
 {
   "domain": "fridge",
   "intent": "fridge.connect",
+  "slots": {}
+}
+```
+
+
+### fridge.image.recognition 图像识别
+识别食材
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.image.recognition",
   "slots": {}
 }
 ```
