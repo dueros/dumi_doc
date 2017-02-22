@@ -145,3 +145,17 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 
 这2种情况，上报事件时所处的播放位置是一样的，跟offset_ms的值没有关系，因为是从音频流的0位置算起。
 云端收到这个事件后，可能会返回给客户端一条指令，需要客户端执行之，比如Stop指令、AdjustVolume指令等。利用这个特性可以实现助眠模式。
+
+
+#### 上报AudioPlayer状态（在请求中）
+
+```javascript
+"device_status":{
+    "AudioPlayer":{
+        "audio_item_id":"xxx",//正在播放的音频流id
+        "offsetInMilliseconds":20000,//播放到多少ms了
+        "playerActivity":"IDLE/PAUSED/PLAYING/BUFFER_UNDERRUN/FINISHED/STOPPED"
+    },
+},
+```
+

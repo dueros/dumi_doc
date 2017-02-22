@@ -351,6 +351,8 @@
   directives:{},
   //可选，内容见api2.0接口
   hint:[],
+  //可选，最好是传下来的nlu数据里选一个返回，内容见api2.0接口
+  nlu:{},
   "type": "server"
 }
 ```

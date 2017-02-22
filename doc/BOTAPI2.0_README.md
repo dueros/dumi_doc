@@ -17,6 +17,31 @@
 
     "query_type":"1",//请求类型，标识用户发这个请求的方法，参见文档 http://agroup.baidu.com/dbo/md/article/49113
     "client_info":{
+        "device_interface":{
+            "Alerts":{},
+            "AudioPlayer":{},
+            "PlaybackController":{},
+            "Speaker":{},
+            "Settings":{},
+            "System":{}
+        }, //设备支持的接口（包含directive、event等整套实现）
+
+        "device_event":{
+            "type":"AudioPlayer.PlaybackStarted"
+            //AudioPlayer.PlaybackStarted	Sent when Alexa begins playing the audio stream previously sent in a Play directive. This lets your skill verify that playback began successfully.
+            //AudioPlayer.PlaybackFinished	Sent when the stream Alexa is playing comes to an end on its own.
+            //AudioPlayer.PlaybackStopped	Sent when Alexa stops playing an audio stream in response to a voice request or an AudioPlayer directive.
+            //AudioPlayer.PlaybackNearlyFinished	Sent when the currently playing stream is nearly complete and the device is ready to receive a new stream.
+            //AudioPlayer.PlaybackFailed
+        },
+
+        "device_status":{
+            "AudioPlayer":{
+                "audio_item_id":"xxx",//正在播放的音频流id
+                "offsetInMilliseconds":20000,//播放到多少ms了
+                "playerActivity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
+            },
+        },
         "operation_system":"android",
         "operation_system_version":"5.0",
         "from_client":"sdk",// sdk/na/shoubai
@@ -107,6 +132,8 @@
         "directives":[],
         //可选
         "hint":[],
+        //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+        'should_end_session':false, 
     },
     //会被串行化后保存起来，下次同一个 (user_id,bot_id) 请求的时候，会带上
     "session":{

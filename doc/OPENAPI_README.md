@@ -15,7 +15,9 @@
          * [请求字段（使用sdk的用户，无需关注此节）](#请求字段使用sdk的用户无需关注此节)
          * [正常返回的结果](#正常返回的结果)
          * [常见的错误返回](#常见的错误返回)
-      * [数据格式分块详细说明](#数据格式分块详细说明)
+      * [请求值（request）中数据格式分块详细说明](#请求值request中数据格式分块详细说明)
+         * [客户端能力相关（device_interface, device_event, device_status）](#客户端能力相关device_interface-device_event-device_status)
+      * [返回值（response）中数据格式分块详细说明](#返回值response中数据格式分块详细说明)
          * [bot_id、bot_meta](#bot_idbot_meta)
          * [views](#views)
             * [文本卡片](#文本卡片)
@@ -95,7 +97,8 @@ appqps | 合作方的每天访问次数限制
     //========================================================
     //string 用户id, 如有Cookie则不需要此字段
     "request_uid": "string",
-    //string 输入来源,0-语音输入，1-键盘输入，2-编辑query，3-引导query，4-重新发送，7-用户上传图片，8-点击导航图标输入，9-applink方式传参数发送，10-自动回复，11-未知，13-手百插件新用户引导浮层点击，14-feed流拉取
+    //string 输入来源，-1-回访引导请求,0-语音输入，1-键盘输入，2-编辑query，3-引导query，4-重新发送，6-新用户回访引导请求，7-用户上传图片，8-点击导航图标输入，9-applink方式传参数发送，10-自动回复，11-未知，12-对话过程中的特殊回访，13-手百插件新用户引导浮层点击，14-feed流拉取，21-心跳，30-客户端event
+    //标识用户发这个请求的方法，参见文档 http://agroup.baidu.com/dbo/md/article/49113
     "query_type": "string",
     //默认为空,类型string， 多个以逗号分隔， 为空可以不填该字段
     "hint_id": "用户选中hint的id"
@@ -128,6 +131,25 @@ appqps | 合作方的每天访问次数限制
     "operation_system_version":"7.0.0", //操作系统版本号（目前只有对外sdk有该字段），ios取[[[UIDevice currentDevice] systemVersion] floatValue]，安卓取android.os.Build.VERSION.RELEASE
     "device_brand":"apple", //设备品牌 （目前只有对外sdk有该字段），ios写死"apple"，安卓取android.os.Build.BRAND
     "device_model":"iphone 6s", //设备具体型号 （目前只有对外sdk有该字段）ios取 设备型号字符串 sysctlbyname("hw.machine", name, &size, NULL, 0);，安卓取android.os.Build.MODEL
+    "device_interface":{
+        "Alerts":{},
+        "AudioPlayer":{},
+        "PlaybackController":{},
+        "Speaker":{},
+        "Settings":{},
+        "System":{}
+    },
+    "device_event":{
+        //query_type==30 的时候才会有 device_event
+        "type":"AudioPlayer.PlaybackStarted"
+    },
+    "device_status":{
+        "AudioPlayer":{
+            "audio_item_id":"xxx",//正在播放的音频流id
+            "offsetInMilliseconds":20000,//播放到多少ms了
+            "playerActivity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
+        },
+    },
     //app_ver app版本号
     "app_ver": "1.0.10",
     "searchbox_ver":"8.0",//宿主版本号，只存在于插件形式，比如手百、地图、浏览器
@@ -261,9 +283,11 @@ code=2e387ebc099d9e5aa0d51cfc739c1004",
 */
             }
         },
+        'should_end_session':false, //默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
         "speech": {  //TTS播报用的数据
             "type": "Text",  //有SSML和Text两种类型
-            "content": "为您播放周杰伦的歌曲"
+            "content": "为您播放周杰伦的歌曲",
+            "reprompt": ""  //可选，should_end_session==false的时候，会自动进入语音识别状态，8s后如果用户都不说话，客户端会用tts播放一个短提示，reprompt就是短提示的内容
         }
     }
 }
@@ -283,7 +307,18 @@ status:6,msg: appqpd refuse | appqpd拒绝
 status:7,msg: sericelist empty | 请求的服务列表未配置
 
 
-## 数据格式分块详细说明
+## 请求值（request）中数据格式分块详细说明
+
+### 客户端能力相关（device_interface, device_event, device_status）
+ 
+  * device_interface 标识客户端有哪些能力
+  * device_event 客户端事件的类型和内容。只有query_type==30的时候，才会有device_event，此时会忽略query字段（没有文本query）
+  * device_status 客户端的当前状态，按能力分类（每种端能力有每种端能力的状态）
+现有的端能力定义
+  * [AudioPlayer interface](directives/AudioPlayer.md)
+
+
+## 返回值（response）中数据格式分块详细说明
 
 ### bot_id、bot_meta
 
