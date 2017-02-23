@@ -50,10 +50,12 @@
 }
 ```
 
-###专辑列表
-    *接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/albumlist
-    *请求方式：GET
-    *请求参数：
+
+### 1、专辑列表
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/albumlist
+  * 请求方式：GET
+  * 请求参数：
+
 参数|类型|是否必须|备注
 ----|----|--------|----
 category|int|是|分类ID
@@ -103,15 +105,17 @@ pagesize|int|是|每页数据量
 }
 ```
 
-2、获得某个专辑的节目列表
-接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/tracklist
-请求方式：GET
-请求参数：
-参数	类型	是否必须	备注
-albumid	int	是	专辑ID
-cuid	string	是	设备ID，设备的唯一标识
-page	int	是	页码
-pagesize	int	是	每页数据量
+
+### 2、获得某个专辑的节目列表
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/tracklist
+  * 请求方式：GET
+  * 请求参数：
+参数|类型|是否必须|备注
+----|----|--------|----
+albumid	|int	|是	|专辑ID
+cuid	|string	|是	|设备ID，设备的唯一标识
+page	|int	|是	|页码
+pagesize	|int	|是	|每页数据量
 
 返回格式：
 ```javascript
@@ -155,13 +159,14 @@ pagesize	int	是	每页数据量
 }
 ```
 
-3、获取节目信息
-接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/trackplay
-请求方式：GET
-请求参数：
-参数	类型	是否必须	备注
-trackid	int	是	专辑ID
-cuid	string	是	设备ID，设备的唯一标识
+### 3、获取节目信息
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/trackplay
+  * 请求方式：GET
+  * 请求参数：
+参数|类型|是否必须|备注
+----|----|--------|----
+trackid	|int	|是	|专辑ID
+cuid	|string	|是	|设备ID，设备的唯一标识
 
 
 
@@ -192,15 +197,17 @@ cuid	string	是	设备ID，设备的唯一标识
 }
 ```
 
-4、获取播放列表接口：
-接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/playlist
-请求方式：GET
-请求参数：
-参数	类型	是否必须	备注
-trackid	int	是	专辑ID
-cuid	string	是	设备ID，设备的唯一标识
-page	int	是	页码
-pagesize	int	是	每页数据量
+
+### 4、获取播放列表接口：
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/playlist
+  * 请求方式：GET
+  * 请求参数：
+参数|类型|是否必须|备注
+----|----|--------|----
+trackid	|int	|是	|专辑ID
+cuid	|string	|是	|设备ID，设备的唯一标识
+page	|int	|是	|页码
+pagesize	|int	|是	|每页数据量
 
 返回格式：
 ```javascript
