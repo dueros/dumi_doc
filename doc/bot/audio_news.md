@@ -29,7 +29,7 @@
             "content": ""
         },
         "resource": {
-            "type": "news",
+            "type": "news_ref",
             "data": {
                 "api": {
                     "method": "GET",
