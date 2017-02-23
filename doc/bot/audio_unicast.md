@@ -48,6 +48,7 @@
         }
     }
 }
+```
 
 1、专辑列表
 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/albumlist
@@ -99,7 +100,7 @@ pagesize	int	是	每页数据量
 				]
 		}
 }
-
+```
 
 2、获得某个专辑的节目列表
 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/tracklist
@@ -151,6 +152,7 @@ pagesize	int	是	每页数据量
 				]
 		}
 }
+```
 
 3、获取节目信息
 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/trackplay
@@ -187,6 +189,7 @@ cuid	string	是	设备ID，设备的唯一标识
 			},
 		}
 }
+```
 
 4、获取播放列表接口：
 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/playlist
@@ -230,3 +233,4 @@ pagesize	int	是	每页数据量
 			]
 		}
 }
+```
