@@ -2,7 +2,7 @@
 服务名：audio_unicast
 
 点播返回示例:
-
+```javascript
 // 播放相声
 
 {
