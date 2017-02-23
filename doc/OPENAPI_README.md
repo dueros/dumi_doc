@@ -492,7 +492,7 @@ image_satisfy | 图搜服务
 ```
 
 #### 音乐
-[音乐垂类的resource说明](bot/audio_music.md#resource%20%E9%83%A8%E5%88%86%E7%9A%84%E8%A7%A3%E9%87%8A%E8%AF%B4%E6%98%8E)
+[音乐垂类的resource说明](bot/audio_music.md#resource-部分的解释说明)
 
 ### speech
 目前仅返回Text类型，SSML类型在开发中，[SSML的说明](https://www.w3.org/TR/speech-synthesis/)
