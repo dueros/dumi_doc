@@ -77,7 +77,7 @@ temp_up_size|温度增加幅度
 ```
 
 ### fridge.app.market 商城相关
-打开商城
+打开商城、商城最近有什么活动
 ```javascript
 {
   "domain": "fridge",
@@ -108,25 +108,18 @@ temp_up_size|温度增加幅度
 }
 ```
 
-- 我要买虾
-- 我要买水果
-
-这类query用online_shopping bot来满足
-
-会返回的nlu：
+我要买虾
+我要买水果
 
 ```javascript
 {
-  "domain": "100",
-  "intent": "100",
+  "domain": "fridge",
+  "intent": "fridge.app.market",
   "slots": {
-    "sugs": "买东西",
-    "classify": "虾"
-  }
+    "category": "虾"
+  }  
 }
 ```
-
-商城最近什么活动
 
 
 ### fridge.food.manage 食材管理
@@ -181,7 +174,10 @@ expire_day|过期时间(天)
 slot key|slot value
 --------|----------
 name|食材名字
-expire|过期
+expired|已过期
+expiring|快过期
+normal|正常
+fresh|新鲜
 
 冰箱里有什么呀？
 ```javascript
@@ -192,13 +188,24 @@ expire|过期
 }
 ```
 
+新鲜的食材有哪些
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.food.search",
+  "slots": {
+    "fresh": "新鲜"
+  }
+}
+```
+
 有哪些食材快过期了
 ```javascript
 {
   "domain": "fridge",
   "intent": "fridge.food.search",
   "slots": {
-    "expire": "过期"
+    "expiring": "快过期"
   }
 }
 ```
@@ -209,7 +216,7 @@ expire|过期
   "domain": "fridge",
   "intent": "fridge.food.search",
   "slots": {
-    "expire": "过期",
+    "expired": "过期",
     "name": "鸡蛋"
   }
 }
@@ -261,11 +268,34 @@ expire|过期
 ```
 
 
+### fridge.setting.room 冷冻、xx室控制
+
+slot key|slot value
+--------|----------
+room| 冷冻 制冷 冷藏
+open| 打开
+close | 关闭
+
+关闭冷冻室
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.setting.room",
+  "slots": {
+    "close": "关闭",
+    "room": "冷冻"
+  }
+}
+```
+
+
 ### fridge.setting.mode 设置冰箱模式
 
 slot key|slot value
 --------|----------
 mode| 自动 智能 速冻 休眠 假日 速冷 微冻 零度 冷饮 干货
+open| 打开
+close | 关闭
 
 进入速冻模式
 ```javascript
@@ -273,6 +303,19 @@ mode| 自动 智能 速冻 休眠 假日 速冷 微冻 零度 冷饮 干货
   "domain": "fridge",
   "intent": "fridge.setting.mode",
   "slots": {
+    "mode": "速冻",
+    "open": "进入"
+  }
+}
+```
+
+关闭速冻模式
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.setting.mode",
+  "slots": {
+    "close": "关闭",
     "mode": "速冻"
   }
 }
@@ -307,6 +350,24 @@ mode| 自动 智能 速冻 休眠 假日 速冷 微冻 零度 冷饮 干货
 ```
 
 
+### fridge.setting.app
+
+slot key|slot value
+--------|----------
+app | 应用名
+
+打开我的/打开消息中心
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.setting.app",
+  "slots": {
+    "connect": "我的"
+  }
+}
+```
+
+
 ### fridge.image.recognition 图像识别
 识别食材
 ```javascript
@@ -314,5 +375,23 @@ mode| 自动 智能 速冻 休眠 假日 速冷 微冻 零度 冷饮 干货
   "domain": "fridge",
   "intent": "fridge.image.recognition",
   "slots": {}
+}
+```
+
+### control.hardware.screen.bright
+
+slot key|slot value
+--------|----------
+up | 亮度变大
+down | 亮度变小
+
+屏幕太暗
+```javascript
+{
+  "domain": "control.hardware",
+  "intent": "control.hardware.screen.bright",
+  "slots": {
+    "up": "太暗"
+  }
 }
 ```
