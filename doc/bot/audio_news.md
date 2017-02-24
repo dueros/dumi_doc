@@ -91,11 +91,14 @@
 
 新闻播放列表，默认返回10条新闻。
 
-示例：http://s.xiaodu.baidu.com/v20161223/news/playlist?user_id=yinjie05_debug_monitor
+示例：http://s.xiaodu.baidu.com/v20161223/news/playlist?user_id=yinjie05_debug_monitor&page=1&page_size=10
 
-参数：user_id, 用户id 
+参数：
+- user_id: 用户id 
+- page: 页码
+- page_size: 每页请求新闻数量，默认为10
 
-返回值：
+返回码：status为0表示成功，非0表示失败。
 
 ```javascript
 {
@@ -217,6 +220,8 @@
 
 参数：id, 新闻id
 
+返回码：status为0表示成功，非0表示失败。
+
 ```
 {
     status: 0,
@@ -224,7 +229,28 @@
     data: [
         {
             type: "image",
-            data: "http://t11.baidu.com/it/u=2235963898,1792389728&fm=170&s=CBD4D1AE0937A5EF5EB9458603003007&w=623&h=680&img.JPEG"
+            data: {
+                big: {
+                    height: 680,
+                    url: "http://t11.baidu.com/it/u=2235963898,1792389728&fm=170&s=CBD4D1AE0937A5EF5EB9458603003007&w=623&h=680&img.JPEG",
+                    width: 623
+                },
+                original: {
+                    height: 680,
+                    url: "http://img1.gtimg.com/ent/pics/hv1/217/233/2185/142139257.jpg",
+                    width: 623
+                },
+                original_third: {
+                    height: 680,
+                    url: "http://img1.gtimg.com/ent/pics/hv1/217/233/2185/142139257.jpg",
+                    width: 623
+                },
+                small: {
+                    height: 360,
+                    url: "http://t11.baidu.com/it/u=279339871,159264062&fm=170&s=CBD4D1AE0937A5EF5EB9458603003007&w=480&h=360&img.JPEG",
+                    width: 480
+                }
+            }
         },
         {
             type: "text",
@@ -232,7 +258,28 @@
         },
         {
             type: "image",
-            data: "http://t11.baidu.com/it/u=2144948446,1705532450&fm=170&s=928048A70E7A72964D19900203001011&w=479&h=302&img.JPEG"
+            data: {
+                big: {
+                    height: 302,
+                    url: "http://t11.baidu.com/it/u=2144948446,1705532450&fm=170&s=928048A70E7A72964D19900203001011&w=479&h=302&img.JPEG",
+                    width: 479
+                },
+                original: {
+                    height: 302,
+                    url: "http://img1.gtimg.com/ent/pics/hv1/222/233/2185/142139262.jpg",
+                    width: 479
+                },
+                original_third: {
+                    height: 302,
+                    url: "http://img1.gtimg.com/ent/pics/hv1/222/233/2185/142139262.jpg",
+                    width: 479
+                },
+                small: {
+                    height: 302,
+                    url: "http://t11.baidu.com/it/u=188324419,72406784&fm=170&s=928048A70E7A72964D19900203001011&w=479&h=302&img.JPEG",
+                    width: 479
+                }
+            }
         },
         {
             type: "text",
@@ -240,7 +287,28 @@
         },
         {
             type: "image",
-            data: "http://t11.baidu.com/it/u=2176538020,1732823474&fm=170&s=3EE2C704CA23529C260C09B2030080C3&w=509&h=680&img.JPEG"
+            data: {
+                big: {
+                    height: 680,
+                    url: "http://t11.baidu.com/it/u=2176538020,1732823474&fm=170&s=3EE2C704CA23529C260C09B2030080C3&w=509&h=680&img.JPEG",
+                    width: 509
+                },
+                original: {
+                    height: 680,
+                    url: "http://img1.gtimg.com/ent/pics/hv1/233/233/2185/142139273.jpg",
+                    width: 509
+                },
+                original_third: {
+                    height: 680,
+                    url: "http://img1.gtimg.com/ent/pics/hv1/233/233/2185/142139273.jpg",
+                    width: 509
+                },
+                small: {
+                    height: 360,
+                    url: "http://t11.baidu.com/it/u=219913993,99697808&fm=170&s=3EE2C704CA23529C260C09B2030080C3&w=480&h=360&img.JPEG",
+                    width: 480
+                }
+            }
         },
         {
             type: "text",
