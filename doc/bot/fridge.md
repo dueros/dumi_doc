@@ -351,6 +351,11 @@ close | 关闭
 
 
 ### fridge.setting.app
+
+slot key|slot value
+--------|----------
+app | 应用名
+
 打开我的/打开消息中心
 ```javascript
 {
@@ -370,5 +375,23 @@ close | 关闭
   "domain": "fridge",
   "intent": "fridge.image.recognition",
   "slots": {}
+}
+```
+
+### control.hardware.screen.bright
+
+slot key|slot value
+--------|----------
+up | 亮度变大
+down | 亮度变小
+
+屏幕太暗
+```javascript
+{
+  "domain": "control.hardware",
+  "intent": "control.hardware.screen.bright",
+  "slots": {
+    "up": "太暗"
+  }
 }
 ```
