@@ -77,6 +77,13 @@ temp_up_size|温度增加幅度
 ```
 
 ### fridge.app.market 商城相关
+slot key|slot value
+--------|----------
+action|add/del
+cart|购物车
+name|订单
+category|虾/苹果
+
 打开商城、商城最近有什么活动
 ```javascript
 {
@@ -126,8 +133,7 @@ temp_up_size|温度增加幅度
 slot key|slot value
 --------|----------
 name|食材名字
-add|添加
-del|删除
+action|add/del/update
 expire_day|过期时间(天)
 
 
