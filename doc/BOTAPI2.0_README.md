@@ -184,11 +184,11 @@
   "url":"http://xiaodu.baidu.com:80/api/phone",
   "intents": [
     {
-      "intent": "GetHoroscope",
+      "intent": "phone",
       "slots": [
         {
-          "name": "Sign",
-          "type": "LIST_OF_SIGNS"
+          "name": "action_type",
+          "type": "ACTION_TYPE"
         },
         {
           "name": "Date",
