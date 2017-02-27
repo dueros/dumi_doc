@@ -1,4 +1,19 @@
-### 未来的请求格式
+## 交互模式说明
+
+### 关于confirm的说明
+![confirm](img/confirm.png)
+
+  * 之所以有confirm请求，是因为us会把同一个请求发给多个bot，然后挑选较好的一个。bot返回的结果，有可能不被使用
+  * 按bot对请求的处理有无副作用，分为幂等请求和非幂等请求
+  * 幂等请求如：
+    * 通用信息
+    * 天气
+  * 非幂等请求如：
+    * 提醒（bot会为用户创建提醒）
+    * 打车（bot会帮用户叫车）
+
+
+## 请求格式
 
 ```javascript
 {
@@ -14,6 +29,7 @@
     "bot_id":"",//把bot_id带下来，其实可以不看
     
     "log_id":"5969bdd5126d493387a6b127d8c45ce7",
+    "confirm":1,//0或者1，0代表可能不会使用bot的返回结果，1代表肯定会使用bot的返回结果。（参考上面的[关于confirm的说明]）
 
     "query_type":"1",//请求类型，标识用户发这个请求的方法，参见文档 http://agroup.baidu.com/dbo/md/article/49113
     "client_info":{
@@ -108,7 +124,7 @@
 }
 ```
 
-### 未来的响应格式
+## 未来的响应格式
 
 里面的result结构中的views、resource、nlu、speech、directives、hint都和对外输出的格式里的定义一致，详细结构可见([度秘API2.0文档](http://gitlab.baidu.com/wangpeng20/dumi_schema/blob/master/doc/OPENAPI_README.md))
 
@@ -117,6 +133,7 @@
   "status" : 0,  //0 success，other fail 
   "version": 2,
   "msg" : "string",  //status 0，msg "success"，status not 0，msg explaining reason
+  "need_confirm":1, //可选，默认为0，参考前面的[关于confirm的说明]
   "data" : {
     //如果bot没有召回结果，就不要返回result结构了
     "result":{
@@ -145,4 +162,43 @@
   } 
 }
 
+```
+
+
+## bot配置（开放平台的输出）
+  * 服务的host定义，url
+    * protocol: https / http / nshead+mcpack
+    * domain name: 可以是ip；如果是bns，在后面加.serv
+    * port: http默认80, https默认443
+    * uri
+  * 只有被定义在intents中，这个intent才会被转发给bot
+
+```javascript
+{
+  "bot_id":"phone",
+  "bot_meta":{  //下游bot元数据
+    "description":"返回音乐类结果",  // 文字描述
+    "version":"1.0.0",  //版本
+    "type":"音乐"  //TODO，bot类型见pm给的分类
+  },
+  "url":"http://xiaodu.baidu.com:80/api/phone",
+  "intents": [
+    {
+      "intent": "GetHoroscope",
+      "slots": [
+        {
+          "name": "Sign",
+          "type": "LIST_OF_SIGNS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "GetLuckyNumbers"
+    }
+  ]
+}
 ```
