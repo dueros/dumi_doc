@@ -1,3 +1,12 @@
+## Table of Contents
+
+
+      * [Table of Contents](#table-of-contents)
+         * [请求示例](#请求示例)
+         * [请求值（request）中数据格式分块详细说明](#请求值request中数据格式分块详细说明)
+            * [客户端能力相关（device_interface, device_event, device_status）](#客户端能力相关device_interface-device_event-device_status)
+
+
 ### 请求示例
 
 给服务端发请求内容。使用sdk的用户，无需关注此节，因为sdk的请求不用手动拼

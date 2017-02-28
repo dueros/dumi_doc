@@ -1,4 +1,11 @@
-用户控制Speaker（扬声器）的音量的指令
+## Table of Contents
+
+
+      * [Table of Contents](#table-of-contents)
+            * [SetVolume指令](#setvolume指令)
+            * [AdjustVolume指令](#adjustvolume指令)
+            * [VolumeChanged事件](#volumechanged事件)
+
 
 #### SetVolume指令
 音量绝对控制指令, volumn取值为[0,100]
