@@ -5,10 +5,10 @@
 
    * [SpeechSynthesizer 语音合成](#speechsynthesizer-语音合成)
       * [Table of Contents](#table-of-contents)
-            * [Speak指令](#speak指令)
-            * [GetNextSpeech事件](#getnextspeech事件)
-            * [SpeechStarted事件](#speechstarted事件)
-            * [SpeechFinished事件](#speechfinished事件)
+      * [Speak指令](#speak指令)
+      * [GetNextSpeech事件](#getnextspeech事件)
+      * [SpeechStarted事件](#speechstarted事件)
+      * [SpeechFinished事件](#speechfinished事件)
 
 
 ## Speak指令

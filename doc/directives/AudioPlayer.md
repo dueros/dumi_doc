@@ -5,15 +5,15 @@
 
    * [AudioPlayer](#audioplayer)
       * [Table of Contents](#table-of-contents)
-            * [AudioPlayer.Play指令](#audioplayerplay指令)
-            * [AudioPlayer.Stop指令](#audioplayerstop指令)
-            * [AudioPlayer.Continue指令](#audioplayercontinue指令)
-            * [PlaybackStarted事件](#playbackstarted事件)
-            * [PlaybackStopped事件](#playbackstopped事件)
-            * [GetNextPlayback事件](#getnextplayback事件)
-            * [PlaybackFinished事件](#playbackfinished事件)
-            * [ProgressReportIntervalElapsed事件](#progressreportintervalelapsed事件)
-            * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
+      * [AudioPlayer.Play指令](#audioplayerplay指令)
+      * [AudioPlayer.Stop指令](#audioplayerstop指令)
+      * [AudioPlayer.Continue指令](#audioplayercontinue指令)
+      * [PlaybackStarted事件](#playbackstarted事件)
+      * [PlaybackStopped事件](#playbackstopped事件)
+      * [GetNextPlayback事件](#getnextplayback事件)
+      * [PlaybackFinished事件](#playbackfinished事件)
+      * [ProgressReportIntervalElapsed事件](#progressreportintervalelapsed事件)
+      * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
 
 
 ## AudioPlayer.Play指令

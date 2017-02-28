@@ -5,9 +5,9 @@
 
    * [Speaker](#speaker)
       * [Table of Contents](#table-of-contents)
-            * [SetVolume指令](#setvolume指令)
-            * [AdjustVolume指令](#adjustvolume指令)
-            * [VolumeChanged事件](#volumechanged事件)
+      * [SetVolume指令](#setvolume指令)
+      * [AdjustVolume指令](#adjustvolume指令)
+      * [VolumeChanged事件](#volumechanged事件)
 
 
 ## SetVolume指令
