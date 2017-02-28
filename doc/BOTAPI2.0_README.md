@@ -157,6 +157,14 @@
         "key":"value",
         "key2":"value2"
     },
+    //rank使用的字段，不要求第三方bot传，主要用于同一intent，多个返回的时候，看相关性高低
+    "strategy":{
+        "title":"标题",
+        "content":"主要内容",
+        "url":"http://www.baidu.com",//地址，可能会看来源的权威性
+        "resource_type":"views,audio", //views和audio的组合，本条结果适合的场景，中控会根据当前应用场景和客户端类型来排序
+        "is_valid_result":true,//默认为true，标识这条返回是保底的，还是真的有内容的
+    },    
     ///session过期的时间戳，session过了这个时间就不再有效，不返回这个字段的话，默认是当前时间30分钟后
     session_expire:1454319650
   } 
