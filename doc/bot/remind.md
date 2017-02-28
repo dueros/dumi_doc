@@ -56,7 +56,7 @@
   "status": 0
 }
 ```
-![remind_create](../img/remind_create.png)
+![remind_create](http://f.hiphotos.baidu.com/xiaodu/pic/item/574e9258d109b3ded96189eac5bf6c81810a4c51.jpg)
 
 ### nlu部分的说明
 
@@ -116,7 +116,7 @@
   "status": 0
 }
 ```
-![remind_manage](../img/remind_manage.png)
+![remind_manage](http://c.hiphotos.baidu.com/xiaodu/pic/item/c9fcc3cec3fdfc03f85a8f3add3f8794a4c22615.jpg)
 
 ### nlu部分的说明
 

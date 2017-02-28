@@ -64,7 +64,7 @@
 
 
 ### 架构描述
-![dumi_system](img/system.png)
+![dumi_system](http://b.hiphotos.baidu.com/xiaodu/pic/item/37d3d539b6003af3c391b3e23c2ac65c1038b60d.jpg)
 
 ### 概念解释
 

@@ -1,7 +1,7 @@
 ## 交互模式说明
 
 ### 关于confirm的说明
-![confirm](img/confirm.png)
+![confirm](http://d.hiphotos.baidu.com/xiaodu/pic/item/f9dcd100baa1cd1111c81ea2b012c8fcc3ce2d31.jpg)
 
   * 之所以有confirm请求，是因为us会把同一个请求发给多个bot，然后挑选较好的一个。bot返回的结果，有可能不被使用
   * 按bot对请求的处理有无副作用，分为幂等请求和非幂等请求

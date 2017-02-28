@@ -13,7 +13,7 @@
 ## 整体格式说明
 
 ### 架构描述
-![dumi_system](../img/system.png)
+![dumi_system](http://g.hiphotos.baidu.com/xiaodu/pic/item/8718367adab44aed80c9d366ba1c8701a08bfba9.jpg)
 
 ### 概念解释
 
