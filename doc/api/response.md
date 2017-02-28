@@ -1,3 +1,33 @@
+# 响应字段解释
+
+## Table of Contents
+
+
+   * [响应字段解释](#响应字段解释)
+      * [Table of Contents](#table-of-contents)
+         * [正常返回的结果](#正常返回的结果)
+         * [常见的错误返回](#常见的错误返回)
+         * [返回值（response）中数据格式分块详细说明](#返回值response中数据格式分块详细说明)
+            * [bot_id、bot_meta](#bot_idbot_meta)
+            * [views](#views)
+               * [文本卡片](#文本卡片)
+               * [图文卡片](#图文卡片)
+               * [图片卡片](#图片卡片)
+            * [resource](#resource)
+               * [天气](#天气)
+               * [新闻](#新闻)
+               * [音乐](#音乐)
+            * [speech](#speech)
+            * [directives](#directives)
+               * [AudioPlayer](#audioplayer)
+               * [Speaker](#speaker)
+               * [SpeechSynthesizer](#speechsynthesizer)
+            * [hint](#hint)
+            * [nlu](#nlu)
+               * [包含query解析结果的结构化数据](#包含query解析结果的结构化数据)
+               * [以下是跑出来的一批nlu数据的例子](#以下是跑出来的一批nlu数据的例子)
+
+
 ### 正常返回的结果
 
 以下是一次典型请求中，sdk（客户端）收到的完整json数据
