@@ -10,7 +10,7 @@
             * [VolumeChanged事件](#volumechanged事件)
 
 
-#### SetVolume指令
+## SetVolume指令
 音量绝对控制指令, volumn取值为[0,100]
 ```json
 {
@@ -25,7 +25,7 @@
 }
 ```
 
-#### AdjustVolume指令
+## AdjustVolume指令
 音量相对控制指令，volume的取值范围为[-100,100]，正数表示增大音量，负数表示减小音量。
 ```json
 {
@@ -40,7 +40,7 @@
 }
 ```
 
-#### VolumeChanged事件
+## VolumeChanged事件
 ```json
 {
     "event": {

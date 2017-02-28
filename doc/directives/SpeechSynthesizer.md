@@ -11,7 +11,7 @@
             * [SpeechFinished事件](#speechfinished事件)
 
 
-#### Speak指令
+## Speak指令
 需要扬声器语音播报的时候，返回这个指令。客户端收到这个指令后，需要把内容tts播报出来。听新闻返回的就是一个Speak指令。
 ```json
 {
@@ -37,7 +37,7 @@ content | 播报内容，content字段固定为数组，即使只有一条内容
 speak_behavior | 播报模式 REPLACE_ALL: 清空列表，立即播报；ENQUEUE: 把指令关联的tts添加到列表末尾，下一条预取的时候使用它 | string  | 是
 should_get_next_speech  | 如果should_get_next_speech为true，这条Speech播放完毕后，客户端应该上报一个GetNextSpeech的事件。 | bool    | 是
 
-#### GetNextSpeech事件
+## GetNextSpeech事件
 播报，如果Speak指令的should_get_next_speech设置了true，speech播放完毕后，客户端上报此事件，云端返回下一个Speak指令。
 ```json
 {
@@ -53,7 +53,7 @@ should_get_next_speech  | 如果should_get_next_speech为true，这条Speech播�
     }
 }
 ```
-#### SpeechStarted事件
+## SpeechStarted事件
 收到Speak指令后，开始播报之前，上报此事件。
 ```json
 {
@@ -70,7 +70,7 @@ should_get_next_speech  | 如果should_get_next_speech为true，这条Speech播�
 }
 ```
 
-#### SpeechFinished事件
+## SpeechFinished事件
 播报完毕后，上报此事件。
 ```json
 {
