@@ -16,7 +16,7 @@
             * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
 
 
-#### AudioPlayer.Play指令
+## AudioPlayer.Play指令
 用户对音箱说“播放周杰伦的歌曲”、“播放郭德纲的相声”、"继续播放"、“下一首”、“上一首”、“下一个专辑”、“上一个专辑”都返回一个Play指令。
 ```json
 {
@@ -52,7 +52,7 @@ audio_item.stream.offset_ms | 从哪里开始播放，如果值等于0，从开�
 audio_item.stream.token | 同音频ID  | string | 是
 audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报一次进度，这个取值必须大于0，如果没有这个字段，则不上报进度   |  long | 否
 
-#### AudioPlayer.Stop指令
+## AudioPlayer.Stop指令
 ```json
 {
     "header": {
@@ -64,7 +64,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-#### AudioPlayer.Continue指令
+## AudioPlayer.Continue指令
 用户对音箱说"继续播放"，返回一个Continue指令，客户端继续播放
 ```json
 {
@@ -77,7 +77,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ````
-#### PlaybackStarted事件
+## PlaybackStarted事件
 收到Play指令或者Continue指令后，需要上报此事件。
 ```json
 {
@@ -94,7 +94,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-#### PlaybackStopped事件
+## PlaybackStopped事件
 用户说"暂停播放"、 "停止播放"后，会收到Stop指令，客户端执行完Stop指令后，即暂停播放后，需要上报此事件，云端会保存断点，供下一次继续播放使用。
 ```json
 {
@@ -111,7 +111,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-#### GetNextPlayback事件
+## GetNextPlayback事件
 这个事件用来获取下一首歌曲，云端收到这个事件后，返回下一首歌曲对应的Play指令，play_behavior选项设为ENQUEUE，
 指示客户端加入到本地列表中，利用此事件，客户端可以实现下一首的预取。这个事件的上报时机取决于客户端，
 可以在歌曲播放的中间发送，也可以剩余几秒钟的时候发送。如果不需要预取，也可以在歌曲播放完毕后上报此事件。但必须保证：
@@ -135,7 +135,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-#### PlaybackFinished事件
+## PlaybackFinished事件
 当且仅当歌曲正常播放到末尾后，上报此事件。注意如果被其它指令打断比如“下一首”、“上一首”导致没有播放到末尾的，不上报此事件。
 ```json
 {
@@ -152,7 +152,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-#### ProgressReportIntervalElapsed事件
+## ProgressReportIntervalElapsed事件
 如果Play指令设置了progress_report_interval_ms的值，那么客户端需要周期性的每隔一段时间上报一次当前的播放进度，
 直到歌曲播放结束。注意歌曲开始播放和歌曲结束播放的时候，可以不上报这个事件。
 
@@ -164,7 +164,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 云端收到这个事件后，可能会返回给客户端一条指令，需要客户端执行之，比如Stop指令、AdjustVolume指令等。利用这个特性可以实现助眠模式。
 
 
-#### 上报AudioPlayer状态（在请求中）
+## 上报AudioPlayer状态（在请求中）
 
 ```javascript
 "device_status":{
