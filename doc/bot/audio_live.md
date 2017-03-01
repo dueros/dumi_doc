@@ -213,7 +213,8 @@ pagesize|int|否|每页数据量，默认为10
         "last_program": "环球音乐",
         "create_time": "2016-02-12 14:00:00",
         "update_time": "2016-02-12 15:00:00",
-        "source": "喜马拉雅"
+        "source": "喜马拉雅",
+        "source_icon": "http://123.jpg"
       }
     ]
   }
