@@ -76,15 +76,24 @@
             "message_id": "message_id-1344"
         },
         "payload": {
+            //AudioPlayer里可能出现的payload
             "token": "156",
             "offset_ms": 10000
+            //Speaker里可能出现的payload
+            "volume": 1,
+            //SpeechSynthesizer可能出现的payload
+            "token": "156",
+            "type": "{{Text/SSML}}",
+            "content": ["xxxx1", "xxxx2"],
+            "speak_behavior": "REPLACE_ALL",
+            "should_get_next_speech": true
         }
     },
     "device_status":{
         "AudioPlayer":{
-            "audio_item_id":"xxx",//正在播放的音频流id
-            "offsetInMilliseconds":20000,//播放到多少ms了
-            "playerActivity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
+            "token":"xxx",//正在播放的音频流id
+            "offset_ms":20000,//播放到多少ms了
+            "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
         },
     },
     //app_ver app版本号

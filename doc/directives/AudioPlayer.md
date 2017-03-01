@@ -169,9 +169,9 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 ```javascript
 "device_status":{
     "AudioPlayer":{
-        "audio_item_id":"xxx",//正在播放的音频流id
-        "offsetInMilliseconds":20000,//播放到多少ms了
-        "playerActivity":"IDLE/PAUSED/PLAYING/BUFFER_UNDERRUN/FINISHED/STOPPED"
+        "token":"xxx",//正在播放的音频流id
+        "offset_ms":20000,//播放到多少ms了
+        "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
     },
 },
 ```

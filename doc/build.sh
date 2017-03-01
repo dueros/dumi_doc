@@ -1,6 +1,7 @@
 #brew install pandoc
 
 cat >files <<END
+mateapp.md
 tutorial.md
 sdk/index.md
 api/overview.md
