@@ -3,7 +3,7 @@
 
 直播返回示例:
 ```javascript
-// 播放相声
+// 播放北京台
 
 {
   "data": {
@@ -70,21 +70,44 @@ pagesize|int|否|每页数据量，默认为10
     "list": [
       {
         "channel_id": 1,
-        "channel_name": "CNR中国之声",
-        "program_name": "都市夜归人",
-        "thumbs": {
-          "small": "http://123.jpg",
-          "medium": "http://223.jpg",
-          "large": "http://124.jpg"
-        },
-        "attr_province": "中国",
-        "attr_city": "",
-        "attr_class": "新闻",
+        "channel_name": "北京文艺广播",
+        "program_name": "娱乐有范儿",
+        "attr_province": "北京",
+        "attr_city": "北京",
+        "attr_class": "文艺",
         "freq_fm": "",
-        "media_url": {
-          "qiting": "http://hls.qingting.fm/live/4991.m3u8?bitrate=1000"
+        "media_info": {
+          "qiting": {
+            "url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
+            "thumbs": {
+              "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
+              "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
+              "large": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!large"
+            },
+            "source": "蜻蜓FM",
+            "source_icon": "http://123.jpg"
+          },
+          "ximalaya": {
+            "url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
+            "thumbs": {
+              "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
+              "medium": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg",
+              "large": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg"
+            },
+            "source": "喜马拉雅",
+            "source_icon": "http://123.jpg"
+          },
+          "kaola": {
+            "url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
+            "thumbs": {
+              "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
+              "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
+              "large": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg"
+            },
+            "source": "考拉",
+            "source_icon": "http://123.jpg"
+          }
         },
-        "source": "蜻蜓FM",
         "update_time": "2016-02-12 13:00:00",
         "create_time": "2016-02-11 14:00:00"
       }
