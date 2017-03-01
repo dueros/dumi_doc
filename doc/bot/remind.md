@@ -65,7 +65,7 @@
 |name | 名字 | 中文名 | 
 |event_title | 提醒标题 | eg:起床| 
 |event_type | 提醒事件类型 | eg:wakeup| 
-|remind_time_data | 提醒设置的时间 | 1486598400| 
+|remind_time_data | 提醒设置的时间。只会在提醒创建前（即槽位完备）给出 | 1486598400| 
 |remind_type_clock | 提醒触达方式闹钟 | 是|
 |status| create |创建|
 
@@ -128,6 +128,8 @@
 |action | 操作类型 | eg:list、update、delete，分别为查看、更新、删除| 
 
 ### 时间json内字段说明
+
+remind_time如果不完备，会在多轮对话中不断的澄清，是一个中间结果
 
 |Key |Value |说明|
 |---|---|---|
