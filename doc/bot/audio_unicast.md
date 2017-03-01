@@ -70,7 +70,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 ```javascript
 {
 	 status: 0,
-     code: null,
+     code: "",
      data: 
         {
             "page" : 1,        //当前页
@@ -135,7 +135,7 @@ sort |int |否 |正序：acs、倒序：desc
 ```javascript
 {
 	status: 0,
-    code: null,
+    code: "",
     data: 
         {
             "page" : 1,        //当前页
@@ -198,7 +198,7 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 ```javascript
 {
 	status: 0,
-	code: null,
+	code: "",
 	data:
 		{
 			"id":1,
@@ -254,7 +254,7 @@ pagesize	|int	|是	|每页数据量
 ```javascript
 {
 	status: 0,
-	code: null,
+	code: "",
 	data:
 		{
 			"id":1,
@@ -311,7 +311,7 @@ pagesize |int |是 |每页数据量
  ```javascript
  {
 	status: 0,
-	code: null,
+	code: "",
 	data:
 		{
             "page" : 1,        //当前页
