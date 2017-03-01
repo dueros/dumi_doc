@@ -76,8 +76,8 @@ pagesize|int|否|每页数据量，默认为10
         "attr_city": "北京",
         "attr_class": "文艺",
         "freq_fm": "",
-        "media_info": {
-          "qiting": {
+        "media_info": [
+          {
             "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
             "pic": {
               "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
@@ -87,7 +87,7 @@ pagesize|int|否|每页数据量，默认为10
             "source": "蜻蜓FM",
             "source_icon": "http://123.jpg"
           },
-          "ximalaya": {
+          {
             "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
             "pic": {
               "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
@@ -97,7 +97,7 @@ pagesize|int|否|每页数据量，默认为10
             "source": "喜马拉雅",
             "source_icon": "http://123.jpg"
           },
-          "kaola": {
+          {
             "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
             "pic": {
               "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
@@ -107,7 +107,7 @@ pagesize|int|否|每页数据量，默认为10
             "source": "考拉",
             "source_icon": "http://123.jpg"
           }
-        },
+        ],
         "update_time": "2016-02-12 13:00:00",
         "create_time": "2016-02-11 14:00:00"
       }
@@ -145,8 +145,8 @@ pagesize|int|否|每页数据量，默认为10
         "attr_city": "北京",
         "attr_class": "文艺",
         "freq_fm": "",
-        "media_info": {
-          "qiting": {
+        "media_info": [
+          {
             "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
             "pic": {
               "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
@@ -156,7 +156,7 @@ pagesize|int|否|每页数据量，默认为10
             "source": "蜻蜓FM",
             "source_icon": "http://123.jpg"
           },
-          "ximalaya": {
+          {
             "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
             "pic": {
               "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
@@ -166,7 +166,7 @@ pagesize|int|否|每页数据量，默认为10
             "source": "喜马拉雅",
             "source_icon": "http://123.jpg"
           },
-          "kaola": {
+          {
             "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
             "pic": {
               "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
@@ -176,7 +176,7 @@ pagesize|int|否|每页数据量，默认为10
             "source": "考拉",
             "source_icon": "http://123.jpg"
           }
-        },
+        ],
         "update_time": "2016-02-12 13:00:00",
         "create_time": "2016-02-11 14:00:00"
       }
