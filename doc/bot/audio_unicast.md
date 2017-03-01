@@ -34,7 +34,7 @@
             "content": "播放郭德纲相声"
         },
         "resource": {
-            "type": "unicast",
+            "type": "unicast_ref",
             "data": {
                 "api": {
                     "method": "GET",
