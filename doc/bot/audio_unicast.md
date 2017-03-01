@@ -23,7 +23,7 @@
                             "stream_format": "mp3",
                             "offset_ms": 0,
                             "token": "55690041011",
-                            "progress_report_interval_ms": 1000
+                            "progress_report_interval_ms": 50000
                         }
                     }
                 }
@@ -62,7 +62,7 @@ category|int|是|分类ID
 cuid|string|是|设备ID，设备的唯一标识
 page|int|是|页码
 pagesize|int|是|每页数据量
-sort|string |否 |排序：播放量：play_count、创建时间：create_time(l默认：play_count) 
+sort|string |否 |排序：热门：grade、最新：album_last_track_time(默认：热门) 
 orderby |string |否 |倒序：desc, 正序 asc （默认：asc） 
 
 
@@ -81,7 +81,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 						"id":1,  //专辑ID
 						"album_title":"逻辑思维",  //专辑名
 						"include_track_count":100,  //节目总数
-						"cover_url": 
+						"pic": 
 						{
 							"small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -99,7 +99,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 						"id":1,
 						"album_title":"逻辑思维2",
 						"include_track_count":160,
-						"cover_url": 
+						"pic": 
 						{							
 						    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -146,7 +146,7 @@ sort |int |否 |正序：acs、倒序：desc
 						"id":1,  //节目ID
 						"track_title":"大保镖",  //节目名
 						"duration":100,  //节目时长
-						"cover_url": {							
+						"pic": {							
 						    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
       						"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
@@ -163,7 +163,7 @@ sort |int |否 |正序：acs、倒序：desc
 						"id":1,
 						"track_title":"逗你玩",
 						"duration":160,
-						"cover_url": {							
+						"pic": {							
 						    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
       						"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
@@ -204,7 +204,7 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 			"id":1,
 			"track_title":"逗你玩",
 			"duration":160,
-			"cover_url":
+			"pic":
 			{								
 			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -217,7 +217,7 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 			"create_time":1481595445,
 			"source": "喜马拉雅",  //资源方
 			"source_icon": "XXX.icon",  //资源方Icon
-			"playurl": 
+			"play_url": 
 			{
 				"mp3":{
 					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
@@ -246,7 +246,6 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 
 参数|类型|是否必须|备注
 ----|----|--------|----
-trackid	|int	|是	|专辑ID
 cuid	|string	|是	|设备ID，设备的唯一标识
 page	|int	|是	|页码
 pagesize	|int	|是	|每页数据量
@@ -261,7 +260,7 @@ pagesize	|int	|是	|每页数据量
 			"id":1,
 			"track_title":"逗你玩",
 			"duration":160,
-			"cover_url": 
+			"pic": 
 			{								
 			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -275,7 +274,7 @@ pagesize	|int	|是	|每页数据量
 			"create_time":1481595445,
 			"source": "喜马拉雅",  //资源方
 			"source_icon": "XXX.icon",  //资源方Icon
-			"playurl": 
+			"play_url": 
 			{
 				"mp3":{
 					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
