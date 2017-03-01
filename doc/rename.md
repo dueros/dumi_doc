@@ -86,7 +86,7 @@ ai.dueros.lbs.AskNearby|lbs|nearby|周边查询类需求|start_point(出发地),
 ai.dueros.lbs.CheckPoi|lbs|poi|地址查询类需求|poi(地址字符串)|射阳在哪儿
 ai.dueros.lbs.CheckTraffic|lbs|traffic_condition|路况查询类需求|start_point(出发地),start_point_bd_la(出发地纬度),start_point_bd_lo(出发地经度),user_location_city(用户当前所在城市),end_point(目的地),travel_type(出行方式),坐标类型为bd09ll(百度经纬度坐标)|导航从北京到上海
 ai.dueros.lbs.Navigate|lbs|navigation|导航查询类需求|start_point(出发地),start_point_bd_la(出发地纬度),start_point_bd_lo(出发地经度),user_location_city(用户当前所在城市),end_point(目的地),travel_type(出行方式),坐标类型为bd09ll(百度经纬度坐标)|导航从北京到上海
-ai.dueros.memo.Memo_manage|memory|memory_manage|
+ai.dueros.memo.MemoManage|memory|memory_manage|
 ai.dueros.memo.Memorize|memory|memory|
 ai.dueros.music.AskMusicInfo|music|music|音乐类需求|action_type(0. 关闭 1. 打开 2. 播放 3. 暂停 4. 下一首 5. 上一首 6. 换一首 7. 重播), song(歌名), singer(歌手), music_language(语言), music_emotion(情感，如悲伤、欢快等), music_tag, music_type(嘻哈、摇滚、儿歌等)|
 ai.dueros.music.Sing|music|music_sing|让度秘唱歌，类似调戏|CommandAccepter, action_type(0. 关闭 1. 打开 2. 播放 3. 暂停 4. 下一首 5. 上一首 6. 换一首 7. 重播), song(歌名), singer(歌手)|

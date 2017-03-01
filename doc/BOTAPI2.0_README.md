@@ -174,11 +174,12 @@
 
 
 ## bot配置（开放平台的输出）
-  * 服务的host定义，url
+  * 服务的host定义
     * protocol: https / http / nshead+mcpack
-    * domain name: 可以是ip；如果是bns，在后面加.serv
+    * domain: 可以是ip/域名；如果是bns，需要设置domain_type
+    * domain_type :"dns/bns", //可选，默认是dns
     * port: http默认80, https默认443
-    * uri
+    * uri: 地址
   * 只有被定义在intents中，这个intent才会被转发给bot
 
 ```javascript
@@ -189,7 +190,17 @@
     "version":"1.0.0",  //版本
     "type":"音乐"  //TODO，bot类型见pm给的分类
   },
-  "url":"http://xiaodu.baidu.com:80/api/phone",
+  //"url":"http://xiaodu.baidu.com:80/api/phone",
+
+  "protocol": "https / http / nshead+mcpack",
+  "domain":"172.0.0.1", //可以是ip；如果是bns，要加domain_type
+  "domain_type":"dns/bns", //可选，默认是dns
+  "port":"8080", http默认80, https默认443
+  "uri":"/saiya/search",
+  //标识bot能接受哪些客户端事件
+  "interface":{
+     "AudioPlayer":{},
+  },
   "intents": [
     {
       "intent": "phone",
