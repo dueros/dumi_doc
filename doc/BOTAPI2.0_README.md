@@ -43,12 +43,25 @@
         }, //设备支持的接口（包含directive、event等整套实现）
 
         "device_event":{
-            "type":"AudioPlayer.PlaybackStarted"
-            //AudioPlayer.PlaybackStarted	Sent when Alexa begins playing the audio stream previously sent in a Play directive. This lets your skill verify that playback began successfully.
-            //AudioPlayer.PlaybackFinished	Sent when the stream Alexa is playing comes to an end on its own.
-            //AudioPlayer.PlaybackStopped	Sent when Alexa stops playing an audio stream in response to a voice request or an AudioPlayer directive.
-            //AudioPlayer.PlaybackNearlyFinished	Sent when the currently playing stream is nearly complete and the device is ready to receive a new stream.
-            //AudioPlayer.PlaybackFailed
+            //query_type==30 的时候才会有 device_event
+            "header": {
+                "namespace": "AudioPlayer",
+                "name": "PlaybackStarted",
+                "message_id": "message_id-1344"
+            },
+            "payload": {
+                //AudioPlayer里可能出现的payload
+                "token": "156",
+                "offset_ms": 10000
+                //Speaker里可能出现的payload
+                "volume": 1,
+                //SpeechSynthesizer可能出现的payload
+                "token": "156",
+                "type": "{{Text/SSML}}",
+                "content": ["xxxx1", "xxxx2"],
+                "speak_behavior": "REPLACE_ALL",
+                "should_get_next_speech": true
+            }
         },
 
         "device_status":{
@@ -107,20 +120,15 @@
     ],
 
     //da解析结果，对一个query可能有多种理解，所以是一个数组
-    "nlus":[
-        {"domain":"remind","intent":"remind","slots":{"event_title":"开会","intent":"设置","remind_time":"{\"month\":\"10\",\"day\":\"21\",\"hour\":\"9\",\"apm\":\"am\"}","__intent__":"setup","__id__":"1483430617165_fu6tll","remind_type_message":"否","remind_type_phone":"否","remind_type_dumi":"否","remind_type_clock":"否","remind_time_type":"abstime","remind_time_data":"1508547600","status":"create_confirm"}},
-        {"domain":"duer_weather","intent":"sys_weather","slots":{"loc_city":"九江市","loc_county":"九江市","loc_province":"江西省","time":"2017-01-03,2017-01-03"}},
+    "nlu_list":[
+        {"score":100,"domain":"remind","intent":"remind","slots":{"event_title":"开会","intent":"设置","remind_time":"{\"month\":\"10\",\"day\":\"21\",\"hour\":\"9\",\"apm\":\"am\"}","__intent__":"setup","__id__":"1483430617165_fu6tll","remind_type_message":"否","remind_type_phone":"否","remind_type_dumi":"否","remind_type_clock":"否","remind_time_type":"abstime","remind_time_data":"1508547600","status":"create_confirm"}},
+        {"score":100,"domain":"duer_weather","intent":"sys_weather","slots":{"loc_city":"九江市","loc_county":"九江市","loc_province":"江西省","time":"2017-01-03,2017-01-03"}},
     ],
     //其他da解析结果，会放服务的原始返回，比如分词、语法分析之类的结果
-    "da_params":[
-      {
-        "key": "nlu_responce",
-        "value": "{\"analysis\":{},\"parsed_text\":\"张 岩\",\"raw_text\":\"张岩\",\"results\":[{\"demand\":0,\"domain\":\"universal_search\",\"intent\":\"search\",\"object\":{},\"pushleft_switch\":\"0\",\"score\":1,\"str_result_content\":{},\"str_result_type\":\"\"}],\"sugs\":\"张岩\",\"sugs_types\":\"PAT_EC\"}\n"
-      },
-      {
-        "key": "qu_responce",
-        "value": "{\"err_no\":0, \"result\":[{\"normal\":{}, \"qu\":{\"query_voice\":{\"res\":[{\"domain\":\"phone\", \"intent\":\"F->Phone->Context\", \"score\":1, \"objects\":[{\"key\":\"CallTarget\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_CallTarget\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->Phone->Context(CallTarget(Person 张岩))))\"}, {\"domain\":\"UNDEFINED\", \"intent\":\"F->alarmlocation\", \"score\":5502, \"objects\":[{\"key\":\"Route\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_Route\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->alarmlocation(Route(F->route(Arrival(F->arrival(ARRIVAL(VILLAGE 张岩))))))))\"}, {\"domain\":\"UNDEFINED\", \"intent\":\"F->alarmlocation\", \"score\":5503, \"objects\":[{\"key\":\"Route\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_Route\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->alarmlocation(Route(F->route(Arrival(F->arrival(ARRIVAL(POI(VILLAGE 张岩)))))))))\"}]}}, \"queryId\":1}]}"
-    ],
+    "nlu_extend":{
+        "nlu_responce": "{\"analysis\":{},\"parsed_text\":\"张 岩\",\"raw_text\":\"张岩\",\"results\":[{\"demand\":0,\"domain\":\"universal_search\",\"intent\":\"search\",\"object\":{},\"pushleft_switch\":\"0\",\"score\":1,\"str_result_content\":{},\"str_result_type\":\"\"}],\"sugs\":\"张岩\",\"sugs_types\":\"PAT_EC\"}\n"
+        "qu_responce": "{\"err_no\":0, \"result\":[{\"normal\":{}, \"qu\":{\"query_voice\":{\"res\":[{\"domain\":\"phone\", \"intent\":\"F->Phone->Context\", \"score\":1, \"objects\":[{\"key\":\"CallTarget\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_CallTarget\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->Phone->Context(CallTarget(Person 张岩))))\"}, {\"domain\":\"UNDEFINED\", \"intent\":\"F->alarmlocation\", \"score\":5502, \"objects\":[{\"key\":\"Route\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_Route\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->alarmlocation(Route(F->route(Arrival(F->arrival(ARRIVAL(VILLAGE 张岩))))))))\"}, {\"domain\":\"UNDEFINED\", \"intent\":\"F->alarmlocation\", \"score\":5503, \"objects\":[{\"key\":\"Route\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_Route\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->alarmlocation(Route(F->route(Arrival(F->arrival(ARRIVAL(POI(VILLAGE 张岩)))))))))\"}]}}, \"queryId\":1}]}"
+    },
 }
 ```
 
@@ -157,16 +165,23 @@
         "key":"value",
         "key2":"value2"
     },
-    //rank使用的字段，不要求第三方bot传，主要用于同一intent，多个返回的时候，看相关性高低
+    /*
+    bot_stat的取值
+    0，根据da给出的intent，返回结果
+    1，bot自己改写了intent（返回到了result.nlu里面），返回结果
+    2、da返回的槽位值，bot认为有错，返回中给出了相应的错误提示
+    3、bot不能响应intent，出了保底话术
+    默认为0
+    */
+    "bot_stat":0,
+    //rank使用的字段，建议选填，key可以自定，排序的时候会看相关性高低
     "strategy":{
         "title":"标题",
         "content":"主要内容",
         "url":"http://www.baidu.com",//地址，可能会看来源的权威性
         "resource_type":"views,audio", //views和audio的组合，本条结果适合的场景，中控会根据当前应用场景和客户端类型来排序
         "is_valid_result":true,//默认为true，标识这条返回是保底的，还是真的有内容的
-    },    
-    ///session过期的时间戳，session过了这个时间就不再有效，不返回这个字段的话，默认是当前时间30分钟后
-    session_expire:1454319650
+    }
   } 
 }
 
@@ -181,6 +196,7 @@
     * port: http默认80, https默认443
     * uri: 地址
   * 只有被定义在intents中，这个intent才会被转发给bot
+  * event请求，根据schema中的interface字段和event的namespace，决定是否转发
 
 ```javascript
 {
