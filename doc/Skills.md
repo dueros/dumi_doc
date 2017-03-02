@@ -16,7 +16,7 @@ aries_general|通用信息查询|周杰伦是谁
 life_common|生活服务；鲜花、美容、理发、导航、周边、路况|附近堵车么;故宫在哪里;附近的饭馆
 sac|通用服务入口|我要买火车票
 restaurant_bot|美食服务|北京哪里的烤鸭好吃
-remind|提醒、闹钟|5分钟之后提醒我
+[remind](bot/remind.md)|提醒、闹钟|5分钟之后提醒我
 recommend_service_wireless|笑话、新闻|讲个笑话
 sysprofile_service|系统画像（可根据端类型自定义返回内容）|你是什么星座的
 [phone](bot/phone.md)|电话指令、打开app、网页、通信录、我的位置|
@@ -36,13 +36,13 @@ baojie|保洁（必须登陆）|帮我找个保洁
 duer_weather|天气|今天天气怎么样
 talk_service|开放集合聊天|（兜底服务）
 doudi_server|聊天封闭集合兜底|（兜底服务）
-smart_tv|电视（有电视剧）|我想看琅琊榜
-speaker_hardware|扬声器控制|声音大一点
-audio_news|新闻|英特尔的最新新闻
+[smart_tv](bot/smart_tv.md)|电视（有电视剧）|我想看琅琊榜
+[speaker_hardware](bot/speaker_hardware.md)|扬声器控制|声音大一点
+[audio_news](bot/audio_news.md)|新闻|英特尔的最新新闻
 [audio_music](bot/audio_music.md)|音乐|放一首周杰伦的歌
-audio_unicast|点播垂类（有声资源）|播放郭德纲的相声
+[audio_unicast](bot/audio_unicast.md)|点播垂类（有声资源）|播放郭德纲的相声
 audio_scene|场景化垂类|进入助眠模式
-audio_live|直播垂类|播放北京文艺广播
+[audio_live](bot/audio_live.md)|直播垂类|播放北京文艺广播
 [fridge](bot/fridge.md)|冰箱指令|
 [cookbook](bot/cookbook.md)|菜谱|
 scene_satisfaction|明星|周杰伦的最新专辑

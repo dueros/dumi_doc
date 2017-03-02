@@ -24,6 +24,7 @@
                * [SpeechSynthesizer](#speechsynthesizer)
             * [hint](#hint)
             * [nlu](#nlu)
+               * [格式说明](#格式说明)
                * [包含query解析结果的结构化数据](#包含query解析结果的结构化数据)
                * [以下是跑出来的一批nlu数据的例子](#以下是跑出来的一批nlu数据的例子)
 
@@ -389,6 +390,19 @@ image_satisfy | 图搜服务
 
 
 #### nlu
+
+##### 格式说明
+
+```javascript
+"nlu": {   //query解析的结果
+    "domain": "music",  
+    "intent": "music",  //domain + intent确定一种解析结果的类型
+    "slots": {   //从query中提取出来的槽位信息
+        "action_type":"1",
+        "singer": "周杰伦"
+    }
+}
+```
 
 ##### 包含query解析结果的结构化数据
 
