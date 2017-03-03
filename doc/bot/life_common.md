@@ -100,7 +100,7 @@ startActivity(i1);
 
 显示效果如下
 
-<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nearby.jpg" width = "25%" />
+<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nearby.jpg" width = "30%" />
 
 
 
@@ -184,7 +184,7 @@ startActivity(i1);
 
 显示效果如下
 
-<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_poi.jpg" width = "25%" />
+<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_poi.jpg" width = "30%" />
 
 ## 导航查询(intent: navigation)
 
@@ -281,3 +281,6 @@ baidumap://map/direction
 
 "baidumap://map/direction?region=北京市&origin=百度科技园&destination=西二旗地铁站&mode=walking"
 ```
+
+
+<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nav.jpg" width = "30%" />
