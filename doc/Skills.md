@@ -13,7 +13,7 @@
 bot_id|描述|测试query
 ------|----|---------
 aries_general|通用信息查询|周杰伦是谁
-life_common|生活服务；鲜花、美容、理发、导航、周边、路况|附近堵车么;故宫在哪里;附近的饭馆
+[life_common](bot/life_common.md)|生活服务；鲜花、美容、理发、导航、周边、路况|附近堵车么;故宫在哪里;附近的饭馆
 sac|通用服务入口|我要买火车票
 restaurant_bot|美食服务|北京哪里的烤鸭好吃
 [remind](bot/remind.md)|提醒、闹钟|5分钟之后提醒我
