@@ -17,7 +17,8 @@
     "views": [
       {
         "type": "txt",
-        "content": "为你找到百度大厦附近的地铁站"
+        "content": "为你找到百度大厦附近的地铁站",
+        "url": "http://api.map.baidu.com/place/search?query=%E5%9C%B0%E9%93%81%E7%AB%99&location=40.056974%2C116.307689&coord_type=bd09ll&radius=1000&region=%E5%8C%97%E4%BA%AC%E5%B8%82&output=html&src=dumi"
       }
     ],
     "nlu": {
@@ -73,7 +74,8 @@
     "views": [
       {
         "type": "txt",
-        "content": "为你找到百度大厦"
+        "content": "为你找到百度大厦",
+        "url": "https://map.baidu.com/mobile/webapp/search/search/qt=s&wd=%E7%99%BE%E5%BA%A6%E5%A4%A7%E5%8E%A6&c=131/?third_party=uri_api"
       }
     ],
     "nlu": {
@@ -121,7 +123,8 @@
     "views": [
       {
         "type": "txt",
-        "content": "为你找到从百度科技园到西二旗地铁站的路线，建议出行方式：驾车"
+        "content": "为你找到从百度科技园到西二旗地铁站的路线，建议出行方式：驾车",
+        "url": "http://api.map.baidu.com/direction?origin=%E7%99%BE%E5%BA%A6%E7%A7%91%E6%8A%80%E5%9B%AD&destination=%E8%A5%BF%E4%BA%8C%E6%97%97%E5%9C%B0%E9%93%81%E7%AB%99&mode=transit&region=%E5%8C%97%E4%BA%AC%E5%B8%82&output=html&src=dumi"
       }
     ],
     "nlu": {
