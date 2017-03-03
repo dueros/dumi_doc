@@ -146,7 +146,7 @@ startActivity(i1);
 
 显示效果如下
 
-![life_common_lbs_poi](../img/life_common_lbs_poi.png)
+![life_common_lbs_poi](../img/life_common_lbs_poi.jpg)
 
 ## 导航查询(intent: navigation)
 
