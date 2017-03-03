@@ -70,8 +70,10 @@
 
 使用的百度地图的**周边搜索**接口，调用该接口可以在调起百度地图时，根据给定的关键字、检索条件进行检索。
 
-```javascript
-URL接口：baidumap://map/place/search
+URL接口：
+
+```
+baidumap://map/place/search
 ```
 
 **参数说明:**
@@ -156,8 +158,10 @@ startActivity(i1);
 
 使用的百度地图的**poi地址解析**接口，调用该接口可以在调起百度地图时，在图区显示地址对应的坐标点。
 
-```javascript
-URL接口：baidumap://map/geocoder
+URL接口：
+
+```
+baidumap://map/geocoder
 ```
 
 **参数说明:**
