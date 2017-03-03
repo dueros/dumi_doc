@@ -1,6 +1,14 @@
-# life_common bot输出schema
 
-# domain: lbs
+
+# life_common服务
+
+## 介绍
+
+生活服务类，满足导航、路况、周边查找（包括鲜花、美发、KTV等）生活服务查找需求。支持query理解，输出nlu信息。返回百度地图落地页url，应用方可以根据服务返回的槽位（slots）信息拼接百度地图schema调起百度地图app。
+
+## bot输出schema
+
+### domain: lbs
 
 ## 周边查询(intent: nearby)
 周边查询返回的完整例子:
