@@ -203,7 +203,7 @@ startActivity(i1);
       {
         "type": "txt",
         "content": "为你找到从百度科技园到西二旗地铁站的路线，建议出行方式：驾车",
-        "url": "http://api.map.baidu.com/direction?origin=%E7%99%BE%E5%BA%A6%E7%A7%91%E6%8A%80%E5%9B%AD&destination=%E8%A5%BF%E4%BA%8C%E6%97%97%E5%9C%B0%E9%93%81%E7%AB%99&mode=transit&region=%E5%8C%97%E4%BA%AC%E5%B8%82&output=html&src=dumi"
+        "url": "http://api.map.baidu.com/direction?origin=百度科技园&destination=西二旗地铁站&mode=transit&region=北京市&output=html&src=dumi"
       }
     ],
     "nlu": {
@@ -241,4 +241,43 @@ startActivity(i1);
 | start_point        | 出发地      | eg: 百度大厦       |
 | start_point_bd_la  | 出发地纬度    | eg: 40.056974  |
 | start_point_bd_lo  | 出发地经度    | eg: 116.307689 |
-| user_location_city | 用户当前所在城市 | 北京市            |
+| user_location_city | 用户当前所在城市 | eg:北京市         |
+| travel_type        | 出行方式     | TAXI：出租车       |
+|                    |          | DRIVE：驾车       |
+|                    |          | PUBTRANS：公共交通  |
+|                    |          | WALK：步行        |
+
+### 百度地图uri拼接规则
+
+使用的百度地图的**路线规划**接口，调用该接口可以在调起百度地图时，在图区显示公交、驾车、步行导航。
+
+URL接口：
+
+```
+baidumap://map/direction
+```
+
+**参数说明:**
+
+| 参数名称              | 描述                                       | 对应nlu槽位参数映射                              | 是否必选                                   | 格式(示例)                                   |
+| ----------------- | ---------------------------------------- | ---------------------------------------- | -------------------------------------- | ---------------------------------------- |
+| origin            | 起点名称或经纬度，或者可同时提供名称和经纬度，此时经纬度优先级高，将作为导航依据，名称只负责展示 |                                          | origin和destination二者至少一个有值（默认值是当前定位地址） | 经纬度: 39.9761,116.3282经纬度和名称: latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度) |
+| destination       | 终点名称或经纬度，或者可同时提供名称和经纬度，此时经纬度优先级高，将作为导航依据，名称只负责展示。 |                                          | 同上                                     | 经纬度: 39.9761,116.3282经纬度和名称: latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度) |
+| mode              | 导航模式，可选transit（公交）、driving（驾车）、walking（步行）和riding（骑行）.默认:driving | TAXI：出租车->driving; DRIVE：驾车->driving; PUBTRANS：公共交通->transit; WALK：步行->walking; | 可选                                     | 根据travel_type槽位和下面的映射，添入对应mode（driving,transit,walking） |
+| TAXI：出租车->driving | 城市名或县名                                   |                                          | 可选                                     |                                          |
+
+**使用示例:**
+
+```java
+1）公交路线规划示例：
+
+"baidumap://map/direction?origin=百度科技园&destination=西二旗地铁站&mode=transit"
+
+2）驾车路线规划示例：
+ 
+"baidumap://map/direction?region=北京市&origin=百度科技园&destination=西二旗地铁站&mode=driving"
+
+3）步行路线规划示例：
+
+"baidumap://map/direction?region=北京市&origin=百度科技园&destination=西二旗地铁站&mode=walking"
+```
