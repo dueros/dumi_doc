@@ -146,7 +146,7 @@ startActivity(i1);
 
 显示效果如下
 
-<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_poi.jpg" width = "50%" />
+<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_poi.jpg" width = "25%" />
 
 ## 导航查询(intent: navigation)
 
