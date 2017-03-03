@@ -26,7 +26,7 @@
       {
         "type": "txt",
         "content": "为你找到百度大厦附近的地铁站",
-        "url": "http://api.map.baidu.com/place/search?query=%E5%9C%B0%E9%93%81%E7%AB%99&location=40.056974%2C116.307689&coord_type=bd09ll&radius=1000&region=%E5%8C%97%E4%BA%AC%E5%B8%82&output=html&src=dumi"
+        "url": "http://api.map.baidu.com/place/search?query=地铁站&location=40.056974,116.307689&coord_type=bd09ll&radius=1000&region=北京市&output=html&src=dumi"
       }
     ],
     "nlu": {
@@ -66,8 +66,46 @@
 | start_point_bd_lo  | 搜索中心点经度  | eg: 116.307689 |
 | user_location_city | 用户当前所在城市 | 北京市            |
 
+### 百度地图uri拼接规则
+
+使用的百度地图的**周边搜索**接口，调用该接口可以在调起百度地图时，根据给定的关键字、检索条件进行检索。
+
+```javascript
+URL接口：baidumap://map/place/search
+```
+
+**参数说明:**
+
+|          |                                       |                                          |                                          |
+| -------- | ------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| 参数名称     | 描述                                    | 是否必选                                     | 格式(示例)                                   |
+| query    | 关键词                                   | 必选                                       |                                          |
+| region   | 城市名或县名                                | 选择方式：地点搜索限定范围可以由region、bounds和location + radius方式进行，其中bounds优先级最高、region优先级最低 |                                          |
+| location | 中心点经纬度，或中心点经纬度和名称描述，注意，名称不参与检索，只负责显示。 | 同上                                       | 经纬度: 39.9761,116.3282经纬度和名称: latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度) |
+| radius   | 检索半径,单位:m                             |                                          |                                          |
+
+**使用示例:**
+
+```java
+Intent i1 = new Intent();
+
+// 周边搜索
+
+i1.setData(Uri.parse("baidumap://map/place/search?query=地铁站&region=北京市&location=40.056974,116.307689&radius=1000"));
+
+startActivity(i1);
+```
+
+显示效果如下
+
+<img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nearby.jpg" width = "25%" />
+
+
+
+
 
 ## 地址查询(intent: poi)
+
 地址查询返回的完整例子:
 ```javascript
 //query=百度科技园在哪里
@@ -114,12 +152,12 @@
 | ---- | ----- | --------- |
 | poi  | 地址字符串 | eg: 百度科技园 |
 
-### uri拼接规则
+### 百度地图uri拼接规则
+
+使用的百度地图的**poi地址解析**接口，调用该接口可以在调起百度地图时，在图区显示地址对应的坐标点。
 
 ```javascript
-使用的百度地图的地址解析接口:
-baidumap://map/geocoder
-调用该接口可以在调起百度地图时，在图区显示地址对应的坐标点。
+URL接口：baidumap://map/geocoder
 ```
 
 **参数说明:**
@@ -138,10 +176,6 @@ Intent i1 = new Intent();
 i1.setData(Uri.parse("baidumap://map/geocoder?src=dumi&address=百度科技园"));
  
 startActivity(i1);
-
-//网页应用调起Android百度地图方式举例
-
-<a href="bdapp:// map/geocoder?src=dumi&address=百度科技园">地址解析</a>
 ```
 
 显示效果如下
