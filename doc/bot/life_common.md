@@ -4,7 +4,7 @@
 
 ## 介绍
 
-生活服务类，满足导航、路况、周边查找（包括鲜花、美发、KTV等）生活服务查找需求。支持query理解，输出nlu信息。返回百度地图落地页url，应用方可以根据服务返回的槽位（slots）信息拼接百度地图schema调起百度地图app。
+生活服务，满足导航、路况、地址查询、周边查找（包括鲜花、美发、KTV等）生活服务查找需求。支持query理解，输出nlu信息。返回百度地图落地页url，应用方可以根据服务返回的槽位（slots）信息拼接百度地图schema调起百度地图app。
 
 ## bot输出schema
 
@@ -70,7 +70,7 @@
 ## 地址查询(intent: poi)
 地址查询返回的完整例子:
 ```javascript
-//query=百度大厦在哪里
+//query=百度科技园在哪里
 {
   "result": {
     "bot_id": "life_common",
@@ -82,20 +82,20 @@
     "views": [
       {
         "type": "txt",
-        "content": "为你找到百度大厦",
-        "url": "https://map.baidu.com/mobile/webapp/search/search/qt=s&wd=%E7%99%BE%E5%BA%A6%E5%A4%A7%E5%8E%A6&c=131/?third_party=uri_api"
+        "content": "为你找到百度科技园",
+        "url": "http://api.map.baidu.com/geocoder?address=百度科技园&output=html&src=dumi"
       }
     ],
     "nlu": {
       "domain": "lbs",
       "intent": "poi",
       "slots": {
-        "poi": "百度大厦"
+        "poi": "百度科技园"
       }
     },
     "speech": {
       "type": "Text",
-      "content": "为你找到百度大厦"
+      "content": "为你找到百度科技园"
     }
   },
   "id": "1486353184_3716wf322",
@@ -103,17 +103,50 @@
   "user_id": "test_cuid",
   "time": 1486353184,
   "cuid": "test_cuid",
-  "se_query": "百度大厦在哪里",
+  "se_query": "百度科技园在哪里",
   "msg": "ok",
   "status": 0
 }
 ```
 ### nlu部分的说明
 
-| slot | desc  | value   |
-| ---- | ----- | ------- |
-| poi  | 地址字符串 | eg:百度大厦 |
+| slot | desc  | value     |
+| ---- | ----- | --------- |
+| poi  | 地址字符串 | eg: 百度科技园 |
 
+### uri拼接规则
+
+```javascript
+使用的百度地图的地址解析接口:
+baidumap://map/geocoder
+调用该接口可以在调起百度地图时，在图区显示地址对应的坐标点。
+```
+
+**参数说明:**
+
+| 参数名称    | 描述                    | 是否必选 | 格式(示例) |
+| ------- | --------------------- | ---- | ------ |
+| address | 地址名称，请在这里填入nlu中的poi槽位 | 必选   | 百度科技园  |
+
+**使用示例:**
+
+```java
+Intent i1 = new Intent();
+
+// 地址解析
+
+i1.setData(Uri.parse("baidumap://map/geocoder?src=dumi&address=百度科技园"));
+ 
+startActivity(i1);
+
+//网页应用调起Android百度地图方式举例
+
+<a href="bdapp:// map/geocoder?src=dumi&address=百度科技园">地址解析</a>
+```
+
+显示效果如下
+
+[life_common_lbs_poi](../img/life_common_lbs_poi.png)
 
 ## 导航查询(intent: navigation)
 
