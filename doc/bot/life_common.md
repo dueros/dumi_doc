@@ -108,6 +108,7 @@ baidumap://map/place/search
 
 ```java
 // 周边搜索
+
 "baidumap://map/place/search?query=地铁站&region=北京市&location=40.056974,116.307689&radius=1000"
 ```
 
@@ -287,5 +288,7 @@ baidumap://map/direction
 "baidumap://map/direction?region=北京市&origin=百度科技园&destination=西二旗地铁站&mode=walking"
 ```
 
+显示效果如下
 
 <img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nav.jpg" width = "30%" />
+
