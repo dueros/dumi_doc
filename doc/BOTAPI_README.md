@@ -322,7 +322,7 @@
 内部可以加入新协议的字段，如resource、speech、views等等，但一定要有一个result_list。
   * 如果有传views、speech、resource等字段，result_list的内容可以随意，不会在新的输出接口中生效
   * 如果不传views、speech、resource等字段，api2.0接口输出时，会把result_list按一定规则转换成这些新字段
-  * views、speech、resource等字段的数据结构，参见[度秘api2.0文档](http://gitlab.baidu.com/wangpeng20/dumi_schema/blob/master/doc/OPENAPI_README.md#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%88%86%E5%9D%97%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E)
+  * views、speech、resource等字段的数据结构，参见[度秘api2.0文档](api/response.md)
   * 老的result_list内部的详细格式，可参考[度秘api1.0文档](http://agroup.baidu.com/duer/md/article/17301)，主要是定义了result_list可以放的卡片格式
 
 ```javascript
