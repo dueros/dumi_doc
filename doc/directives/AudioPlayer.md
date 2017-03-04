@@ -191,7 +191,7 @@ Directive和Event机制非常适合无屏设备使用，对于有屏设备，
 
 3. 用户语音说"下一首"，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断intent =
    audio.music.next，然后拿到下一首歌曲的歌曲ID，发起第二次网络请求，拿到MP3 URL，开始下一首歌曲的播放。
-   其它播放控制也类似，DuerOS NLU支持的播放控制，可以参考music_bot
+   其它播放控制也类似，DuerOS NLU支持的播放控制，可以参考[音乐](../bot/audio_music.md) 、[点播](../bot/audio_unicast.md)、[直播](../bot/audio_live.md)。
 
 4. 用户语音说“换一批”，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断intent =
    audio.music.next_page，发起第二次网络请求，获取下一页的歌曲列表，将列表中第一首歌曲的ID，发起第三次网络请求，拿到MP3
