@@ -92,9 +92,12 @@ intent::audio.music.favorite 收藏歌曲|动作|action|like(收藏)/unlike(取�
 intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
  |动作|action|add(加入歌单)/delete(删除歌单)
  |歌单名|list_name|小清新
-
-
-
+intent::audio.music.stop 停止 |	 	 	 	 
+intent::audio.music.pause 暂停 |  	 	 	 
+intent::audio.music.continue 继续 | 	 	 	 	 	 
+intent::audio.music.next 下一首 | 	 	 	 
+intent::audio.music.previous 上一首	 | 	 	 	 	 
+intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，rand，list_cycle
 
 
 ### directives 部分的说明
