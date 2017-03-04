@@ -161,7 +161,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
       ....
     ]
   },
-  "message": null
+  "message": ""
 }
 ```
 
@@ -177,7 +177,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```javascript
 {
      status: 0,
-     code: null,
+     code: "",
      data: 
         {
             "page" : 1,        //当前页
@@ -219,7 +219,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
     "total_page": 4,
     "page": "1",
@@ -486,7 +486,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
       }
     ]
   },
-  "message": null
+  "message": ""
 }
 ```
  其中status 为0返回正常，其它异常
@@ -505,6 +505,6 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
   "data": {
     "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
   },
-  "message": null
+  "message": ""
 }
 ```
