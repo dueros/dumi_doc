@@ -92,9 +92,12 @@ intent::audio.music.favorite 收藏歌曲|动作|action|like(收藏)/unlike(取�
 intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
  |动作|action|add(加入歌单)/delete(删除歌单)
  |歌单名|list_name|小清新
-
-
-
+intent::audio.music.stop 停止 |	 	 	 	 
+intent::audio.music.pause 暂停 |  	 	 	 
+intent::audio.music.continue 继续 | 	 	 	 	 	 
+intent::audio.music.next 下一首 | 	 	 	 
+intent::audio.music.previous 上一首	 | 	 	 	 	 
+intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，rand，list_cycle
 
 
 ### directives 部分的说明
@@ -158,7 +161,7 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
       ....
     ]
   },
-  "message": null
+  "message": ""
 }
 ```
 
@@ -174,7 +177,7 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
 ```javascript
 {
      status: 0,
-     code: null,
+     code: "",
      data: 
         {
             "page" : 1,        //当前页
@@ -216,7 +219,7 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
 
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
     "total_page": 4,
     "page": "1",
@@ -483,7 +486,7 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
       }
     ]
   },
-  "message": null
+  "message": ""
 }
 ```
  其中status 为0返回正常，其它异常
@@ -502,6 +505,6 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
   "data": {
     "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
   },
-  "message": null
+  "message": ""
 }
 ```

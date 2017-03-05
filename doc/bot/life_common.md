@@ -4,7 +4,27 @@
 
 ## 介绍
 
-生活服务，满足导航、路况、地址查询、周边查找（包括鲜花、美发、KTV等）生活服务查找需求。支持query理解，输出nlu信息。返回百度地图落地页url，应用方可以根据服务返回的NLU槽位（slots）拼接百度地图schema调起百度地图app。
+生活服务，满足用户导航、路况、地址查询、周边查找（包括鲜花、美发、KTV等）查找需求。支持query理解，输出nlu信息。服务会返回百度地图落地页url，应用方可以根据服务返回的NLU槽位（slots）拼接百度地图schema调起百度地图app。
+
+### 常见查询请求
+
+导航支持：从当前地点到某个位置的导航、以及从地点A到地点B的导航，如果用户query包含出行方式，会优先给出该出行方式的导航结果。
+
+周边查找支持的常见类目：
+
+吃喝：美食、小吃快餐、火锅、中餐、酒吧、咖啡厅
+
+住宿：酒店、快捷酒店、星级酒店、特价酒店、宾馆、公寓酒店、招待所、青年旅社
+
+出行：公交站、地铁站、加油站、停车场、火车票代售点、汽车站
+
+娱乐：网吧、洗浴、足疗、KTV、电影院、按摩
+
+生活：银行、超市、医院、药店、厕所、ATM、快递、花点、照相馆、幼儿园、菜市场、小学、书店、车管所、眼镜店、五金店、蛋糕店、美容美发
+
+景点：景点、公园、名胜古迹、度假村、步行街
+
+购物：商场、万达广场、丽人、宜家
 
 ## bot输出schema
 
@@ -37,8 +57,7 @@
         "start_point": "百度大厦",
         "start_point_bd_la": "40.056974",
         "start_point_bd_lo": "116.307689",
-        "user_location_city": "北京市",
-        "travel_type": ""
+        "user_location_city": "北京市"
       }
     },
     "speech": {
@@ -56,21 +75,21 @@
   "status": 0
 }
 ```
-### nlu部分的说明
+### nlu说明
 
-| slot               | desc     | value          |
-| ------------------ | -------- | -------------- |
-| end_point          | 搜索目标     | eg: 地铁站        |
-| start_point        | 搜索中心点    | eg: 百度大厦       |
-| start_point_bd_la  | 搜索中心点纬度  | eg: 40.056974  |
-| start_point_bd_lo  | 搜索中心点经度  | eg: 116.307689 |
-| user_location_city | 用户当前所在城市 | 北京市            |
+| 槽位（slot）           | 槽位描述（desc） | 槽位值（value）     |
+| ------------------ | ---------- | -------------- |
+| end_point          | 搜索目标名称     | eg: 地铁站        |
+| start_point        | 搜索中心点名称    | eg: 百度大厦       |
+| start_point_bd_la  | 搜索中心点纬度    | eg: 40.056974  |
+| start_point_bd_lo  | 搜索中心点经度    | eg: 116.307689 |
+| user_location_city | 用户当前所在城市   | 北京市            |
 
-### 百度地图uri拼接规则
+### 调起百度地图APP方法
 
-使用的百度地图的**周边搜索**接口，调用该接口可以在调起百度地图时，根据给定的关键字、检索条件进行检索。
+使用的百度地图的**周边搜索**调起方法，在百度地图APP查看给定的关键字、检索条件的检索结果。
 
-URL接口：
+**URL接口：**
 
 ```
 baidumap://map/place/search
@@ -78,33 +97,24 @@ baidumap://map/place/search
 
 **参数说明:**
 
-|          |                                       |                                          |                                          |
-| -------- | ------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| 参数名称     | 描述                                    | 是否必选                                     | 格式(示例)                                   |
-| query    | 关键词                                   | 必选                                       |                                          |
-| region   | 城市名或县名                                | 选择方式：地点搜索限定范围可以由region、bounds和location + radius方式进行，其中bounds优先级最高、region优先级最低 |                                          |
-| location | 中心点经纬度，或中心点经纬度和名称描述，注意，名称不参与检索，只负责显示。 | 同上                                       | 经纬度: 39.9761,116.3282经纬度和名称: latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度) |
-| radius   | 检索半径,单位:m                             |                                          |                                          |
+| 参数名称     | 描述                                    | nlu槽位对应关系                                | 是否必选                                     | 格式(示例)                                   |
+| -------- | ------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| query    | 关键词                                   | 填入end_point槽位                            | 必选                                       | 地铁站                                      |
+| region   | 城市名或县名                                | 填入user_location_city槽位                   | 选择方式：地点搜索限定范围可以由region和location +  radius方式进行，其中location +  radius优先级高于region | 北京市                                      |
+| location | 中心点经纬度，或中心点经纬度和名称描述，注意，名称不参与检索，只负责显示。 | nlu槽位包含start_point_bd_la,start_point_bd_lo时使用，如果为两个坐标都为空则不填入 | 同上                                       | 经纬度: 39.9761,116.3282；经纬度和名称:  latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度)；经纬度和名称:  latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度)。 |
+| radius   | 检索半径,单位:m                             | 填入默认值1000                                | 同上                                       | 1000m                                    |
 
 **使用示例:**
 
 ```java
-Intent i1 = new Intent();
-
 // 周边搜索
 
-i1.setData(Uri.parse("baidumap://map/place/search?query=地铁站&region=北京市&location=40.056974,116.307689&radius=1000"));
-
-startActivity(i1);
+"baidumap://map/place/search?query=地铁站&region=北京市&location=40.056974,116.307689&radius=1000"
 ```
 
 显示效果如下
 
 <img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nearby.jpg" width = "30%" />
-
-
-
-
 
 ## 地址查询(intent: poi)
 
@@ -148,17 +158,17 @@ startActivity(i1);
   "status": 0
 }
 ```
-### nlu部分的说明
+### nlu说明
 
 | slot | desc  | value     |
 | ---- | ----- | --------- |
 | poi  | 地址字符串 | eg: 百度科技园 |
 
-### 百度地图uri拼接规则
+### 调起百度地图APP方法
 
-使用的百度地图的**poi地址解析**接口，调用该接口可以在调起百度地图时，在图区显示地址对应的坐标点。
+使用的百度地图的**poi地址解析**调起方法，在百度地图APP查看该地址对应的坐标点的详细信息。
 
-URL接口：
+**URL接口：**
 
 ```
 baidumap://map/geocoder
@@ -166,20 +176,16 @@ baidumap://map/geocoder
 
 **参数说明:**
 
-| 参数名称    | 描述   | nlu槽位与链接参数映射 | 是否必选 | 格式(示例) |
+| 参数名称    | 描述   | nlu槽位对应关系    | 是否必选 | 格式(示例) |
 | ------- | ---- | ------------ | ---- | ------ |
 | address | 地址名称 | 对应nlu中的poi槽位 | 必选   | 百度科技园  |
 
 **使用示例:**
 
 ```java
-Intent i1 = new Intent();
-
 // 地址解析
 
-i1.setData(Uri.parse("baidumap://map/geocoder?src=dumi&address=百度科技园"));
- 
-startActivity(i1);
+"baidumap://map/geocoder?src=dumi&address=百度科技园"
 ```
 
 显示效果如下
@@ -233,7 +239,7 @@ startActivity(i1);
   "status": 0
 }
 ```
-### nlu部分的说明
+### nlu说明
 
 | slot               | desc     | value          |
 | ------------------ | -------- | -------------- |
@@ -247,11 +253,11 @@ startActivity(i1);
 |                    |          | PUBTRANS：公共交通  |
 |                    |          | WALK：步行        |
 
-### 百度地图uri拼接规则
+### 调起百度地图APP方法
 
-使用的百度地图的**路线规划**接口，调用该接口可以在调起百度地图时，在图区显示公交、驾车、步行导航。
+使用的百度地图的**路线规划**调起方法，在百度地图APP中查看公交、驾车、步行导航路线规划结果。
 
-URL接口：
+**URL接口：**
 
 ```
 baidumap://map/direction
@@ -259,28 +265,30 @@ baidumap://map/direction
 
 **参数说明:**
 
-| 参数名称        | 描述                                       | nlu槽位与链接参数映射                             | 是否必选                                   | 格式(示例)                                   |
+| 参数名称        | 描述                                       | nlu槽位对应关系                                | 是否必选                                   | 格式(示例)                                   |
 | ----------- | ---------------------------------------- | ---------------------------------------- | -------------------------------------- | ---------------------------------------- |
 | origin      | 起点名称或经纬度，或者可同时提供名称和经纬度，此时经纬度优先级高，将作为导航依据，名称只负责展示 |                                          | origin和destination二者至少一个有值（默认值是当前定位地址） | 经纬度: 39.9761,116.3282经纬度和名称: latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度) |
 | destination | 终点名称或经纬度，或者可同时提供名称和经纬度，此时经纬度优先级高，将作为导航依据，名称只负责展示。 |                                          | 同上                                     | 经纬度: 39.9761,116.3282经纬度和名称: latlng:39.9761,116.3282\|name:中关村 (注意：坐标先纬度，后经度) |
-| mode        | 导航模式，可选transit（公交）、driving（驾车）、walking（步行）和riding（骑行）.默认:driving | 对应nlu中的雏形方式槽位：TAXI（出租车）对应driving，DRIVE（驾车）对应driving; PUBTRANS：公共交通->transit; WALK：步行->walking; | 可选                                     | 根据travel_type槽位和下面的映射，添入对应mode（driving,transit,walking） |
-| region      | 城市名或县名                                   |                                          | 可选                                     |                                          |
+| mode        | 导航模式，可选transit（公交）、driving（驾车）、walking（步行）和riding（骑行）.默认:driving | 对应nlu中的出行方式槽位：TAXI（出租车）对应driving，DRIVE（驾车）对应driving; PUBTRANS（公共交通）对应transit; WALK（步行）对应walking; | 可选                                     | 根据travel_type槽位映射，添入对应mode（driving,transit,walking） |
+| region      | 城市名或县名                                   | 对应user_location_city                     | 可选                                     | 北京市                                      |
 
 **使用示例:**
 
 ```java
-1）公交路线规划示例：
+//公交路线规划示例：
 
 "baidumap://map/direction?origin=百度科技园&destination=西二旗地铁站&mode=transit"
 
-2）驾车路线规划示例：
+//驾车路线规划示例：
  
 "baidumap://map/direction?region=北京市&origin=百度科技园&destination=西二旗地铁站&mode=driving"
 
-3）步行路线规划示例：
+//步行路线规划示例：
 
 "baidumap://map/direction?region=北京市&origin=百度科技园&destination=西二旗地铁站&mode=walking"
 ```
 
+显示效果如下
 
 <img src="http://gitlab.baidu.com/wangpeng20/dumi_schema/raw/master/doc/img/lifecommon_lbs_nav.jpg" width = "30%" />
+
