@@ -1,0 +1,202 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id":"https://xiaodu.baidu.com/schema/dumi_schema.json",
+    "title":"度秘ws的返回值",
+    "type": "object",
+    "properties": {
+        "result": {
+            "type":"object",
+            "properties":{
+                "bot_id":{
+                    "description":"下游服务的id，其实就是老协议里的source_type",
+                    "type":"string"
+                },
+                "bot_meta":{
+                    "description":"下游服务的信息",
+                    "type":"object",
+                    "required":["type","version"],
+                    "properties":{
+                        "description":{"type":"string"},
+                        "type":{"type":"string","enum":["天气","音乐","新闻","其他"]},
+                        "version":{"type":"string"}
+                    }
+                },
+                "hint":{
+                    "description":"用户接下去可以输入的query建议",
+                    "type":"array",
+                    "items": { "type": "string" }
+                },
+                "views":{
+                    "description":"展示用的卡片",
+                    "$ref":"#/definitions/views"
+                },
+                "directives":{
+                    "description":"展示用的卡片",
+                    "$ref":"#/definitions/directives"
+                },
+                "resource":{
+                    "description":"数据资源",
+                    "$ref":"#/definitions/resource"
+                },
+                "nlu":{
+                    "description":"使用的da结果",
+                    "$ref":"#/definitions/nlu"
+                },
+                "speech":{
+                    "description":"语音播报tts用的数据",
+                    "$ref":"#/definitions/speech"
+                }
+            },
+            "required": ["views","speech","nlu","bot_id","bot_meta"],
+            "additionalProperties":false
+        },
+        "time": {
+            "description":"服务端当前时间戳",
+            "type":"integer"
+        },
+        "cuid": {
+            "type":"string"
+        },
+        "user_id": {
+            "type":"string"
+        },
+        "id": {
+            "type":"string"
+        },
+        "logid": {
+            "type":"string"
+        },
+        "se_query": {
+            "type":"string"
+        },
+        "status": {
+            "type":"integer"
+        },
+        "msg": {
+            "type":"string"
+        }
+    },
+    "definitions": {
+        "directives": {
+            "type":"array",
+            "items":{
+                "type":"object",
+                "properties":{
+                    "header":{"type":"object"},
+                    "payload":{"type":"object"}
+                }
+            }
+        },
+        "resource": {
+            "type":"object",
+            "properties":{
+                "type":{
+                    "type":"string"
+                },
+                "data":{
+                    "type":"object"
+                }
+            }
+        },
+        "nlu": {
+            "additionalProperties":false,
+            "type":"object",
+            "required": ["domain","intent"],
+            "properties":{
+                "domain":{
+                    "type":"string"
+                },
+                "intent":{
+                    "type":"string"
+                },
+                "slots":{
+                    "type":"object"
+                }
+            }
+        },
+        "views": {
+            "type":"array",
+            "items":{
+                "type":"object",
+                "oneOf":[
+                    {
+                        "additionalProperties":false,
+                        "type":"object",
+                        "properties":{
+                            "type":{
+                                "type":"string",
+                                "enum":["txt"]
+                            },
+                            "content":{
+                                "type":"string"
+                            },
+                            "url":{
+                                "type":"string"
+                            }
+                        }
+                    },
+                    {
+                        "additionalProperties":false,
+                        "type":"object",
+                        "properties":{
+                            "type":{
+                                "type":"string",
+                                "enum":["list"]
+                            },
+                            "list":{
+                                "type":"array",
+                                "items":{
+                                    "additionalProperties":false,
+                                    "type":"object",
+                                    "properties":{
+                                        "title":{"type":"string"},
+                                        "summary":{"type":"string"},
+                                        "image":{"type":"string"},
+                                        "url":{"type":"string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "additionalProperties":false,
+                        "type":"object",
+                        "properties":{
+                            "type":{
+                                "type":"string",
+                                "enum":["image"]
+                            },
+                            "list":{
+                                "type":"array",
+                                "items":{
+                                    "additionalProperties":false,
+                                    "type":"object",
+                                    "properties":{
+                                        "src":{"type":"string"},
+                                        "thumb":{"type":"string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "speech": {
+            "additionalProperties":false,
+            "type":"object",
+            "properties":{
+                "type":{
+                    "type":"string",
+                    "enum":["Text","SSML"]
+                },
+                "content":{
+                    "type":"string"
+                }
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [ "result","time","id","cuid","logid","se_query","status","msg"]
+}
+
