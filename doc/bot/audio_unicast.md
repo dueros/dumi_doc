@@ -407,7 +407,7 @@ intent::audio.unicast.next |下一首	 	||||
 intent::audio.unicast.previous |上一首	 	|||| 	 	 	 
 intent::audio.unicast.nextalbum |下一专辑	 	|||| 	 	 	 
 intent::audio.unicast.previousalbum |上一专辑	 	|||| 	 	 	 
-intent::audio.unicast.play_mode| 播放模式|	播放模式	|mode	|single_cycle，rand，list_cycle
+intent::audio.unicast.play_mode| 播放模式	播放模式	|mode	|single_cycle，rand，list_cycle||
 intent::audio.unicast.goto |跳转到指定节目集	| 	episode|	数字\last(最后一集)\new(最新一集)|	播放第几集、播放最后一集、播放最新一集
 intent::audio.unicast.speed |快进/退	 |	|||
 	|	|forward	|非空：快进需求，空：非快进|	 	 
