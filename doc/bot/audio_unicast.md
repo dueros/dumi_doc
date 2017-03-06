@@ -391,7 +391,7 @@ intent::audio.unicast.favorite.artist |点播艺人收藏||
 	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
  	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
  	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	 
-intent::audio.unicast.favorite.track点播节目收藏	
+intent::audio.unicast.favorite.track点播节目收藏||	
 	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
  	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
  	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	  
