@@ -48,6 +48,7 @@
     "ctime": 1454319650,
     "type": "user",
     "query_type": "1",
+    "device_data":"{}",//device_interface, device_event, device_status 三个字段的打包json，因为现在idl定义不了这三个字段的结构
     "result_list": [
       {
         "result_confidence": 100,
@@ -156,6 +157,53 @@
 
 
 ```
+
+#### 请求字段中，.msg.device_data字段的解释
+
+.msg.device_data字段，是一个json_encode后的字符串
+
+下面是这个json展开后的结构
+```javascript
+{
+    "device_interface":{
+        "Alerts":{},
+        "AudioPlayer":{},
+        "PlaybackController":{},
+        "Speaker":{},
+        "Settings":{},
+        "System":{}
+    },
+    "device_event":{
+        //query_type==30 的时候才会有 device_event
+        "header": {
+            "namespace": "AudioPlayer",
+            "name": "PlaybackStarted",
+            "message_id": "message_id-1344"
+        },
+        "payload": {
+            //AudioPlayer里可能出现的payload
+            "token": "156",
+            "offset_ms": 10000
+            //Speaker里可能出现的payload
+            "volume": 1,
+            //SpeechSynthesizer可能出现的payload
+            "token": "156",
+            "type": "{{Text/SSML}}",
+            "content": ["xxxx1", "xxxx2"],
+            "speak_behavior": "REPLACE_ALL",
+            "should_get_next_speech": true
+        }
+    },
+    "device_status":{
+        "AudioPlayer":{
+            "token":"xxx",//正在播放的音频流id
+            "offset_ms":20000,//播放到多少ms了
+            "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
+        },
+    }
+}
+```
+
 
 ### 正常返回格式
 
@@ -313,7 +361,7 @@
 
 ```
 
-### 正常返回的字段中，content字段的解释
+#### 正常返回的字段中，content字段的解释
 
 .data.result_list[].content字段，是一个json_encode后的字符串
 
