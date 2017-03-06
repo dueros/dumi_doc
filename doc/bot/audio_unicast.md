@@ -395,3 +395,23 @@ intent::audio.unicast.favorite.track点播节目收藏||
 	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
  	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
  	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	  
+
+#### 点播控制
+
+intent	|slot	|slot_name	|slot_value|	指令动作|	指令说法
+----|----|--------|------|--------|----
+intent::audio.unicast.stop| 停止||||	 	 	 	 	 
+intent::audio.unicast.pause |暂停||||	 	 	 	 	 
+intent::audio.unicast.continue |继续||||	 	 	 	 	 
+intent::audio.unicast.next |下一首	 	|||| 	 	 	 
+intent::audio.unicast.previous |上一首	 	|||| 	 	 	 
+intent::audio.unicast.nextalbum |下一专辑	 	|||| 	 	 	 
+intent::audio.unicast.previousalbum |上一专辑	 	|||| 	 	 	 
+intent::audio.unicast.play_mode| 播放模式|	播放模式	|mode	|single_cycle，rand，list_cycle
+intent::audio.unicast.goto |跳转到指定节目集	| 	episode|	数字\last(最后一集)\new(最新一集)|	播放第几集、播放最后一集、播放最新一集
+intent::audio.unicast.speed |快进/退	 |	|||
+	|	|forward	|非空：快进需求，空：非快进|	 	 
+ 	| 	|forward_speed	|快进速度 ，int，倍数	| 	与端定默认速度
+ 	| 	|rewind	|非空：快退需求，空：非快退	 |	 
+ 	| 	|rewind_speed	|快退速度 ，int，倍数	| 	与端定默认速度
+ 	| 	|time	|单位：s	 	 
