@@ -223,6 +223,7 @@ pagesize|int|否|每页数据量，默认为10
 直播槽位
 
 intent|slot|slot_name|slot_value|优先级|举例
+------|----|---------|----------|------|----
 intent::audio.live.play 直播播放|搜索源|search_list|空(所有电台列表) / favorite (收藏列表)|P1|	
 |电台名|channel|归一化后的电台名 或query中 认为是电台名的词语|P0|例如query"播放北京乱七八糟电台",channel为“乱七八糟”
 |一级地域|province|湖南|P0|	
