@@ -11,6 +11,8 @@ directives/AudioPlayer.md
 directives/Speaker.md
 directives/SpeechSynthesizer.md
 Skills.md
+BOTAPI_README.md
+BOTAPI2.0_README.md
 END
 
 ######### update index

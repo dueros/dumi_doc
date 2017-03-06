@@ -1,3 +1,17 @@
+# 度秘开放平台-BotApi2.0接口说明
+
+## Table of Contents
+
+
+   * [度秘开放平台-BotApi2.0接口说明](#度秘开放平台-botapi20接口说明)
+      * [Table of Contents](#table-of-contents)
+      * [交互模式说明](#交互模式说明)
+         * [关于confirm的说明](#关于confirm的说明)
+      * [请求格式](#请求格式)
+      * [未来的响应格式](#未来的响应格式)
+      * [bot配置（开放平台的输出）](#bot配置开放平台的输出)
+
+
 ## 交互模式说明
 
 ### 关于confirm的说明
