@@ -346,3 +346,59 @@ pagesize |int |是 |每页数据量
 
  ```
 
+###点播QU槽位
+intent|slot|slot_name|slot_value
+----|----|--------|----
+intent::audio.unicast.play|点播播放	||
+    |一级分类	|first_category|小说、评书、相声等（{播放}+{点播泛词}的query的一级分类：default）
+播放XXX与继续播放XXX无差别，都视为正常播放|搜索范围|search_list|favorite (收藏列表)，空为不限即全部	P1	 	新增，规则：当有播放收藏列表词时，出播放意图，此槽位=favorite
+ 	|主讲人|	artist	|郭德纲（演艺人员）|	P0	槽位已实现，后端检索已支持	词典完善，多值是否能实现待确认
+ 	|关键词	|keyword	|去除口语化后，意图/槽位 |不能识别的term，逗号分隔（qu做diff处理后的term）	P0	槽位已有，值未实现，后端检索已支持	实现未识别term填充
+ 	|二级分类	|second_category	|股市、儿童睡前故事	P1	槽位已实现	词典添加，后端检索支持
+ 	|节目名	|track_name	|大保镖	P0	槽位已实现	词典完善（与专辑名相同时，出节目名）
+ 	|专辑名	|album_name	| 	P0	槽位已实现	词典完善
+ 	|排序类型|	sort_type|	sort_new(最新) / sort_hot(最热)	P0	 	支持排序类语意解析
+ 	|来源	|source	|资源提供方 如：喜马拉雅	P1	 	新增，提供资源方名称词典
+ 	|标签	|tag	|其他属性词	P0	 	新增 ，提供属性词典
+ 	|第几集	|episode|	用于专辑内定位节目，值：整数，“最后一集”或“最新一集”时，值为：last	P0	 	新增， 示例：播放梅花三弄的第5集
+ 	|单位	|unit	|节目、专辑	P1	 	检索后端忽略此槽位
+ 	 	 	 	 	 	 
+intent::audio.unicast.ask.track| 点播节目问答|	|
+	|艺人|	artist	|艺人修饰槽位：非空有需求	P1	 	槽位格式修改，见前面的value说明
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	槽位格式修改，见前面的value说明
+ 	|第几集	|episode	|集修饰槽位：非空有需求，第五集，值为5	P1	 	槽位格式修改，见前面的value说明
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	槽位格式修改，见前面的value说明
+intent::audio.unicast.ask.album |点播专辑问答||	
+	|艺人	|artist|	艺人修饰槽位：非空有需求	
+
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
+ 	集	episode	集修饰槽位：非空有需求，第五集，值为5	
+
+ 	 
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	 
+intent::audio.unicast.ask.artist |点播艺人问答	| 	| 	 	 	 	 
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	 
+ 	|集	|episode|集修饰槽位：非空有需求，第五集，值为5	 	 
+ 	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
+ 	 	 	 	 	 	 
+intent::audio.unicast.ask.episode|点播集问答||	
+	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	 
+ 	|集	|episode|集修饰槽位：默认为问第几集：1，第几集：1，剩多少集：2，总共多少集：3P1	 	 
+ 	 	 	 	 	 	 
+intent::audio.unicast.favorite.album |点播专辑收藏	||
+    |艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P0	 	 
+ 	 	 	 	 	 	 
+ 	 	 	 	 	 	 
+intent::audio.unicast.favorite.artist |点播艺人收藏||	
+	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	 
+intent::audio.unicast.favorite.track点播节目收藏	
+	|艺人	|artist	|艺人修饰槽位：非空有需求	P1	 	 
+ 	|节目	|track	|节目修饰槽位：非空有需求	P1	 	 
+ 	|专辑	|album	|专辑修饰槽位：非空有需求	P1	 	 
