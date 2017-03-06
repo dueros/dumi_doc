@@ -16,7 +16,7 @@
 ### 下载
 
 内有demo工程和可测试的apk，外网用户请下载连线上环境的版本
-   * [sdk下载](sdk_v2_online.zip)
+   * [sdk下载](https://github.com/dueros/dumi_doc/blob/master/doc/sdk/sdk_v2_online.zip)
 
 ### 介绍
 
