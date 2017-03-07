@@ -52,7 +52,7 @@
 
 
 ### 1、专辑列表
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/albumlist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/albumlist
   * 请求方式：GET
   * 请求参数：
 
@@ -119,7 +119,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 
 
 ### 2、获得某个专辑的节目列表
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/tracklist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/tracklist
   * 请求方式：GET
   * 请求参数：
 
@@ -183,7 +183,7 @@ sort |int |否 |正序：acs、倒序：desc
 ```
 
 ### 3、获取节目信息
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/trackplay
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/trackplay
   * 请求方式：GET
   * 请求参数：
 
@@ -240,7 +240,7 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 
 
 ### 4、获取播放列表接口：
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/playlist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/playlist
   * 请求方式：GET
   * 请求参数：
 
@@ -296,7 +296,7 @@ pagesize	|int	|是	|每页数据量
 ```
 
 #### 5、播放历史接口：
- * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/history
+ * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/history
  * 请求方式：GET
  * 请求参数：
 
