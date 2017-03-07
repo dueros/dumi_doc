@@ -56,6 +56,8 @@
 cuid|string|是|设备ID，设备的唯一标识
 category|string|否|分类 (国家，网络，省市，音乐，体育，交通，曲艺等)
 province|string|否|省
+la|string|否|纬度
+lo|string|否|经度
 page|int|否|页码，默认为1
 pagesize|int|否|每页数据量，默认为10
 
@@ -83,6 +85,7 @@ pagesize|int|否|每页数据量，默认为10
               "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
               "large": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!large"
             },
+            "program_name": "娱乐有范儿",
             "source": "蜻蜓FM",
             "source_icon": "http://123.jpg"
           },
