@@ -47,7 +47,7 @@
 
 
 ### 1、电台列表
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/live/channelList
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/channelList
   * 请求方式：GET
   * 请求参数：
 
@@ -71,9 +71,8 @@ pagesize|int|否|每页数据量，默认为10
       {
         "channel_id": 1,
         "channel_name": "北京文艺广播",
-        "program_name": "娱乐有范儿",
         "attr_province": "北京",
-        "attr_city": "北京",
+        "attr_city": "",
         "attr_class": "文艺",
         "freq_fm": "",
         "media_info": [
@@ -94,6 +93,7 @@ pagesize|int|否|每页数据量，默认为10
               "medium": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg",
               "large": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg"
             },
+            "program_name": "娱乐有范儿",
             "source": "喜马拉雅",
             "source_icon": "http://123.jpg"
           },
@@ -104,6 +104,7 @@ pagesize|int|否|每页数据量，默认为10
               "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
               "large": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg"
             },
+            "program_name": "娱乐有范儿",
             "source": "考拉",
             "source_icon": "http://123.jpg"
           }
@@ -117,7 +118,7 @@ pagesize|int|否|每页数据量，默认为10
 ```
 
 ### 2、获取播放列表接口：
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/live/playlist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/playlist
   * 请求方式：GET
   * 请求参数：
 
@@ -140,7 +141,6 @@ pagesize|int|否|每页数据量，默认为10
       {
         "channel_id": 1,
         "channel_name": "北京文艺广播",
-        "program_name": "娱乐有范儿",
         "attr_province": "北京",
         "attr_city": "北京",
         "attr_class": "文艺",
@@ -153,6 +153,7 @@ pagesize|int|否|每页数据量，默认为10
               "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
               "large": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!large"
             },
+            "program_name": "娱乐有范儿",
             "source": "蜻蜓FM",
             "source_icon": "http://123.jpg"
           },
@@ -173,6 +174,7 @@ pagesize|int|否|每页数据量，默认为10
               "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
               "large": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg"
             },
+            "program_name": "娱乐有范儿",
             "source": "考拉",
             "source_icon": "http://123.jpg"
           }
@@ -225,30 +227,30 @@ pagesize|int|否|每页数据量，默认为10
 intent|slot|slot_name|slot_value|优先级|举例
 ------|----|---------|----------|------|----
 intent::audio.live.play 直播播放|搜索源|search_list|空(所有电台列表) / favorite (收藏列表)|P1|	
-|电台名|channel|归一化后的电台名 或query中 认为是电台名的词语|P0|例如query"播放北京乱七八糟电台",channel为“乱七八糟”
-|一级地域|province|湖南|P0|	
-|二级地域|city|长沙|P0|	
-|内容分类|category|（音乐）台|P0|	
-|调频|fm|调频，fm|P0|	
-|调频频率|freq|87.6|P0|	
-|节目名|program||开心茶馆	
+||电台名|channel|归一化后的电台名 或query中 认为是电台名的词语|P0|例如query"播放北京乱七八糟电台",channel为“乱七八糟”
+||一级地域|province|湖南|P0|	
+||二级地域|city|长沙|P0|	
+||内容分类|category|（音乐）台|P0|	
+||调频|fm|调频，fm|P0|	
+||调频频率|freq|87.6|P0|	
+||节目名|program||开心茶馆	
 intent::audio.live.ask.channel 直播channel相关问答|频道名|channel|值：this（本频道）or具体频道名，如“北京故事广播”|P0|这个频道信息，凤凰娱乐节目信息
-|节目名|program|值：空 or 具体节目名|P1|放午夜书场的是什么频道
-|主持人|artist|修饰|P1|
-|专辑|album|修饰|P1|
-|剧集|episode|修饰|P1|	
-|播放状态|playing|修饰|P1|	
+||节目名|program|值：空 or 具体节目名|P1|放午夜书场的是什么频道
+||主持人|artist|修饰|P1|
+||专辑|album|修饰|P1|
+||剧集|episode|修饰|P1|	
+||播放状态|playing|修饰|P1|	
 intent::audio.live.ask.program 直播program相关问答|频道名|program|值:this(本节目） or 具体节目名，如‘音乐旅途’|P1|	
 intent::audio.live.ask.artist 直播(艺人/主持人/主讲人)相关问答|主持人|artist|值：this（当前主持人）or 具体主持人名，如‘张三’|P1|这个主持人的信息
 intent::audio.live.ask.album 直播album相关问答|专辑名|album|值：this（当前专辑） or 具体专辑名称|P1|	
 intent::audio.live.ask.episode 直播剧集相关问答|剧集数|ask_sum|总共多少集|P1|总共多少集|
-|当前第几集|now_index|第几集|P1|现在第几集
+||当前第几集|now_index|第几集|P1|现在第几集
 intent::audio.live.ask.playing 直播playing相关问答|频道|channel|值：this（当前频道在播放什么） or 具体频道在播放什么|P1|cnr文艺之声在播放什么，这是在播什么
 intent::audio.live.favorite.channel 收藏电台|动作|action|like(收藏)、unlike(取消收藏)|P0|	
-|频道名|channel|为空时收藏or删除收藏当前电台，非空时，收藏or删除收藏指定电台名|	P1|	
+||频道名|channel|为空时收藏or删除收藏当前电台，非空时，收藏or删除收藏指定电台名|	P1|	
 intent::audio.live.favorite.program收藏节目|动作|action|like(收藏)、unlike(取消收藏)|P1|	
-|节目|program|为空时收藏or删除收藏当前节目，非空时，收藏or删除收藏指定节目|P1|
+||节目|program|为空时收藏or删除收藏当前节目，非空时，收藏or删除收藏指定节目|P1|
 intent::audio.live.favorite.artist 收藏(艺人/主持人/主讲人)|动作|action|like(收藏)、unlike(取消收藏)|P1|	
-|主持人|artist|为空时收藏or删除收藏当前主持人，非空时，收藏or删除收藏指定主持人|P1|
+||主持人|artist|为空时收藏or删除收藏当前主持人，非空时，收藏or删除收藏指定主持人|P1|
 intent::audio.live.favorite.album |收藏专辑|动作|action|like(收藏)、unlike(取消收藏)|P1|
-|专辑|album|为空时收藏or删除收藏当前专辑，非空时，收藏or删除收藏指定专辑|P1|	
+||专辑|album|为空时收藏or删除收藏当前专辑，非空时，收藏or删除收藏指定专辑|P1|	
