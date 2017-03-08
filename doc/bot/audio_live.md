@@ -73,9 +73,7 @@ pagesize|int|否|每页数据量，默认为10
       {
         "channel_id": 1,
         "channel_name": "北京文艺广播",
-        "attr_province": "北京",
-        "attr_city": "",
-        "attr_class": "文艺,音乐",//某电台可能属于多个分类，以逗号分隔
+        "attr_province": "北京",       
         "freq_fm": "",
         "media_info": [
           {
@@ -144,9 +142,7 @@ pagesize|int|否|每页数据量，默认为10
       {
         "channel_id": 1,
         "channel_name": "北京文艺广播",
-        "attr_province": "北京",
-        "attr_city": "北京",
-        "attr_class": "文艺,音乐",//某电台可能属于多个分类，以逗号分隔
+        "attr_province": "北京",      
         "freq_fm": "",
         "media_info": [
           {
