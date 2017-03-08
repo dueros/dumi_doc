@@ -261,33 +261,33 @@ retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
 
 直播槽位
 
-intent|slot|slot_name|slot_value|优先级|举例
-------|----|---------|----------|------|----
+intent|slot|slot_name|slot_value|举例
+------|----|---------|----------|----
 intent::audio.live.play 直播播放|搜索源|search_list|空(所有电台列表) / favorite (收藏列表)|P1|	
-||电台名|channel|归一化后的电台名 或query中 认为是电台名的词语|P0|例如query"播放北京乱七八糟电台",channel为“乱七八糟”
-||一级地域|province|湖南|P0|	
+||电台名|channel|归一化后的电台名 或query中 认为是电台名的词语|例如query"播放北京乱七八糟电台",channel为“乱七八糟”
+||一级地域|province|湖南|	
 ||二级地域|city|长沙|P0|	
-||内容分类|category|（音乐）台|P0|	
-||调频|fm|调频，fm|P0|	
-||调频频率|freq|87.6|P0|	
+||内容分类|category|（音乐）台|
+||调频|fm|调频，fm|	
+||调频频率|freq|87.6|	
 ||节目名|program||开心茶馆	
 intent::audio.live.ask.channel 直播channel相关问答|频道名|channel|值：this（本频道）or具体频道名，如“北京故事广播”|P0|这个频道信息，凤凰娱乐节目信息
 ||节目名|program|值：空 or 具体节目名|P1|放午夜书场的是什么频道
-||主持人|artist|修饰|P1|
-||专辑|album|修饰|P1|
-||剧集|episode|修饰|P1|	
-||播放状态|playing|修饰|P1|	
+||主持人|artist|修饰|
+||专辑|album|修饰|
+||剧集|episode|修饰|	
+||播放状态|playing|修饰|	
 intent::audio.live.ask.program 直播program相关问答|频道名|program|值:this(本节目） or 具体节目名，如‘音乐旅途’|P1|	
 intent::audio.live.ask.artist 直播(艺人/主持人/主讲人)相关问答|主持人|artist|值：this（当前主持人）or 具体主持人名，如‘张三’|P1|这个主持人的信息
 intent::audio.live.ask.album 直播album相关问答|专辑名|album|值：this（当前专辑） or 具体专辑名称|P1|	
 intent::audio.live.ask.episode 直播剧集相关问答|剧集数|ask_sum|总共多少集|P1|总共多少集|
-||当前第几集|now_index|第几集|P1|现在第几集
+||当前第几集|now_index|第几集|现在第几集
 intent::audio.live.ask.playing 直播playing相关问答|频道|channel|值：this（当前频道在播放什么） or 具体频道在播放什么|P1|cnr文艺之声在播放什么，这是在播什么
-intent::audio.live.favorite.channel 收藏电台|动作|action|like(收藏)、unlike(取消收藏)|P0|	
-||频道名|channel|为空时收藏or删除收藏当前电台，非空时，收藏or删除收藏指定电台名|	P1|	
-intent::audio.live.favorite.program收藏节目|动作|action|like(收藏)、unlike(取消收藏)|P1|	
-||节目|program|为空时收藏or删除收藏当前节目，非空时，收藏or删除收藏指定节目|P1|
-intent::audio.live.favorite.artist 收藏(艺人/主持人/主讲人)|动作|action|like(收藏)、unlike(取消收藏)|P1|	
-||主持人|artist|为空时收藏or删除收藏当前主持人，非空时，收藏or删除收藏指定主持人|P1|
-intent::audio.live.favorite.album |收藏专辑|动作|action|like(收藏)、unlike(取消收藏)|P1|
-||专辑|album|为空时收藏or删除收藏当前专辑，非空时，收藏or删除收藏指定专辑|P1|	
+intent::audio.live.favorite.channel 收藏电台|动作|action|like(收藏)、unlike(取消收藏)|	
+||频道名|channel|为空时收藏or删除收藏当前电台，非空时，收藏or删除收藏指定电台名|	
+intent::audio.live.favorite.program收藏节目|动作|action|like(收藏)、unlike(取消收藏)|	
+||节目|program|为空时收藏or删除收藏当前节目，非空时，收藏or删除收藏指定节目|
+intent::audio.live.favorite.artist 收藏(艺人/主持人/主讲人)|动作|action|like(收藏)、unlike(取消收藏)|	
+||主持人|artist|为空时收藏or删除收藏当前主持人，非空时，收藏or删除收藏指定主持人|
+intent::audio.live.favorite.album |收藏专辑|动作|action|like(收藏)、unlike(取消收藏)|
+||专辑|album|为空时收藏or删除收藏当前专辑，非空时，收藏or删除收藏指定专辑|
