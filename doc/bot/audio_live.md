@@ -60,6 +60,7 @@ la|string|当category为本地，必须|纬度
 lo|string|当category为本地，必须|经度
 page|int|否|页码，默认为1
 pagesize|int|否|每页数据量，默认为10
+appid|string|是|必须|标识请求的端
 
 返回格式：
 ```javascript
@@ -128,7 +129,7 @@ pagesize|int|否|每页数据量，默认为10
 cuid	|string	|是	|设备ID，设备的唯一标识
 page|int|否|页码，默认为1
 pagesize|int|否|每页数据量，默认为10
-
+appid|string|是|必须|标识请求的端
 
 返回格式：
 ```javascript
@@ -196,13 +197,14 @@ pagesize|int|否|每页数据量，默认为10
 cuid	|string	|是	|设备ID，设备的唯一标识
 page|int|否|页码，默认为1
 pagesize|int|否|每页数据量，默认为10
+appid|string|是|必须|标识请求的端
 
 返回格式：
 ```javascript
 {
   "status": "0",
   "code": "200",
-  "data": {
+  "data": [
     "page": 1,
     "total_page": 10,
     "list": [
@@ -221,6 +223,41 @@ pagesize|int|否|每页数据量，默认为10
   }
 }
 ```
+### 4、播放地址接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/playurl
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+cuid	|string	|是	|设备ID，设备的唯一标识
+channel_id|int|是|电台ID
+appid|string|是|必须|标识请求的端
+```javascript
+{
+  "status": 0,
+  "code": 200,
+  "data": [
+        //可能有蜻蜓、喜马拉雅、考拉一个或多个资源方
+        {
+            "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
+            "source": "蜻蜓FM",
+            "source_icon": "http://123.jpg"
+        },
+        {
+            "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
+            "source": "喜马拉雅FM",
+            "source_icon": "http://123.jpg"
+          },
+          {
+             "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
+             "source": "考拉FM",
+             "source_icon": "http://123.jpg"
+          }
+    ]
+}
+```
+
 直播槽位
 
 intent|slot|slot_name|slot_value|优先级|举例
