@@ -196,7 +196,7 @@ sort |int |否 |正序：acs、倒序：desc
 trackid	|int	|是	|专辑ID
 cuid	|string	|是	|设备ID，设备的唯一标识
 appid   |string|是|appid,标识接入方
-retry   |int|否|失败后再次请求节目资源必须填写此字段
+retry   |int|是|0是正常请求，大于0是失败后再次请求该节目资源
 
 
 
@@ -231,7 +231,7 @@ retry   |int|否|失败后再次请求节目资源必须填写此字段
 				},
 				"acc":{					
 					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3,
+					"64": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
 					"128": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
 				},
 				"m4a":{
