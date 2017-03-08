@@ -257,26 +257,50 @@ pagesize	|int	|否	|每页数据量，默认为10
 {
 	status: 0,
 	code: "",
-	data:
-		{
-			"id":1,
-			"track_title":"逗你玩",
-			"duration":160,
-			"pic": 
-			{								
-			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
-      			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
-      			"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
-			},
-
-			"play_count":188300,
-			"category_name":"资讯",
-			"category_id":3,
-			"update_time":"2017-03-03 10:09:18",  //更新时间
-			"create_time":"2017-03-03 10:09:18",  //创建时间
-			"source": "喜马拉雅",  //资源方
-			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
-		}
+	data:{
+	    page : 1,
+	    total_page : 10,
+	    list:[
+    		{
+    			"id":1,
+    			"track_title":"逗你玩",
+    			"duration":160,
+    			"pic": 
+    			{								
+    			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
+          			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
+          			"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
+    			},
+    
+    			"play_count":188300,
+    			"category_name":"资讯",
+    			"category_id":3,
+    			"update_time":"2017-03-03 10:09:18",  //更新时间
+    			"create_time":"2017-03-03 10:09:18",  //创建时间
+    			"source": "喜马拉雅",  //资源方
+    			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
+    		},
+    		{
+    			"id":2,
+    			"track_title":"逗你玩",
+    			"duration":160,
+    			"pic": 
+    			{								
+    			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
+          			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
+          			"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
+    			},
+    
+    			"play_count":188300,
+    			"category_name":"资讯",
+    			"category_id":3,
+    			"update_time":"2017-03-03 10:09:18",  //更新时间
+    			"create_time":"2017-03-03 10:09:18",  //创建时间
+    			"source": "喜马拉雅",  //资源方
+    			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
+    		},
+		]
+	}
 }
 
 ```
@@ -302,8 +326,7 @@ pagesize |int |否 |每页数据量，默认为10
 		{
             "page" : 1,        //当前页
             "total_page" : 10,  //总页数
-            "list" 
-               [
+            "list" [
 				{
 					"id":1, //节目ID
 					"track_title":"逗你玩",  //节目名
