@@ -54,10 +54,10 @@
 参数|类型|是否必须|备注
 ----|----|--------|----
 cuid|string|是|设备ID，设备的唯一标识
-category|string|否|分类 (国家，网络，省市，音乐，体育，交通，曲艺等)
+category|string|否|分类 (国家，网络，省市，本地，音乐，体育，交通，曲艺等)
 province|string|否|省
-la|string|否|纬度
-lo|string|否|经度
+la|string|当category为本地，必须|纬度
+lo|string|当category为本地，必须|经度
 page|int|否|页码，默认为1
 pagesize|int|否|每页数据量，默认为10
 
