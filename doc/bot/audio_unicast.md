@@ -60,6 +60,7 @@
 ----|----|--------|----
 category|int|是|分类ID
 cuid|string|是|设备ID，设备的唯一标识
+appid|string|是|appid,标识接入方
 page|int|否|页码，默认为1
 pagesize|int|否|每页数据量，默认为10
 sort|string |否 |排序：热门：grade、最新：album_last_track_time(默认：热门) 
@@ -129,6 +130,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 ----|----|--------|----
 albumid	|int	|是	|专辑ID
 cuid	|string	|是	|设备ID，设备的唯一标识
+appid   |string|是|appid,标识接入方
 page	|int	|否	|页码，默认为1
 pagesize	|int	|否	|每页数据量，默认为10
 sort |int |否 |正序：acs、倒序：desc 
@@ -193,6 +195,8 @@ sort |int |否 |正序：acs、倒序：desc
 ----|----|--------|----
 trackid	|int	|是	|专辑ID
 cuid	|string	|是	|设备ID，设备的唯一标识
+appid   |string|是|appid,标识接入方
+retry   |int|否|失败后再次请求节目资源必须填写此字段
 
 
 
@@ -249,6 +253,7 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 参数|类型|是否必须|备注
 ----|----|--------|----
 cuid	|string	|是	|设备ID，设备的唯一标识
+appid|string|是|appid,标识接入方
 page	|int	|否	|页码，默认为1
 pagesize	|int	|否	|每页数据量，默认为10
 
@@ -313,6 +318,7 @@ pagesize	|int	|否	|每页数据量，默认为10
 参数|类型|是否必须|备注
 ----|----|--------|----
 cuid |string |是 |设备ID，设备的唯一标识 
+appid|string|是|appid,标识接入方
 page |int |否 |页码，默认为1
 pagesize |int |否 |每页数据量，默认为10
 
