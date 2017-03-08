@@ -306,7 +306,7 @@ pagesize	|int	|否	|每页数据量，默认为10
 ```
 
 #### 5、播放历史接口：
- * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/history
+ * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/historylist
  * 请求方式：GET
  * 请求参数：
 
