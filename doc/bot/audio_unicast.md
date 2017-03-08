@@ -276,22 +276,6 @@ pagesize	|int	|否	|每页数据量，默认为10
 			"create_time":"2017-03-03 10:09:18",  //创建时间
 			"source": "喜马拉雅",  //资源方
 			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
-			"play_url": 
-			{
-				"mp3":{
-					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
-				},
-				"acc":{					
-					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3,
-					"128": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
-				},
-				"m4a":{
-					"24":"http://audio.xmcdn.com/group7/M03/03/FE/wKgDWlbB5mCj94OWAFBSGzSmA1g528.m4a",
-					"64": "http://audio.xmcdn.com/group7/M03/03/DA/wKgDX1bB5l3S4rnMANJrwQTRSPo780.m4a",
-				},
-			},
 		}
 }
 
