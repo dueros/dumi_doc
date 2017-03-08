@@ -52,7 +52,7 @@
 
 
 ### 1、专辑列表
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/albumlist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/albumlist
   * 请求方式：GET
   * 请求参数：
 
@@ -60,8 +60,9 @@
 ----|----|--------|----
 category|int|是|分类ID
 cuid|string|是|设备ID，设备的唯一标识
-page|int|是|页码
-pagesize|int|是|每页数据量
+appid|string|是|appid,标识接入方
+page|int|否|页码，默认为1
+pagesize|int|否|每页数据量，默认为10
 sort|string |否 |排序：热门：grade、最新：album_last_track_time(默认：热门) 
 orderby |string |否 |倒序：desc, 正序 asc （默认：asc） 
 
@@ -90,10 +91,10 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 						"play_count":188376,  //播放量
 						"category_name":"资讯",  //分类
 						"category_id":3,  //分类ID
-						"update_time":1479966445,  //更新时间
-						"create_time":1481595445,  //创建时间
+						"update_time":"2017-03-03 10:09:18",  //更新时间
+						"create_time":"2017-03-03 10:09:18",  //创建时间
 						"source": "喜马拉雅",  //资源方
-						"source_icon": "XXX.icon",  //资源方Icon
+						"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 					},
 					{
 						"id":1,
@@ -108,8 +109,10 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 						"play_count":188300,
 						"category_name":"资讯",
 						"category_id":3,
-						"update_time":1479966445,
-						"create_time":1481595445,
+						"update_time":"2017-03-03 10:09:18",  //更新时间
+						"create_time":"2017-03-03 10:09:18",  //创建时间
+						"source": "喜马拉雅",  //资源方
+						"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 					}
 				]
 		}
@@ -119,7 +122,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 
 
 ### 2、获得某个专辑的节目列表
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/tracklist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/tracklist
   * 请求方式：GET
   * 请求参数：
 
@@ -127,8 +130,9 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 ----|----|--------|----
 albumid	|int	|是	|专辑ID
 cuid	|string	|是	|设备ID，设备的唯一标识
-page	|int	|是	|页码
-pagesize	|int	|是	|每页数据量
+appid   |string|是|appid,标识接入方
+page	|int	|否	|页码，默认为1
+pagesize	|int	|否	|每页数据量，默认为10
 sort |int |否 |正序：acs、倒序：desc 
 
 返回格式：
@@ -171,10 +175,10 @@ sort |int |否 |正序：acs、倒序：desc
 						"play_count":188300,
 						"category_name":"资讯",
 						"category_id":3,
-						"update_time":1479966445,
-						"create_time":1481595445,
-						"source": "喜马拉雅",
-						"source_icon": "XXXXX.icon"
+						"update_time":"2017-03-03 10:09:18",  //更新时间
+						"create_time":"2017-03-03 10:09:18",  //创建时间
+						"source": "喜马拉雅",  //资源方
+						"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 					}
 				]
 		}
@@ -183,7 +187,7 @@ sort |int |否 |正序：acs、倒序：desc
 ```
 
 ### 3、获取节目信息
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/trackplay
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/trackplay
   * 请求方式：GET
   * 请求参数：
 
@@ -191,6 +195,8 @@ sort |int |否 |正序：acs、倒序：desc
 ----|----|--------|----
 trackid	|int	|是	|专辑ID
 cuid	|string	|是	|设备ID，设备的唯一标识
+appid   |string|是|appid,标识接入方
+retry   |int|否|失败后再次请求节目资源必须填写此字段
 
 
 
@@ -213,10 +219,10 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 			"play_count":188300,
 			"category_name":"资讯",
 			"category_id":3,
-			"update_time":1479966445,
-			"create_time":1481595445,
+			"update_time":"2017-03-03 10:09:18",  //更新时间
+			"create_time":"2017-03-03 10:09:18",  //创建时间
 			"source": "喜马拉雅",  //资源方
-			"source_icon": "XXX.icon",  //资源方Icon
+			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 			"play_url": 
 			{
 				"mp3":{
@@ -240,71 +246,81 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 
 
 ### 4、获取播放列表接口：
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/playlist
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/playlist
   * 请求方式：GET
   * 请求参数：
 
 参数|类型|是否必须|备注
 ----|----|--------|----
 cuid	|string	|是	|设备ID，设备的唯一标识
-page	|int	|是	|页码
-pagesize	|int	|是	|每页数据量
+appid|string|是|appid,标识接入方
+page	|int	|否	|页码，默认为1
+pagesize	|int	|否	|每页数据量，默认为10
 
 返回格式：
 ```javascript
 {
 	status: 0,
 	code: "",
-	data:
-		{
-			"id":1,
-			"track_title":"逗你玩",
-			"duration":160,
-			"pic": 
-			{								
-			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
-      			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
-      			"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
-			},
-
-			"play_count":188300,
-			"category_name":"资讯",
-			"category_id":3,
-			"update_time":1479966445,
-			"create_time":1481595445,
-			"source": "喜马拉雅",  //资源方
-			"source_icon": "XXX.icon",  //资源方Icon
-			"play_url": 
-			{
-				"mp3":{
-					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
-				},
-				"acc":{					
-					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3,
-					"128": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
-				},
-				"m4a":{
-					"24":"http://audio.xmcdn.com/group7/M03/03/FE/wKgDWlbB5mCj94OWAFBSGzSmA1g528.m4a",
-					"64": "http://audio.xmcdn.com/group7/M03/03/DA/wKgDX1bB5l3S4rnMANJrwQTRSPo780.m4a",
-				},
-			},
-		}
+	data:{
+	    page : 1,
+	    total_page : 10,
+	    list:[
+    		{
+    			"id":1,
+    			"track_title":"逗你玩",
+    			"duration":160,
+    			"pic": 
+    			{								
+    			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
+          			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
+          			"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
+    			},
+    
+    			"play_count":188300,
+    			"category_name":"资讯",
+    			"category_id":3,
+    			"update_time":"2017-03-03 10:09:18",  //更新时间
+    			"create_time":"2017-03-03 10:09:18",  //创建时间
+    			"source": "喜马拉雅",  //资源方
+    			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
+    		},
+    		{
+    			"id":2,
+    			"track_title":"逗你玩",
+    			"duration":160,
+    			"pic": 
+    			{								
+    			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
+          			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
+          			"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
+    			},
+    
+    			"play_count":188300,
+    			"category_name":"资讯",
+    			"category_id":3,
+    			"update_time":"2017-03-03 10:09:18",  //更新时间
+    			"create_time":"2017-03-03 10:09:18",  //创建时间
+    			"source": "喜马拉雅",  //资源方
+    			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
+    		},
+		]
+	}
 }
 
 ```
 
 #### 5、播放历史接口：
- * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/unicast/history
+ * 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/historylist
  * 请求方式：GET
  * 请求参数：
 
 参数|类型|是否必须|备注
 ----|----|--------|----
 cuid |string |是 |设备ID，设备的唯一标识 
-page |int |是 |页码 
-pagesize |int |是 |每页数据量 
+appid|string|是|appid,标识接入方
+page |int |否 |页码，默认为1
+pagesize |int |否 |每页数据量，默认为10
 
  * 返回格式：
  
@@ -316,8 +332,7 @@ pagesize |int |是 |每页数据量
 		{
             "page" : 1,        //当前页
             "total_page" : 10,  //总页数
-            "list" 
-               [
+            "list" [
 				{
 					"id":1, //节目ID
 					"track_title":"逗你玩",  //节目名
@@ -325,10 +340,10 @@ pagesize |int |是 |每页数据量
 					"album_name": "逻辑思维",  //专辑名
 					"duration": 220,  //节目时长，单位：s
 					"offset": 100, //播放到的断点位置，单位：s，0为播放完毕
-					"update_time":1479966445,
-					"create_time":1481595445,
+					"update_time":"2017-03-03 10:09:18",  //更新时间
+					"create_time":"2017-03-03 10:09:18",  //创建时间
 					"source": "喜马拉雅",  //资源方
-					"source_icon": "XXX.icon",  //资源方Icon
+					"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 				},
 				{
 					"id":2, //节目ID
@@ -337,8 +352,10 @@ pagesize |int |是 |每页数据量
 					"album_name": "逻辑思维",  //专辑名
 					"duration": 160,  //节目时长，单位：s
 					"offset": 50, //播放到的断点位置，单位：s，0为播放完毕
-					"update_time":1479966445,
-					"create_time":1481595445,
+					"update_time":"2017-03-03 10:09:18",  //更新时间
+					"create_time":"2017-03-03 10:09:18",  //创建时间
+					"source": "喜马拉雅",  //资源方
+					"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 				},
 			]
 		}
