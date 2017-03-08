@@ -233,7 +233,7 @@ appid|string|是|必须|标识请求的端
 cuid	|string	|是	|设备ID，设备的唯一标识
 channel_id|int|是|电台ID
 appid|string|是|必须|标识请求的端
-retry|int|是|必须|0是正常请求，大于0是失败后再次请求该节目资源
+retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
 ```javascript
 {
   "status": 0,
