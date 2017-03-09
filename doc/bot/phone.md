@@ -4,6 +4,7 @@
 打电话返回的完整例子:
 ```javascript
 //query=打电话给测试薛斌
+
 {
   "result": {
     "bot_id": "phone",
