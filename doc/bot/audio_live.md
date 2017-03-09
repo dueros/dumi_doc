@@ -137,6 +137,7 @@ retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
     "freq_fm": "",
     "media_info": [
       {
+        "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
         "pic": {
           "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
           "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
@@ -147,6 +148,7 @@ retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
         "source_icon": "http://123.jpg"
       },
       {
+        "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
         "pic": {
           "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
           "medium": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg",
@@ -157,6 +159,7 @@ retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
         "source_icon": "http://123.jpg"
       },
       {
+        "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
         "pic": {
           "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
           "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
@@ -200,7 +203,6 @@ appid|string|是|必须|标识请求的端
         "freq_fm": "",
         "media_info": [
           {
-            "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
             "pic": {
               "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
               "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
@@ -211,7 +213,6 @@ appid|string|是|必须|标识请求的端
             "source_icon": "http://123.jpg"
           },
           {
-            "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
             "pic": {
               "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
               "medium": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg",
@@ -221,7 +222,6 @@ appid|string|是|必须|标识请求的端
             "source_icon": "http://123.jpg"
           },
           {
-            "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
             "pic": {
               "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
               "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
