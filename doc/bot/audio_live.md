@@ -78,7 +78,6 @@ appid|string|是|必须|标识请求的端
         "freq_fm": "",
         "media_info": [
           {
-            "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
             "pic": {
               "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
               "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
@@ -89,7 +88,6 @@ appid|string|是|必须|标识请求的端
             "source_icon": "http://123.jpg"
           },
           {
-            "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
             "pic": {
               "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
               "medium": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg",
@@ -100,7 +98,6 @@ appid|string|是|必须|标识请求的端
             "source_icon": "http://123.jpg"
           },
           {
-            "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
             "pic": {
               "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
               "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
@@ -118,8 +115,64 @@ appid|string|是|必须|标识请求的端
   }
 }
 ```
+### 2、电台详情信息接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/channelInfo
+  * 请求方式：GET
+  * 请求参数：
 
-### 2、获取播放列表接口：
+参数|类型|是否必须|备注
+----|----|--------|----
+cuid	|string	|是	|设备ID，设备的唯一标识
+channel_id|int|是|电台ID
+appid|string|是|必须|标识请求的端
+retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
+```javascript
+{
+  "status": 0,
+  "code": 200,
+  "data": {
+    "channel_id": 1,
+    "channel_name": "北京文艺广播",
+    "attr_province": "北京",
+    "freq_fm": "",
+    "media_info": [
+      {
+        "pic": {
+          "small": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!small",
+          "medium": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!medium",
+          "large": "http://pic.qingting.fm/2015/0828/20150828111022698.jpg!large"
+        },
+        "program_name": "娱乐有范儿",
+        "source": "蜻蜓FM",
+        "source_icon": "http://123.jpg"
+      },
+      {
+        "pic": {
+          "small": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_small.jpg",
+          "medium": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg",
+          "large": "http://fdfs.xmcdn.com/group6/M08/A9/12/wKgDhFUKl1jyghlVAABRqWHVL_g545_mobile_large.jpg"
+        },
+        "program_name": "娱乐有范儿",
+        "source": "喜马拉雅",
+        "source_icon": "http://123.jpg"
+      },
+      {
+        "pic": {
+          "small": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
+          "medium": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg",
+          "large": "http://img.kaolafm.net/mz/images/201607/5d54a015-4700-4b6e-a2b4-8f08c2918209/default.jpg"
+        },
+        "program_name": "娱乐有范儿",
+        "source": "考拉",
+        "source_icon": "http://123.jpg"
+      }
+    ],
+    "update_time": "2016-02-12 13:00:00",
+    "create_time": "2016-02-11 14:00:00"
+  }
+}
+```
+### 3、获取播放列表接口：
   * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/playlist
   * 请求方式：GET
   * 请求参数：
@@ -187,7 +240,7 @@ appid|string|是|必须|标识请求的端
 }
 ```
 
-### 3、播放历史接口
+### 4、播放历史接口
   * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/history
   * 请求方式：GET
   * 请求参数：
@@ -223,41 +276,7 @@ appid|string|是|必须|标识请求的端
   }
 }
 ```
-### 4、播放地址接口
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/live/playurl
-  * 请求方式：GET
-  * 请求参数：
 
-参数|类型|是否必须|备注
-----|----|--------|----
-cuid	|string	|是	|设备ID，设备的唯一标识
-channel_id|int|是|电台ID
-appid|string|是|必须|标识请求的端
-retry|int|是|0是正常请求，大于0是失败后再次请求该节目资源
-```javascript
-{
-  "status": 0,
-  "code": 200,
-  "data": [
-        //可能有蜻蜓、喜马拉雅、考拉一个或多个资源方
-        {
-            "play_url": "http://hls.qingting.fm/live/333.m3u8?bitrate=1000",
-            "source": "蜻蜓FM",
-            "source_icon": "http://123.jpg"
-        },
-        {
-            "play_url": "http://live.xmcdn.com/live/94/64.m3u8?transcode=ts",
-            "source": "喜马拉雅FM",
-            "source_icon": "http://123.jpg"
-          },
-          {
-             "play_url": "http://trslbs.itings.com/016f63815d64d4db/1600000000459/playlist.m3u8",
-             "source": "考拉FM",
-             "source_icon": "http://123.jpg"
-          }
-    ]
-}
-```
 
 直播槽位
 
