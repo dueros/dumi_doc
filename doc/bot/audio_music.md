@@ -164,7 +164,63 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
   "message": ""
 }
 ```
+### 获取某首歌的歌曲详情
 
+请求参数
+  * url: http://s.xiaodu.baidu.com/v20161223/resource/musicdetail?song_id=1006090198
+  * id : [歌曲列表接口]中返回的id
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": ‘’,
+  "data": {
+        "id": "1006090198",
+        "duration": "252",
+        "name": "黑雨",
+        "alias": "",
+        "singer_name": [
+            "莫文蔚"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "莫文蔚"
+        ],
+        "album_info": [
+            {
+                "album_url": "http:\\/\\/music.baidu.com\\/album\\/179567",
+                "album_url_md5": "5e1b2464c0fa0abac9369f89eb68e753",
+                "album_id": "1043086642",
+                "album_name": "x"
+            }
+        ],
+        "genre": "流行",
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "lycUrl": "http://music.baidu.com/song/929759?fm=altg_new3#song_lyric",
+        "lycContent": "歌词详情",
+        "wap_lycUrl": "http://music.baidu.com/song/929759?fm=altg_new3",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/12459382/12459382.lrc",
+        "url": "http://music.baidu.com/song/929759",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E9%BB%91%E9%9B%A8",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/124206198/124206198.jpg",
+        "score": "0",
+        "publish_time": "2003-09-01",
+        "publish_company": "SONY MUSIC",
+        "is_need_pay_listen": 0,
+        "hot": "144",
+        "from_site": 1,
+        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/42531820/42531820.mp3?xcode=1ddc85b4186134be718197b4a0f16666"
+  },
+  "message": ""
+}
+```
+其中status 为0返回正常，其它异常
 
 
 ### 获取歌单列表
@@ -504,6 +560,25 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
   "code": null,
   "data": {
     "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
+  },
+  "message": ""
+}
+```
+### 获取某首歌曲的歌词
+
+请求参数
+  * url: http://s.xiaodu.baidu.com/v20161223/resource/songlyric?id=991725450
+  * id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": null,
+  "data": {
+        lycUrl: "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
+        lycContent: "歌词内容",
+        lycDownload: "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
   },
   "message": ""
 }
