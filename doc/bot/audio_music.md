@@ -174,8 +174,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "SONY MUSIC",
         "is_need_pay_listen": 0,
         "hot": "144",
-        "from_site": 1,
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/42531820/42531820.mp3?xcode=1ddc85b4186134be718197b4a0f16666"
+        "from_site": 1
 
       },
       ....
