@@ -95,7 +95,7 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
 intent::audio.music.stop 停止 |	 	 	 	 
 intent::audio.music.pause 暂停 |  	 	 	 
 intent::audio.music.continue 继续 | 	 	 	 	 	 
-intent::audio.music.next 下一首 | 	 	 	 
+intent::audio.music.next 下一首 | 换一首、换一批 | unit | 槽位置为group是换一首,槽位置为空是换一首	 	 	 
 intent::audio.music.previous 上一首	 | 	 	 	 	 
 intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，rand，list_cycle
 
