@@ -567,8 +567,8 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ### 获取某首歌曲的歌词
 
 请求参数
-  * url: http://s.xiaodu.baidu.com/v20161223/resource/songlyric?id=991725450
-  * id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
+  * url: http://s.xiaodu.baidu.com/v20161223/resource/songlyric?song_id=991725450
+  * song_id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
 
 返回值：
 ```javascript
