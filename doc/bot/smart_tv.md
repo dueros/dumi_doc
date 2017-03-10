@@ -4,7 +4,7 @@
 智能电视是<kbd>DuerOS</kbd>下的一个垂类服务, 通过语音解析和意图识别等能力给盒子提供服务,如:
 语音控制换台, 语音检索影片, 根据画面查询人物信息, 控制视频播放的节奏等.
 
-作为<kbd>DuerOS</kbd>的垂类服务, 因此通过<kbd>DuerOS</kbd>的协议字段directives提供给终端使用. <kbd>DuerOS</kbd>的协议以及其他垂类返回格式可直接参考:[<<度秘开放平台OpenAPI使用说明>>](http://note.youdao.com/share/?id=33de2cde652017565f70dba363b59d59&type=note), 本文档只具体描述智能TV盒子的接口协议.
+作为<kbd>DuerOS</kbd>的垂类服务, 因此通过<kbd>DuerOS</kbd>的协议字段directives提供给终端使用. <kbd>DuerOS</kbd>的协议以及其他垂类返回格式可直接参考:[<<度秘开放平台OpenAPI使用说明>>](../api/overview.md), 本文档只具体描述智能TV盒子的接口协议.
 
 # 语音播报 Speech
 语音播报描述字段speech是与directives指令平行的一个字段, 当服务端返回的数据有需要播放的文本或者其他时, 就需要补充该字段, 客户端通过解析该字段来调用speaker接口. 格式如下:
