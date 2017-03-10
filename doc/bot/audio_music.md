@@ -345,8 +345,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "854092",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/5d62ab148fc1d5f05c033409b6d07e84/266958163/266958163.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "998002844",
@@ -385,8 +384,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "93427",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/d190bc80771bed15d5afd2e08672e194/64540063/64540063.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "964861563",
@@ -425,8 +423,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "70453",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/64333975/64333975.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "1009088399",
@@ -470,8 +467,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "106174",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/51403263/51403263.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "1003959977",
@@ -510,8 +506,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "21893",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/64358974/64358974.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "997036570",
@@ -550,8 +545,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "SONY MUSIC",
         "is_need_pay_listen": 0,
         "hot": "66379",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/41527060/41527060.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "996977531",
@@ -594,8 +588,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "56316",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/51420821/51420821.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "1005362249",
@@ -634,8 +627,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "47853",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/42744018/42744018.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "1006041007",
@@ -674,8 +666,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "34673",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/41604714/41604714.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      },
      {
         "id": "1016008345",
@@ -714,8 +705,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
         "publish_company": "杰威尔JVR音乐有限公司",
         "is_need_pay_listen": 0,
         "hot": "49779",
-        "from_site": "baidu",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/41943072/41943072.mp3?xcode=b95fef1670a00875e4d6351b3c1b445d"
+        "from_site": "baidu"
      }
     ]
   },
