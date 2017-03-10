@@ -128,7 +128,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```javascript
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
     "page": 1,
     "total_page": 5,
@@ -256,7 +256,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 }
              ]
        },
-    message: null
+    message: ""
 }
 ```
 其中status 为0返回正常，其它异常
@@ -557,7 +557,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```javascript
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
     "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
   },
@@ -574,11 +574,11 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```javascript
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
-        lycUrl: "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
-        lycContent: "歌词内容",
-        lycDownload: "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
+        "lycUrl": "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
+        "lycContent": "歌词内容",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
   },
   "message": ""
 }
