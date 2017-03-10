@@ -220,7 +220,9 @@ cuid	|string	|是	|设备ID，设备的唯一标识
 appid   |string|是|appid,标识接入方
 retry   |int|是|0是正常请求，大于0是失败后再次请求该节目资源
 
-
+播放url地址说明：
+mp3\aac\m4a代表音频的格式
+32\64\128代表各个格式下32\64\128位的音频的播放地址
 
 返回格式：
 ```javascript
@@ -247,14 +249,14 @@ retry   |int|是|0是正常请求，大于0是失败后再次请求该节目资�
 			"source_icon": "http://xxxx.xxx.xxx/xx/xx.jpg",  //资源方Icon
 			"play_url": 
 			{
-				"mp3":{
-					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
+				"mp3":{//代表播放的音频格式
+					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",//代表32位mp3格式的声音的播放地址
+					"64": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",//代表64位mp3格式的声音的播放地址
 				},
 				"acc":{					
-					"32": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_32.mp3",
-					"64": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
-					"128": "http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_64.mp3",
+					"32": "http://image.kaolafm.net/mz/aac_32/201305/1d257f2b-944d-4607-a846-15c8838a8aab.aac",
+					"64": "http://image.kaolafm.net/mz/aac_64/201305/1d257f2b-944d-4607-a846-15c8838a8aab.aac",
+					"128": "http://image.kaolafm.net/mz/aac_128/201305/1d257f2b-944d-4607-a846-15c8838a8aab.aac",
 				},
 				"m4a":{
 						"24":"http://audio.xmcdn.com/group7/M03/03/FE/wKgDWlbB5mCj94OWAFBSGzSmA1g528.m4a",
