@@ -1,12 +1,71 @@
-[toc]
+# 智能电视
 
-# 简介
+## Table of Contents
+
+
+   * [智能电视](#智能电视)
+      * [Table of Contents](#table-of-contents)
+      * [简介](#简介)
+      * [语音播报 Speech](#语音播报-speech)
+      * [天气](#天气)
+      * [指令 Directives](#指令-directives)
+         * [设计原型](#设计原型)
+         * [详细指令列表](#详细指令列表)
+            * [tv.system.volume.Up](#tvsystemvolumeup)
+            * [tv.system.volume.Down](#tvsystemvolumedown)
+            * [tv.system.volume.Set](#tvsystemvolumeset)
+            * [tv.system.volume.Mute](#tvsystemvolumemute)
+            * [tv.system.volume.Unmute](#tvsystemvolumeunmute)
+            * [tv.system.light.Up](#tvsystemlightup)
+            * [tv.system.light.Down](#tvsystemlightdown)
+            * [tv.system.constrast.Up](#tvsystemconstrastup)
+            * [tv.system.contrast.Down](#tvsystemcontrastdown)
+            * [tv.system.application.Open](#tvsystemapplicationopen)
+            * [tv.system.application.Close](#tvsystemapplicationclose)
+            * [tv.system.application.Upgrade](#tvsystemapplicationupgrade)
+            * [tv.system.application.Uninstall](#tvsystemapplicationuninstall)
+            * [tv.system.command.Go](#tvsystemcommandgo)
+            * [tv.system.command.Exit](#tvsystemcommandexit)
+            * [tv.system.command.Back](#tvsystemcommandback)
+            * [tv.system.command.Sleep](#tvsystemcommandsleep)
+            * [tv.system.command.Wake](#tvsystemcommandwake)
+            * [tv.system.command.TVOn](#tvsystemcommandtvon)
+            * [tv.system.command.TVOff](#tvsystemcommandtvoff)
+            * [tv.system.channel.Open](#tvsystemchannelopen)
+            * [tv.system.channel.Update](#tvsystemchannelupdate)
+            * [tv.player.resource.Play](#tvplayerresourceplay)
+            * [tv.player.control.Pause](#tvplayercontrolpause)
+            * [tv.player.control.FastForward](#tvplayercontrolfastforward)
+            * [tv.player.control.Goto](#tvplayercontrolgoto)
+            * [tv.player.control.BackForward](#tvplayercontrolbackforward)
+            * [tv.player.control.Speed](#tvplayercontrolspeed)
+            * [tv.player.control.Previous](#tvplayercontrolprevious)
+            * [tv.player.control.Next](#tvplayercontrolnext)
+            * [tv.player.control.Episode](#tvplayercontrolepisode)
+            * [tv.image.snapshot.Upload](#tvimagesnapshotupload)
+            * [tv.view.card.Render](#tvviewcardrender)
+            * [tv.view.text.Render](#tvviewtextrender)
+            * [tv.view.list.Render](#tvviewlistrender)
+            * [tv.view.detail.Render](#tvviewdetailrender)
+      * [意图识别 NLU](#意图识别-nlu)
+         * [MV类目](#mv类目)
+            * [原型](#原型)
+            * [样例](#样例)
+         * [影视类目](#影视类目)
+            * [原型](#原型-1)
+            * [样例](#样例-1)
+         * [控制指令类目](#控制指令类目)
+      * [ChangeLog](#changelog)
+      * [备注](#备注)
+
+
+## 简介
 智能电视是<kbd>DuerOS</kbd>下的一个垂类服务, 通过语音解析和意图识别等能力给盒子提供服务,如:
 语音控制换台, 语音检索影片, 根据画面查询人物信息, 控制视频播放的节奏等.
 
-作为<kbd>DuerOS</kbd>的垂类服务, 因此通过<kbd>DuerOS</kbd>的协议字段directives提供给终端使用. <kbd>DuerOS</kbd>的协议以及其他垂类返回格式可直接参考:[<<度秘开放平台OpenAPI使用说明>>](http://note.youdao.com/share/?id=33de2cde652017565f70dba363b59d59&type=note), 本文档只具体描述智能TV盒子的接口协议.
+作为<kbd>DuerOS</kbd>的垂类服务, 因此通过<kbd>DuerOS</kbd>的协议字段directives提供给终端使用. <kbd>DuerOS</kbd>的协议以及其他垂类返回格式可直接参考:[<<度秘开放平台OpenAPI使用说明>>](../api/overview.md), 本文档只具体描述智能TV盒子的接口协议.
 
-# 语音播报 Speech
+## 语音播报 Speech
 语音播报描述字段speech是与directives指令平行的一个字段, 当服务端返回的数据有需要播放的文本或者其他时, 就需要补充该字段, 客户端通过解析该字段来调用speaker接口. 格式如下:
 
 	"speech": {
@@ -14,7 +73,7 @@
 		"content": "正在为您播放周杰伦的歌曲"
 	}
 
-#天气
+## 天气
 
 天气需要填充视图和进行语音播报，天气视图描述字段views，其value为jsonarray格式，客户端通过views字段填充视图，通过解析speech字段进行语音播报. 其中views格式如下:
 	
@@ -32,8 +91,8 @@
                 }
             ]
 
-# 指令 Directives
-## 设计原型
+## 指令 Directives
+### 设计原型
 
 	{
     "header": {
@@ -52,9 +111,9 @@
 6. name采用首字母大写的驼峰命名法
 
 
-## 详细指令列表
+### 详细指令列表
 
-### tv.system.volume.Up
+#### tv.system.volume.Up
     音量增大
 	{
     "header": {
@@ -69,7 +128,7 @@
     	
     
 
-### tv.system.volume.Down
+#### tv.system.volume.Down
 	减小音量
 	{
     "header": {
@@ -82,7 +141,7 @@
     }
 	}
 	
-### tv.system.volume.Set
+#### tv.system.volume.Set
 	设置音量
 	{
     "header": {
@@ -96,7 +155,7 @@
 	}
 	
 	
-### tv.system.volume.Mute
+#### tv.system.volume.Mute
 	静音
 	{
     "header": {
@@ -109,7 +168,7 @@
     }
 	}
        
-### tv.system.volume.Unmute
+#### tv.system.volume.Unmute
 	取消静音
 	{
     "header": {
@@ -122,7 +181,7 @@
     }
 	}
        
-### tv.system.light.Up
+#### tv.system.light.Up
 	调高亮度
 	{
 	    "header": {
@@ -135,7 +194,7 @@
     }
 }
         
-### tv.system.light.Down
+#### tv.system.light.Down
 	调低亮度
 	{
     "header": {
@@ -148,7 +207,7 @@
     }
 	}
         
-### tv.system.constrast.Up
+#### tv.system.constrast.Up
 	对比度增大
 	{
     "header": {
@@ -161,7 +220,7 @@
     }
 	}
          
-### tv.system.contrast.Down
+#### tv.system.contrast.Down
 	 对比度减小
 	{
     "header": {
@@ -173,7 +232,7 @@
         "extend": {}
     }
 	}
-### tv.system.application.Open
+#### tv.system.application.Open
 	打开应用
 	{
     "header": {
@@ -189,7 +248,7 @@
     }
 	}
  
-### tv.system.application.Close
+#### tv.system.application.Close
 	关闭应用
 	{
     "header": {
@@ -205,7 +264,7 @@
 	}
 
       
-### tv.system.application.Upgrade
+#### tv.system.application.Upgrade
 	升级应用
 	{
     "header": {
@@ -220,7 +279,7 @@
     }
 	}
 
-### tv.system.application.Uninstall
+#### tv.system.application.Uninstall
 	卸载应用
 	{
     "header": {
@@ -235,7 +294,7 @@
     }
 	}
 
-### tv.system.command.Go
+#### tv.system.command.Go
 	//打开主页launcher/系统设置/某个主页模块
 	{
     "header": {
@@ -248,7 +307,7 @@
     }
 	}
 
-### tv.system.command.Exit
+#### tv.system.command.Exit
 	退出
 	{
     "header": {
@@ -259,7 +318,7 @@
         "extend":{}
     }
 	}
-### tv.system.command.Back
+#### tv.system.command.Back
 	返回
 	{
     "header": {
@@ -271,7 +330,7 @@
     }
 	}
 
-### tv.system.command.Sleep
+#### tv.system.command.Sleep
 	休眠
 	{
         "header": {
@@ -283,7 +342,7 @@
         }
     }
 
-### tv.system.command.Wake
+#### tv.system.command.Wake
 	唤醒盒子
 	{
         "header": {
@@ -295,7 +354,7 @@
         }
     }
   
-### tv.system.command.TVOn
+#### tv.system.command.TVOn
 	打开电视
 	{
         "header": {
@@ -307,7 +366,7 @@
         }
     }
 
-### tv.system.command.TVOff
+#### tv.system.command.TVOff
 	关闭电视
 	{
         "header": {
@@ -318,7 +377,7 @@
             "extend":{}
         }
     }  
-### tv.system.channel.Open
+#### tv.system.channel.Open
 	打开电视台的指令
 	{
     "header": {
@@ -332,7 +391,7 @@
     }
 	}
 
-### tv.system.channel.Update
+#### tv.system.channel.Update
 	升级直播资源
 	{
         "header": {  
@@ -343,7 +402,7 @@
              "extend": { }
            }
         }
-### tv.player.resource.Play
+#### tv.player.resource.Play
 	播放器播放指令
 	{
         "header": {  
@@ -360,7 +419,7 @@
      }
 
   
-### tv.player.control.Pause
+#### tv.player.control.Pause
 	播放器暂停/继续
 	{
         "header": {  
@@ -372,7 +431,7 @@
 			 "extend": {}
        }
      }
-### tv.player.control.FastForward
+#### tv.player.control.FastForward
 	快进
 	{
         "header": {  
@@ -384,7 +443,7 @@
 			   "extend": { }
              }
         }
-### tv.player.control.Goto
+#### tv.player.control.Goto
 	指定时间点跳转
 	{
         "header": { 
@@ -396,7 +455,7 @@
               "extend" : {}
             }
          }
-### tv.player.control.BackForward
+#### tv.player.control.BackForward
 	快退指令
 	{
         "header": {  
@@ -409,7 +468,7 @@
          }
      }
 
-### tv.player.control.Speed
+#### tv.player.control.Speed
 	播放器几倍速播放
 	{
         "header": {  
@@ -422,7 +481,7 @@
          }
       }         
     
-### tv.player.control.Previous
+#### tv.player.control.Previous
 	上一集
 	{
         "header": {  
@@ -435,7 +494,7 @@
          }
       }         
 
-### tv.player.control.Next
+#### tv.player.control.Next
 	下一集
 	{
         "header": {  
@@ -448,7 +507,7 @@
          }
       } 
 
-### tv.player.control.Episode
+#### tv.player.control.Episode
 	第3集
 	{
         "header": {  
@@ -461,7 +520,7 @@
          }
       } 
     
-### tv.image.snapshot.Upload
+#### tv.image.snapshot.Upload
 	截图上传指令
 	{
         "header": {  
@@ -474,7 +533,7 @@
     }
             
 
-### tv.view.card.Render
+#### tv.view.card.Render
 	弹出层的视觉渲染(比如明星识图)
 	{
         "header": {  
@@ -490,7 +549,7 @@
          }
       }
 
-### tv.view.text.Render
+#### tv.view.text.Render
 	对话框中的文本内容
 	{
         "header": {  
@@ -502,7 +561,7 @@
             "extend": {}
          }
       }
-### tv.view.list.Render
+#### tv.view.list.Render
 	资源列表结果展示
 	{
     "header": {
@@ -530,7 +589,7 @@
         "extend": {}
     }
 	}
-### tv.view.detail.Render
+#### tv.view.detail.Render
 	单一结果，直接进详情页
 	去掉了resource_url: 原因是统一电影和电视剧字段格式, 把对应的数据放到了item数组里.
 	{
@@ -564,9 +623,9 @@
 	} 
 
 
-# 意图识别 NLU
-## MV类目
-### 原型
+## 意图识别 NLU
+### MV类目
+#### 原型
 	["我想唱东风破", {
 	"domain":"MV",
 	"intent":"MV_SEARCH",
@@ -587,7 +646,7 @@
 
 	}]
 
-### 样例
+#### 样例
 	["我想唱东风破", {
 	"domain":"MV",
 	"intent":"MV_SEARCH",
@@ -611,8 +670,8 @@
 	}
 	}]
 	
-## 影视类目
-### 原型
+### 影视类目
+#### 原型
 	["我想看武林外传", {
 	"domain":"FILM",
 	"intent":"FILM_SEARCH",
@@ -640,7 +699,7 @@
 
 	}]
 
-### 样例
+#### 样例
 	["我想看欢乐颂", {
 	"domain":"FILM",
 	"intent":"FILM_SEARCH",
@@ -667,8 +726,8 @@
 	}]
 
 
-## 控制指令类目
-### 
+### 控制指令类目
+#### 
 	["声音大点", {
 	"domain":"COMMAND",
 	"intent":"volum.up",
@@ -872,7 +931,7 @@
 	}
 	}]
 
-# ChangeLog
+## ChangeLog
 * 2017-2-7
 	增加MV类nlu返回的结果
 * 2017-2-10
@@ -885,7 +944,7 @@
 	增加了控制指令的nlu返回
  
 
-# 备注
+## 备注
 1. 点播资源和直播资源分两个指令，分页问题
 ~~2.详情页：resoure_url去掉，假如推荐的资源字段，与item_list平级~~
 4. list页面加type，方便分类展示
