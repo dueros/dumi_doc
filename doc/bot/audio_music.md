@@ -152,8 +152,10 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_id": "1043086642",
                 "album_name": "x"
             }
+        ], 
+        "genre": [
+            "流行"
         ],
-        "genre": "流行",
         "tag": [
             "流行"
         ],
@@ -213,7 +215,9 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_name": "x"
             }
         ],
-        "genre": "流行",
+        "genre": [
+            "流行"
+        ],
         "tag": [
             "流行"
         ],
@@ -364,7 +368,9 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_name": "我很忙"
             }
         ],
-        "genre": "流行",
+        "genre": [
+            "流行"
+        ],
         "tag": [
             "流行"
         ],
@@ -402,7 +408,9 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_name": "叶惠美"
             }
         ],
-        "genre": "流行",
+        "genre": [
+            "流行"
+        ],
         "tag": [
             "流行"
         ],
@@ -440,7 +448,9 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_name": "十一月的萧邦"
             }
         ],
-        "genre": "流行",
+        "genre": [
+            "流行"
+        ],
         "tag": [
             "寂寞",
             "纯音乐",
@@ -483,7 +493,9 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_name": "魔杰座"
             }
         ],
-        "genre": "流行",
+        "genre": [
+            "流行"
+        ],
         "tag": [
             "流行"
         ],
@@ -521,7 +533,9 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_name": "婚礼歌手 幸福情歌精选"
             }
         ],
-        "genre": "流行",
+        "genre": [
+            "流行"
+        ],
         "tag": [
             "流行"
         ],
@@ -558,8 +572,10 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_id": "1011290034",
                 "album_name": "十一月的萧邦"
             }
+        ], 
+        "genre": [
+            "流行"
         ],
-        "genre": "流行",
         "tag": [
             "中国风",
             "伴奏",
@@ -600,8 +616,10 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_id": "1054909997",
                 "album_name": "十二新作"
             }
+        ], 
+        "genre": [
+            "流行"
         ],
-        "genre": "流行",
         "tag": [
             "流行"
         ],
@@ -638,8 +656,10 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_id": "1009252782",
                 "album_name": "魔杰座"
             }
+        ], 
+        "genre": [
+            "流行"
         ],
-        "genre": "流行",
         "tag": [
             "流行"
         ],
@@ -676,8 +696,10 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
                 "album_id": "1050554398",
                 "album_name": "跨时代"
             }
+        ], 
+        "genre": [
+            "流行"
         ],
-        "genre": "流行",
         "tag": [
             "流行"
         ],
