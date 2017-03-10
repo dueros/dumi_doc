@@ -12,9 +12,18 @@ ps:上报的端上的播放状态也为多轮解析提供了支撑。
 
 ## 上报接口
 
-|*URL*|https://xiaodu.baidu.com/saiya/mediastat|
-|-|-|
-|*Method*|POST|
+<table>
+<tr>
+<td>URL</td>
+<td>https://xiaodu.baidu.com/saiya/mediastat</td>
+
+</tr>
+<tr>
+<td>Method</td>
+<td>POST</td>
+
+</tr>
+</table>
 
 ## 接口参数
 
