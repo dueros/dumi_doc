@@ -280,7 +280,7 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
   "message": ""
 }
 ```
-### 歌曲的最新播放url接口
+### 歌曲最新播放url接口
 请求参数
   * 接口地址：http://s.xiaodu.ba0161223/resource/musicstreamurl
   * 请求方式：GET
@@ -303,7 +303,7 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
 ```
 
 
-### 获取歌单列表
+### 歌单列表接口
   * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist?page=1&page_size=10
   * page：页码
   * page_size：每页请求歌单数量，默认为10
@@ -342,7 +342,7 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
 其中status 为0返回正常，其它异常
 
 
-### 获取某个歌单下的歌曲列表
+### 歌单下的歌曲列表接口
 
 请求参数
   * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetmusic?sheet_id=1000&page=1&page_size=10
