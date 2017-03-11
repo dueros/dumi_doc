@@ -50,7 +50,7 @@ ps:上报的端上的播放状态也为多轮解析提供了支撑。
       <td>播放的资源地址</td>
       <td>string</td>
       <td>否</td>
-      <td>http://fdfs.***.com/group3/M01/77/42/wKgDsVKMdDLCVKUUAIMXy99Q7Vo340.mp3</td>
+      <td style="word-break:break-all">http://fdfs.***.com/group3/M01/77/42/wKgDsVKMdDLCVKUUAIMXy99Q7Vo340.mp3</td>
       <td>播放资源地址</td>
    </tr>
    <tr>
