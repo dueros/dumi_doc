@@ -303,37 +303,6 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
 ```
 
 
-返回值：
-```javascript
-{
-  "status": 0,
-  "code": "",
-  "data": {
-        "lycUrl": "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
-        "lycContent": "歌词内容",
-        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
-  },
-  "message": ""
-}
-```
-
-### 歌曲的最新播放url接口
-请求参数
-  * url: http://s.xiaodu.baidu.com/v20161223/resource/musicstreamurl?id=846122617
-  * id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
-
-返回值：
-```javascript
-{
-  "status": 0,
-  "code": "",
-  "data": {
-    "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
-  },
-  "message": ""
-}
-```
-
 ### 获取歌单列表
   * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist?page=1&page_size=10
   * page：页码
