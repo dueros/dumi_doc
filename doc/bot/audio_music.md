@@ -124,7 +124,18 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 }
 ```
 
-抓取播放列表的地址，返回值示例如下
+### 播放列表接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/music
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+user_id|string|是|设备ID，设备的唯一标识
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
+
+返回格式：
 ```javascript
 {
   "status": 0,
@@ -183,11 +194,15 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
   "message": ""
 }
 ```
-### 获取某首歌的歌曲详情
+### 歌曲详情接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/musicdetail
+  * 请求方式：GET
+  * 请求参数：
 
-请求参数
-  * url: http://s.xiaodu.baidu.com/v20161223/resource/musicdetail?song_id=1006090198
-  * id : [歌曲列表接口]中返回的id
+参数|类型|是否必须|备注
+----|----|--------|----
+song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
+
 
 返回值：
 ```javascript
@@ -243,6 +258,81 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```
 其中status 为0返回正常，其它异常
 
+### 歌曲歌词接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/songlyric
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
+
+返回值
+```javascript
+{
+  "status": 0,
+  "code": "",
+  "data": {
+        "lycUrl": "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
+        "lycContent": "歌词内容",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
+  },
+  "message": ""
+}
+```
+### 歌曲的最新播放url接口
+请求参数
+  * 接口地址：http://s.xiaodu.ba0161223/resource/musicstreamurl
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": "",
+  "data": {
+    "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
+  },
+  "message": ""
+}
+```
+
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": "",
+  "data": {
+        "lycUrl": "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
+        "lycContent": "歌词内容",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
+  },
+  "message": ""
+}
+```
+
+### 歌曲的最新播放url接口
+请求参数
+  * url: http://s.xiaodu.baidu.com/v20161223/resource/musicstreamurl?id=846122617
+  * id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": "",
+  "data": {
+    "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
+  },
+  "message": ""
+}
+```
 
 ### 获取歌单列表
   * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist?page=1&page_size=10
@@ -713,39 +803,3 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```
  其中status 为0返回正常，其它异常
 
-### 获取某首歌的最新播放地址
-
-请求参数
-  * url: http://s.xiaodu.baidu.com/v20161223/resource/musicstreamurl?id=846122617
-  * id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
-
-返回值：
-```javascript
-{
-  "status": 0,
-  "code": "",
-  "data": {
-    "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
-  },
-  "message": ""
-}
-```
-### 获取某首歌曲的歌词
-
-请求参数
-  * url: http://s.xiaodu.baidu.com/v20161223/resource/songlyric?song_id=991725450
-  * song_id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
-
-返回值：
-```javascript
-{
-  "status": 0,
-  "code": "",
-  "data": {
-        "lycUrl": "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
-        "lycContent": "歌词内容",
-        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
-  },
-  "message": ""
-}
-```
