@@ -302,11 +302,15 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
 }
 ```
 
-
+  
 ### 歌单列表接口
-  * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist?page=1&page_size=10
-  * page：页码
-  * page_size：每页请求歌单数量，默认为10
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist
+  * 请求方式：GET
+  * 请求参数：
+参数|类型|是否必须|备注
+----|----|--------|----
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
 
 返回结果
 
@@ -341,14 +345,16 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
 ```
 其中status 为0返回正常，其它异常
 
+### 歌单的歌曲列表接口
+  * 接口地址：url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetmusic
+  * 请求方式：GET
+  * 请求参数：
+参数|类型|是否必须|备注
+----|----|--------|----
+sheet_id|int|是|歌单id
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
 
-### 歌单下的歌曲列表接口
-
-请求参数
-  * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetmusic?sheet_id=1000&page=1&page_size=10
-  * sheet_id：歌单id
-  * page：页码     
-  * page_size：每页歌曲数量，默认为10
 
 返回值：
 ```javascript
