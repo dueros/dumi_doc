@@ -210,3 +210,29 @@ remind_time如果不完备，会在多轮对话中不断的澄清，是一个中
 |clock_type | 闹钟类型 | eg:timer、normal、wakeup，分别为计时器、普通闹钟、起床闹钟| 
 
 
+### 闹钟同步命令
+ * 如果使用度秘的存储保存闹钟数据，收到同步命令，客户端需通过请求度秘获取闹钟数据
+
+```javascript
+{
+    "header": {
+        "namespace": "Remind",
+        "name": "UpdateClock",
+        "message_id": "message_id-1344"
+    },
+    "payload": {}
+}
+```
+### 闹钟停止命令
+ * 停止闹钟响铃指令
+
+```javascript
+{
+    "header": {
+        "namespace": "Remind",
+        "name": "StopClock",
+        "message_id": "message_id-1344"
+    },
+    "payload": {}
+}
+```
