@@ -125,7 +125,7 @@ intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，
 ```
 
 ### 播放列表接口
-  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/music **(对应语音交互返回结果的result的result.resource.data.api.url字段内容)
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/music *(对应语音交互返回结果的result的result.resource.data.api.url字段内容)
   * 请求方式：GET
   * 请求参数：
 
