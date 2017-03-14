@@ -134,6 +134,7 @@
     * [Speaker](../directives/Speaker.md) 扬声器控制、设置
     * [SpeechSynthesizer](../directives/SpeechSynthesizer.md) 语音播报（TTS）
 例如：
+
 ```javascript
     "device_event":{
         "header": {
@@ -147,11 +148,13 @@
         }
     }
 ```
+
   * device_status 客户端的当前状态，按能力分类（每种端能力有每种端能力的状态）
     * AudioPlayer
     * SpeechSynthesizer
     * Speaker
 例如：
+
 ```javascript
     "device_status":{
         "SpeechSynthesizer":{
@@ -170,3 +173,4 @@
         }
     }
 ```
+
