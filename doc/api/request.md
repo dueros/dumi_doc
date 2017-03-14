@@ -66,6 +66,7 @@
         "PlaybackController":{},
         "Speaker":{},
         "Settings":{},
+        "SpeechSynthesizer":{},
         "System":{}
     },
     "device_event":{
@@ -90,6 +91,15 @@
         }
     },
     "device_status":{
+        "SpeechSynthesizer":{
+            "token":"xxx",//正在播放的音频流id
+            "offset_ms":20000,//播放到多少ms了
+            "player_activity":"PLAYING / FINISHED"
+        },
+        "Speaker":{
+            "volume": 50,
+            "muted": false
+        },
         "AudioPlayer":{
             "token":"xxx",//正在播放的音频流id
             "offset_ms":20000,//播放到多少ms了
@@ -118,6 +128,7 @@
 #### 客户端能力相关（device_interface, device_event, device_status）
  
   * device_interface 标识客户端有哪些能力
+    * 
   * device_event 客户端事件的类型和内容。只有query_type==30的时候，才会有device_event，此时会忽略query字段（没有文本query），比如下面的端能力，里面都有相关事件的定义
     * [AudioPlayer](../directives/AudioPlayer.md) 音乐播放
     * [Speaker](../directives/Speaker.md) 扬声器控制、设置
@@ -137,4 +148,25 @@
     }
 ```
   * device_status 客户端的当前状态，按能力分类（每种端能力有每种端能力的状态）
-现有的端能力定义
+    * AudioPlayer
+    * SpeechSynthesizer
+    * Speaker
+例如：
+```javascript
+    "device_status":{
+        "SpeechSynthesizer":{
+            "token":"xxx",//正在播放的音频流id
+            "offset_ms":20000,//播放到多少ms了
+            "player_activity":"PLAYING / FINISHED"
+        },
+        "Speaker":{
+            "volume": 50,
+            "muted": false
+        },
+        "AudioPlayer":{
+            "token":"xxx",//正在播放的音频流id
+            "offset_ms":20000,//播放到多少ms了
+            "player_activity":"IDLE / PAUSED / PLAYING / BUFFER_UNDERRUN / FINISHED / STOPPED"
+        }
+    }
+```
