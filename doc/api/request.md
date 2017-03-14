@@ -128,7 +128,9 @@
 #### 客户端能力相关（device_interface, device_event, device_status）
  
   * device_interface 标识客户端有哪些能力
-    * 
+    * AudioPlayer
+    * SpeechSynthesizer
+    * Speaker
   * device_event 客户端事件的类型和内容。只有query_type==30的时候，才会有device_event，此时会忽略query字段（没有文本query），比如下面的端能力，里面都有相关事件的定义
     * [AudioPlayer](../directives/AudioPlayer.md) 音乐播放
     * [Speaker](../directives/Speaker.md) 扬声器控制、设置
