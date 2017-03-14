@@ -265,7 +265,6 @@ appid|string|是|必须|标识请求的端
         "record_id": 6366998,
         "channel_id": 23,
         "channel_name": "北京音乐广播",
-        "media_url": "http://hls.qingting.fm/live/4991.m3u8?bitrate=1000",
         "last_program": "环球音乐",
         "create_time": "2016-02-12 14:00:00",
         "update_time": "2016-02-12 15:00:00",
