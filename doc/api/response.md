@@ -43,6 +43,7 @@
     "user_id":"",  //请求的用户id
     "cuid":"",   //请求的设备id
     "time":1482226019, //当前的服务端时间戳
+    "client_msg_id": "string", //客户端上报的请求msg id，如果是回复用户的某个请求的消息，可以用这个字段串起来
     "result":{
         "bot_id":"duer_music",  //返回结果的bot的id
         "bot_meta":{  //下游bot元数据
