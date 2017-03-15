@@ -40,6 +40,15 @@
           "url": "http://s.xiaodu.baidu.com/v20161223/resource/live?user_id=DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768"
         }
       }
+    },
+    "nlu": {
+      "domain": "audio.live",
+      "intent": "audio.live.play",
+      "slots": {
+        "channel": "北京文艺广播",
+        "province": "北京",
+        "category": "文艺"
+      }
     }
   }
 }
