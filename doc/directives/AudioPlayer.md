@@ -65,19 +65,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-## AudioPlayer.Continue指令
-用户对音箱说"继续播放"，返回一个Continue指令，客户端继续播放
-```json
-{
-    "header": {
-        "namespace": "AudioPlayer",
-        "name": "Continue",
-        "message_id": "message_id-1344"
-    },
-    "payload": {
-    }
-}
-````
+
 ## PlaybackStarted事件
 收到Play指令或者Continue指令后，需要上报此事件。
 ```json
