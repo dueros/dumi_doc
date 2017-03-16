@@ -387,7 +387,94 @@ pagesize |int |否 |每页数据量，默认为10
 }
 
  ```
+6、按tag获取专辑列表信息
+* 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/albumbytags
+* 请求方式：GET
+* 请求参数：
+参数 |类型 |是否必须 |备注
+------|-----|-----|------|
+cuid|	string|	是|	设备ID，设备的唯一标识
+appid|	string|	是|	唯一标识接入方
+tags|	string|	是|	需要查询的标签列表，多个标签用逗号(",")隔开 多个标签取结果的交集，比如标签"儿童,故事"，结果集是既包含儿童又包含故事的专辑列表
+page|	int|	否|	页码，默认1
+pagesize|	int|	否|	每页数据量，默认10
 
+```
+{
+     status: 0,
+     code: null,
+     data:
+        {
+            "page" : 1,        //当前页
+            "total_page" : 10,  //总页数
+            "total_nums" : 1000,//分类下的专辑总量
+            "list"
+               [
+                    {
+                        "id":1,  //专辑ID
+                        "album_title":"逻辑思维",  //专辑名
+                        "include_track_count":100,  //节目总数
+                        "cover_url": {
+                            "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
+                                "middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
+                                "large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
+                        },
+                        "play_count":188376,  //播放量
+                        "category_name":"资讯",  //分类
+                        "category_id":3,  //分类ID
+                        "update_time":1479966445,  //更新时间
+                        "create_time":1481595445,  //创建时间
+                        "source": "喜马拉雅",  //资源方
+                        "source_icon": "XXX.icon",  //资源方Icon
+                    },
+                    {
+                        "id":1,
+                        "album_title":"逻辑思维2",
+                        "include_track_count":160,
+                        "cover_url": {                            "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
+                                "middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
+                                "large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
+                        },
+                        "play_count":188300,
+                        "category_name":"资讯",
+                        "category_id":3,
+                        "update_time":1479966445,
+                        "create_time":1481595445,
+                    }
+                ]
+        }
+}
+```
+7、一级类目信息查询
+ 
+* 接口地址：http://s.xiaodu.baidu.com/v20161223/unicast/getcategory
+* 请求方式：GET
+* 请求参数：
+参数 |类型 |是否必须 |备注
+-------|-----|----|-----|
+cuid|	string|	是|	设备ID，设备的唯一标识
+appid|	string|	是|	唯一标识接入方
+```
+{
+    status : 0,
+    code: null,
+    data: {
+        list:[
+            {
+                categoryid : 1,
+                categoryname : '相声',
+                album_num : 300
+            },
+            {
+                categoryid : 1,
+                categoryname : '小品',
+                album_num : 500
+ 
+            }
+        ]
+    }
+}
+```
 ### 点播QU槽位
 
 intent|slot|slot_name|slot_value
