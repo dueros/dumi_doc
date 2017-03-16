@@ -180,14 +180,14 @@
         "key2":"value2"
     },
     /*
-    bot_stat的取值
+    bot_state的取值
     0，根据da给出的intent，返回结果
     1，bot自己改写了intent（返回到了result.nlu里面），返回结果
     2、da返回的槽位值，bot认为有错，返回中给出了相应的错误提示
     3、bot不能响应intent，出了保底话术
     默认为0
     */
-    "bot_stat":0,
+    "bot_state":0,
     //rank使用的字段，建议选填，key可以自定，排序的时候会看相关性高低
     "strategy":{
         "title":"标题",
