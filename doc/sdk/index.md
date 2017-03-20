@@ -28,5 +28,26 @@
 
 ### 常见问题
 
-   * 如何更改appid、appkey
+  * 如何更改appid、appkey
     * 请看demo工程代码中的 app/src/main/java/com/baidu/duersdkdemo/DemoApplication.java
+  
+  * 设置语音的appid、ak、sk
+    * **语音的app id、app key、secret key和度秘的appid、appkey是两个东西**
+    * 请到http://yuyin.baidu.com  并且创建应用或者向度秘方直接申请。
+    * 在自己工程的AndroidManifast.xml 中配置 com.baidu.speech.APP_ID，com.baidu.speech.API_KEY，com.baidu.speech.SECRET_KEY。
+    * 调用示例
+```xml
+        <!-- 如果集成了ASR模块，需要如下设置 -->
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="您申请的asr APP_ID" />
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="您申请的asr API_KEY" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="您申请的 SECRET_KEY " />
+```
+
+
+
