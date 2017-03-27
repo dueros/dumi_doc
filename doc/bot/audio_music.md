@@ -92,9 +92,12 @@ intent::audio.music.favorite 收藏歌曲|动作|action|like(收藏)/unlike(取�
 intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
  |动作|action|add(加入歌单)/delete(删除歌单)
  |歌单名|list_name|小清新
-
-
-
+intent::audio.music.stop 停止 |	 	 	 	 
+intent::audio.music.pause 暂停 |  	 	 	 
+intent::audio.music.continue 继续 | 	 	 	 	 	 
+intent::audio.music.next 下一首 | 换一首、换一批 | unit | 槽位值为group是换一批,槽位值为空是下一首	 	 	 
+intent::audio.music.previous 上一首	 | 	 	 	 	 
+intent::audio.music.play_mode 播放模式 | 循环模式 |mode |single_cycle，rand，list_cycle
 
 
 ### directives 部分的说明
@@ -121,60 +124,202 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
 }
 ```
 
-抓取播放列表的地址，返回值示例如下
+### 播放列表接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/music  
+            (对应语音交互返回结果的result的result.resource.data.api.url字段内容)
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+user_id|string|是|设备ID，设备的唯一标识
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
+
+返回格式：
 ```javascript
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
     "page": 1,
     "total_page": 5,
     "list": [
-      {
-        "duration": "270",
-        "name": "晴天",
+      {        
+        "id": "1006090198",
+        "duration": "252",
+        "name": "黑雨",
         "alias": "",
-        "singer_name": "周杰伦",
-        "all_singer_name": "",
-        "genre": "流行",
-        "tag": "好听",
+        "singer_name": [
+            "莫文蔚"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "莫文蔚"
+        ],
+        "album_info": [
+            {
+                "album_url": "http:\\/\\/music.baidu.com\\/album\\/179567",
+                "album_url_md5": "5e1b2464c0fa0abac9369f89eb68e753",
+                "album_id": "1043086642",
+                "album_name": "x"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/816477?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E6%99%B4%E5%A4%A9",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/64333976/64333976.mp3?xcode=0411b74c6de0c453a0d51cfc739c1004",//可播放资源地址
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/115434572/115434572.jpg",
-        "album_name": "叶惠美",
-        "album_url": "http://music.baidu.com/album/72257", //专辑地址
+        "composer": [],
+        "lyricist": [],
+        "lycUrl": "http://music.baidu.com/song/929759?fm=altg_new3#song_lyric",
+        "lycContent": "歌词详情",
+        "wap_lycUrl": "http://music.baidu.com/song/929759?fm=altg_new3",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/12459382/12459382.lrc",
+        "url": "http://music.baidu.com/song/929759",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E9%BB%91%E9%9B%A8",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/124206198/124206198.jpg",
         "score": "0",
-        "publish_time": "2003-07-31",
-        "publish_company": "杰威尔JVR音乐有限公司",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "67832"
+        "publish_time": "2003-09-01",
+        "publish_company": "SONY MUSIC",
+        "is_need_pay_listen": 0,
+        "hot": "144",
+        "from_site": 1
+
       },
       ....
     ]
   },
-  "message": null
+  "message": ""
+}
+```
+### 歌曲详情接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/musicdetail
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
+
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": ‘’,
+  "data": {
+        "id": "1006090198",
+        "duration": "252",
+        "name": "黑雨",
+        "alias": "",
+        "singer_name": [
+            "莫文蔚"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "莫文蔚"
+        ],
+        "album_info": [
+            {
+                "album_url": "http:\\/\\/music.baidu.com\\/album\\/179567",
+                "album_url_md5": "5e1b2464c0fa0abac9369f89eb68e753",
+                "album_id": "1043086642",
+                "album_name": "x"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "lycUrl": "http://music.baidu.com/song/929759?fm=altg_new3#song_lyric",
+        "lycContent": "歌词详情",
+        "wap_lycUrl": "http://music.baidu.com/song/929759?fm=altg_new3",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/12459382/12459382.lrc",
+        "url": "http://music.baidu.com/song/929759",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E9%BB%91%E9%9B%A8",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/124206198/124206198.jpg",
+        "score": "0",
+        "publish_time": "2003-09-01",
+        "publish_company": "SONY MUSIC",
+        "is_need_pay_listen": 0,
+        "hot": "144",
+        "from_site": 1,
+        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/42531820/42531820.mp3?xcode=1ddc85b4186134be718197b4a0f16666"
+  },
+  "message": ""
+}
+```
+其中status 为0返回正常，其它异常
+
+### 歌曲歌词接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/songlyric
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
+
+返回值
+```javascript
+{
+  "status": 0,
+  "code": "",
+  "data": {
+        "lycUrl": "http://music.baidu.com/song/130244161?fm=altg_new3#song_lyric",
+        "lycContent": "歌词内容",
+        "lycDownload": "http://qukufile2.qianqian.com/data2/lrc/130488147/130488147.lrc"
+  },
+  "message": ""
+}
+```
+### 歌曲最新播放url接口
+请求参数
+  * 接口地址：http://s.xiaodu.ba0161223/resource/musicstreamurl
+  * 请求方式：GET
+  * 请求参数：
+
+参数|类型|是否必须|备注
+----|----|--------|----
+song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
+
+返回值：
+```javascript
+{
+  "status": 0,
+  "code": "",
+  "data": {
+    "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
+  },
+  "message": ""
 }
 ```
 
-
-
-### 获取歌单列表
-  * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist?page=1&page_size=10
-  * page：页码
-  * page_size：每页请求歌单数量，默认为10
+  
+### 歌单列表接口
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/resource/songsheetlist
+  * 请求方式：GET
+  * 请求参数：
+  
+参数|类型|是否必须|备注
+----|----|--------|----
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
 
 返回结果
 
 ```javascript
 {
      status: 0,
-     code: null,
+     code: "",
      data: 
         {
             "page" : 1,        //当前页
@@ -197,311 +342,442 @@ intent::audio.music.songlist 歌单管理|歌曲名|song|这首歌
                 }
              ]
        },
-    message: null
+    message: ""
 }
 ```
 其中status 为0返回正常，其它异常
 
+### 歌单的歌曲列表接口
+  * 接口地址：url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetmusic
+  * 请求方式：GET
+  * 请求参数：
+  
+参数|类型|是否必须|备注
+----|----|--------|----
+sheet_id|int|是|歌单id
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
 
-### 获取某个歌单下的歌曲列表
-
-请求参数
-  * url：http://s.xiaodu.baidu.com/v20161223/resource/songsheetmusic?sheet_id=1000&page=1&page_size=10
-  * sheet_id：歌单id
-  * page：页码     
-  * page_size：每页歌曲数量，默认为10
 
 返回值：
 ```javascript
 
 {
   "status": 0,
-  "code": null,
+  "code": "",
   "data": {
     "total_page": 4,
     "page": "1",
     "list": [
-      {
-        "id": "846122617",
-        "duration": "210",
-        "name": "Team",
+     {
+        "id": "1004785648",
+        "duration": "215",
+        "name": "告白气球",
         "alias": "",
-        "singer_name": "Iggy Azalea",
-        "all_singer_name": "",
-        "genre": "",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/266322553",
+                "album_url_md5": "4ff9f62e9bdc0bfc4361efe9d219f86d",
+                "album_id": "1045401856",
+                "album_name": "周杰伦的床边故事"
+            }
+        ],
+        "genre": [
+            "R&B",
+            "节奏布鲁斯"
+        ],
+        "tag": [
+            "RnB",
+            "节奏怨曲",
+            "R&B",
+            "节奏蓝调",
+            "好听",
+            "节奏布鲁斯"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/263815780?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Team",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/64110822f1de106bd1ef8ee2fa059f2e/263815772/263815772.jpg",
-        "album_name": "Team",
-        "album_url": "http://music.baidu.com/album/263795829",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/266322598",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/7d093104b5e3c0a92a95eea7e24456ff/273945517/273945517.jpg",
         "score": "0",
-        "publish_time": "2016-03-18",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "134"
-      },
-      {
-        "id": "846278539",
-        "duration": "285",
-        "name": "Cool",
+        "publish_time": "2016-06-24",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "854092",
+        "from_site": "baidu"
+     },
+     {
+        "id": "998002844",
+        "duration": "240",
+        "name": "青花瓷",
         "alias": "",
-        "singer_name": "Alesso,Roy Engli",
-        "all_singer_name": "",
-        "genre": "",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/68674",
+                "album_url_md5": "8ddd52a97c2aaeff6ca774c607573f03",
+                "album_id": "1054918835",
+                "album_name": "我很忙"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/257601318?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Cool",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/3e92662b714e24d474934de6973a22d1/257601730/257601730.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/f09b251f165c953b7e380e470932cce9/257602030/257602030.jpg",
-        "album_name": "Cool",
-        "album_url": "http://music.baidu.com/album/257601261",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/354387",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E9%9D%92%E8%8A%B1%E7%93%B7",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/1df84db0f1cc0f7d92c9925b47e7fa7d/88389089/88389089.jpg",
         "score": "0",
-        "publish_time": "2015-05-04",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "1"
-      },
-      {
-        "id": "846416416",
-        "duration": "208",
-        "name": "Fake Love",
+        "publish_time": "2007-11-02",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "93427",
+        "from_site": "baidu"
+     },
+     {
+        "id": "964861563",
+        "duration": "270",
+        "name": "晴天",
         "alias": "",
-        "singer_name": "Drake",
-        "all_singer_name": "",
-        "genre": "嘻哈",
-        "tag": "好听,新歌",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/72257",
+                "album_url_md5": "67a675d5ce7e9c2501f77855c9e69ec3",
+                "album_id": "1011284556",
+                "album_name": "叶惠美"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/277008589?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Fake+Love",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/026d7edc9469d5910dde3301847f3091/277008784/277008784.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/573a30051ea9f0125cdc21b9e038305c/277008585/277008585.jpg",
-        "album_name": "Fake Love",
-        "album_url": "http://music.baidu.com/album/277008579",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/816477",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E6%99%B4%E5%A4%A9",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/115434572/115434572.jpg",
         "score": "0",
-        "publish_time": "2016-11-04",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "16509"
-      },
-      {
-        "id": "846457060",
-        "duration": "219",
-        "name": "Niggas In Paris",
+        "publish_time": "2003-07-31",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "70453",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1009088399",
+        "duration": "229",
+        "name": "夜曲",
         "alias": "",
-        "singer_name": "JAY Z,Kanye West",
-        "all_singer_name": "",
-        "genre": "嘻哈",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/697896",
+                "album_url_md5": "e8a4fd90e081275d4c2c00c6e06b6730",
+                "album_id": "1011290034",
+                "album_name": "十一月的萧邦"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "寂寞",
+            "纯音乐",
+            "孤独",
+            "孤单",
+            "流行",
+            "Absolute"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/130202808?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Niggas+In+Paris",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/132597892/132597892.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/130207140/130207140.jpg",
-        "album_name": "Top Five",
-        "album_url": "http://music.baidu.com/album/130202702",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1191265",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E5%A4%9C%E6%9B%B2",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/2ff7ed1d61b5473cd64d805577ddab36/115457137/115457137.jpg",
         "score": "0",
-        "publish_time": "0000-00-00",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "90"
-      },
-      {
-        "id": "851508785",
-        "duration": "267",
-        "name": "Because Of You",
+        "publish_time": "2005-11-01",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "106174",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1003959977",
+        "duration": "224",
+        "name": "稻香",
         "alias": "",
-        "singer_name": "Ne-Yo",
-        "all_singer_name": "",
-        "genre": "R&B,节奏布鲁斯",
-        "tag": "唯美,喜悦,情人节,旅行,汽车,甜蜜,节奏布鲁斯,轻松",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/116177",
+                "album_url_md5": "224c2d8eee1ea941a6cbd342a0c3d0d1",
+                "album_id": "1009252782",
+                "album_name": "魔杰座"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/1790591?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Because+Of+You",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/122992781/122992781.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/5ca0d5d20fc5d41878033d5f035d0d3e/119220883/119220883.jpg",
-        "album_name": "Because Of You",
-        "album_url": "http://music.baidu.com/album/2469803",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1390840",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%A8%BB%E9%A6%99",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/97be3c1753fbf496315d4b4953e06ee2/274049124/274049124.jpg",
         "score": "0",
-        "publish_time": "2013-11-29",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "11797"
-      },
-      {
-        "id": "851515427",
-        "duration": "234",
-        "name": "Love Yourself",
+        "publish_time": "2008-10-14",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "21893",
+        "from_site": "baidu"
+     },
+     {
+        "id": "997036570",
+        "duration": "269",
+        "name": "简单爱",
         "alias": "",
-        "singer_name": "Justin Bieber",
-        "all_singer_name": "",
-        "genre": "",
-        "tag": "好听,欧美",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/10735646",
+                "album_url_md5": "94c999d194215d8204e9e80b873acf7c",
+                "album_id": "1043072482",
+                "album_name": "婚礼歌手 幸福情歌精选"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/257613380?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Love+Yourself",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/511b0e40283f616c6657847a320f73b8/257613559/257613559.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/0171bb5aa87aba5a7aabdd2a5b79c727/257807696/257807696.jpg",
-        "album_name": "Purpose",
-        "album_url": "http://music.baidu.com/album/257807665",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/10736444",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%AE%80%E5%8D%95%E7%88%B1",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/a882d5cbbc469ba95f3b6442a9db2aa3/117628079/117628079.jpg",
         "score": "0",
-        "publish_time": "2015-11-13",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "73868"
-      },
-      {
-        "id": "852299516",
-        "duration": "273",
-        "name": "Candy",
+        "publish_time": "2010-02-08",
+        "publish_company": "SONY MUSIC",
+        "is_need_pay_listen": 0,
+        "hot": "66379",
+        "from_site": "baidu"
+     },
+     {
+        "id": "996977531",
+        "duration": "302",
+        "name": "发如雪",
         "alias": "",
-        "singer_name": "LL Cool J",
-        "all_singer_name": "",
-        "genre": "嘻哈",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/697896",
+                "album_url_md5": "e8a4fd90e081275d4c2c00c6e06b6730",
+                "album_id": "1011290034",
+                "album_name": "十一月的萧邦"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "中国风",
+            "伴奏",
+            "Absolute",
+            "流行",
+            "纯音乐"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/1636167?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Candy",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/238607622/238607622.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/136174816/136174816.jpg",
-        "album_name": "Phenomenon",
-        "album_url": "http://music.baidu.com/album/1360777",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1147070",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E5%8F%91%E5%A6%82%E9%9B%AA",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/2ff7ed1d61b5473cd64d805577ddab36/115457137/115457137.jpg",
         "score": "0",
-        "publish_time": "2015-02-16",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "0"
-      },
-      {
-        "id": "853034358",
-        "duration": "225",
-        "name": "Diamonds",
+        "publish_time": "2005-11-01",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "56316",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1005362249",
+        "duration": "276",
+        "name": "红尘客栈",
         "alias": "",
-        "singer_name": "Rihanna",
-        "all_singer_name": "",
-        "genre": "流行",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/31496572",
+                "album_url_md5": "2bb5adb0bb278e9169adcf97ecc8f63d",
+                "album_id": "1054909997",
+                "album_name": "十二新作"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/89321974?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Diamonds",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/89322669/89322669.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/4853d9e95a657d85b3341f23a3acbbaa/102330189/102330189.jpg",
-        "album_name": "Diamonds",
-        "album_url": "http://music.baidu.com/album/89321967",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/31496563",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%BA%A2%E5%B0%98%E5%AE%A2%E6%A0%88",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/1b62c0ccc53edc47a1152d9f004a31ce/115744261/115744261.jpg",
         "score": "0",
-        "publish_time": "2013-10-07",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "5931"
-      },
-      {
-        "id": "853893882",
-        "duration": "210",
-        "name": "Black Widow",
+        "publish_time": "2012-12-06",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "47853",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1006041007",
+        "duration": "257",
+        "name": "说好的幸福呢",
         "alias": "",
-        "singer_name": "Iggy Azalea,Rita",
-        "all_singer_name": "",
-        "genre": "",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/116177",
+                "album_url_md5": "224c2d8eee1ea941a6cbd342a0c3d0d1",
+                "album_id": "1009252782",
+                "album_name": "魔杰座"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/268430429?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Black+Widow",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/3060a9d7f0743eddd8e569ed6a1e96da/268448342/268448342.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/adff50a94c19769a7d4766e6fd7c870f/268429460/268429460.jpg",
-        "album_name": "The New Classic",
-        "album_url": "http://music.baidu.com/album/268429448",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1392875",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E8%AF%B4%E5%A5%BD%E7%9A%84%E5%B9%B8%E7%A6%8F%E5%91%A2",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/97be3c1753fbf496315d4b4953e06ee2/274049124/274049124.jpg",
         "score": "0",
-        "publish_time": "2016-08-03",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "80"
-      },
-      {
-        "id": "854010435",
-        "duration": "184",
-        "name": "Kiss It Better",
+        "publish_time": "2008-10-14",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "34673",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1016008345",
+        "duration": "263",
+        "name": "烟花易冷",
         "alias": "",
-        "singer_name": "Rihanna",
-        "all_singer_name": "",
-        "genre": "",
-        "tag": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/67834",
+                "album_url_md5": "c07513e19430c434d69618d15a0a9959",
+                "album_id": "1050554398",
+                "album_name": "跨时代"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
         "language": "",
-        "original_singer": "",
-        "composer": "",
-        "lyricist": "",
-        "url": "http://music.baidu.com/song/266069829?fm=altg_new3",
-        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=Kiss+It+Better",
-        "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/d074db162f877575194e628f5e1e1e13/266069950/266069950.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3",
-        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/55bea5b033997b9bb07e702c277893b1/266069817/266069817.jpg",
-        "album_name": "Kiss It Better",
-        "album_url": "http://music.baidu.com/album/266069804",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/228393",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/21d4d618a2b1a077bb7332cb6d09fe0b/274045307/274045307.jpg",
         "score": "0",
-        "publish_time": "2016-06-01",
-        "publish_company": "环球唱片",
-        "is_need_pay_listen": "0",
-        "from_site": "1",
-        "hot": "436"
-      }
+        "publish_time": "2010-05-18",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "49779",
+        "from_site": "baidu"
+     }
     ]
   },
-  "message": null
+  "message": ""
 }
 ```
  其中status 为0返回正常，其它异常
 
-### 获取某首歌的最新播放地址
-
-请求参数
-  * url: http://s.xiaodu.baidu.com/v20161223/resource/musicstreamurl?id=846122617
-  * id : [歌曲列表接口](#获取某个歌单下的歌曲列表)中返回的id
-
-返回值：
-```javascript
-{
-  "status": 0,
-  "code": null,
-  "data": {
-    "streaming_vedio_url": "http://zhangmenshiting.baidu.com/data2/music/ec75bbd373de776107be888a4dab4596/263815849/263815849.mp3?xcode=e8a6f9d3d7ea39bc06d3b5c82f9312a3"
-  },
-  "message": null
-}
-```

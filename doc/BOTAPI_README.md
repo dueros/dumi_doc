@@ -1,11 +1,28 @@
 # 度秘开放平台-BotApi接口说明
 
+
+## Table of Contents
+
+
+   * [度秘开放平台-BotApi接口说明](#度秘开放平台-botapi接口说明)
+      * [Table of Contents](#table-of-contents)
+      * [文档目的](#文档目的)
+      * [整体格式说明](#整体格式说明)
+         * [架构描述](#架构描述)
+      * [交互模式说明（confirm）](#交互模式说明confirm)
+         * [请求格式](#请求格式)
+            * [请求字段中，.msg.device_data字段的解释](#请求字段中msgdevice_data字段的解释)
+         * [正常返回格式](#正常返回格式)
+            * [正常返回的字段中，content字段的解释](#正常返回的字段中content字段的解释)
+
+
+## 文档目的
+
 目的：
   * 为了让能够让度秘内部的rd开发下游bot
   * 为了给未来的bot开放平台做准备
 
 整理度秘系统和bot之间的接口
-
 
 ## 整体格式说明
 
@@ -48,6 +65,7 @@
     "ctime": 1454319650,
     "type": "user",
     "query_type": "1",
+    "device_data":"{}",//device_interface, device_event, device_status 三个字段的打包json，因为现在idl定义不了这三个字段的结构
     "result_list": [
       {
         "result_confidence": 100,
@@ -156,6 +174,53 @@
 
 
 ```
+
+#### 请求字段中，.msg.device_data字段的解释
+
+.msg.device_data字段，是一个json_encode后的字符串
+
+下面是这个json展开后的结构
+```javascript
+{
+    "device_interface":{
+        "Alerts":{},
+        "AudioPlayer":{},
+        "PlaybackController":{},
+        "Speaker":{},
+        "Settings":{},
+        "System":{}
+    },
+    "device_event":{
+        //query_type==30 的时候才会有 device_event
+        "header": {
+            "namespace": "AudioPlayer",
+            "name": "PlaybackStarted",
+            "message_id": "message_id-1344"
+        },
+        "payload": {
+            //AudioPlayer里可能出现的payload
+            "token": "156",
+            "offset_ms": 10000
+            //Speaker里可能出现的payload
+            "volume": 1,
+            //SpeechSynthesizer可能出现的payload
+            "token": "156",
+            "type": "{{Text/SSML}}",
+            "content": ["xxxx1", "xxxx2"],
+            "speak_behavior": "REPLACE_ALL",
+            "should_get_next_speech": true
+        }
+    },
+    "device_status":{
+        "AudioPlayer":{
+            "token":"xxx",//正在播放的音频流id
+            "offset_ms":20000,//播放到多少ms了
+            "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
+        },
+    }
+}
+```
+
 
 ### 正常返回格式
 
@@ -313,7 +378,7 @@
 
 ```
 
-### 正常返回的字段中，content字段的解释
+#### 正常返回的字段中，content字段的解释
 
 .data.result_list[].content字段，是一个json_encode后的字符串
 
@@ -322,7 +387,7 @@
 内部可以加入新协议的字段，如resource、speech、views等等，但一定要有一个result_list。
   * 如果有传views、speech、resource等字段，result_list的内容可以随意，不会在新的输出接口中生效
   * 如果不传views、speech、resource等字段，api2.0接口输出时，会把result_list按一定规则转换成这些新字段
-  * views、speech、resource等字段的数据结构，参见[度秘api2.0文档](http://gitlab.baidu.com/wangpeng20/dumi_schema/blob/master/doc/OPENAPI_README.md#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%88%86%E5%9D%97%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E)
+  * views、speech、resource等字段的数据结构，参见[度秘api2.0文档](api/response.md)
   * 老的result_list内部的详细格式，可参考[度秘api1.0文档](http://agroup.baidu.com/duer/md/article/17301)，主要是定义了result_list可以放的卡片格式
 
 ```javascript

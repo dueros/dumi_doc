@@ -10,10 +10,11 @@
       * [AudioPlayer.Continue指令](#audioplayercontinue指令)
       * [PlaybackStarted事件](#playbackstarted事件)
       * [PlaybackStopped事件](#playbackstopped事件)
-      * [GetNextPlayback事件](#getnextplayback事件)
+      * [PlaybackNearlyFinished事件](#playbacknearlyfinished事件)
       * [PlaybackFinished事件](#playbackfinished事件)
       * [ProgressReportIntervalElapsed事件](#progressreportintervalelapsed事件)
       * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
+      * [有屏设备接入音乐、有声等音频服务](#有屏设备接入音乐有声等音频服务)
 
 
 ## AudioPlayer.Play指令
@@ -64,24 +65,12 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-## AudioPlayer.Continue指令
-用户对音箱说"继续播放"，返回一个Continue指令，客户端继续播放
-```json
-{
-    "header": {
-        "namespace": "AudioPlayer",
-        "name": "Continue",
-        "message_id": "message_id-1344"
-    },
-    "payload": {
-    }
-}
-````
+
 ## PlaybackStarted事件
 收到Play指令或者Continue指令后，需要上报此事件。
 ```json
 {
-    "event": {
+    "device_event": {
         "header": {
             "namespace": "AudioPlayer",
             "name": "PlaybackStarted",
@@ -98,7 +87,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 用户说"暂停播放"、 "停止播放"后，会收到Stop指令，客户端执行完Stop指令后，即暂停播放后，需要上报此事件，云端会保存断点，供下一次继续播放使用。
 ```json
 {
-    "event": {
+    "device_event": {
         "header": {
             "namespace": "AudioPlayer",
             "name": "PlaybackStopped",
@@ -111,21 +100,21 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
     }
 }
 ```
-## GetNextPlayback事件
+## PlaybackNearlyFinished事件
 这个事件用来获取下一首歌曲，云端收到这个事件后，返回下一首歌曲对应的Play指令，play_behavior选项设为ENQUEUE，
 指示客户端加入到本地列表中，利用此事件，客户端可以实现下一首的预取。这个事件的上报时机取决于客户端，
 可以在歌曲播放的中间发送，也可以剩余几秒钟的时候发送。如果不需要预取，也可以在歌曲播放完毕后上报此事件。但必须保证：
 
-1 GetNextPlayback必须在PlaybackStarted事件发送完毕后才上报。
+1 PlaybackNearlyFinished必须在PlaybackStarted事件发送完毕后才上报。
 
-2 一首歌曲只发送一次GetNextPlayback事件。
+2 一首歌曲只发送一次PlaybackNearlyFinished事件。
 
 ```json
 {
-    "event": {
+    "device_event": {
         "header": {
             "namespace": "AudioPlayer",
-            "name": "GetNextPlayback",
+            "name": "PlaybackNearlyFinished",
             "message_id": "message_id-1344"
         },
         "payload": {
@@ -139,7 +128,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 当且仅当歌曲正常播放到末尾后，上报此事件。注意如果被其它指令打断比如“下一首”、“上一首”导致没有播放到末尾的，不上报此事件。
 ```json
 {
-    "event": {
+    "device_event": {
         "header": {
             "namespace": "AudioPlayer",
             "name": "PlaybackFinished",
@@ -176,3 +165,25 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 },
 ```
 
+## 有屏设备接入音乐、有声等音频服务
+Directive和Event机制非常适合无屏设备使用，对于有屏设备，
+也推荐使用Directive和Event机制接入音频服务，端和云之间的交互的性能和流畅性会更好，带来更好的用户体验。
+但是如果厂商认为接入Directive和Event开发成本高，需要快速出产品效果，也可以通过NLU+Resource的方式接入音频服务,具体流程如下：
+
+1. 用户语音说“”播放周杰伦的歌曲”，发起第一次网络请求，DuerOS云端除了返回Play指令外，还会返回resource，里面有一个api
+   url，用于从云端获取播放列表，端上发起第二次网络请求获取播放列表在屏幕展现，然后端上拿到列表中第一首歌曲的ID，向度秘云端
+   发起第三次网络请求，拿到第一首歌曲的MP3
+   URL，开始音频的播放。这里需要三次网络请求才能实现歌曲的播放，链路长，性能不好，如果为了更快的播放，端上可以选择第一次网络请求后，从Play指令中提取MP3
+   URL，直接开始第一首歌曲的播放，不用等到第二次和第三次网络请求之后就能播放歌曲了。
+
+2. 用户在屏幕GUI上点击一首歌曲的播放，端上发起一次网络请求，根据歌曲ID拿到MP3 URL，开始播放用户点击的歌曲。
+
+3. 用户语音说"下一首"，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断intent =
+   audio.music.next，然后拿到下一首歌曲的歌曲ID，发起第二次网络请求，拿到MP3 URL，开始下一首歌曲的播放。
+   其它播放控制也类似，DuerOS NLU支持的播放控制，可以参考[音乐](../bot/audio_music.md) 、[点播](../bot/audio_unicast.md)、[直播](../bot/audio_live.md)。
+
+4. 用户语音说“换一批”，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断intent =
+   audio.music.next_page，发起第二次网络请求，获取下一页的歌曲列表，将列表中第一首歌曲的ID，发起第三次网络请求，拿到MP3
+   URL，开始下一批歌曲的播放。
+
+5. 用户在频幕GUI上的上滑翻页操作，请求播放列表的接口，拿到下一页的歌曲列表，追加到GUI的播放列表中。
