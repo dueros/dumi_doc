@@ -1,16 +1,16 @@
 # 打车bot多轮状态转移过程
-##状态机
+## 状态机
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/14773a5100540790187d37513e15c0c1714e637e)
 
-##Book
-###askTime
-####进入条件
+## Book
+### askTime
+#### 进入条件
 满足如下条件之一：
 
 * 有约车意图
 *  时间槽位有值，但是时间不明确或者非法
 
-####澄清逻辑
+#### 澄清逻辑
 时间澄清策略与提醒时间澄清逻辑一致（非重复提醒），但有如下区别：
 
 + 有效时间范围：今天、明天、后天，三天之内，超过报非法
@@ -20,15 +20,15 @@
 
 说明：时间澄清策略wiki：http://wiki.baidu.com/pages/viewpage.action?pageId=218313803
 
-###askPosition
-####进入条件
+### askPosition
+#### 进入条件
 满足如下条件之一：
 
 + 没有打车目的地
 + 无定位信息且没有出发地址（默认出发地为当期位置）
 + 地址非法
 
-####地址处理
+#### 地址处理
 异常包括：
 
 + 出发地城市无法确定
@@ -36,18 +36,18 @@
 
 参考：http://agroup.baidu.com/duer/md/edit/237312
 
-###askCarType
-####进入条件
+### askCarType
+#### 进入条件
 满足如下条件之一：
 
 + 没有car_type
 + car_type指定的车辆类型无法满足（附近没有对应的车辆）
 
-####车类型合法性验证
+#### 车类型合法性验证
 通过车辆数量费用接口，如果车辆数量为0，即为非法。
 
-###askResubmitOrder
-####进入条件
+### askResubmitOrder
+#### 进入条件
 订单创建过程可能出现如下异常状况：
 
 + 价格倍数突然变化，比如：临时调价1.5倍
@@ -55,14 +55,14 @@
 
 上述状况会进入resubmitOrder状态
 
-###车辆状态Polling
-####进入条件
+### 车辆状态Polling
+#### 进入条件
 如下两种条件会启动订单状态轮询：
 
 + 即时打车订单创建成功后
 + 约车订单，约定上车时间前30分钟开始
 
-####轮询过程
+#### 轮询过程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/a340217441a71bfa2041b8a07dc39c90e533b237)
 
 上述过程，列出了4中轮询过程中的server push
@@ -72,8 +72,8 @@
 + 司机到达。
 + 订单完成。
 
-##CancelOrder
-###生效条件
+## CancelOrder
+### 生效条件
 满足下列条件之一：
 
 + 当前有订单进行中，且没有上车
@@ -84,10 +84,10 @@
 + 从订单创建成功到上车之前，都可以取消订单
 + 即时的订单取消，不会有confirm；
 
-##WaitOrder
+## WaitOrder
 对应订单创建过程中，长时间没有司机接单的情况。
 
-###生效条件
+### 生效条件
 满足如下条件：
 
 + 订单创建成功到司机接单期间
@@ -96,13 +96,13 @@
 
 + 用户肯定答复，仅仅回复话术
 
-##CallDriver
-###进入条件
+## CallDriver
+### 进入条件
 满足如下条件：
 
 + 订单状态为司机已接单，以及以后的状态（约车订单也可以呼叫）
 
-##QueryStatus
+## QueryStatus
 满足如下条件：
 
 + 当前有即时打车订单
@@ -164,7 +164,7 @@ intent:rent_car.book  打车意图
 |end_point|目的地|地址，比如西二旗|string|
 |car_type|用车类型|比如快车、专车、出租车|string|
 
-##完整的约车例子
+## 完整的约车例子
 //query = 帮我约个明天上午8点的出租车去西二旗地铁站
 ```javascript
 {
@@ -224,7 +224,7 @@ intent:rent_car.book  打车意图
 |service_time|用车时间|json格式,wiki:todo|string|
 
 
-##下单所需槽位搜集完整，确认下单
+## 下单所需槽位搜集完整，确认下单
 ```javascript
 //query = 确认下单
 {
@@ -269,8 +269,8 @@ intent:rent_car.book  打车意图
 }
 ```
 
-##槽位不完整询问例子
-###问end_point
+## 槽位不完整询问例子
+### 问end_point
 ```javascript
 {
 ...
@@ -293,7 +293,7 @@ intent:rent_car.book  打车意图
 }
 ```
 
-###问约车时间
+### 问约车时间
 ```javascript
 {
 ...
@@ -319,7 +319,7 @@ intent:rent_car.book  打车意图
 }
 ```
 
-###问车辆类型
+### 问车辆类型
 ```javascript
 {
 ...
@@ -391,8 +391,8 @@ intent:rent_car.book  打车意图
 }
 ```
 ### nlu部分的说明
-intent:rent_car.cancel_order  打车取消意图
-slots 可不关注
++ intent:rent_car.cancel_order  打车取消意图
++ slots 可不关注
 
 # 查询司机位置intent
 ```javascript
@@ -435,8 +435,8 @@ slots 可不关注
 }
 ```
 ### nlu部分的说明
-intent:rent_car.query_status 查询司机位置intent 
-slots 可不关注
++ intent:rent_car.query_status 查询司机位置intent 
++ slots 可不关注
 
 # 继续等待司机接单intent
 ```javascript
@@ -479,8 +479,8 @@ slots 可不关注
 }
 ```
 ### nlu部分的说明
-intent:rent_car.wait_order 继续等待intent
-slots 可不关注
++ intent:rent_car.wait_order 继续等待intent
++ slots 可不关注
 
 # UI交互卡片
 ## 登录
