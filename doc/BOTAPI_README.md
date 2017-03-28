@@ -13,6 +13,7 @@
          * [请求格式](#请求格式)
             * [请求字段中，.msg.device_data字段的解释](#请求字段中msgdevice_data字段的解释)
          * [正常返回格式](#正常返回格式)
+            * [和策略相关的字段](#和策略相关的字段)
             * [正常返回的字段中，content字段的解释](#正常返回的字段中content字段的解释)
 
 
@@ -233,9 +234,8 @@
   "data": {
     "result_list": [
       {
-        //置信度和槽位置信度，都可以不传
-        "confidence": 300,
-        "form_confidence": 0,
+        //内容质量得分，可选
+        "confidence": 100,
         //bot的id，必须有
         "source_type": "phone",
         //统计字段，可以用来给bot的返回值分类，可以不传
@@ -244,6 +244,9 @@
         "content": "{\"result_list\":[{\"result_content\":{\"answer\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"},\"result_type\":\"txt\",\"source_type\":\"phone\",\"source_sub_type\":\"contact\",\"voice\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"}],\"type\":\"server\",\"generator\":\"phone_function\",\"user_id\":\"3101\"}",
         //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
+          "bot_intent":{
+            "query_score":100   ////和需求的匹配度,可选
+          },
           "raw_answer": [
             {
               "title": "",
@@ -353,15 +356,17 @@
   "data": {
     "result_list": [
       {
-        //置信度和槽位置信度，都可以不传
-        "confidence": 300,
-        "form_confidence": 0,
+        //内容质量得分，可选
+        "confidence": 100,
         //bot的id，必须有
         "source_type": "phone",
         //真正拼的消息其实是这个content字段，现在对外返回的resource、directives等字段都放在这个里面，和result_list平级，下一段详细讲这个content
         "content": "{\"result_list\":[{\"result_content\":{\"answer\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"},\"result_type\":\"txt\",\"source_type\":\"phone\",\"source_sub_type\":\"contact\",\"voice\":\"<SYSTEM-NAME>为你查看联系人“张岩”\"}],\"type\":\"server\",\"generator\":\"phone_function\",\"user_id\":\"3101\"}",
         //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
+          "bot_intent":{
+            "query_score":100   ////和需求的匹配度,可选
+          },
           "raw_answer": [
             {
               "title": "",
@@ -377,6 +382,10 @@
 }
 
 ```
+
+#### 和策略相关的字段
+  * data.result_list[].stategy_middle_data.bot_intent.query_score，取值0-100 ，标识内容的质量
+  * data.result_list[].confidence，取值0-100 ，标识和query的匹配度
 
 #### 正常返回的字段中，content字段的解释
 
