@@ -102,7 +102,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 						"id":1,  //专辑ID
 						"album_title":"逻辑思维",  //专辑名
 						"include_track_count":100,  //节目总数
-						"pic": 
+						"cover_url": 
 						{
 							"small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -120,7 +120,7 @@ orderby |string |否 |倒序：desc, 正序 asc （默认：asc）
 						"id":1,
 						"album_title":"逻辑思维2",
 						"include_track_count":160,
-						"pic": 
+						"cover_url": 
 						{							
 						    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -170,7 +170,7 @@ sort |int |否 |正序：acs、倒序：desc
 						"id":1,  //节目ID
 						"track_title":"大保镖",  //节目名
 						"duration":100,  //节目时长
-						"pic": {							
+						"cover_url": {							
 						    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
       						"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
@@ -187,7 +187,7 @@ sort |int |否 |正序：acs、倒序：desc
 						"id":1,
 						"track_title":"逗你玩",
 						"duration":160,
-						"pic": {							
+						"cover_url": {							
 						    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       						"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
       						"large":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_large.jpg",
@@ -233,7 +233,7 @@ retry   |int|是|0是正常请求，大于0是失败后再次请求该节目资�
 			"id":1,
 			"track_title":"逗你玩",
 			"duration":160,
-			"pic":
+			"cover_url":
 			{								
 			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
       			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -293,7 +293,7 @@ pagesize	|int	|否	|每页数据量，默认为10
     			"id":1,
     			"track_title":"逗你玩",
     			"duration":160,
-    			"pic": 
+    			"cover_url": 
     			{								
     			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
           			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
@@ -312,7 +312,7 @@ pagesize	|int	|否	|每页数据量，默认为10
     			"id":2,
     			"track_title":"逗你玩",
     			"duration":160,
-    			"pic": 
+    			"cover_url": 
     			{								
     			    "small":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_small.jpg",
           			"middle":"http://fdfs.xmcdn.com/group3/M09/34/94/wKgDsVMUWC-i2BqxAALZkSLeN4o874_mobile_meduim.jpg",
