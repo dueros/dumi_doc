@@ -45,6 +45,7 @@
     "time":1482226019, //当前的服务端时间戳
     "client_msg_id": "string", //客户端上报的请求msg id，如果是回复用户的某个请求的消息，可以用这个字段串起来
     "speech_id": "string", //如果是个语音请求，这是语音的id（请求中的speech_id字段，2合一的get参数sn）
+    "need_passport_login": false, //如果为true，客户端应该调用百度passport登录接口
     "result":{
         "bot_id":"duer_music",  //返回结果的bot的id，如果没有任何垂类服务返回，bot_id== NO_RESULT
         "bot_meta":{  //下游bot元数据

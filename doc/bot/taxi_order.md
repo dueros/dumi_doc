@@ -484,6 +484,45 @@ intent:rent_car.book  打车意图
 
 # UI交互卡片
 ## 登录
+```
+{
+    "result": {
+        "bot_id": "rent_car",
+        "bot_meta": {
+            "version": "1.0.0",
+            "type": "其他",
+            "description": "desc"
+        },
+        "views": [
+            {
+                "type": "txt",
+                "content": "去登录度秘很愿意帮你，但需要您先登录账号后度秘才能操作哦,快去登录吧",
+                "url": "http://xiaodu.baidu.com/saiya/uber/login"
+            }
+        ],
+        "nlu": {
+            "domain": "rent_car",
+            "intent": "rent_car.book",
+            "slots": {}
+        },
+        "speech": {
+            "type": "Text",
+            "content": "度秘很愿意帮你，但需要您先登录账号后度秘才能操作哦,快去登录吧"
+        }
+    },
+    "id": "1490603466_603cfb901",
+    "logid": "14906034663181",
+    "user_id": null,
+    "time": 1490603466,
+    "cuid": "test",
+    "se_query": "我要打车",
+    //需要调用百度passport登录
+    "need_passport_login": true,
+    "msg": "ok",
+    "client_msg_id": "58512fc9-d688-4e4e-9263-14495de3a60a",
+    "status": 0
+}
+```
 
 ## 绑定银行卡
 
