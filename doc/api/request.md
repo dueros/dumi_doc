@@ -117,9 +117,8 @@
     "image_width": int,
     //string 请求query
     "request_query": "query",
-    "ua":""//标识客户端、渠道，
-    //durobot_automation 直接调度给UI
-    //durobot_kfc 调度给KFC特定的客服
+    //数组，标志客户端支持的内容类型，可选，如果不传，认为客户端都支持
+    "supported_content_type":["audio","video","webview","speech"]
 }
 ```
 
