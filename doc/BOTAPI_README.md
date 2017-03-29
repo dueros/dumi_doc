@@ -12,6 +12,7 @@
       * [交互模式说明（confirm）](#交互模式说明confirm)
          * [请求格式](#请求格式)
             * [请求字段中，.msg.device_data字段的解释](#请求字段中msgdevice_data字段的解释)
+            * [请求字段中，.supported_content_type字段的解释](#请求字段中supported_content_type字段的解释)
          * [正常返回格式](#正常返回格式)
             * [和策略相关的字段](#和策略相关的字段)
             * [正常返回的字段中，content字段的解释](#正常返回的字段中content字段的解释)
@@ -169,12 +170,21 @@
         "value": "{\"err_no\":0, \"result\":[{\"normal\":{}, \"qu\":{\"query_voice\":{\"res\":[{\"domain\":\"phone\", \"intent\":\"F->Phone->Context\", \"score\":1, \"objects\":[{\"key\":\"CallTarget\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_CallTarget\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->Phone->Context(CallTarget(Person 张岩))))\"}, {\"domain\":\"UNDEFINED\", \"intent\":\"F->alarmlocation\", \"score\":5502, \"objects\":[{\"key\":\"Route\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_Route\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->alarmlocation(Route(F->route(Arrival(F->arrival(ARRIVAL(VILLAGE 张岩))))))))\"}, {\"domain\":\"UNDEFINED\", \"intent\":\"F->alarmlocation\", \"score\":5503, \"objects\":[{\"key\":\"Route\", \"value\":\"张岩\", \"score\":1}, {\"key\":\"_Route\", \"value\":\"张岩\", \"score\":1}], \"reduce_tree_info\":\"(query(F->alarmlocation(Route(F->route(Arrival(F->arrival(ARRIVAL(POI(VILLAGE 张岩)))))))))\"}]}}, \"queryId\":1}]}"
       }
     ]
-  }
+  },
+  "supported_content_type":["audio","video","image","webview","speech"]
 }
 
 
 
 ```
+
+#### 请求字段中，.supported_content_type字段的解释
+表示了端支持的内容类型，bot应该召回端支持的内容类型，**不召回**端不支持的内容
+  * audio
+  * video
+  * image
+  * webview
+  * speech
 
 #### 请求字段中，.msg.device_data字段的解释
 
@@ -328,6 +338,8 @@
         ]
       }
     ],
+    //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+    "should_end_session":false, 
     "server_query_intent": "\"\""
   },
   /////如果不是多轮，此字段可没有
@@ -378,7 +390,9 @@
         }
       }
     ]
-  }
+  },
+  //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+  "should_end_session":false
 }
 
 ```
