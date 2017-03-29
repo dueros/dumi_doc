@@ -338,6 +338,8 @@
         ]
       }
     ],
+    //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+    "should_end_session":false, 
     "server_query_intent": "\"\""
   },
   /////如果不是多轮，此字段可没有
@@ -388,7 +390,9 @@
         }
       }
     ]
-  }
+  },
+  //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+  "should_end_session":false
 }
 
 ```
