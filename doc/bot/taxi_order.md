@@ -484,7 +484,82 @@ intent:rent_car.book  打车意图
 
 # UI交互卡片
 ## 登录
+```
+{
+    "result": {
+        "bot_id": "rent_car",
+        "bot_meta": {
+            "version": "1.0.0",
+            "type": "其他",
+            "description": "desc"
+        },
+        "views": [
+            {
+                "type": "txt",
+                "content": "去登录度秘很愿意帮你，但需要您先登录账号后度秘才能操作哦,快去登录吧",
+                "url": "http://xiaodu.baidu.com/saiya/uber/login"
+            }
+        ],
+        "nlu": {
+            "domain": "rent_car",
+            "intent": "rent_car.book",
+            "slots": {}
+        },
+        "speech": {
+            "type": "Text",
+            "content": "度秘很愿意帮你，但需要您先登录账号后度秘才能操作哦,快去登录吧"
+        }
+    },
+    "id": "1490603466_603cfb901",
+    "logid": "14906034663181",
+    "user_id": null,
+    "time": 1490603466,
+    "cuid": "test",
+    "se_query": "我要打车",
+    //需要调用百度passport登录
+    "need_passport_login": true,
+    "msg": "ok",
+    "client_msg_id": "58512fc9-d688-4e4e-9263-14495de3a60a",
+    "status": 0
+}
+```
 
 ## 绑定银行卡
 
+```javascript
+{
+  "result": {
+    "bot_id": "rent_car",
+    "bot_meta": {
+      "version": "1.0.0",
+      "type": "其他",
+      "description": "desc"
+    },
+    "views": [
+      {
+        "type": "txt",
+        "content": "开通授权支付抱歉，你还没有绑定银行卡，请先绑定后，度秘才能再为你叫车",
+        "url": "https://www.baifubao.com/wap/0/contract_sign/0?service_code=1&sp_no=3300000109&order_create_time=20170328174302&order_no=17032894182256508059&goods_name=%B0%D9%B6%C8%D7%A8%B3%B5%CA%DA%C8%A8%C7%A9%D4%BC&unit_amount=0&unit_count=1&transport_amount=0&total_amount=0&currency=1&return_url=http%3A%2F%2Falliance.carpo.baidu.com%2Fpay%2Fcontract%2Fsigncallback&pay_type=2&input_charset=1&version=2&sign_method=1&sp_user_name=175441974&contract_type=1&pure_sign=1&sign=b715f6b12d54c178bdf8b9e0446a7471"
+      }
+    ],
+    "nlu": {
+      "domain": "rent_car",
+      "intent": "rent_car.book",
+      "slots": {}
+    },
+    "speech": {
+      "type": "Text",
+      "content": "开通授权支付,抱歉，你还没有绑定银行卡，请先绑定后，度秘才能再为你叫车"
+    }
+  },
+  "id": "1490694182_3537qxbb5",
+  "logid": "14906941819388",
+  "user_id": "4541",
+  "time": 1490694182,
+  "cuid": null,
+  "se_query": "我要打车",
+  "msg": "ok",
+  "status": 0
+}
+```
 ## 打电话
