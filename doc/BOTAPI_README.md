@@ -12,6 +12,7 @@
       * [交互模式说明（confirm）](#交互模式说明confirm)
          * [请求格式](#请求格式)
             * [请求字段中，.msg.device_data字段的解释](#请求字段中msgdevice_data字段的解释)
+            * [请求字段中，.supported_content_type字段的解释](#请求字段中supported_content_type字段的解释)
          * [正常返回格式](#正常返回格式)
             * [和策略相关的字段](#和策略相关的字段)
             * [正常返回的字段中，content字段的解释](#正常返回的字段中content字段的解释)
@@ -170,7 +171,7 @@
       }
     ]
   },
-  "supported_content_type":["audio","video","webview","speech"]
+  "supported_content_type":["audio","video","image","webview","speech"]
 }
 
 
@@ -178,9 +179,10 @@
 ```
 
 #### 请求字段中，.supported_content_type字段的解释
-表示了端支持的内容类型，bot应该优先召回端支持的内容类型
+表示了端支持的内容类型，bot应该召回端支持的内容类型，**不召回**端不支持的内容
   * audio
   * video
+  * image
   * webview
   * speech
 

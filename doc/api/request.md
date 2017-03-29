@@ -118,7 +118,7 @@
     //string 请求query
     "request_query": "query",
     //数组，标志客户端支持的内容类型，可选，如果不传，认为客户端都支持
-    "supported_content_type":["audio","video","webview","speech"]
+    "supported_content_type":["audio","image","video","webview","speech"]
 }
 ```
 
@@ -175,3 +175,10 @@
     }
 ```
 
+#### 请求字段中，.supported_content_type字段的解释
+表示了端支持的内容类型，bot应该召回端支持的内容类型，**不召回**端不支持的内容
+  * audio
+  * video
+  * image
+  * webview
+  * speech
