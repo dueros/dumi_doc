@@ -7,7 +7,6 @@
       * [Table of Contents](#table-of-contents)
       * [AudioPlayer.Play指令](#audioplayerplay指令)
       * [AudioPlayer.Stop指令](#audioplayerstop指令)
-      * [AudioPlayer.Continue指令](#audioplayercontinue指令)
       * [PlaybackStarted事件](#playbackstarted事件)
       * [PlaybackStopped事件](#playbackstopped事件)
       * [PlaybackNearlyFinished事件](#playbacknearlyfinished事件)
@@ -67,7 +66,7 @@ audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报
 ```
 
 ## PlaybackStarted事件
-收到Play指令或者Continue指令后，需要上报此事件。
+客户端开始播放的时候，需要上报此事件。
 ```json
 {
     "device_event": {
