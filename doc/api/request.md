@@ -8,6 +8,7 @@
          * [请求示例](#请求示例)
          * [请求值（request）中数据格式分块详细说明](#请求值request中数据格式分块详细说明)
             * [客户端能力相关（device_interface, device_event, device_status）](#客户端能力相关device_interface-device_event-device_status)
+            * [请求字段中，.supported_content_type字段的解释](#请求字段中supported_content_type字段的解释)
 
 
 ### 请求示例
