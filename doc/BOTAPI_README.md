@@ -255,6 +255,7 @@
         //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
           "bot_intent":{
+            "query":"raw query"   ////请求的query，如果有bot_intent，这个就必须有
             "query_score":100   ////和需求的匹配度,可选
           },
           "raw_answer": [
@@ -377,6 +378,7 @@
         //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
           "bot_intent":{
+            "query":"raw query"   ////请求的query，如果有bot_intent，这个就必须有
             "query_score":100   ////和需求的匹配度,可选
           },
           "raw_answer": [
