@@ -563,3 +563,40 @@ intent:rent_car.book  打车意图
 }
 ```
 ## 打电话
+```javascript
+{
+  "result": {
+    "bot_id": "rent_car",
+    "bot_meta": {
+      "version": "1.0.0",
+      "type": "其他",
+      "description": "desc"
+    },
+    "views": [
+      {
+        "type": "txt",
+        "content": "正在打电话给司机，请稍等",
+        "url": "xiaoduapp://phone?number=123242134134"
+      }
+    ],
+    "nlu": {
+      "domain": "rent_car",
+      "intent": "rent_car.call_driver",
+      "slots": {
+           "driver_phone_number" : "1234123123"
+       }
+    },
+    "speech": {
+      "type": "Text",
+      "content": "正在打电话给司机，请稍等"
+    }
+  },
+  "id": "1490694182_3537qxbb5",
+  "logid": "14906941819388",
+  "user_id": "4541",
+  "time": 1490694182,
+  "cuid": null,
+  "se_query": "我要打车",
+  "msg": "ok",
+  "status": 0
+}
