@@ -21,7 +21,7 @@
         "message_id": "message_id-1344"
     },
     "payload": {
-        "channel":"content", //可选，标志内容的优先级，默认为dialog
+        "channel":"content", //可选，标志内容的优先级，默认为Dialog
         "token": "156",
         "type": "{{Text/SSML}}",
         "content": ["xxxx1", "xxxx2"],
