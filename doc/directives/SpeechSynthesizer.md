@@ -21,6 +21,7 @@
         "message_id": "message_id-1344"
     },
     "payload": {
+        "channel":"content", //可选，标志内容的优先级，默认为dialog
         "token": "156",
         "type": "{{Text/SSML}}",
         "content": ["xxxx1", "xxxx2"],
@@ -35,6 +36,7 @@ token   | tts的token | string  | 是
 type    | TTS类型，type字段的两种取值：Text和SSML| string  | 是
 content | 播报内容，content字段固定为数组，即使只有一条内容，也使用数组。| array   | 是
 speak_behavior | 播报模式 REPLACE_ALL: 清空列表，立即播报；ENQUEUE: 把指令关联的tts添加到列表末尾，下一条预取的时候使用它 | string  | 是
+channel | 播报内容的分类和优先级，取值：Dialog/Content/Alerts，请参考[directives的交互设计参考](../api/directives_design.md) | string  | 否，默认为Dialog
 
 
 
