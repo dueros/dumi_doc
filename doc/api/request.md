@@ -107,8 +107,8 @@
             "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
         },
     },
-    //app_ver app版本号
-    "app_ver": "1.0.10",
+    //app_ver 版本号，2.0.0之后返回现在的v2格式
+    "app_ver": "2.0.0",
     "searchbox_ver":"8.0",//宿主版本号，只存在于插件形式，比如手百、地图、浏览器
     //string 可选，默认值是"txt"，可用的值现在有txt / image，消息内容的类型，会决定服务端如何解析request_query
     "content_type": "image",
