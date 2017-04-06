@@ -16,32 +16,35 @@
     "views": [
       {
         "type": "txt",
-        "content": "语音助手正在为你发送“送李四”的名片到“张三”"
+        "content": "语音助手正在为您寻找联系人“测试薛斌”"
+      },
+      {
+        "type": "txt",
+        "content": "一通电话显得格外珍贵，一条贴心的短信就是浓浓的爱，与身边的人多联系联系",
+        "url": "xiaoduapp://phone?pinyin=ce+shi+xue+bin&name=%E6%B5%8B%E8%AF%95%E8%96%9B%E6%96%8C"
       }
     ],
     "nlu": {
       "domain": "phone",
-      "intent": "contact",
+      "intent": "telephone",
       "slots": {
-        "action_type": "2",
-        "pinyin_for_view": "song+li+si",
-        "pinyin_to_send": "zhang+san",
-        "name_for_view": "送李四",
-        "name_to_send": "张三"
+        "name": "测试薛斌",
+        "pinyin": "ce+shi+xue+bin"
       }
     },
     "speech": {
       "type": "Text",
-      "content": "语音助手正在为你发送“送李四”的名片到“张三”"
+      "content": "语音助手正在为您寻找联系人“测试薛斌”"
     }
   },
-  "id": "1486365914_104fngxrj",
-  "logid": "14863659133650",
-  "user_id": "test_cuid",
-  "time": 1486365914,
-  "cuid": null,
-  "se_query": "发送李四的名片给张三",
+  "id": "1491445965_354dvoswq",
+  "logid": "14914459652028",
+  "user_id": "test_waiwang_yinjie_fenji_1111111",
+  "time": 1491445965,
+  "cuid": "test_waiwang_shiquan_fenji_111111",
+  "se_query": "打电话给测试薛斌",
   "msg": "ok",
+  "client_msg_id": "58512fc9-d688-4e4e-9263-14495de3a60a",
   "status": 0
 }
 ```
