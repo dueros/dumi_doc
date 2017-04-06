@@ -14,9 +14,10 @@
         "message_id": "message_id-1344"
     },
     "payload": {
-        "tone":"", //音色
-        "bluetooth":true,//蓝牙开关
-        "microphone":true //麦克风开关
+        "tone": "",         // 音色
+        "alarm": false,     // 响铃关闭
+        "bluetooth": true,  // 蓝牙开关
+        "microphone": true  // 麦克风开关
     }
 }
 ```
