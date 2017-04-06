@@ -11,8 +11,8 @@
          * [架构描述](#架构描述)
       * [交互模式说明（confirm）](#交互模式说明confirm)
          * [请求格式](#请求格式)
-            * [请求字段中，.msg.device_data字段的解释](#请求字段中msgdevice_data字段的解释)
             * [请求字段中，.supported_content_type字段的解释](#请求字段中supported_content_type字段的解释)
+            * [请求字段中，.msg.device_data字段的解释](#请求字段中msgdevice_data字段的解释)
          * [正常返回格式](#正常返回格式)
             * [和策略相关的字段](#和策略相关的字段)
             * [正常返回的字段中，content字段的解释](#正常返回的字段中content字段的解释)
@@ -255,6 +255,7 @@
         //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
           "bot_intent":{
+            "query":"raw query"   ////请求的query，如果有bot_intent，这个就必须有
             "query_score":100   ////和需求的匹配度,可选
           },
           "raw_answer": [
@@ -377,6 +378,7 @@
         //会用于us排序的字段，为了让排序策略起作用，尽可能传一下
         "stategy_middle_data": {
           "bot_intent":{
+            "query":"raw query"   ////请求的query，如果有bot_intent，这个就必须有
             "query_score":100   ////和需求的匹配度,可选
           },
           "raw_answer": [

@@ -382,6 +382,13 @@ image_satisfy | 图搜服务
 ##### SpeechSynthesizer
   * [SpeechSynthesizer](../directives/SpeechSynthesizer.md) 语音播报（TTS）相关指令
 
+##### SpeechRecognizer
+  * 只有部分客户端支持的指令
+  * [SpeechRecognizer](../directives/SpeechRecognizer.md) 语音识别相关指令
+
+##### Extension
+  * 只有部分客户端支持的指令
+  * [Extension](../directives/Extension.md) 部分客户端会收到的扩展指令
 
 
 #### hint

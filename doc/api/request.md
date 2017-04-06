@@ -8,6 +8,7 @@
          * [请求示例](#请求示例)
          * [请求值（request）中数据格式分块详细说明](#请求值request中数据格式分块详细说明)
             * [客户端能力相关（device_interface, device_event, device_status）](#客户端能力相关device_interface-device_event-device_status)
+            * [请求字段中，.supported_content_type字段的解释](#请求字段中supported_content_type字段的解释)
 
 
 ### 请求示例
@@ -106,8 +107,8 @@
             "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
         },
     },
-    //app_ver app版本号
-    "app_ver": "1.0.10",
+    //app_ver 版本号，2.0.0之后返回现在的v2格式
+    "app_ver": "2.0.0",
     "searchbox_ver":"8.0",//宿主版本号，只存在于插件形式，比如手百、地图、浏览器
     //string 可选，默认值是"txt"，可用的值现在有txt / image，消息内容的类型，会决定服务端如何解析request_query
     "content_type": "image",
