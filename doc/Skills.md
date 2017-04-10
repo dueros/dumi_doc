@@ -17,6 +17,7 @@ aries_general|通用信息查询|周杰伦是谁
 sac|通用服务入口|我要买火车票
 restaurant_bot|美食服务|北京哪里的烤鸭好吃
 [remind](bot/remind.md)|提醒、闹钟|5分钟之后提醒我
+[alerts](bot/alerts.md)|闹钟、计时器|5分钟之后提醒我
 recommend_service_wireless|笑话、新闻|讲个笑话
 sysprofile_service|系统画像（可根据端类型自定义返回内容）|你是什么星座的
 [phone](bot/phone.md)|电话指令、打开app、网页、通信录、我的位置|

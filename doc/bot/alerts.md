@@ -33,7 +33,7 @@ qu能力输出仅包括qu解析，接入端需要实现Alerts业务逻辑、数�
 
 ##Alerts数据结构
 ###<span id="alert_struct">AlertsStruct</span>
-```javascript {.theme-peacock}
+```javascript
 AlertsStruct = {
 	"token": string,// 唯一标识
 	"type": string,// Alert类型 TIMER|ALARM
@@ -43,7 +43,7 @@ AlertsStruct = {
 	"extensions": ExtensionsStruct json, // 可选，额外信息，qu能力级别输出携带，例如接入完整能力的A音箱则没有该字段，接入qu能力的B手机助手则有该字段|mateapp携带
 }
 ```
-```javascript {.theme-peacock}
+```javascript
 ExtensionsStruct = {
 	"start_time": int, // 开始时间
 	"content": string, // 事件名称
@@ -59,7 +59,7 @@ ExtensionsStruct = {
 
 ##AlertsState Context
 客户端请求DCS、上报Event需要携带AlertsState Context
-```javascript {.theme-peacock}
+```javascript
 {
 	"allAlerts": [
 	    AlertsStruct,// 见Alerts数据结构
@@ -78,7 +78,7 @@ DCS下发SetAlert Directive场景：
 2、mateapp重新开启已经创建的alarm、timer
 3、mateapp更新已经创建的alarm、timer
 
-```javascript {.theme-peacock}
+```javascript
  {
 	 "header": {
 	     "namespace": "Alerts",
@@ -91,7 +91,7 @@ DCS下发SetAlert Directive场景：
 
 ###SetAlertSucceeded Event
 客户端在收到SetAlert Directive后成功创建Alert必须向DCS上报SetAlertSucceeded Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -105,7 +105,7 @@ DCS下发SetAlert Directive场景：
 
 ###SetAlertFailed Event
 客户端在收到SetAlert Directive后未成功创建Alert必须向DCS上报SetAlertFailed Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -126,7 +126,7 @@ DCS下发DeleteAlert Directive场景：
 2、mateapp删除alarm、timer
 3、mateapp暂停已经创建的alarm
 
-```javascript {.theme-peacock}
+```javascript
  {
 	 "header": {
 	     "namespace": "Alerts",
@@ -141,7 +141,7 @@ DCS下发DeleteAlert Directive场景：
 
 ###DeleteAlertSucceeded Event
 客户端在收到DeleteAlert Directive后成功删除Alert必须向DCS上报DeleteAlertSucceeded Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -155,7 +155,7 @@ DCS下发DeleteAlert Directive场景：
 
 ###DeleteAlertFailed Event
 客户端在收到DeleteAlert Directive后未成功删除Alert必须向DCS上报DeleteAlertfailed Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -170,7 +170,7 @@ DCS下发DeleteAlert Directive场景：
 ##Start and Stop
 ###AlertStarted Event
 Alert到触发时间响铃必须向DCS上报AlertStarted  Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -183,7 +183,7 @@ Alert到触发时间响铃必须向DCS上报AlertStarted  Event
 ```
 ###AlertStoped Event
 Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -198,7 +198,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 
 ##前后台切换
 ###AlertEnteredForeground Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -211,7 +211,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 ```
 
 ###AlertEnteredBackground Event
-```javascript {.theme-peacock}
+```javascript
 {
     "header": {
         "namespace": "Alerts",
@@ -227,7 +227,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 ##输出实例
 
 ###创建实例
-```javascript {.theme-peacock}
+```javascript
 {
     "result": {
         "bot_id": "alarm",
@@ -305,7 +305,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 ###管理实例
-```javascript {.theme-peacock}
+```javascript
 {
   "result": {
 	"directives":[
@@ -402,7 +402,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 #timer输出schema
 ##输出实例
 ###创建实例
-```javascript {.theme-peacock}
+```javascript
 {
   "result": {
 	"directives":[
@@ -471,7 +471,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 ```
 
 ###timer管理实例
-```javascript {.theme-peacock}
+```javascript
 {
   "result": {
 	"directives":[
@@ -559,7 +559,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 `params:type=(ALARM|TIMER)`
 
 ###response
-```javascript {.theme-peacock}
+```javascript
 {
 	"status": int, //状态码 0正确 其他错误
 	"msg": string, // 错误信息
@@ -575,14 +575,14 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 `method:POST`
 `datatype:JSON`
 ###postbody
-```javascript {.theme-peacock}
+```javascript
 {
 	"token": string, // 唯一标识
 }
 ```
 
 ###response
-```javascript {.theme-peacock}
+```javascript
 {
 	"status": int, //状态码 0正确 其他错误
 	"msg": string, // 错误信息
@@ -595,7 +595,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 `method:POST`
 `datatype:JSON`
 ###postbody
-```javascript {.theme-peacock}
+```javascript
 {
 	"token": string, // 唯一标识
 }
@@ -606,14 +606,14 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 `method:POST`
 `datatype:JSON`
 ###postbody
-```javascript {.theme-peacock}
+```javascript
 {
 	"token": string, // 唯一标识
 }
 ```
 
 ###response
-```javascript {.theme-peacock}
+```javascript
 {
 	"status": int, //状态码 0正确 其他错误
 	"msg": string, // 错误信息
@@ -626,12 +626,12 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 `method:POST`
 `datatype:JSON`
 ###postbody
-```javascript {.theme-peacock}
+```javascript
 AlertsStruct
 ```
 
 ###response
-```javascript {.theme-peacock}
+```javascript
 {
 	"status": int, //状态码 0正确 其他错误
 	"msg": string, // 错误信息
