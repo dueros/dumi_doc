@@ -54,6 +54,8 @@
 
 ```javascript
 {
+  //最终返回值里的bot_id，相当于以前的source_type，在中控配置。以后bot_id不再由bot返回的source_type决定
+  "bot_name": "ai.dueros.bot.information_general",
   "user_id": "3101", ///用户id，如果非登录用户会改成
   "query": "张岩", //原始query
   "version": 1, //版本号
