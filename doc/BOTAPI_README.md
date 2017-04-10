@@ -57,6 +57,7 @@
   //最终返回值里的bot_id，相当于以前的source_type，在中控配置。以后bot_id不再由bot返回的source_type决定
   "bot_name": "ai.dueros.bot.information_general",
   "launch":true,//标识是第一次open这个bot的请求，默认是false
+  "end_session":true,//标识是第一次open这个bot的请求，默认是false
   "user_id": "3101", ///用户id，如果非登录用户会改成
   "query": "张岩", //原始query
   "version": 1, //版本号
@@ -356,8 +357,6 @@
         ]
       }
     ],
-    //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
-    "should_end_session":false, 
     "server_query_intent": "\"\""
   },
   /////如果不是多轮，此字段可没有
@@ -400,7 +399,9 @@
         "{\"empty\":true}"
       ]
     }
-  ]
+  ],
+  //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+  "should_end_session":false, 
 
 }
 
