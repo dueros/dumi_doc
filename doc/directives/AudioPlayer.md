@@ -13,6 +13,8 @@
       * [ProgressReportIntervalElapsed事件](#progressreportintervalelapsed事件)
       * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
       * [有屏设备接入音乐、有声等音频服务](#有屏设备接入音乐有声等音频服务)
+      * [FAQ](#FAQ)
+      * [Changelog](#Changelog)
 
 
 ## AudioPlayer.Play指令
@@ -186,11 +188,13 @@ Directive和Event机制非常适合无屏设备使用，对于有屏设备，
 
 ## FAQ
 * 如何实现暂停、继续
+
 暂停和继续只需要实现Play和Stop两个指令，语音说“暂停”，云端返回Stop指令，客户端收到指令后执行暂停，同时立马上报一个PlaybackStopped的事件，
 云端收到事件后把断点位置offset_ms保存下来，接下来语音说“继续”，云端返回Play指令，offset_ms的值为上一次说暂停时上报的位置，客户端收到Play指令后，
 从offset_ms的位置开始播放，从而实现继续播放的功能。
 
 * 如何实现循环模式（列表循环、随机播放、单曲循环）
+
 循环模式的逻辑由云端实现，客户端不需要实现循环模式的逻辑，客户端只需要维持本地的播放列表，一首一首的播放，以及实现Play指令的play_behavior的REPLACE_ENQUEUED模式，例如单曲循环的实现：
 当前正在播放的音频id为156，语音说“单曲循环”，云端会把播放模式切换为单曲循环，同时返回一个Play指令
 ```json
