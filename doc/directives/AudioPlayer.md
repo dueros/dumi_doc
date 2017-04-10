@@ -13,8 +13,8 @@
       * [ProgressReportIntervalElapsed事件](#progressreportintervalelapsed事件)
       * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
       * [有屏设备接入音乐、有声等音频服务](#有屏设备接入音乐有声等音频服务)
-      * [FAQ](#FAQ)
-      * [Changelog](#Changelog)
+      * [FAQ](#faq)
+      * [Changelog](#changelog)
 
 
 ## AudioPlayer.Play指令
