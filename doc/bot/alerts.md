@@ -1,38 +1,38 @@
-﻿#Alerts 设备端能力要求
+﻿# Alerts 设备端能力要求
 
-##连接网络
+## 连接网络
 用户使用设备创建、删除Alerts，需要接受DCS（duer  conversation  service）下发的Directive去创建、删除Alert，创建、删除失败后必须向DCS上报Event。
 
-##Alerts创建后在设备离线后可以正确触发
+## Alerts创建后在设备离线后可以正确触发
 例如用户创建第二天早上8点的alarm后，设备断网，第二天早上8点alarm需要准时触发。
 
-##支持本地重建Alerts
+## 支持本地重建Alerts
 设备重启后需要能够在本地重建Alerts，这种场景下不需要向DCS上报Event。
 
-#Alerts 流程
-##基本Alerts流程
+# Alerts 流程
+## 基本Alerts流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/149b86d35ae902fa853a4eecaa8a5d6c57816155)
-##通过设备实体交互停止响铃流程
+## 通过设备实体交互停止响铃流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/373bf9939c691a59d3e80079bae581a037b12135)
-##周期重复alarm流程
+## 周期重复alarm流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/cec09e6dd874a76a2a83969c04a7e1f63888dfe4)
-##删除Alerts流程
+## 删除Alerts流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/04d52d10de67abc6b2ff343810b1801e94e948c7)
-##mateapp删除Alerts流程
+## mateapp删除Alerts流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/c05bb16452a03febc55540f12f5c2c7dbcd128a5)
 
 
 # Alerts接口协议
 
-##输出能力级别定义
-###all: 输出完整的Alerts能力
+## 输出能力级别定义
+### all: 输出完整的Alerts能力
 完整能力输出包括qu解析、Alerts业务逻辑、数据存储。
 
-###qu: 仅输出qu能力
+### qu: 仅输出qu能力
 qu能力输出仅包括qu解析，接入端需要实现Alerts业务逻辑、数据存储。Alerts管理输出需要在输入Context中携带Alerts详细数据，且数据格式需是[duer约定格式](#alert_struct)。
 
-##Alerts数据结构
-###<span id="alert_struct">AlertsStruct</span>
+## Alerts数据结构
+### <span id="alert_struct">AlertsStruct</span>
 ```javascript
 AlertsStruct = {
 	"token": string,// 唯一标识
@@ -57,7 +57,7 @@ ExtensionsStruct = {
 ```
 
 
-##AlertsState Context
+## AlertsState Context
 客户端请求DCS、上报Event需要携带AlertsState Context
 ```javascript
 {
@@ -70,9 +70,9 @@ ExtensionsStruct = {
 }
 ```
 
-##Create
+## Create
 设备Alerts的本地创建，必须且只有在接受到DCS 的SetAlert Directive之后进行。
-###SetAlert Directive
+### SetAlert Directive
 DCS下发SetAlert Directive场景：
 1、客户端通过语音创建alarm、timer
 2、mateapp重新开启已经创建的alarm、timer
@@ -89,7 +89,7 @@ DCS下发SetAlert Directive场景：
  }
 ```
 
-###SetAlertSucceeded Event
+### SetAlertSucceeded Event
 客户端在收到SetAlert Directive后成功创建Alert必须向DCS上报SetAlertSucceeded Event
 ```javascript
 {
@@ -103,7 +103,7 @@ DCS下发SetAlert Directive场景：
 }
 ```
 
-###SetAlertFailed Event
+### SetAlertFailed Event
 客户端在收到SetAlert Directive后未成功创建Alert必须向DCS上报SetAlertFailed Event
 ```javascript
 {
@@ -117,9 +117,9 @@ DCS下发SetAlert Directive场景：
 }
 ```
 
-##Delete
+## Delete
 设备Alerts的本地删除，必须且只有在接受到DCS 的SetAlert Directive之后进行。
-###DeleteAlert Directive
+### DeleteAlert Directive
 DCS下发DeleteAlert Directive场景：
 1、客户端通过语音删除alarm、timer
 2、客户端通过语音停止响铃的alarm、timer
@@ -139,7 +139,7 @@ DCS下发DeleteAlert Directive场景：
  }
 ```
 
-###DeleteAlertSucceeded Event
+### DeleteAlertSucceeded Event
 客户端在收到DeleteAlert Directive后成功删除Alert必须向DCS上报DeleteAlertSucceeded Event
 ```javascript
 {
@@ -153,7 +153,7 @@ DCS下发DeleteAlert Directive场景：
 }
 ```
 
-###DeleteAlertFailed Event
+### DeleteAlertFailed Event
 客户端在收到DeleteAlert Directive后未成功删除Alert必须向DCS上报DeleteAlertfailed Event
 ```javascript
 {
@@ -167,8 +167,8 @@ DCS下发DeleteAlert Directive场景：
 }
 ```
 
-##Start and Stop
-###AlertStarted Event
+## Start and Stop
+### AlertStarted Event
 Alert到触发时间响铃必须向DCS上报AlertStarted  Event
 ```javascript
 {
@@ -181,7 +181,7 @@ Alert到触发时间响铃必须向DCS上报AlertStarted  Event
 	 }
 }
 ```
-###AlertStoped Event
+### AlertStoped Event
 Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 ```javascript
 {
@@ -196,8 +196,8 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 ```
 
 
-##前后台切换
-###AlertEnteredForeground Event
+## 前后台切换
+### AlertEnteredForeground Event
 ```javascript
 {
     "header": {
@@ -210,7 +210,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-###AlertEnteredBackground Event
+### AlertEnteredBackground Event
 ```javascript
 {
     "header": {
@@ -223,10 +223,10 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-#Alarm输出schema
-##输出实例
+# Alarm输出schema
+## 输出实例
 
-###创建实例
+### 创建实例
 ```javascript
 {
     "result": {
@@ -304,7 +304,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
     "status": 0
 }
 ```
-###管理实例
+### 管理实例
 ```javascript
 {
   "result": {
@@ -373,7 +373,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-##NLU
+## NLU
 |slot |desc | value |
 |---|---|---|
 |intent|alarm意图|alarm,alarm_manage|
@@ -384,7 +384,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 |scheduled_time | alarm设置的时间。只会在提醒创建前（即槽位完备）给出 | 1486598400|
 |status| 状态 |status|
 
-##<span id="alarm_time">alarm_time字段说明</span>
+## <span id="alarm_time">alarm_time字段说明</span>
 |Key |Value |说明|
 |---|---|---|
 |minute |3, +2, -1|string. 3分，2分钟后，1分钟前|
@@ -399,9 +399,9 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 |special_day |weekend, weekday|string. 周末，工作日，节气，节日|
 |special_calendar|lunar|string. 农历|
 
-#timer输出schema
-##输出实例
-###创建实例
+# timer输出schema
+## 输出实例
+### 创建实例
 ```javascript
 {
   "result": {
@@ -470,7 +470,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-###timer管理实例
+### timer管理实例
 ```javascript
 {
   "result": {
@@ -539,7 +539,7 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-##NLU
+## NLU
 |slot |Value |说明|
 |---|---|---|
 |minute|3|string. 3分|
@@ -551,14 +551,14 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 |condition|recent|string. 刚刚|
 
 
-#mateapp 接口
-##Alerts列表
+# mateapp 接口
+## Alerts列表
 `/saiya/alerts`
 `method:GET`
 `datatype:JSON`
 `params:type=(ALARM|TIMER)`
 
-###response
+### response
 ```javascript
 {
 	"status": int, //状态码 0正确 其他错误
@@ -570,18 +570,18 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-##Alerts暂停
+## Alerts暂停
 `/saiya/pause`
 `method:POST`
 `datatype:JSON`
-###postbody
+### postbody
 ```javascript
 {
 	"token": string, // 唯一标识
 }
 ```
 
-###response
+### response
 ```javascript
 {
 	"status": int, //状态码 0正确 其他错误
@@ -590,29 +590,29 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-##Alerts重新开启
+## Alerts重新开启
 `/saiya/enable`
 `method:POST`
 `datatype:JSON`
-###postbody
+### postbody
 ```javascript
 {
 	"token": string, // 唯一标识
 }
 ```
 
-##Alerts删除
+## Alerts删除
 `/saiya/delete`
 `method:POST`
 `datatype:JSON`
-###postbody
+### postbody
 ```javascript
 {
 	"token": string, // 唯一标识
 }
 ```
 
-###response
+### response
 ```javascript
 {
 	"status": int, //状态码 0正确 其他错误
@@ -621,16 +621,16 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 }
 ```
 
-##Alerts更新
+## Alerts更新
 `/saiya/update`
 `method:POST`
 `datatype:JSON`
-###postbody
+### postbody
 ```javascript
 AlertsStruct
 ```
 
-###response
+### response
 ```javascript
 {
 	"status": int, //状态码 0正确 其他错误
