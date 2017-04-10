@@ -121,11 +121,25 @@
   "page_cnt": 10,
   "page_num": 1,
   //没有多轮就可以忽略session字段
+/*
   "sessions": [
     {
       "action": "get",
       "type": "string",
       "name": "phone",
+      "key": "3101",
+      "list_sessions": [],
+      "list_sessions_str": [
+        "{\"SendSMS\":{\"intent\":\"SendSMS\",\"score\":42,\"objects\":[{\"key\":\"MSMOmit\",\"value\":\"\\u8bf4\",\"score\":1},{\"key\":\"_MSMOmit\",\"value\":\"\\u8bf4\",\"score\":1},{\"key\":\"MSGBody\",\"value\":\"\\u4e0d\\u56de\\u5bb6\\u5403\\u996d\",\"score\":1},{\"key\":\"_MSGBody\",\"value\":\"\\u4e0d\\u56de\\u5bb6\\u5403\\u996d\",\"score\":1},{\"key\":\"SendKey\",\"value\":\"\\u53d1\",\"score\":1},{\"key\":\"_SendKey\",\"value\":\"\\u53d1\",\"score\":1},{\"key\":\"WantKey\",\"value\":\"\\u6211\\u8981\",\"score\":1},{\"key\":\"_WantKey\",\"value\":\"\\u6211\\u8981\",\"score\":1}]}}"
+      ],
+      "hash_sessions": []
+    }
+  ],
+*/
+  "bot_sessions": [
+    {
+      "action": "get",
+      "type": "string",
       "key": "3101",
       "list_sessions": [],
       "list_sessions_str": [
@@ -344,6 +358,8 @@
     "server_query_intent": "\"\""
   },
   /////如果不是多轮，此字段可没有
+  ///sessions字段已经废弃，现在是bot_sessions和decision_sessions, 不再有name
+/*
   "sessions": [
     {
       "status": 0,
@@ -357,6 +373,32 @@
       ]
     }
   ]
+*/
+  "bot_sessions": [
+    {
+      "status": 0,
+      "msg": "ok",
+      "action": "set",
+      "type": "string",
+      "key": "3101",
+      "list_sessions_str": [
+        "{\"empty\":true}"
+      ]
+    }
+  ],
+  "decision_sessions": [
+    {
+      "status": 0,
+      "msg": "ok",
+      "action": "set",
+      "type": "string",
+      "key": "3101",
+      "list_sessions_str": [
+        "{\"empty\":true}"
+      ]
+    }
+  ]
+
 }
 
 ```
