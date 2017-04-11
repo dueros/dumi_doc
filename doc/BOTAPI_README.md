@@ -71,7 +71,7 @@
     "ctime": 1454319650,
     "type": "user",
     "query_type": "1",
-    "device_data":"{}",//device_interface, device_event, device_status 三个字段的打包json，因为现在idl定义不了这三个字段的结构
+    "device_data":"{}",//target_device_id,device_interface, device_event, device_status 三个字段的打包json，因为现在idl定义不了这三个字段的结构
     "result_list": [
       {
         "result_confidence": 100,
@@ -208,9 +208,13 @@
 
 .msg.device_data字段，是一个json_encode后的字符串
 
+会把[请求里的几个字段](api/request.md#客户端能力相关device_interface-device_event-device_status)映射过来
+
 下面是这个json展开后的结构
 ```javascript
 {
+
+    "target_device_id":"xxxxxx",
     "device_interface":{
         "Alerts":{},
         "AudioPlayer":{},
