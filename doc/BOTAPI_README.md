@@ -233,7 +233,7 @@
         "payload": {
             //AudioPlayer里可能出现的payload
             "token": "156",
-            "offset_ms": 10000
+            "offset_ms": 10000,
             //Speaker里可能出现的payload
             "volume": 1,
             //SpeechSynthesizer可能出现的payload
