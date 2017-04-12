@@ -22,6 +22,8 @@
                * [AudioPlayer](#audioplayer)
                * [Speaker](#speaker)
                * [SpeechSynthesizer](#speechsynthesizer)
+               * [SpeechRecognizer](#speechrecognizer)
+               * [Extension](#extension)
             * [hint](#hint)
             * [nlu](#nlu)
                * [格式说明](#格式说明)
