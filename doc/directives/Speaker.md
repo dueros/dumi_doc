@@ -23,7 +23,7 @@
         "message_id": "message_id-1344"
     },
     "payload": {
-        "volume": 1
+        "volume": 10
     }
 }
 ```
@@ -44,7 +44,7 @@
 ```
 
 ## SetMute 指令
-设置静音状态打开／关闭
+设置静音状态打开／关闭。mute取值：true静音；false取消静音。
 ```json
 {
     "header": {
