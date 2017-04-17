@@ -54,6 +54,10 @@
 
 ```javascript
 {
+  //最终返回值里的bot_id，相当于以前的source_type，在中控配置。以后bot_id不再由bot返回的source_type决定
+  "bot_name": "ai.dueros.bot.information_general",
+  "launch":true,//标识是第一次open这个bot的请求，默认是false
+  "end_session":true,//标识是第一次open这个bot的请求，默认是false
   "user_id": "3101", ///用户id，如果非登录用户会改成
   "query": "张岩", //原始query
   "version": 1, //版本号
@@ -67,7 +71,7 @@
     "ctime": 1454319650,
     "type": "user",
     "query_type": "1",
-    "device_data":"{}",//device_interface, device_event, device_status 三个字段的打包json，因为现在idl定义不了这三个字段的结构
+    "device_data":"{}",//target_device_id,device_interface, device_event, device_status 三个字段的打包json，因为现在idl定义不了这三个字段的结构
     "result_list": [
       {
         "result_confidence": 100,
@@ -121,11 +125,25 @@
   "page_cnt": 10,
   "page_num": 1,
   //没有多轮就可以忽略session字段
+/*
   "sessions": [
     {
       "action": "get",
       "type": "string",
       "name": "phone",
+      "key": "3101",
+      "list_sessions": [],
+      "list_sessions_str": [
+        "{\"SendSMS\":{\"intent\":\"SendSMS\",\"score\":42,\"objects\":[{\"key\":\"MSMOmit\",\"value\":\"\\u8bf4\",\"score\":1},{\"key\":\"_MSMOmit\",\"value\":\"\\u8bf4\",\"score\":1},{\"key\":\"MSGBody\",\"value\":\"\\u4e0d\\u56de\\u5bb6\\u5403\\u996d\",\"score\":1},{\"key\":\"_MSGBody\",\"value\":\"\\u4e0d\\u56de\\u5bb6\\u5403\\u996d\",\"score\":1},{\"key\":\"SendKey\",\"value\":\"\\u53d1\",\"score\":1},{\"key\":\"_SendKey\",\"value\":\"\\u53d1\",\"score\":1},{\"key\":\"WantKey\",\"value\":\"\\u6211\\u8981\",\"score\":1},{\"key\":\"_WantKey\",\"value\":\"\\u6211\\u8981\",\"score\":1}]}}"
+      ],
+      "hash_sessions": []
+    }
+  ],
+*/
+  "bot_sessions": [
+    {
+      "action": "get",
+      "type": "string",
       "key": "3101",
       "list_sessions": [],
       "list_sessions_str": [
@@ -190,9 +208,13 @@
 
 .msg.device_data字段，是一个json_encode后的字符串
 
+会把[请求里的几个字段](api/request.md#客户端能力相关device_interface-device_event-device_status)映射过来
+
 下面是这个json展开后的结构
 ```javascript
 {
+
+    "target_device_id":"xxxxxx",
     "device_interface":{
         "Alerts":{},
         "AudioPlayer":{},
@@ -211,7 +233,7 @@
         "payload": {
             //AudioPlayer里可能出现的payload
             "token": "156",
-            "offset_ms": 10000
+            "offset_ms": 10000,
             //Speaker里可能出现的payload
             "volume": 1,
             //SpeechSynthesizer可能出现的payload
@@ -339,11 +361,11 @@
         ]
       }
     ],
-    //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
-    "should_end_session":false, 
     "server_query_intent": "\"\""
   },
   /////如果不是多轮，此字段可没有
+  ///sessions字段已经废弃，现在是bot_sessions和decision_sessions, 不再有name
+/*
   "sessions": [
     {
       "status": 0,
@@ -357,6 +379,34 @@
       ]
     }
   ]
+*/
+  "bot_sessions": [
+    {
+      "status": 0,
+      "msg": "ok",
+      "action": "set",
+      "type": "string",
+      "key": "3101",
+      "list_sessions_str": [
+        "{\"empty\":true}"
+      ]
+    }
+  ],
+  "decision_sessions": [
+    {
+      "status": 0,
+      "msg": "ok",
+      "action": "set",
+      "type": "string",
+      "key": "3101",
+      "list_sessions_str": [
+        "{\"empty\":true}"
+      ]
+    }
+  ],
+  //可选，默认为true，如果为false，客户端应该立即进入收听用户query的状态，不用重新唤醒
+  "should_end_session":false, 
+
 }
 
 ```

@@ -14,6 +14,8 @@
       * [ProgressReportIntervalElapsed事件](#progressreportintervalelapsed事件)
       * [上报AudioPlayer状态（在请求中）](#上报audioplayer状态在请求中)
       * [有屏设备接入音乐、有声等音频服务](#有屏设备接入音乐有声等音频服务)
+      * [FAQ](#faq)
+      * [Changelog](#changelog)
 
 
 ## AudioPlayer.Play指令
@@ -48,7 +50,7 @@ audio_item.audio_item_id | 音频ID   | string | 是
 audio_item.stream   | 音频流对象    | object | 是
 audio_item.stream.url | 音频流url   | string | 是
 audio_item.stream.stream_format | 音频流格式： AUDIO_MP3、AUDIO_M3U8、AUDIO_M4A  | string | 是
-audio_item.stream.offset_ms | 从哪里开始播放，如果值等于0，从开头播放。 | long | 是
+audio_item.stream.offset_ms | 客户端从哪里开始播放音频，如果值等于0，从开头播放。 | long | 是
 audio_item.stream.token | 同音频ID  | string | 是
 audio_item.stream.progress_report_interval_ms |客户端每隔多长时间上报一次进度，这个取值必须大于0，如果没有这个字段，则不上报进度   |  long | 否
 
@@ -177,12 +179,73 @@ Directive和Event机制非常适合无屏设备使用，对于有屏设备，
 
 2. 用户在屏幕GUI上点击一首歌曲的播放，端上发起一次网络请求，根据歌曲ID拿到MP3 URL，开始播放用户点击的歌曲。
 
-3. 用户语音说"下一首"，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断intent =
-   audio.music.next，然后拿到下一首歌曲的歌曲ID，发起第二次网络请求，拿到MP3 URL，开始下一首歌曲的播放。
+3. 用户语音说"下一首"，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断NLU结果为换一首，然后本地取得下一首歌曲的歌曲ID，发起第二次网络请求，拿到MP3 URL，开始下一首歌曲的播放。
    其它播放控制也类似，DuerOS NLU支持的播放控制，可以参考[音乐](../bot/audio_music.md) 、[点播](../bot/audio_unicast.md)、[直播](../bot/audio_live.md)。
 
-4. 用户语音说“换一批”，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断intent =
-   audio.music.next_page，发起第二次网络请求，获取下一页的歌曲列表，将列表中第一首歌曲的ID，发起第三次网络请求，拿到MP3
+4. 用户语音说“换一批”，发起第一次网络请求，DuerOS云端返回NLU结果，客户端判断NLU结果为换一批，发起第二次网络请求，获取下一页的歌曲列表，将列表中第一首歌曲的ID，发起第三次网络请求，拿到MP3
    URL，开始下一批歌曲的播放。
 
 5. 用户在频幕GUI上的上滑翻页操作，请求播放列表的接口，拿到下一页的歌曲列表，追加到GUI的播放列表中。
+
+## FAQ
+* 如何实现暂停、继续
+
+暂停和继续只需要实现Play和Stop两个指令，语音说“暂停”，云端返回Stop指令，客户端收到指令后执行暂停，同时立马上报一个PlaybackStopped的事件，
+云端收到事件后把断点位置offset_ms保存下来，接下来语音说“继续”，云端返回Play指令，offset_ms的值为上一次说暂停时上报的位置，客户端收到Play指令后，
+从offset_ms的位置开始播放，从而实现继续播放的功能。
+
+* 如何实现循环模式（列表循环、随机播放、单曲循环）
+
+循环模式的逻辑由云端实现，客户端不需要实现循环模式的逻辑，客户端只需要维持本地的播放列表，一首一首的播放，以及实现Play指令的play_behavior的REPLACE_ENQUEUED模式，例如单曲循环的实现：
+当前正在播放的音频id为156，语音说“单曲循环”，云端会把播放模式切换为单曲循环，同时返回一个Play指令
+```json
+{
+    "header": {
+        "namespace": "AudioPlayer",
+        "name": "Play",
+        "message_id": "message_id-1344"
+    },
+    "payload": {
+        "play_behavior": "REPLACE_ENQUEUED",
+        "audio_item": {
+            "audio_item_id": "156",
+            "stream": {
+                "url": "http://yinyueshiting.baidu.com/data2/music/124088643/124088643.mp3?xcode=57462f29cfc176f86a37d80a2c02fc5b",
+                "stream_format": "AUDIO_MP3",
+                "offset_ms": 0,
+                "token": "156",
+                "progress_report_interval_ms": 1000   
+            }
+        }
+    }
+}
+```
+Play指令的play_behavior为REPLACE_ENQUEUED，客户端清空本地之前预取保存的播放列表，同时把音频id为156的歌曲加入到播放列表，当前播放的歌曲不受
+影响，继续播放直到结束，结束后开始播放本地播放列表中的下一首歌曲，即音频id为156的歌曲。这里重点是要清空本地的播放列表，否则下一首歌曲可能不会符合预期。播放到一定位置后，客户端上报PlaybackNearlyFinished事件
+实现预取，云端返回的音频id依然为156，播放模式为ENQUEUED。
+```json
+{
+    "header": {
+        "namespace": "AudioPlayer",
+        "name": "Play",
+        "message_id": "message_id-1344"
+    },
+    "payload": {
+        "play_behavior": "ENQUEUED",
+        "audio_item": {
+            "audio_item_id": "156",
+            "stream": {
+                "url": "http://yinyueshiting.baidu.com/data2/music/124088643/124088643.mp3?xcode=57462f29cfc176f86a37d80a2c02fc5b",
+                "stream_format": "AUDIO_MP3",
+                "offset_ms": 0,
+                "token": "156",
+                "progress_report_interval_ms": 1000   
+            }
+        }
+    }
+}
+```
+下一次预取依然返回相同的Play指令，依此类推，这样就实现了单曲循环的功能。
+
+## Changelog
+* 2017-4-10 修改有屏设备接入的说明；增加FAQ。
