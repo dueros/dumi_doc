@@ -74,6 +74,8 @@
 
 存放新闻列表的地址。
 
+说明：当前的data对象下面存在list字段，为短期内兼容之前的协议版本所保留，后续会下线，请勿使用。新闻列表请通过api字段下的url链接获取。
+
 ```javascript
 "resource": {
     "type": "news_ref",
@@ -94,11 +96,13 @@
 示例：http://s.xiaodu.baidu.com/v20161223/news/playlist?user_id=yinjie05_debug_monitor&page=1&page_size=10
 
 参数：
-- user_id: 用户id 
-- page: 页码
-- page_size: 每页请求新闻数量，默认为10
+- user_id: 用户id，必选参数
+- page: 页码，可选参数，默认值为1
+- page_size: 每页请求新闻数量，可选参数，默认值为10
 
 返回码：status为0表示成功，非0表示失败。
+
+说明：当前只支持最多获取10条新闻。
 
 ```javascript
 {
