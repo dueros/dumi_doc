@@ -283,7 +283,7 @@ song_id|int|是|歌曲id(对应歌曲列表接口返回的id字段)
 ```
 ### 歌曲最新播放url接口
 请求参数
-  * 接口地址：http://s.xiaodu.ba0161223/resource/musicstreamurl
+  * 接口地址：http://s.xiaodu.v20161223/resource/musicstreamurl
   * 请求方式：GET
   * 请求参数：
 
