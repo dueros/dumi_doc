@@ -6,8 +6,10 @@
    * [SpeechSynthesizer 语音合成](#speechsynthesizer-语音合成)
       * [Table of Contents](#table-of-contents)
       * [Speak指令](#speak指令)
+	  * [Stop指令](#Stop指令)
       * [SpeechStarted事件](#speechstarted事件)
       * [SpeechFinished事件](#speechfinished事件)
+	  * [SpeechStopped事件](#speechstopped事件)
       * [SpeechSynthesizer状态上报](#speechsynthesizer状态上报)
 
 
@@ -38,7 +40,18 @@ content | 播报内容，content字段固定为数组，即使只有一条内容
 speak_behavior | 播报模式 REPLACE_ALL: 清空列表，立即播报；ENQUEUE: 把指令关联的tts添加到列表末尾，下一条预取的时候使用它 | string  | 是
 channel | 播报内容的分类和优先级，取值：Dialog/Content/Alerts，请参考[directives的交互设计参考](../api/directives_design.md) | string  | 否，默认为Dialog
 
-
+## Stop指令
+```json
+{
+    "header": {
+        "namespace": "SpeechSynthesizer",
+        "name": "Stop",
+        "message_id": "message_id-1344"
+    },
+    "payload": { 
+    }
+}
+```
 
 ## SpeechStarted事件
 收到Speak指令后，开始播报之前，上报此事件。
@@ -74,6 +87,23 @@ channel | 播报内容的分类和优先级，取值：Dialog/Content/Alerts，�
 }
 ```
 
+## SpeechStopped事件
+用户说"暂停播放"、 "停止播放"后，会收到Stop指令，客户端执行完Stop指令后，即暂停播放后，需要上报此事件，云端会保存断点，供下一次继续播放使用。
+```json
+{
+    "device_event": {
+        "header": {
+            "namespace": "SpeechSynthesizer",
+            "name": "SpeechStopped",
+            "message_id": "message_id-1344"
+        },
+        "payload": {
+            "token": "156",
+            "offset_ms": 10000
+        }
+    }
+}
+```
 
 ## SpeechSynthesizer状态上报
 
