@@ -7,7 +7,9 @@
 ## Table of Contents
 
 
-## 上报UiControl状态（在请求中）
+## 上报UiControl状态
+
+在[请求](../api/request.md)中的device_status字段
 
 ```javascript
 "device_status":{
@@ -22,6 +24,8 @@
 ```
 
 ## UiControl.Click指令
+
+在[响应](../api/response.md)中的directives字段中的一项
 
 ```javascript
 {
@@ -39,6 +43,8 @@
 ## UiControl.Clicked 事件
 
 用户执行Click指令之后，需要上传Clicked Event
+
+在[请求](../api/request.md)中的device_event字段
 
 ```javascript
 {
