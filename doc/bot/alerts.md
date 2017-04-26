@@ -9,6 +9,9 @@
 ## 支持本地重建Alerts
 设备重启后需要能够在本地重建Alerts，这种场景下不需要向DCS上报Event。
 
+## 支持NTP网络时间协议
+DCS Alerts下发Alerts都为标准时间戳，设备端需要支持NTP协议对齐时间。
+
 # Alerts 流程
 ## 基本Alerts流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/149b86d35ae902fa853a4eecaa8a5d6c57816155)
@@ -17,9 +20,9 @@
 ## 周期重复alarm流程
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/cec09e6dd874a76a2a83969c04a7e1f63888dfe4)
 ## 删除Alerts流程
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/04d52d10de67abc6b2ff343810b1801e94e948c7)
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/3b13b8573f2ac6deab79333696f1a3c703bdb479)
 ## mateapp删除Alerts流程
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/c05bb16452a03febc55540f12f5c2c7dbcd128a5)
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/015c147dc1ced884408d30e06711703f320ed251)
 
 
 # Alerts接口协议
@@ -29,7 +32,7 @@
 完整能力输出包括qu解析、Alerts业务逻辑、数据存储。
 
 ### qu: 仅输出qu能力
-qu能力输出仅包括qu解析，接入端需要实现Alerts业务逻辑、数据存储。Alerts管理输出需要在输入Context中携带Alerts详细数据，且数据格式需是[duer约定格式](#alert_struct)。
+qu能力输出仅包括qu解析，接入端需要实现Alerts业务逻辑、数据存储。使用DCS管理需要将设备端Alerts详细数据通过device_status携带，且数据格式需是[duer约定格式](#alert_struct)。
 
 ## Alerts数据结构
 ### <span id="alert_struct">AlertsStruct</span>
@@ -39,7 +42,8 @@ AlertsStruct = {
 	"type": string,// Alert类型 TIMER|ALARM
 	"scheduled_time": string,// Alert触发时间，秒级时间戳
 	"content": string, // Alert事件名称
-
+    
+     // ####### 接入完整能力不要关注此字段#########
 	"extensions": ExtensionsStruct json, // 可选，额外信息，qu能力级别输出携带，例如接入完整能力的A音箱则没有该字段，接入qu能力的B手机助手则有该字段|mateapp携带
 }
 ```
@@ -49,22 +53,24 @@ ExtensionsStruct = {
 	"content": string, // 事件名称
 	"duration": int, // timer时长
 	"repeat_type": string, // 重复类型 day|week|month|year
-	"repeat_week": int, // 重复星期 从低位到高位表示星期一到星期日
-	"repeat_month": int, // 重复月 从低位到高位表示1~12月
-	"repeat_year": string, // 重复年 12-1，8-2
+	"repeat_week": int, // 可选，重复星期 从低位到高位表示星期一到星期日
+	"repeat_month": int, // 可选，重复月 从低位到高位表示1~12月
+	"repeat_year": string, // 可选， 重复年 12-1，8-2
 	"special_calender": string, // 农历，lunar
+    "special_day": string, // 工作日, weekday
 }
 ```
 
 
-## AlertsState Context
-客户端请求DCS、上报Event需要携带AlertsState Context
+## device_status Alerts
+客户端请求DCS、上报Event需要携带Alerts device_status
 ```javascript
 {
-	"allAlerts": [
+	"all_alerts": [
 	    AlertsStruct,// 见Alerts数据结构
 	 ],
-	"activeAlerts": [
+    // 正在活跃的Alerts 
+	"active_alerts": [
 	    AlertsStruct,// 见Alerts数据结构
     ],
 }
@@ -284,7 +290,6 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
                 "event_title": "起床",
                 "event_type": "wakeup",
                 "alarm_time": "{\"day\":\"next\",\"hour\":\"8\",\"apm\":\"am\"}",
-                "status": "create"
             }
         },
         "speech": {
@@ -382,7 +387,6 @@ Alert停止正在响铃的Alert必须向DCS上报AlertStoped Event
 |event_type | alarm事件类型 | eg:wakeup|
 |alarm_time|[alarm_time说明](#alarm_time)|json字符串
 |scheduled_time | alarm设置的时间。只会在提醒创建前（即槽位完备）给出 | 1486598400|
-|status| 状态 |status|
 
 ## <span id="alarm_time">alarm_time字段说明</span>
 |Key |Value |说明|
