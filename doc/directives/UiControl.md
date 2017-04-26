@@ -3,6 +3,13 @@
 ## Table of Contents
 
 
+   * [UiControl](#uicontrol)
+      * [Table of Contents](#table-of-contents)
+      * [总体逻辑](#总体逻辑)
+      * [上报UiControl状态](#上报uicontrol状态)
+      * [UiControl.Click指令](#uicontrolclick指令)
+      * [UiControl.Clicked 事件](#uicontrolclicked-事件)
+
 
 ## 总体逻辑
 

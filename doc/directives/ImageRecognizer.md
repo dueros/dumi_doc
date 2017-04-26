@@ -3,6 +3,14 @@
 
 ## Table of Contents
 
+
+   * [ImageRecognizer](#imagerecognizer)
+      * [Table of Contents](#table-of-contents)
+      * [总体逻辑](#总体逻辑)
+      * [ImageRecognizer.StartRecognize指令](#imagerecognizerstartrecognize指令)
+      * [ImageRecognizer.Recognize 事件](#imagerecognizerrecognize-事件)
+
+
 ## 总体逻辑
 
   1. 用户发query：帮我看看这是什么水果
