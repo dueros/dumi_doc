@@ -184,6 +184,7 @@ expired|已过期
 expiring|快过期
 normal|正常
 fresh|新鲜
+not_expire|未过期
 
 冰箱里有什么呀？
 ```javascript
