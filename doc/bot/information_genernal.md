@@ -473,3 +473,44 @@
     "status": 0
 }
 ```
+
+## nlu输出
+```javascript
+domain： universal_search
+intent:
+calculator => 计算器
+stock => 股票
+exchange_rate => 汇率
+image => 图片
+traffic_limit => 限行
+kg => 知识图谱（问答/人物/诗词/汉语...）
+short_video => 短视频
+app => 应用下载
+weather => 天气
+tieba => 贴吧
+lbs_consume => lbs消费
+novel => 小说
+teleplay => 电视剧
+music => 音乐
+car_series => 车系
+lottery => 彩票
+cookbook => 菜谱
+3c => 3C产品
+animation => 动漫
+douban => 豆瓣
+lbs => 导航
+train_ticket => 火车票
+shopping_search => 购物搜索
+nba => NBA
+moive_ticket => 电影票
+weibo => 微博
+constellation => 星座
+recruit => 招聘
+travel => 旅游
+hotel => 酒店
+plane_ticket => 飞机票
+drugs => 药品
+baike => 百科
+time => 时间
+general_aladdin => 其他泛阿拉丁
+```
