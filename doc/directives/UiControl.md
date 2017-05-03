@@ -24,9 +24,9 @@
 "device_status":{
     "UiControl":{
         "items":[
-              {"label":"下一个","url:"xxapp://next"},
-              {"label":"暂停”,url:"xxapp://pause"},
-              {"label":”停止”,url:"xxapp://stop"},
+              {"label":"下一个","url":"xxapp://next"},
+              {"label":"暂停","url":"xxapp://pause"},
+              {"label":"停止","url":"xxapp://stop"},
         ],
     },
 },
