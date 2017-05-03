@@ -47,20 +47,25 @@ fridge 类，目前没有多轮交互，而且只支持query理解，不会返�
 slot key|slot value
 --------|----------
 room|冷冻 冷藏 保鲜 速冻 变温 恒温
+temp_set|温度设置，如“设为”
 set_temp|设置温度值，如“1”
 temp_down|温度变小
 temp_down_size|温度变小幅度
 temp_up|温度增加
 temp_up_size|温度增加幅度
+temp_negative|代表温度为负值，如“零下”
 
-冷藏室的温度设置到1度
+
+冷藏室的温度设置到零下1度
 ```javascript
 {
   "domain": "fridge",
   "intent": "fridge.setting.temperature",
   "slots": {
     "room": "冷藏室",
-    "set_temp": "1"
+    "temp_set": "设置",
+    "set_temp": "1",
+    "temp_negative": "零下"
   }
 }
 ```
@@ -144,7 +149,7 @@ expire_day|过期时间(天)
   "domain": "fridge",
   "intent": "fridge.food.manage",
   "slots": {
-    "add": "添加",
+    "action": "add",
     "name": "苹果"
   }
 }
@@ -156,7 +161,7 @@ expire_day|过期时间(天)
   "domain": "fridge",
   "intent": "fridge.food.manage",
   "slots": {
-    "del": "删除",
+    "action": "del",
     "name": "苹果"
   }
 }
@@ -280,8 +285,8 @@ not_expire|未过期
 slot key|slot value
 --------|----------
 room| 冷冻 制冷 冷藏
-open| 打开
-close | 关闭
+open| 打开冰箱舱室，如“开启”
+close | 关闭冰箱舱室，如“关闭”
 
 关闭冷冻室
 ```javascript
@@ -301,8 +306,8 @@ close | 关闭
 slot key|slot value
 --------|----------
 mode| 自动 智能 速冻 休眠 假日 速冷 微冻 零度 冷饮 干货
-open| 打开
-close | 关闭
+open| 打开冰箱模式，如“开启”
+close | 关闭冰箱模式，如“关闭”
 
 进入速冻模式
 ```javascript
@@ -384,6 +389,18 @@ app | 应用名
   "slots": {}
 }
 ```
+
+### fridge.exit
+退出
+拜拜
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.exit",
+  "slots": {}
+}
+```
+
 
 ### control.hardware.screen.bright
 
