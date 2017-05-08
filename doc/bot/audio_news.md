@@ -66,9 +66,29 @@
                 ],
             }
         ]
+        "nlu":{
+            "domain":"audio.news",
+            "intent":"audio.news.play",
+            "slots":{
+                "category":"娱乐"
+            }
+        }
     }
 }
 ```
+
+
+### nlu部分的说明
+intent|slot|slot_name|slot_value
+------|----|---------|----------
+intent::audio.news.play 新闻播放|分类|category|娱乐
+ |省份|province|浙江
+ |城市|city|杭州
+ |关键字|keyword|王宝强
+ |排序类型|sort_type|最热/最新
+intent::audio.news.stop 停止 |              
+intent::audio.news.next 下一条 |
+intent::audio.news.previous 上一条 | 
 
 
 ### directives 部分的说明
@@ -97,18 +117,22 @@
 
 ## 获取新闻播放列表
 
-新闻播放列表，默认返回10条新闻。
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/news/playlist?user_id=yinjie05_debug_monitor
+            (对应语音交互返回结果的resource.data.api.url字段内容)
+  * 请求方式：GET
+  * 请求参数：
 
-示例：http://s.xiaodu.baidu.com/v20161223/news/playlist?user_id=yinjie05_debug_monitor&page=1&page_size=10
+参数|类型|是否必须|备注
+----|----|--------|----
+user_id|string|是|用户ID，用户的唯一标识
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
 
-参数：
-- user_id: 用户id，必选参数
-- page: 页码，可选参数，默认值为1
-- page_size: 每页请求新闻数量，可选参数，默认值为10
+  * 返回码：status为0表示成功，非0表示失败。
 
-返回码：status为0表示成功，非0表示失败。
+  * 说明：当前只支持最多获取10条新闻。
 
-说明：当前只支持最多获取10条新闻。
+返回格式：
 
 ```javascript
 {
@@ -233,14 +257,19 @@
 
 ## 获取新闻内容接口
 
-新闻内容包含图片和问题，通过type字段区分。
+  * 接口地址：http://s.xiaodu.baidu.com/v20161223/news/content?id=17415159588394100071
+  * 请求方式：GET
+  * 请求参数：
 
-示例：http://s.xiaodu.baidu.com/v20161223/news/content?id=17415159588394100071
+参数|类型|是否必须|备注
+----|----|--------|----
+id|string|是|新闻ID，新闻的唯一标识
 
-参数：id, 新闻id
+  * 返回码：status为0表示成功，非0表示失败。
 
-返回码：status为0表示成功，非0表示失败。
+  * 说明：新闻内容包含图片和问题，返回结果中通过type字段区分。
 
+返回格式：
 ```
 {
     status: 0,
