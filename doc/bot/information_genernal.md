@@ -33,8 +33,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "baike",
       "slots": {}
     },
     "speech": {
@@ -70,8 +70,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "traffic_limit",
       "slots": {}
     },
     "speech": {
@@ -108,8 +108,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "stock",
       "slots": {}
     },
     "speech": {
@@ -146,8 +146,8 @@
             }
         ],
         "nlu": {
-            "domain": "unknown",
-            "intent": "unknown",
+            "domain": "universal_search",
+            "intent": "exchange_rate",
             "slots": {}
         },
         "speech": {
@@ -184,8 +184,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "translator",
       "slots": {}
     },
     "speech": {
@@ -222,8 +222,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "calculator",
       "slots": {}
     },
     "speech": {
@@ -260,8 +260,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "time",
       "slots": {}
     },
     "speech": {
@@ -292,8 +292,8 @@
       }
     ],
     "nlu": {
-      "domain": "unknown",
-      "intent": "unknown",
+      "domain": "universal_search",
+      "intent": "kg",
       "slots": {}
     },
     "speech": {
@@ -330,8 +330,8 @@
             }
         ],
         "nlu": {
-            "domain": "unknown",
-            "intent": "unknown",
+            "domain": "universal_search",
+            "intent": "kg",
             "slots": {}
         },
         "speech": {
@@ -368,8 +368,8 @@
             }
         ],
         "nlu": {
-            "domain": "unknown",
-            "intent": "unknown",
+            "domain": "universal_search",
+            "intent": "kg",
             "slots": {}
         },
         "speech": {
@@ -453,8 +453,8 @@
             }
         ],
         "nlu": {
-            "domain": "unknown",
-            "intent": "unknown",
+            "domain": "universal_search",
+            "intent": "normal",
             "slots": {}
         },
         "speech": {
