@@ -24,13 +24,24 @@
 "device_status":{
     "UiControl":{
         "items":[
-              {"label":"下一个","url":"xxapp://next"},
-              {"label":"暂停","url":"xxapp://pause"},
-              {"label":"停止","url":"xxapp://stop"},
+              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2},
+              {"label":"暂停","scene":"control","url":"xxapp://pause","x":1,"y":3},
+              {"label":"停止","scene":"control","url":"xxapp://stop","x":1,"y":4},
+              {"label":"跑男2017-05-10，黄磊","scene":"content","url":"xxapp://play?id=12345","x":1,"y":1},
         ],
     },
 },
 ```
+
+这里上报了一个可控制的元素的列表，说明如下
+
+  * label: string, 必选，按钮上的内容
+  * url: string, 必选，按钮的url，代表一种客户端行为，可以是客户端自定义的schema，在Click指令中会回传给客户端
+  * scene: string, 可选，代表按钮的场景。不同的场景，query理解、匹配的方式会不一样，现在的取值有
+    * content: 内容按钮
+    * control: 控制按钮
+  * x: int, 可选，左上角开始的x坐标，用于匹配query “播放第一行第二个”
+  * y: int, 可选，左上角开始的y坐标
 
 ## UiControl.Click指令
 
@@ -44,7 +55,11 @@
             "message_id": "message_id-1344"
         },
         "payload": {
-            "url":"xxapp://next"
+            "url":"xxapp://next",
+            "label":"下一个",
+            "scene":"control",
+            "x":1,
+            "y":1
         }
 }
 ```
