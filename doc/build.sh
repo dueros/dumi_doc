@@ -11,6 +11,7 @@ directives/AudioPlayer.md
 directives/Speaker.md
 directives/SpeechSynthesizer.md
 directives/UiControl.md
+directives/SmartHomeControl.md
 directives/ImageRecognizer.md
 bot/smart_tv.md
 Skills.md
