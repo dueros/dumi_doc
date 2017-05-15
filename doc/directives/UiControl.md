@@ -24,16 +24,17 @@
 "device_status":{
     "UiControl":{
         "items":[
-              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2},
+              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2,"intent":"{domain}.{intent}","c_slots":{}},
               {"label":"暂停","scene":"control","url":"xxapp://pause","x":1,"y":3},
               {"label":"停止","scene":"control","url":"xxapp://stop","x":1,"y":4},
+              {"label":"打电话给张岩","scene":"control","url":"xxapp://next","x":1,"y":2,"intent":"phone.telephone","slots":{"name":"张岩"}},
               {"label":"跑男2017-05-10，黄磊","scene":"content","url":"xxapp://play?id=12345","x":1,"y":1},
         ],
     },
 },
 ```
 
-这里上报了一个可控制的元素的列表，说明如下
+这里上报了一个**可控制的元素** 的列表，说明如下
 
   * label: string, 必选，按钮上的内容
   * url: string, 必选，按钮的url，代表一种客户端行为，可以是客户端自定义的schema，在Click指令中会回传给客户端
@@ -42,6 +43,17 @@
     * control: 控制按钮
   * x: int, 可选，左上角开始的x坐标，用于匹配query “播放第一行第二个”
   * y: int, 可选，左上角开始的y坐标
+  * intent: "{domain}.{intent}" 可选，意图参考[NLU的example](../nlu/example.md)
+  * slots: object{} 可选，槽位参数，请参考[NLU的example](../nlu/example.md)
+
+
+### 返回值
+
+在用户的query匹配了某个 **可控制元素** 的情况下, 可能有以下2种返回值
+
+  * 如果用户没有上传intent和slots, 返回下面的 **UiControl.Click** 指令
+  * 如果用户上传了intent和slots, 将把这个请求转发给相应的bot处理
+
 
 ## UiControl.Click指令
 

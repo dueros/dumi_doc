@@ -117,7 +117,7 @@
         //可以传被控制的设备
         "SmartHomeControl":{
             "target_devices":[
-                {"name":"客厅的小米电视","id":"xxxxxx","type":"duer_iot"},//type、device_id可选
+                {"name":"客厅的电视","id":"xxxxxx","type":"duer_iot"},//type、device_id可选
             ],
         },
     },
