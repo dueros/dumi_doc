@@ -56,6 +56,12 @@
 |number | 电话号码 | eg:10086 | 
 |use_sim_index | sim卡号 | 1、2 | 
 |same_pinyin_names | 相同拼音联系人 | Eg：[“张棋”,”张起”]|
+|high_confidence_similar_names | 高置信度相似拼音 | Eg：["张宁","张玲"]|
+|include_names | 通讯录包含查找名称 | Eg：[\"测试薛斌\"]|
+|similar_names | 底置信度相似拼音 | Eg：["张层","张增"]|
+|similar_include_names | 包含底置信度相似拼音 | Eg：[\"测试薛斌\"]|
+|recommend_names | 模糊匹配命中名字 | Eg：[“张棋”,”张起”]排序规则：name、same-pingyin-name、high-confidence—Similar–names、include-name、Similar–names、Similar–include-names|
+|yellow_pages | 阿拉丁黄页客服 | Eg：[{"name":"搜狐客服电话","number":"01062726666"}]|
 |status|cancel|取消|
 
 
@@ -113,6 +119,12 @@
 |number | 电话号码 | eg:10086 | 
 |use_sim_index | sim卡号 | 1、2 | 
 |same_pinyin_names | 相同拼音联系人 | Eg：[“张棋”,”张起”]|
+|high_confidence_similar_names | 高置信度相似拼音 | Eg：["张宁","张玲"]|
+|include_names | 通讯录包含查找名称 | Eg：[\"测试薛斌\"]|
+|similar_names | 底置信度相似拼音 | Eg：["张层","张增"]|
+|similar_include_names | 包含底置信度相似拼音 | Eg：[\"测试薛斌\"]|
+|recommend_names | 模糊匹配命中名字 | Eg：[“张棋”,”张起”]排序规则：name、same-pingyin-name、high-confidence—Similar–names、include-name、Similar–names、Similar–include-names|
+|yellow_pages | 阿拉丁黄页客服 | Eg：[{"name":"搜狐客服电话","number":"01062726666"}]|
 |status|cancel、confirm|确认、取消|
 |content|短信内容|Eg：今晚加班晚点回家|
 
@@ -169,8 +181,14 @@
 |action_type | 动作类型 | 0：新建 | 
 | |  | 1：查看 | 
 | |  | 2：发送 | 
-|name_for_view | 查看联系人的名字 | 把A的名片发给B：那么这里填A；若是新建联系人A，这里也是填A | 
+|name_for_view | 查看联系人的名字 | 把A的名片发给B：那么这里填A；若是新建联系人A，这里也是填A |
 |pinyin_for_view | <span style="background-color: rgb(249, 249, 249);">查看联系人的名字的拼音</span> | eg:xue+bin | 
+|high_confidence_similar_names_for_view | 高置信度相似拼音 | Eg：["张宁","张玲"] | 
+|include_names_for_view | 通讯录包含查找名称 | Eg：["张宁宁","张玲玲"] | 
+|similar_names_for_view | 底置信度相似拼音 | Eg：["张层","张增"] | 
+|similar_include_names_for_view | 包含底置信度相似拼音 | Eg：["张莹莹","张怡怡"] | 
+|recommend_names_for_view | 模糊匹配命中名字 | Eg：["张莹莹","张怡怡"]排序规则：name、same-pingyin-name、high-confidence—Similar–names、include-name、Similar–names、Similar–include-names | 
+|yellow_pages_for_view | 黄页信息 | Eg：[{"name":"搜狐客服电话","number":"01062726666"}] |
 |name_to_send | 发送联系人的名字 | 把A的名片发给B：那么这里填B | 
 |pinyin_to_send | 发送联系人的名字的拼音 | eg:xue+bin | 
 |number_to_send | 发送联系人的号码 | eg：把A的号码发给18983479834，number_to_send填18983479834 | 
