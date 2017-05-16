@@ -152,6 +152,10 @@
       "hash_sessions": []
     }
   ],
+  //////////上次返回new_bot_session, 这次也会用new_bot_session带下来，这是新的session机制，协议简单点 @zhanggang
+  "new_bot_session" :{
+      "value":"{\"empty\":true}" //需要写入到session中的内容
+  },
   //如果是百度登录用户的话，会有信息
   "user_info": {
     "user_id": "",
@@ -392,6 +396,12 @@
       ]
     }
   ],
+  //////////用new_bot_session的话，请求也会带new_bot_session下来，这是新的session机制，协议简单点 @zhanggang
+  "new_bot_session" :{
+      "value":"{\"empty\":true}",//需要写入到session中的内容
+      "expire":0,//这个Session的过期时间
+  },
+  ///////////////////////////////
   "decision_sessions": [
     {
       "status": 0,
