@@ -23,7 +23,7 @@
 ["我想看欢乐颂", { "domain":"FILM", "intent":"FILM_SEARCH", "slots":{ "name":"欢乐颂", "category":"电视剧" } }]
 ["看美国队长", { "domain":"FILM", "intent":"FILM_SEARCH", "slots":{ "name":"美国队长", "category":"电影" } }]
 ["我想看陈坤演的爱情片", { "domain":"FILM", "intent":"FILM_SEARCH", "slots":{ "actor":"陈坤", "type":"爱情片" } }]
-["声音大点", { "domain":"COMMAND", "intent":"volum.up", "slots":{ "value":1, } }]
-["声音小点", { "domain":"COMMAND", "intent":"volum.down", "slots":{ "value":1, } }]
+["声音大点", { "domain":"COMMAND", "intent":"volum.up", "slots":{ "value":1 } }]
+["声音小点", { "domain":"COMMAND", "intent":"volum.down", "slots":{ "value":1 } }]
 ```
 
