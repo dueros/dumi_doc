@@ -193,7 +193,9 @@
       }
     ]
   },
-  "supported_content_type":["audio","video","image","webview","speech"]
+  "supported_content_type":["audio","video","image","webview","speech"],
+  //keep_silence=1的时候，中控不给客户端返回tts或者显示的信息，但会做写session等处理
+  "keep_silence":1
 }
 
 
