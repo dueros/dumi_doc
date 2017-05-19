@@ -24,10 +24,10 @@
 "device_status":{
     "UiControl":{
         "items":[
-              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2,"intent":"{nlu.domain}.{nlu.intent}","slots":{}},
+              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2,"domain":"{nlu.domain}","intent":"{nlu.intent}","slots":{}},
               {"label":"暂停","scene":"control","url":"xxapp://pause","x":1,"y":3},
               {"label":"停止","scene":"control","url":"xxapp://stop","x":1,"y":4},
-              {"label":"打电话给张岩","scene":"control","url":"xxapp://next","x":1,"y":2,"intent":"phone.telephone","slots":{"name":"张岩"}},
+              {"label":"打电话给张岩","scene":"control","url":"xxapp://next","x":1,"y":2,,"domain":"phone","intent":"telephone","slots":{"name":"张岩"}},
               {"label":"跑男2017-05-10，黄磊","scene":"content","url":"xxapp://play?id=12345","x":1,"y":1},
         ],
     },
