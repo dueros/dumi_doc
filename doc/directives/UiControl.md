@@ -24,9 +24,9 @@
 "device_status":{
     "UiControl":{
         "items":[
-              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2,"domain":"{nlu.domain}","intent":"{nlu.intent}","slots":{}},
-              {"label":"暂停","scene":"control","url":"xxapp://pause","x":1,"y":3},
-              {"label":"停止","scene":"control","url":"xxapp://stop","x":1,"y":4},
+              {"label":"下一个","scene":"control","url":"xxapp://next","x":1,"y":2,"index":2,"domain":"{nlu.domain}","intent":"{nlu.intent}","slots":{}},
+              {"label":"暂停","scene":"control","url":"xxapp://pause","x":1,"y":3,"index":3},
+              {"label":"停止","scene":"control","url":"xxapp://stop","x":1,"y":4,"index":4},
               {"label":"打电话给张岩","scene":"control","url":"xxapp://next","x":1,"y":2,,"domain":"phone","intent":"telephone","slots":{"name":"张岩"}},
               {"label":"跑男2017-05-10，黄磊","scene":"content","url":"xxapp://play?id=12345","x":1,"y":1},
         ],
@@ -43,6 +43,7 @@
     * control: 控制按钮
   * x: int, 可选，左上角开始的x坐标，用于匹配query “播放第一行第二个”
   * y: int, 可选，左上角开始的y坐标
+  * index: int, 可选，用于匹配query“播放第{index}个”
   * domain: "{nlu.domain}", 可选, nlu的domain,可选的值可以参考[NLU的example](../nlu/example.md)
   * intent: "{nlu.intent}" 可选，nlu的intent，可选的值可以参考[NLU的example](../nlu/example.md)
   * slots: object{} 可选，nlu的槽位参数，可选的值参考[NLU的example](../nlu/example.md)
