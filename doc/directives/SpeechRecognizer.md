@@ -6,6 +6,7 @@
    * [SpeechRecognizer 语音识别](#speechrecognizer-语音识别)
       * [Table of Contents](#table-of-contents)
       * [ExpectSpeech指令](#expectspeech指令)
+      * [ExpectSpeechTimedOut事件](#expectspeechtimedout事件)
 
 
 ## ExpectSpeech指令
@@ -22,3 +23,17 @@
 }
 ```
 
+
+## ExpectSpeechTimedOut事件
+
+客户端开始语音识别后，一段时间（默认8s）没有收到用户的语音，超时的事件
+```json
+{
+    "header": {
+        "namespace": "SpeechRecognizer",
+        "name": "ExpectSpeechTimedOut",
+    },
+    "payload": {
+    }
+}
+```
