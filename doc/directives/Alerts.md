@@ -1,4 +1,5 @@
-﻿### <span id="alert_struct">AlertsStruct</span>
+﻿## Alerts数据结构
+### <span id="alert_struct">AlertsStruct</span>
 ```javascript
 AlertsStruct = {
 	"token": string,// 唯一标识
@@ -23,7 +24,13 @@ ExtensionsStruct = {
     "special_day": string, // 工作日, weekday
 }
 ```
+
+
 ### SetAlert Directive
+1、客户端通过语音创建alarm、timer
+2、mateapp重新开启已经创建的alarm、timer
+3、mateapp更新已经创建的alarm、timer
+
 ```javascript
  {
 	 "header": {
@@ -35,7 +42,40 @@ ExtensionsStruct = {
  }
 ```
 
+### SetAlertSucceeded Event
+客户端在收到SetAlert Directive后成功创建Alert必须向DCS上报SetAlertSucceeded Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "SetAlertSucceeded"
+    },
+    "payload": {
+       "token": string,// 唯一标识
+    }
+}
+```
+
+### SetAlertFailed Event
+客户端在收到SetAlert Directive后未成功创建Alert必须向DCS上报SetAlertFailed Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "SetAlertFailed"
+    },
+    "payload": {
+       "token": string,// 唯一标识
+    }
+}
+```
+
 ### DeleteAlert Directive
+DCS下发DeleteAlert Directive场景：
+1、客户端通过语音删除alarm、timer
+2、客户端通过语音停止响铃的alarm、timer
+2、mateapp删除alarm、timer
+3、mateapp暂停已经创建的alarm
 
 ```javascript
  {
@@ -48,4 +88,87 @@ ExtensionsStruct = {
 		"token": string,// 唯一标识
 	}
  }
+```
+
+### DeleteAlertSucceeded Event
+客户端在收到DeleteAlert Directive后成功删除Alert必须向DCS上报DeleteAlertSucceeded Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "DeleteAlertSucceeded"
+    },
+    "payload": {
+       "token": string,// 唯一标识
+    }
+}
+```
+
+### DeleteAlertFailed Event
+客户端在收到DeleteAlert Directive后未成功删除Alert必须向DCS上报DeleteAlertfailed Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "DeleteAlertFailed"
+    },
+    "payload": {
+       "token": string,// 唯一标识
+    }
+}
+```
+
+### AlertStarted Event
+Alert到触发时间响铃必须向DCS上报AlertStarted  Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "AlertStarted"
+    },
+    "payload": {
+		"token": string,// 唯一标识
+	 }
+}
+```
+### AlertStopped Event
+Alert停止正在响铃的Alert必须向DCS上报AlertStopped Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "AlertStoped"
+    },
+    "payload": {
+		"token": string,// 唯一标识
+	 }
+}
+```
+
+
+## 前后台切换
+### AlertEnteredForeground Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "AlertEnteredForeground"
+    },
+    "payload": {
+		"token": string,// 唯一标识
+	 }
+}
+```
+
+### AlertEnteredBackground Event
+```javascript
+{
+    "header": {
+        "namespace": "Alerts",
+        "name": "AlertEnteredBackground"
+    },
+    "payload": {
+		"token": string,// 唯一标识
+	 }
+}
 ```
