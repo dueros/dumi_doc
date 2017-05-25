@@ -193,7 +193,8 @@
       }
     ]
   },
-  "supported_content_type":["audio","video","image","webview","speech"],
+  //数组每一个元素为一类资源类型;audio(mp3(16000,128000),aac)代表音频格式只支持mp3和aac，其中mp3只支持码率在16k~128k之间
+  "supported_content_type":["audio(mp3(16000,128000),aac)","video","image","webview","speech"],
   //keep_silence=1的时候，中控不给客户端返回tts或者显示的信息，但会做写session等处理
   "keep_silence":1
 }
