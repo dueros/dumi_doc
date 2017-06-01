@@ -10,6 +10,7 @@ api/response.md
 directives/AudioPlayer.md
 directives/Speaker.md
 directives/SpeechSynthesizer.md
+directives/SpeechRecognizer.md
 directives/UiControl.md
 directives/SmartHomeControl.md
 directives/ImageRecognizer.md

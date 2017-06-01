@@ -2,6 +2,13 @@
 
 ## Table of Contents
 
+
+   * [SmartHomeControl](#smarthomecontrol)
+      * [Table of Contents](#table-of-contents)
+      * [总体逻辑](#总体逻辑)
+      * [上报SmartHomeControl状态](#上报smarthomecontrol状态)
+
+
 ## 总体逻辑
 
 这个协议用于用一个可以语音交互的设备，去控制可联网的其它设备
