@@ -11,7 +11,7 @@
         "name": "Play", 
     },
     "payload": {
-        "speech": "为您播放如下电视剧",
+        "tips": "为您播放如下电视剧",
         "resource": {
             "resource_id": "102_50451",
             "resource_name": "欢乐颂",
@@ -32,7 +32,7 @@
 ```
 参数 | 描述 | 类型 | 必须
 ---- | --- | --- | ---
-speech | 提示用户的信息, 可进行播放时的tips显示| string | 是
+tips | 提示用户的信息, 可进行播放时的tips显示| string | 是
 resource | 视频对象，包括元数据和播放token  | object | 是
 resource.resource_id | 视频唯一ID   | string | 是
 resource.resource_name   | 视频名称    | string | 是
