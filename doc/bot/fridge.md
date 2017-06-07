@@ -228,7 +228,7 @@ not_expire|未过期
   "domain": "fridge",
   "intent": "fridge.food.search",
   "slots": {
-    "expired": "过期",
+    "not_expire": "过期",
     "name": "鸡蛋"
   }
 }
