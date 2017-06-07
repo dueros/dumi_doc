@@ -106,6 +106,20 @@
             "offset_ms":20000,//播放到多少ms了
             "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
         },
+        //如果用户界面上有一些可操作元素，需要做语音控制，可以传这个字段
+        "UiControl":{
+            "items":[
+                  {"label":"下一个","url:"xxapp://next"},
+                  {"label":"暂停”,url:"xxapp://pause"},
+                  {"label":”停止”,url:"xxapp://stop"},
+            ],
+        },
+        //可以传被控制的设备
+        "SmartHomeControl":{
+            "target_devices":[
+                {"name":"客厅的电视","id":"xxxxxx","type":"duer_iot"},//type、device_id可选
+            ],
+        },
     },
     //app_ver 版本号，2.0.0之后返回现在的v2格式
     "app_ver": "2.0.0",
@@ -120,6 +134,7 @@
     "request_query": "query",
     //数组，标志客户端支持的内容类型，可选，如果不传，认为客户端都支持
     "supported_content_type":["audio","image","video","webview","speech"],
+    
     //可选，如果是一个控制指令，可以传target_device_id，这个字段会被透传给bot，作为调用设备云的硬件id
     //未来会变成不传这个字段，靠query解析和设备管理理解出这个字段
     "target_device_id":"xxxxxx",

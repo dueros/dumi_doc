@@ -6,10 +6,10 @@
    * [SpeechSynthesizer 语音合成](#speechsynthesizer-语音合成)
       * [Table of Contents](#table-of-contents)
       * [Speak指令](#speak指令)
-	  * [Stop指令](#stop指令)
+      * [Stop指令](#stop指令)
       * [SpeechStarted事件](#speechstarted事件)
       * [SpeechFinished事件](#speechfinished事件)
-	  * [SpeechStopped事件](#speechstopped事件)
+      * [SpeechStopped事件](#speechstopped事件)
       * [SpeechSynthesizer状态上报](#speechsynthesizer状态上报)
 
 

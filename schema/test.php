@@ -1,4 +1,5 @@
 <?php
+$time1=microtime(true);
 require("vendor/autoload.php");
 use JsonSchema\SchemaStorage;
 use JsonSchema\Validator;
@@ -7,8 +8,9 @@ use JsonSchema\Constraints\Factory;
 
 // Schema must be decoded before it can be used for validation
 $jsonSchemaObject = json_decode(file_get_contents("dumi_schema.json"));
-$newsSchemaObject = json_decode(file_get_contents("news.schema.json"));
-$weatherSchemaObject = json_decode(file_get_contents("weather.schema.json"));
+$newsSchemaObject = json_decode(file_get_contents("resource/news.schema.json"));
+$weatherSchemaObject = json_decode(file_get_contents("resource/weather.schema.json"));
+$musicSchemaObject = json_decode(file_get_contents("resource/music.schema.json"));
 
 // The SchemaStorage can resolve references, loading additional schemas from file as needed, etc.
 $schemaStorage = new SchemaStorage();
@@ -19,6 +21,7 @@ $schemaStorage = new SchemaStorage();
 $schemaStorage->addSchema('https://xiaodu.baidu.com/schema/dumi_schema.json', $jsonSchemaObject);
 $schemaStorage->addSchema('https://xiaodu.baidu.com/schema/news.schema.json', $newsSchemaObject);
 $schemaStorage->addSchema('https://xiaodu.baidu.com/schema/weather.schema.json', $weatherSchemaObject);
+$schemaStorage->addSchema('https://xiaodu.baidu.com/schema/music.schema.json', $musicSchemaObject);
 
 // Provide $schemaStorage to the Validator so that references can be resolved during validation
 $jsonValidator = new Validator( new Factory($schemaStorage));
@@ -38,3 +41,4 @@ if ($jsonValidator->isValid()) {
         echo sprintf("[%s] %s\n", $error['property'], $error['message']);
     }
 }
+var_dump(microtime(true)-$time1);
