@@ -401,6 +401,26 @@ app | 应用名
 }
 ```
 
+### fridge.back.last
+返回
+上一页
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.back.last",
+  "slots": {}
+}
+```
+
+### fridge.back.home
+回到首页
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.back.home",
+  "slots": {}
+}
+```
 
 ### control.hardware.screen.bright
 
