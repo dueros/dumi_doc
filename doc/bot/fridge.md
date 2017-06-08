@@ -422,6 +422,16 @@ app | 应用名
 }
 ```
 
+### fridge.info.function
+功能介绍
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.info.function",
+  "slots": {}
+}
+```
+
 ### control.hardware.screen.bright
 
 slot key|slot value
