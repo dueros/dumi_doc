@@ -63,10 +63,33 @@ Payload的内容取决于在Header中的name值。
 
 发现与最终用户的设备云帐户相关的设备和场景。DiscoverAppliancesRequest 从 DuerOS 发送到 Bot。如果没有设备可以发现，或者您的设备云是否遇到错误，则 Bot 应返回一个空的 DiscoverAppliancesResponse，而不是错误消息。
 
+#### Header
+
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesRequest |
 |namespace | DuerOS.ConnectedHome.Discovery |
+
+#### Payload
+
+|Property | Description | Required |
+|---|---|---|
+|accessToken | 与用户设备云帐号相关的access token | Yes |
+
+DiscoverAppliancesRequest例子：
+```
+{
+    "header": {
+        "messageId": "6d6d6e14-8aee-473e-8c24-0d31ff9c17a2",
+        "name": "DiscoverAppliancesRequest",
+        "namespace": "DuerOS.ConnectedHome.Discovery",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "*OAuth Token here*"
+    }
+}
+```
 
 #### DiscoverAppliancesResponse
 
@@ -131,7 +154,7 @@ DiscoverAppliancesResponse 例子：
     "messageId":"ff746d98-ab02-4c9e-9d0d-b44711658414",
     "name":"DiscoverAppliancesResponse",
     "namespace":"DuerOS.ConnectedHome.Discovery",
-    "payloadVersion":"2"
+    "payloadVersion": "1"
  },
  "payload":{
     "discoveredAppliances":[
