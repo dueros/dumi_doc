@@ -1,22 +1,22 @@
 # Smart Home Skill API Reference
 
-<!-- MarkdownTOC depth="3" autolink="true"-->
+<!-- MarkdownTOC -->
 
-- [简介][%E7%AE%80%E4%BB%8B]
-- [认证][%E8%AE%A4%E8%AF%81]
-- [Skill指令][skill%E6%8C%87%E4%BB%A4]
-    - [Header][header]
-    - [Payload][payload]
-  - [发现设备\(Discovery Message\)][%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message]
-    - [DiscoverAppliancesRequest][discoverappliancesrequest]
-    - [DiscoverAppliancesResponse][discoverappliancesresponse]
-  - [控制设备\(Control Message\)][%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message]
-    - [打开关闭设备\(On/Off Messages\)][%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages]
-    - [可控灯光设备\(Tunable Lighting Control Messages\)][%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages]
-    - [可控温度设备\(Temperature Control Messages\)][%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages]
-    - [可控风速设备\(Fan Speed Control Messages\)][%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages]
-  - [查询状态\(Query Message\)][%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message]
-    - [查询空气质量][%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F]
+- [简介](#%E7%AE%80%E4%BB%8B)
+- [认证](#%E8%AE%A4%E8%AF%81)
+- [Skill指令](#skill%E6%8C%87%E4%BB%A4)
+    - [Header](#header)
+    - [Payload](#payload)
+  - [发现设备\(Discovery Message\)](#%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message)
+    - [DiscoverAppliancesRequest](#discoverappliancesrequest)
+    - [DiscoverAppliancesResponse](#discoverappliancesresponse)
+  - [控制设备\(Control Message\)](#%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message)
+    - [打开关闭设备\(On/Off Messages\)](#%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages)
+    - [可控灯光设备\(Tunable Lighting Control Messages\)](#%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages)
+    - [可控温度设备\(Temperature Control Messages\)](#%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages)
+    - [可控风速设备\(Fan Speed Control Messages\)](#%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages)
+  - [查询状态\(Query Message\)](#%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message)
+    - [查询空气质量](#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F)
 
 <!-- /MarkdownTOC -->
 
