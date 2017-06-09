@@ -5,8 +5,8 @@
 - [简介](#%E7%AE%80%E4%BB%8B)
 - [认证](#%E8%AE%A4%E8%AF%81)
 - [Skill指令](#skill%E6%8C%87%E4%BB%A4)
-    - [Header](#header)
-    - [Payload](#payload)
+  - [Header](#header)
+  - [Payload](#payload)
   - [发现设备\(Discovery Message\)](#%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message)
     - [DiscoverAppliancesRequest](#discoverappliancesrequest)
     - [DiscoverAppliancesResponse](#discoverappliancesresponse)
@@ -35,7 +35,7 @@ Smart Home Skill API 遵循 OAuth2.0 规范。
 * Header
 * Payload
 
-#### Header
+### Header
 
 Header包含 命名空间、指令名称、目标版本和唯一消息标识符。以下是典型的消息Header的JSON示例：
 ```
@@ -58,7 +58,7 @@ Header必须包含以下属性：
 |namespace | 指定消息payload的类别。 目前的类别有： DuerOS.ConnectedHome.Discovery、DuerOS.ConnectedHome.Control、DuerOS.ConnectedHome.Query |
 |payloadVersion | 标识payload的版本号 |
 
-#### Payload
+### Payload
 
 Payload的内容取决于在Header中的name值。
 以下部分描述不同类型的指令，及其预期的payload描述和示例。
