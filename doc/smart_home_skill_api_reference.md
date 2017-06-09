@@ -1,15 +1,22 @@
 # Smart Home Skill API Reference
 
-<!-- MarkdownTOC -->
+<!-- MarkdownTOC autolink="true" depth="3"-->
 
-- 简介
-- 认证
-- Skill指令
-  - Header
-  - Payload
-  - 发现设备\(Discovery Message\)
-  - 控制设备\(Control Message\)
-  - 查询状态\(Query Message\)
+- [简介][%E7%AE%80%E4%BB%8B]
+- [认证][%E8%AE%A4%E8%AF%81]
+- [Skill指令][skill%E6%8C%87%E4%BB%A4]
+    - [Header][header]
+    - [Payload][payload]
+  - [发现设备\(Discovery Message\)][%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message]
+    - [DiscoverAppliancesRequest][discoverappliancesrequest]
+    - [DiscoverAppliancesResponse][discoverappliancesresponse]
+  - [控制设备\(Control Message\)][%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message]
+    - [打开关闭设备（On/Off Messages）][%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87%EF%BC%88onoff-messages%EF%BC%89]
+    - [可控灯光设备（ Tunable Lighting Control Messages ）][%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87%EF%BC%88-tunable-lighting-control-messages-%EF%BC%89]
+    - [可控温度设备（ Temperature Control Messages ）][%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87%EF%BC%88-temperature-control-messages-%EF%BC%89]
+    - [可控风速设备（ Fan Speed Control Messages ）][%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87%EF%BC%88-fan-speed-control-messages-%EF%BC%89]
+  - [查询状态\(Query Message\)][%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message]
+    - [查询空气质量][%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F]
 
 <!-- /MarkdownTOC -->
 
@@ -28,7 +35,7 @@ Smart Home Skill API 遵循 OAuth2.0 规范。
 * Header
 * Payload
 
-### Header
+#### Header
 
 Header包含 命名空间、指令名称、目标版本和唯一消息标识符。以下是典型的消息Header的JSON示例：
 ```
@@ -51,7 +58,7 @@ Header必须包含以下属性：
 |namespace | 指定消息payload的类别。 目前的类别有： DuerOS.ConnectedHome.Discovery、DuerOS.ConnectedHome.Control、DuerOS.ConnectedHome.Query |
 |payloadVersion | 标识payload的版本号 |
 
-### Payload
+#### Payload
 
 Payload的内容取决于在Header中的name值。
 以下部分描述不同类型的指令，及其预期的payload描述和示例。
@@ -76,14 +83,14 @@ Payload的内容取决于在Header中的name值。
 
 发现与最终用户的设备云帐户相关的设备和场景。DiscoverAppliancesRequest 从 DuerOS 发送到 Bot。如果没有设备可以发现，或者您的设备云是否遇到错误，则 Bot 应返回一个空的 DiscoverAppliancesResponse，而不是错误消息。
 
-#### Header
+##### Header
 
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesRequest |
 |namespace | DuerOS.ConnectedHome.Discovery |
 
-#### Payload
+##### Payload
 
 |Property | Description | Required |
 |---|---|---|
@@ -113,14 +120,14 @@ DiscoverAppliancesRequest例子：
 * 设备类型，如light 和 scene
 * 每个设备或场景支持的操作
 
-#### Header
+##### Header
 
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesResponse |
 |namespace | DuerOS.ConnectedHome.Discovery |
 
-#### Payload
+##### Payload
 
 |Property | Description | Required |
 |---|---|---|
@@ -1370,7 +1377,9 @@ TimingSetModeConfirmation 例子：
 
 ### 查询状态(Query Message)
 
-#### GetAirPM25Request
+#### 查询空气质量
+
+##### GetAirPM25Request
 
 **例子：**
 “小度小度，查一下卧室pm2.5”
