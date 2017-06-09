@@ -1,5 +1,18 @@
 # Smart Home Skill API Reference
 
+<!-- MarkdownTOC -->
+
+- 简介
+- 认证
+- Skill指令
+  - Header
+  - Payload
+  - 发现设备\(Discovery Message\)
+  - 控制设备\(Control Message\)
+  - 查询状态\(Query Message\)
+
+<!-- /MarkdownTOC -->
+
 ## 简介
 
 该协议实现度秘终端互联互通的目的，达到通过使用支持DuerOS能力的设备，控制灯泡等被控设备的效果。
