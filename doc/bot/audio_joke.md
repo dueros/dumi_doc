@@ -305,6 +305,7 @@
 ```
 
 ### 图文笑话result_list的content说明
+图文笑话result_list可包含单个item或者多个item，一个item代表一个媒体资源（文字／静态图片／动态图片），通过result_type判断，txt文字、img_comm图片，gif_face动图。目前文字笑话只会出一个文字资源，图片笑话会出两个资源，分别是图片和文字。
 ```
 {
     "hint_id": "5940F5AE8A11F",
@@ -360,6 +361,7 @@
     }
 }
 ```
+
 
 ## nlu说明
 intent|slot_name|slot_value|备注
