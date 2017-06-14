@@ -7,10 +7,10 @@ bot_id： ai.dueros.bot.app_launcher
 // query： 打开大冒险
 {
   "result": {
-    "views": {
+    "views": [{
       "type": "txt",
       "content": "度秘正在为您打开大冒险"
-    },
+    }],
     "nlu": {
       "domain": "app_launcher",
       "intent": "launch_app",

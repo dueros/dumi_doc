@@ -1,5 +1,25 @@
 # Smart Home Skill API Reference
 
+<!-- MarkdownTOC -->
+
+- [简介](#%E7%AE%80%E4%BB%8B)
+- [认证](#%E8%AE%A4%E8%AF%81)
+- [Skill指令](#skill%E6%8C%87%E4%BB%A4)
+  - [Header](#header)
+  - [Payload](#payload)
+  - [发现设备\(Discovery Message\)](#%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message)
+    - [DiscoverAppliancesRequest](#discoverappliancesrequest)
+    - [DiscoverAppliancesResponse](#discoverappliancesresponse)
+  - [控制设备\(Control Message\)](#%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message)
+    - [打开关闭设备\(On/Off Messages\)](#%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages)
+    - [可控灯光设备\(Tunable Lighting Control Messages\)](#%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages)
+    - [可控温度设备\(Temperature Control Messages\)](#%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages)
+    - [可控风速设备\(Fan Speed Control Messages\)](#%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages)
+  - [查询状态\(Query Message\)](#%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message)
+    - [查询空气质量](#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F)
+
+<!-- /MarkdownTOC -->
+
 ## 简介
 
 该协议实现度秘终端互联互通的目的，达到通过使用支持DuerOS能力的设备，控制灯泡等被控设备的效果。
@@ -11,7 +31,7 @@ Smart Home Skill API 遵循 OAuth2.0 规范。
 
 ## Skill指令
 
-所有的指令（Directives），不论是DuerOS发送给Bot还是Bot返回给DuerOS，都是同一个结构，包含以下两个顶层字段：
+所有的指令(Directives)，不论是DuerOS发送给Bot还是Bot返回给DuerOS，都是同一个结构，包含以下两个顶层字段：
 * Header
 * Payload
 
@@ -63,14 +83,14 @@ Payload的内容取决于在Header中的name值。
 
 发现与最终用户的设备云帐户相关的设备和场景。DiscoverAppliancesRequest 从 DuerOS 发送到 Bot。如果没有设备可以发现，或者您的设备云是否遇到错误，则 Bot 应返回一个空的 DiscoverAppliancesResponse，而不是错误消息。
 
-#### Header
+##### Header
 
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesRequest |
 |namespace | DuerOS.ConnectedHome.Discovery |
 
-#### Payload
+##### Payload
 
 |Property | Description | Required |
 |---|---|---|
@@ -100,14 +120,14 @@ DiscoverAppliancesRequest例子：
 * 设备类型，如light 和 scene
 * 每个设备或场景支持的操作
 
-#### Header
+##### Header
 
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesResponse |
 |namespace | DuerOS.ConnectedHome.Discovery |
 
-#### Payload
+##### Payload
 
 |Property | Description | Required |
 |---|---|---|
@@ -132,7 +152,7 @@ DiscoverAppliancesRequest例子：
 |RANGE_HOOD | 抽油烟机等设备 | |
 |LIGHT| 代表光源的设备 ||
 |CURTAIN | 窗帘等设备 | |
-|ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1）打开电视机; (2）打开HDMI1。| |
+|ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1)打开电视机; (2)打开HDMI1。| |
 |SCENE_TRIGGER| 描述设置为特定状态的设备的组合，状态不必以特定顺序变更。 例如睡眠模式可能包括关闭灯光和拉上窗帘，但是顺序不重要。| |
 
 注：在 场景 类型的appliance下，需对 friendlyDescription 和 friendlyName 的命名有一定规范：
@@ -232,7 +252,7 @@ DiscoverAppliancesResponse 例子：
 
 ### 控制设备(Control Message)
 
-#### 打开关闭设备（On/Off Messages）
+#### 打开关闭设备(On/Off Messages)
 
 消息类型打开或关闭目标设备。这些消息通常由几种不同类型的设备使用。
 * TurnOnRequest
@@ -477,7 +497,7 @@ TurnOffConfirmation 例子：
 }
 ```
 
-#### 可控灯光设备（ Tunable Lighting Control Messages ）
+#### 可控灯光设备(Tunable Lighting Control Messages)
 
 ##### IncrementBrightnessRequest
 
@@ -663,7 +683,7 @@ DecrementBrightnessConfirmation 例子：
 }
 ```
 
-#### 可控温度设备（ Temperature Control Messages ）
+#### 可控温度设备(Temperature Control Messages)
 
 ##### IncrementTemperatureRequest
 
@@ -965,7 +985,7 @@ SetTemperatureConfirmation 例子：
 }
 ```
 
-#### 可控风速设备（ Fan Speed Control Messages ）
+#### 可控风速设备(Fan Speed Control Messages)
 
 ##### IncrementFanSpeedRequest
 
@@ -1357,7 +1377,9 @@ TimingSetModeConfirmation 例子：
 
 ### 查询状态(Query Message)
 
-#### GetAirPM25Request
+#### 查询空气质量
+
+##### GetAirPM25Request
 
 **例子：**
 “小度小度，查一下卧室pm2.5”

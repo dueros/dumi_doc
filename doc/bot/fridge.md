@@ -366,15 +366,18 @@ close | 关闭冰箱模式，如“关闭”
 
 slot key|slot value
 --------|----------
-app | 应用名
+app | 代表应用名
+open | 代表`打开`的操作意图
+close | 代表`关闭`的操作意图
 
-打开我的/打开消息中心
+系统设置/打开我的/打开消息中心
 ```javascript
 {
   "domain": "fridge",
   "intent": "fridge.setting.app",
   "slots": {
-    "connect": "我的"
+    "app": "我的",
+    "open": "打开",
   }
 }
 ```
