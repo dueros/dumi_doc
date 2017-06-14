@@ -79,7 +79,7 @@
     ],
     "nlu": {
       "domain": "duer_weather",
-      "intent": "sys_weather",
+      "intent": "sys_weather",  //（还包括：SYS_AQI、SYS_CLOTHES、SYS_CLOTHES、SYS_RAIN、SYS_SNOW、SYS_SUNNY、SYS_TEMP、SYS_ULTRAVIOLET、SYS_WIND、SYS_LOW_TEMP、SYS_HIGH_TEMP、SYS_EXERCISE、SYS_TRIP、SYS_WASH_CAR、SYS_INFLUENZA，均为小写）
       "slots": {
         "loc_city": "北京市",
         "loc_province": "北京市",
