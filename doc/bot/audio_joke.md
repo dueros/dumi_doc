@@ -304,6 +304,63 @@
 }
 ```
 
+### 图文笑话result_list的content说明
+```
+{
+    "hint_id": "5940F5AE8A11F",
+    "hint": [
+        "再来一个",
+        "文字笑话",
+        "图片笑话",
+        "动图笑话"
+    ],
+    "hint_mlt": {
+        "placeholder": "",
+        "type": "multi_column",
+        "data": [
+            {
+                "id": 0,
+                "value": "再来一个"
+            },
+            {
+                "id": 1,
+                "value": "文字笑话"
+            },
+            {
+                "id": 2,
+                "value": "图片笑话"
+            },
+            {
+                "id": 3,
+                "value": "动图笑话"
+            }
+        ]
+    },
+    "result_list": [
+        {
+            "result_content": {
+                "answer": "妈妈劝我不要再抽烟喝酒了，不然体检的时候一定会查出病来的。听从了妈妈的话，我就再也没去体检过。"
+            },
+            "source_type": "joke",
+            "voice": "妈妈劝我不要再抽烟喝酒了，不然体检的时候一定会查出病来的。听从了妈妈的话，我就再也没去体检过。",
+            "result_type": "txt",
+            "card_id": ""
+        }
+    ],
+    "confidence": 300,
+    "nlu": {
+        "domain": "audio.joke",
+        "intent": "audio.joke.play"
+    },
+    "type": "user",
+    "user_id": "zhoubingxuan_debug_monitor",
+    "bot_intent": {
+        "query": "讲个笑话",
+        "query_score": 100
+    }
+}
+```
+
 ## nlu说明
 intent|slot_name|slot_value|备注
 ----|----|--------|----
