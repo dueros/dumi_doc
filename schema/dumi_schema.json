@@ -72,6 +72,15 @@
         "status": {
             "type":"integer"
         },
+        "client_msg_id": {
+            "type":"string"
+        },
+        "speech_id": {
+            "type":"string"
+        },
+        "timeuse": {
+            "type":"integer"
+        },
         "msg": {
             "type":"string"
         }
@@ -92,6 +101,7 @@
             "oneOf":[
                 {"$ref":"weather.schema.json"},
                 {"$ref":"music.schema.json"},
+                {"$ref":"music_ref.schema.json"},
                 {"$ref":"news.schema.json"}
             ]
         },
