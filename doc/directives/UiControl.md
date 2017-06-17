@@ -91,10 +91,11 @@
         "header": {
             "namespace":  "UiControl",
             "name":  "Clicked",
-            "message_id": "message_id-1344"
+            "message_id": "message_id-1344"   //中控根据message_id，将该事件请求发给对应的bot；当端上没有当前message_id时，该值为空
         },
         "payload": {
-            "url":"xxapp://next"
+            "url":"http://unicast.bot.dueros.ai/track?id=10&action=play" //1.规定domain为bot_name的倒写，当message_id为空时，中控根据domain来识别应该接收该请求的bot；
+                                                                         //2.对应的bot根据url路径及参数来处理相关业务；3.url必须encode
         }
     }
 }
