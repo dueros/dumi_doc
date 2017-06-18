@@ -94,9 +94,12 @@
             "message_id": "message_id-1344"   //中控根据message_id，将该事件请求发给对应的bot；当端上没有当前message_id时，该值为空
         },
         "payload": {
-            "url":"http://unicast.bot.dueros.ai/track?id=10&action=play" //1.规定domain为bot_name的倒写，当message_id为空时，中控根据domain来识别应该接收该请求的bot；
+            "url":"http://unicast.bot.dueros.ai/tracklist?album_id=123&track_id=456&action=play&is_event_needed=true" //1.规定domain为bot_name的倒写，当message_id为空时，中控根据domain来识别应该接收该请求的bot；
                                                                          //2.对应的bot根据url路径及参数来处理相关业务；3.url必须encode
         }
     }
 }
 ```
+重要：不是所有页面的点击请求都需要过dueros中控，因此不是所有页面上的点击行为，都需要端发起click事件！
+规定：1.影响整个dueros对话流的行为（如页面上点击播放一首歌，改变了dueros里记录的当前播放数据，也可能改变了记录的播放列表），请求需要过dueros中控；2.is_event_needed=true，无需过中控时is_event_needed=false或者不加is_event_needed参数 
+
