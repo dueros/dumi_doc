@@ -100,6 +100,6 @@
     }
 }
 ```
-重要：不是所有页面的点击请求都需要过dueros中控，因此不是所有页面上的点击行为，都需要端发起click事件！
-规定：1.影响整个dueros对话流的行为（如页面上点击播放一首歌，改变了dueros里记录的当前播放数据，也可能改变了记录的播放列表），请求需要过dueros中控；2.is_event_needed=true，无需过中控时is_event_needed=false或者不加is_event_needed参数 
+### 重要：不是所有页面的点击请求都需要过dueros中控，因此不是所有页面上的点击行为，都需要端发起click事件！
+### 规定：1.影响整个dueros对话流的行为（如页面上点击播放一首歌，改变了dueros里记录的当前播放数据，也可能改变了记录的播放列表），请求需要过dueros中控；2.is_event_needed=true，无需过中控时is_event_needed=false或者不加is_event_needed参数 
 
