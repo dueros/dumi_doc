@@ -19,7 +19,7 @@
                         "audio_item_id": "56467949870",
                         "stream": {
                             "token": "56467949870",
-                            "item_name": "第016集Ⅰ 《美女变兔子》",
+                            "__name": "第016集Ⅰ 《美女变兔子》",
                             "url": "http://fdfs.xmcdn.com/group14/M07/9A/5F/wKgDY1do_gWAx397AAxIyDN75Is613.mp3",
                             "stream_format": "AUDIO_MP3",
                             "progress_report_interval_ms": 1000,
