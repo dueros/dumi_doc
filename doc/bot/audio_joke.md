@@ -66,45 +66,84 @@
 
 ```
 {
-    "result": {
-        "hint": [
-            "再来一个",
-            "文字笑话"
-        ],
-        "nlu": {
-            "domain": "recommend_service_wireless",
-            "intent": "joke",
-            "slots": {
-                "service_type": "joke"
-            }
+    "emotion": 0,
+    "hint": [
+        "再来一个",
+        "图片笑话",
+        "动图笑话",
+        "文字笑话"
+    ],
+    "logid": "14979406701265",
+    "request_time": "1497940670813",
+    "request_uid": "zhoubingxuan_debug",
+    "result_list": [
+        {
+            "card_id": "",
+            "result_content": {
+                "img_height": 0,
+                "img_width": 0,
+                "imgs": [
+                    "https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/xiaodu/pic/item/6a600c338744ebf8a30fda49def9d72a6059a74e.jpg"
+                ],
+                "link": "",
+                "source": null
+            },
+            "result_type": "img_comm",
+            "source_type": "joke",
+            "source_sub_type": "joke",
+            "voice": ""
         },
-        "bot_id": "joke",
-        "bot_meta": {
-            "version": "1.0.0",
-            "type": "其他",
-            "description": "desc"
-        },
-        "views": [
-            {
-                "type": "txt",
-                "content": "你这长相完全可以穿越回古代卖艺，先在现场拱手对观众说句“献丑了！”，然后拿出你的身份证给观众们看就行。"
-            }
-        ],
-        "speech": {
-            "type": "Text",
-            "content": "你这长相完全可以穿越回古代卖艺，先在现场拱手对观众说句“献丑了！”，然后拿出你的身份证给观众们看就行。"
+        {
+            "card_id": "",
+            "result_content": {
+                "answer": "白赚十块钱"
+            },
+            "result_type": "txt",
+            "source_type": "joke",
+            "voice": "白赚十块钱",
+            "source_sub_type": "joke"
         }
-    },
-    "id": "1497940452_2452sajey",
-    "logid": "14979404523186",
-    "user_id": "@@@cuid@@@",
-    "time": 1497940452,
-    "cuid": "@@@cuid@@@",
+    ],
     "se_query": "讲个笑话",
-    "msg": "ok",
-    "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
+    "service_id": "27",
     "status": 0,
-    "timeuse": 177
+    "tips_num": 0,
+    "kuangim_msgid": 1497940670813329,
+    "type": "server",
+    "send_id": "1497940670_506fel3fq",
+    "send_kuangim_msgid": 1497940670505929,
+    "count_down": 0,
+    "hint_id": "BDB2B8F6D0A6BBB0",
+    "hint_mult": {
+        "data": [
+            {
+                "id": "0",
+                "value": "再来一个"
+            },
+            {
+                "id": "1",
+                "value": "图片笑话"
+            },
+            {
+                "id": "2",
+                "value": "动图笑话"
+            },
+            {
+                "id": "3",
+                "value": "文字笑话"
+            }
+        ],
+        "placeholder": "",
+        "type": "multi_column",
+        "hint_float": 1
+    },
+    "nlu": {
+        "domain": "unknown",
+        "intent": "unknown",
+        "slots": []
+    },
+    "ctime": 1497940670,
+    "id": "1497940670_8132pceds"
 }
 ```
 
