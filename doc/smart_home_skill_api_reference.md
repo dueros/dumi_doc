@@ -1958,7 +1958,7 @@ InvalidAccessTokenError 例子：
 ```
 
 ##### UnsupportedTargetError
-
+目的：指示Bot不支持目标设备。
 
 ###### Payload
 
@@ -1976,6 +1976,76 @@ UnsupportedTargetError 例子：
     "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
   },
   "payload":{
+  }
+}
+```
+
+##### UnsupportedOperationError
+目的：表示目标设备不支持请求的操作。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+UnsupportedOperationError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnsupportedOperationError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnsupportedTargetSettingError
+目的：表示所请求的设置对于指定的设备和操作无效。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+UnsupportedTargetSettingError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnsupportedTargetSettingError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnexpectedInformationReceivedError
+目的：由于格式错误，Bot无法处理请求消息。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| faultingParameter | 请求消息中的属性或字段格式错误，导致Bot无法处理。 | Yes |  
+
+UnexpectedInformationReceivedError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnexpectedInformationReceivedError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "faultingParameter": "value"
   }
 }
 ```
