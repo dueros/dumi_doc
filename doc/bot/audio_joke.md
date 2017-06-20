@@ -1,7 +1,8 @@
 # 笑话Bot
 
 ## 有声笑话完整输出
-```json
+
+```
 {
     "result": {
         "directives": [
@@ -147,63 +148,95 @@
 }
 ```
 
-### 图文笑话result_list的content说明
-图文笑话result_list可包含单个item或者多个item，一个item代表一个媒体资源（文字／静态图片／动态图片），通过result_type判断，txt文字、img_comm图片，gif_face动图。目前文字笑话只会出一个文字资源，图片笑话会出两个资源，分别是图片和文字。
+### result_list分三种情况，文字笑话、图片笑话、动图笑话
+
+* 文字笑话
+
 ```
 {
-    "hint_id": "5940F5AE8A11F",
-    "hint": [
-        "再来一个",
-        "文字笑话",
-        "图片笑话",
-        "动图笑话"
-    ],
-    "hint_mlt": {
-        "placeholder": "",
-        "type": "multi_column",
-        "data": [
-            {
-                "id": 0,
-                "value": "再来一个"
-            },
-            {
-                "id": 1,
-                "value": "文字笑话"
-            },
-            {
-                "id": 2,
-                "value": "图片笑话"
-            },
-            {
-                "id": 3,
-                "value": "动图笑话"
-            }
-        ]
-    },
     "result_list": [
         {
+            "card_id": "",
             "result_content": {
-                "answer": "妈妈劝我不要再抽烟喝酒了，不然体检的时候一定会查出病来的。听从了妈妈的话，我就再也没去体检过。"
+                "answer": "本人是男的。有一天和我朋友去银行取钱，怕贴条，叫朋友看着车。一会我朋友进来银行了。急着说 大哥快炮，警，察来了。突然银行里安安静静的。"
             },
-            "source_type": "joke",
-            "voice": "妈妈劝我不要再抽烟喝酒了，不然体检的时候一定会查出病来的。听从了妈妈的话，我就再也没去体检过。",
             "result_type": "txt",
-            "card_id": ""
+            "source_type": "joke",
+            "voice": "本人是男的。有一天和我朋友去银行取钱，怕贴条，叫朋友看着车。一会我朋友进来银行了。急着说 大哥快炮，警，察来了。突然银行里安安静静的。",
+            "source_sub_type": "joke"
         }
-    ],
-    "confidence": 300,
-    "nlu": {
-        "domain": "audio.joke",
-        "intent": "audio.joke.play"
-    },
-    "type": "user",
-    "user_id": "zhoubingxuan_debug_monitor",
-    "bot_intent": {
-        "query": "讲个笑话",
-        "query_score": 100
-    }
+    ]
 }
 ```
+
+* 图片笑话
+
+```
+{
+    "result_list": [
+        {
+            "card_id": "",
+            "result_content": {
+                "img_height": 0,
+                "img_width": 0,
+                "imgs": [
+                    "https://ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/xiaodu/pic/item/ca1349540923dd54c82b6f1ed609b3de9c824868.jpg"
+                ],
+                "link": "",
+                "source": null
+            },
+            "result_type": "img_comm",
+            "source_type": "joke",
+            "source_sub_type": "joke",
+            "voice": ""
+        },
+        {
+            "card_id": "",
+            "result_content": {
+                "answer": "下雪的真相"
+            },
+            "result_type": "txt",
+            "source_type": "joke",
+            "voice": "下雪的真相",
+            "source_sub_type": "joke"
+        }
+    ]
+}
+```
+
+* 动图笑话
+
+```
+{
+    "result_list": [
+        {
+            "card_id": "",
+            "result_content": {
+                "img": "https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/xiaodu/pic/item/7e3e6709c93d70cfdbbf47ddffdcd100bba12b9d.jpg",
+                "txt": "这个广告我给满分"
+            },
+            "result_type": "gif_face",
+            "source_type": "joke",
+            "source_sub_type": "joke",
+            "voice": ""
+        },
+        {
+            "card_id": "",
+            "result_content": {
+                "answer": "这个广告我给满分"
+            },
+            "result_type": "txt",
+            "source_type": "joke",
+            "voice": "这个广告我给满分",
+            "source_sub_type": "joke"
+        }
+    ]
+}
+```
+
+result_list每个元素代表一个资源，一个资源的类型由result_type决定，其中图片为txt，静态图片为img_comm，git图片为git_face；
+
+当query是一个明确的"文字笑话"、"图片笑话"、"动图笑话"时，result_list会是上面所列固定的返回结果，如果query是"讲个笑话"等泛意图，result_list将随机出一个类型的结果
 
 
 ## nlu说明
