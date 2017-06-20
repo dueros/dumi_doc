@@ -2,21 +2,23 @@
 
 <!-- MarkdownTOC -->
 
-- [简介](#%E7%AE%80%E4%BB%8B)
-- [认证](#%E8%AE%A4%E8%AF%81)
-- [Skill指令](#skill%E6%8C%87%E4%BB%A4)
-  - [Header](#header)
-  - [Payload](#payload)
-  - [发现设备\(Discovery Message\)](#%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message)
-    - [DiscoverAppliancesRequest](#discoverappliancesrequest)
-    - [DiscoverAppliancesResponse](#discoverappliancesresponse)
-  - [控制设备\(Control Message\)](#%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message)
-    - [打开关闭设备\(On/Off Messages\)](#%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages)
-    - [可控灯光设备\(Tunable Lighting Control Messages\)](#%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages)
-    - [可控温度设备\(Temperature Control Messages\)](#%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages)
-    - [可控风速设备\(Fan Speed Control Messages\)](#%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages)
-  - [查询状态\(Query Message\)](#%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message)
-    - [查询空气质量](#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F)
+1. [简介](#%E7%AE%80%E4%BB%8B)
+1. [认证](#%E8%AE%A4%E8%AF%81)
+1. [Skill指令](#skill%E6%8C%87%E4%BB%A4)
+  1. [Header](#header)
+  1. [Payload](#payload)
+  1. [发现设备\(Discovery Message\)](#%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message)
+    1. [DiscoverAppliancesRequest](#discoverappliancesrequest)
+    1. [DiscoverAppliancesResponse](#discoverappliancesresponse)
+  1. [控制设备\(Control Message\)](#%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message)
+    1. [打开关闭设备\(On/Off Messages\)](#%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages)
+    1. [可控灯光设备\(Tunable Lighting Control Messages\)](#%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages)
+    1. [可控温度设备\(Temperature Control Messages\)](#%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages)
+    1. [可控风速设备\(Fan Speed Control Messages\)](#%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages)
+  1. [查询状态\(Query Message\)](#%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message)
+    1. [查询空气质量](#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F)
+  1. [错误消息\(Error Message\)](#%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AFerror-message)
+    1. [用户故障\(User Faults\)](#%E7%94%A8%E6%88%B7%E6%95%85%E9%9A%9Cuser-faults)
 
 <!-- /MarkdownTOC -->
 
@@ -1459,3 +1461,39 @@ GetAirPM25Confirmation 例子：
     }
 }
 ```
+
+### 错误消息(Error Message)
+
+当 DuerOS 向 Bot 发送控制请求时，可能会出现不同种类的错误，如果需要，Bot应返回相应的错误类型和信息。Bot不需要返回每个错误类型，仅返回错误对应的故障类型。本节中列出了错误类型和详细信息。除非另有说明，否则错误消息不适用于设备发现，并且不应返回错误消息作为对DiscoverAppliancesRequest的响应。
+
+用户故障：由于用户错误操作，请求可能会无效，会发生以下这些错误。 例如，用户要求将空调设置为1000度。
+* ValueOutOfRangeError
+* TargetOfflineError
+* NoSuchTargetError
+* BridgeOfflineError
+
+Bot故障：当请求有效时，由于硬件问题或限制，也可能会出现以下这些错误，Bot无法完成所需的任务。
+* DriverInternalError
+* DependentServiceUnavailableError
+* NotSupportedInCurrentModeError
+* RateLimitExceededError
+* TargetBridgeConnectivityUnstableError
+* TargetFirmwareOutdatedError
+* TargetBridgeFirmwareOutdatedError
+* TargetHardwareMalfunctionError
+* TargetBridgeHardwareMalfunctionError
+* TargetConnectivityUnstableError
+* TargetHardwareMalfunctionError
+* UnableToGetValueError
+* UnableToSetValueError
+* UnwillingToSetValueError
+
+其他故障：当请求中的数据内容无法满足时，会发生这些错误; 认证令牌无效，或技能适配器无法满足请求的其他方面。
+* ExpiredAccessTokenError
+* InvalidAccessTokenError
+* UnsupportedTargetError
+* UnsupportedOperationError
+* UnsupportedTargetSettingError
+* UnexpectedInformationReceivedError
+
+#### 用户故障(User Faults)
