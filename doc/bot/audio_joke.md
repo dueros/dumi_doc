@@ -234,6 +234,7 @@
 ```
 
 result_list每个元素代表一个资源，一个资源的类型由result_type决定，其中图片为txt，静态图片为img_comm，git图片为git_face；
+
 当query是一个明确的"文字笑话"、"图片笑话"、"动图笑话"时，result_list会固定是上面所列的某个类型的返回结果，如果query是"讲个笑话"泛意图query，result_list将随机出一个类型的结果。
 
 
