@@ -235,22 +235,25 @@
 ```
 
 result_list每个元素代表一个资源，一个资源的类型由result_type决定，其中图片为txt，静态图片为img_comm，git图片为git_face；
-
-当query是一个明确的"文字笑话"、"图片笑话"、"动图笑话"时，result_list会是上面所列固定的返回结果，如果query是"讲个笑话"等泛意图，result_list将随机出一个类型的结果
+当query是一个明确的"文字笑话"、"图片笑话"、"动图笑话"时，result_list会固定是上面所列的某个类型的返回结果，如果query是"讲个笑话"泛意图query，result_list将随机出一个类型的结果。
 
 
 ## nlu说明
+
 intent|slot_name|slot_value|备注
 ----|----|--------|----
 audio.joke.play|||播放笑话
-|image|图片|表达图片笑话意图（针对图文笑话）
-|dynamic_image|动态图片/动图|表达动图笑话意图（针对图文笑话）
+ |textual|文字笑话|表达文字笑话意图（针对图文笑话）
+ |image|图片笑话|表达图片笑话意图（针对图文笑话）
+ |dynamic_image|动图笑话|表达动图笑话意图（针对图文笑话）
 audio.joke.next|||下一个
 audio.joke.previous|||上一个
 audio.joke.continue|||继续
 audio.joke.stop|||停止
 
+
 ## directives 部分的说明
+
 参见相关directives的文档
 * [AudioPlayer](../directives/AudioPlayer.md) 播放相关指令
 * [Speaker](../directives/Speaker.md) 扬声器控制、设置相关指令
