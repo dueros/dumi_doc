@@ -16,7 +16,6 @@
                     "audio_item": {
                         "audio_item_id": "56467429673",
                         "stream": {
-                            "__name": "小明的故事——不想上学",
                             "offset_ms": 0,
                             "progress_report_interval_ms": 1000,
                             "stream_format": "AUDIO_MP3",
