@@ -228,7 +228,7 @@ not_expire|未过期
   "domain": "fridge",
   "intent": "fridge.food.search",
   "slots": {
-    "expired": "过期",
+    "not_expire": "过期",
     "name": "鸡蛋"
   }
 }
@@ -366,15 +366,18 @@ close | 关闭冰箱模式，如“关闭”
 
 slot key|slot value
 --------|----------
-app | 应用名
+app | 代表应用名
+open | 代表`打开`的操作意图
+close | 代表`关闭`的操作意图
 
-打开我的/打开消息中心
+系统设置/打开我的/打开消息中心
 ```javascript
 {
   "domain": "fridge",
   "intent": "fridge.setting.app",
   "slots": {
-    "connect": "我的"
+    "app": "我的",
+    "open": "打开",
   }
 }
 ```
@@ -422,12 +425,23 @@ app | 应用名
 }
 ```
 
+### fridge.info.function
+功能介绍
+```javascript
+{
+  "domain": "fridge",
+  "intent": "fridge.info.function",
+  "slots": {}
+}
+```
+
 ### control.hardware.screen.bright
 
 slot key|slot value
 --------|----------
-up | 亮度变大
-down | 亮度变小
+up | 代表亮度变大
+down | 代表亮度变小
+bright_set_size|max: 代表最大音量；min: 代表最小音量
 
 屏幕太暗
 ```javascript

@@ -1,5 +1,29 @@
 # Smart Home Skill API Reference
 
+<!-- MarkdownTOC -->
+
+- [简介](#%E7%AE%80%E4%BB%8B)
+- [认证](#%E8%AE%A4%E8%AF%81)
+- [Skill指令](#skill%E6%8C%87%E4%BB%A4)
+  - [Header](#header)
+  - [Payload](#payload)
+  - [发现设备\(Discovery Message\)](#%E5%8F%91%E7%8E%B0%E8%AE%BE%E5%A4%87discovery-message)
+    - [DiscoverAppliancesRequest](#discoverappliancesrequest)
+    - [DiscoverAppliancesResponse](#discoverappliancesresponse)
+  - [控制设备\(Control Message\)](#%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message)
+    - [打开关闭设备\(On/Off Messages\)](#%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages)
+    - [可控灯光设备\(Tunable Lighting Control Messages\)](#%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages)
+    - [可控温度设备\(Temperature Control Messages\)](#%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages)
+    - [可控风速设备\(Fan Speed Control Messages\)](#%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages)
+  - [查询状态\(Query Message\)](#%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message)
+    - [查询空气质量](#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F)
+  - [错误消息\(Error Message\)](#%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AFerror-message)
+    - [用户故障\(User Faults\)](#%E7%94%A8%E6%88%B7%E6%95%85%E9%9A%9Cuser-faults)
+    - [Bot故障\(Bot Faults\)](#bot%E6%95%85%E9%9A%9Cbot-faults)
+    - [其他错误\(Other Faults\)](#%E5%85%B6%E4%BB%96%E9%94%99%E8%AF%AFother-faults)
+
+<!-- /MarkdownTOC -->
+
 ## 简介
 
 该协议实现度秘终端互联互通的目的，达到通过使用支持DuerOS能力的设备，控制灯泡等被控设备的效果。
@@ -11,7 +35,7 @@ Smart Home Skill API 遵循 OAuth2.0 规范。
 
 ## Skill指令
 
-所有的指令（Directives），不论是DuerOS发送给Bot还是Bot返回给DuerOS，都是同一个结构，包含以下两个顶层字段：
+所有的指令(Directives)，不论是DuerOS发送给Bot还是Bot返回给DuerOS，都是同一个结构，包含以下两个顶层字段：
 * Header
 * Payload
 
@@ -63,10 +87,33 @@ Payload的内容取决于在Header中的name值。
 
 发现与最终用户的设备云帐户相关的设备和场景。DiscoverAppliancesRequest 从 DuerOS 发送到 Bot。如果没有设备可以发现，或者您的设备云是否遇到错误，则 Bot 应返回一个空的 DiscoverAppliancesResponse，而不是错误消息。
 
+##### Header
+
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesRequest |
 |namespace | DuerOS.ConnectedHome.Discovery |
+
+##### Payload
+
+|Property | Description | Required |
+|---|---|---|
+|accessToken | 与用户设备云帐号相关的access token | Yes |
+
+DiscoverAppliancesRequest例子：
+```
+{
+    "header": {
+        "messageId": "6d6d6e14-8aee-473e-8c24-0d31ff9c17a2",
+        "name": "DiscoverAppliancesRequest",
+        "namespace": "DuerOS.ConnectedHome.Discovery",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "*OAuth Token here*"
+    }
+}
+```
 
 #### DiscoverAppliancesResponse
 
@@ -77,14 +124,14 @@ Payload的内容取决于在Header中的name值。
 * 设备类型，如light 和 scene
 * 每个设备或场景支持的操作
 
-#### Header
+##### Header
 
 |Property | Value |
 |---|---|
 |name | DiscoverAppliancesResponse |
 |namespace | DuerOS.ConnectedHome.Discovery |
 
-#### Payload
+##### Payload
 
 |Property | Description | Required |
 |---|---|---|
@@ -97,7 +144,7 @@ Payload的内容取决于在Header中的name值。
 |discoveredAppliance.friendlyName | 用户用来识别设备的名称。 此值不能超过128个字符，不应包含特殊字符或标点符号。| Yes |
 |discoveredAppliance.friendlyDescription | 设备的可读描述。 此值不能超过128个字符。 描述应包含设备连接方式的描述。 例如，“通过Wink连接的WiFi温控器”。| Yes |
 |discoveredAppliance.isReachable | true表示设备当前可达; 否则，false。| Yes |
-|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>incrementBrightness<br/> <br>decrementBrightness<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>timingSetMode<br/>| Yes |
+|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>incrementBrightness<br/> <br>decrementBrightness<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>timingSetMode<br/> <br>getAirPM25<br/>| Yes |
 |discoveredAppliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 设备 和 场景 类型:
@@ -109,7 +156,7 @@ Payload的内容取决于在Header中的name值。
 |RANGE_HOOD | 抽油烟机等设备 | |
 |LIGHT| 代表光源的设备 ||
 |CURTAIN | 窗帘等设备 | |
-|ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1）打开电视机; (2）打开HDMI1。| |
+|ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1)打开电视机; (2)打开HDMI1。| |
 |SCENE_TRIGGER| 描述设置为特定状态的设备的组合，状态不必以特定顺序变更。 例如睡眠模式可能包括关闭灯光和拉上窗帘，但是顺序不重要。| |
 
 注：在 场景 类型的appliance下，需对 friendlyDescription 和 friendlyName 的命名有一定规范：
@@ -131,7 +178,7 @@ DiscoverAppliancesResponse 例子：
     "messageId":"ff746d98-ab02-4c9e-9d0d-b44711658414",
     "name":"DiscoverAppliancesResponse",
     "namespace":"DuerOS.ConnectedHome.Discovery",
-    "payloadVersion":"2"
+    "payloadVersion": "1"
  },
  "payload":{
     "discoveredAppliances":[
@@ -209,7 +256,7 @@ DiscoverAppliancesResponse 例子：
 
 ### 控制设备(Control Message)
 
-#### 打开关闭设备（On/Off Messages）
+#### 打开关闭设备(On/Off Messages)
 
 消息类型打开或关闭目标设备。这些消息通常由几种不同类型的设备使用。
 * TurnOnRequest
@@ -454,7 +501,7 @@ TurnOffConfirmation 例子：
 }
 ```
 
-#### 可控灯光设备（ Tunable Lighting Control Messages ）
+#### 可控灯光设备(Tunable Lighting Control Messages)
 
 ##### IncrementBrightnessRequest
 
@@ -640,7 +687,7 @@ DecrementBrightnessConfirmation 例子：
 }
 ```
 
-#### 可控温度设备（ Temperature Control Messages ）
+#### 可控温度设备(Temperature Control Messages)
 
 ##### IncrementTemperatureRequest
 
@@ -942,7 +989,7 @@ SetTemperatureConfirmation 例子：
 }
 ```
 
-#### 可控风速设备（ Fan Speed Control Messages ）
+#### 可控风速设备(Fan Speed Control Messages)
 
 ##### IncrementFanSpeedRequest
 
@@ -1334,7 +1381,9 @@ TimingSetModeConfirmation 例子：
 
 ### 查询状态(Query Message)
 
-#### GetAirPM25Request
+#### 查询空气质量
+
+##### GetAirPM25Request
 
 **例子：**
 “小度小度，查一下卧室pm2.5”
@@ -1412,5 +1461,591 @@ GetAirPM25Confirmation 例子：
             "value": 100
         }
     }
+}
+```
+
+### 错误消息(Error Message)
+
+当 DuerOS 向 Bot 发送控制请求时，可能会出现不同种类的错误，如果需要，Bot应返回相应的错误类型和信息。Bot不需要返回每个错误类型，仅返回错误对应的故障类型。本节中列出了错误类型和详细信息。除非另有说明，否则错误消息不适用于设备发现，并且不应返回错误消息作为对DiscoverAppliancesRequest的响应。
+
+用户故障：由于用户错误操作，请求可能会无效，会发生以下这些错误。 例如，用户要求将空调设置为1000度。
+* ValueOutOfRangeError
+* TargetOfflineError
+* NoSuchTargetError
+* BridgeOfflineError
+
+Bot故障：当请求有效时，由于硬件问题或限制，也可能会出现以下这些错误，Bot无法完成所需的任务。
+* DriverInternalError
+* DependentServiceUnavailableError
+* NotSupportedInCurrentModeError
+* RateLimitExceededError
+* TargetBridgeConnectivityUnstableError
+* TargetFirmwareOutdatedError
+* TargetBridgeFirmwareOutdatedError
+* TargetHardwareMalfunctionError
+* TargetBridgeHardwareMalfunctionError
+* TargetConnectivityUnstableError
+* TargetHardwareMalfunctionError
+* UnableToGetValueError
+* UnableToSetValueError
+* UnwillingToSetValueError
+
+其他故障：当请求中的数据内容无法满足时，会发生这些错误; 认证令牌无效，或技能适配器无法满足请求的其他方面。
+* ExpiredAccessTokenError
+* InvalidAccessTokenError
+* UnsupportedTargetError
+* UnsupportedOperationError
+* UnsupportedTargetSettingError
+* UnexpectedInformationReceivedError
+
+#### 用户故障(User Faults)
+当用户给出不正确的指示或度秘不能完成的指令时，会发生以下错误。
+
+##### ValueOutOfRangeError
+目的：表示用户请求将目标值设置为超出其支持范围的值。 例如，用户说：“小度小度，将厨房设置为1000度”。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| minimumValue | 64位双精度值，表示目标设备设置允许的最低值。 | Yes |
+| maximumValue | 64位双精度值，表示目标设备设置允许的最高值。 | Yes |
+
+ValueOutOfRangeError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":" ValueOutOfRangeError",
+    "payloadVersion":"1",
+    "messageId":"697fe957-c842-4545-a159-8a8c75fbe5bd"
+  },
+  "payload":{
+    "minimumValue":15.0,
+    "maximumValue":30.0
+  }
+}
+```
+
+##### TargetOfflineError
+目的：表示目标设备未连接到用户的设备云或设备云不在线。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |
+
+TargetOfflineError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetOfflineError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+##### BridgeOfflineError 
+目的：指示目标设备连接到已关闭电源。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |
+
+BridgeOfflineError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"BridgeOfflineError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+#### Bot故障(Bot Faults)
+当Bot与设备云交互出现问题时，会发生以下错误。在这些情况下，用户请求有效，但由于某种原因无法完成。
+
+##### DriverInternalError
+目的：指示Bot内的通用运行时错误。如果可能，应该返回一个更具体的错误。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |
+
+DriverInternalError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"DriverInternalError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+##### DependentServiceUnavailableError 
+目的：表示技Bot依赖的模块不可用，Bot无法完成请求。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| dependentServiceName | 表示不可用的依赖模块的字符串。必须以字母数字字符和空格指定。此值在256个字符后截断。 | Yes |
+
+DependentServiceUnavailableError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"DependentServiceUnavailableError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+    "dependentServiceName":"Customer Credential Database"
+  }
+}
+```
+
+##### TargetConnectivityUnstableError  
+目的：表示目标设备的云连接不稳定可靠。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+TargetConnectivityUnstableError  例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetConnectivityUnstableError ",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+##### TargetBridgeConnectivityUnstableError
+目的：表示连接目标设备的家庭hub或网桥的云连接不稳定和不可靠。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+TargetBridgeConnectivityUnstableError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetBridgeConnectivityUnstableError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+##### TargetFirmwareOutdatedError
+目的：表示目标设备的固件版本太低。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| minimumFirmwareVersion | 表示最低允许固件版本。不能超过256个字符。 | Yes |  
+| currentFirmwareVersion | 表示当前固件版本。不能超过256个字符。 | Yes | 
+
+TargetFirmwareOutdatedError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetFirmwareOutdatedError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+    "minimumFirmwareVersion":"17",
+    "currentFirmwareVersion":"6"
+  }
+}
+```
+
+##### TargetBridgeFirmwareOutdatedError
+目的：表示连接目标设备的家庭hub或网桥的固件版本太低。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| minimumFirmwareVersion | 表示最低允许固件版本。不能超过256个字符。 | Yes |  
+| currentFirmwareVersion | 表示当前固件版本。不能超过256个字符。 | Yes | 
+
+TargetBridgeFirmwareOutdatedError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetBridgeFirmwareOutdatedError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+    "minimumFirmwareVersion":"17",
+    "currentFirmwareVersion":"6"
+  }
+}
+```
+
+##### TargetHardwareMalfunctionError
+目的：表示目标设备出现硬件故障。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+TargetHardwareMalfunctionError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetHardwareMalfunctionError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+##### TargetBridgeHardwareMalfunctionError
+目的：表示连接目标设备的家庭hub或桥接器出现硬件故障。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+TargetBridgeHardwareMalfunctionError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"TargetBridgeHardwareMalfunctionError",
+    "payloadVersion":"1",
+    "messageId":"15a248f6-8ab5-433d-a3ac-73c358e0bebd"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnableToGetValueError
+目的：表示尝试在目标设备上获取指定值时发生错误。当返回此错误时，适当的errorInfo.code值可以让DuerOS能够适应不同类型的故障。您只需生成适用于目标设备的错误代码。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| errorInfo | 描述为什么不能设置值的错误对象。 | Yes |  
+| errorInfo.code | 字符串格式的错误代码。有效值是: DEVICE_AJAR：由于门打开，无法获取指定的状态。DEVICE_BUSY：设备正忙。DEVICE_JAMMED：设备卡住。DEVICE_OVERHEATED：设备过热。HARDWARE_FAILURE：由于未确定的硬件故障，请求失败。LOW_BATTERY：设备的电池电量不足。NOT_CALIBRATED：设备未校准。 | Yes | 
+| errorInfo.Description | 来自设备制造商的错误的自定义描述。 | No |  
+
+UnableToGetValueError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnableToGetValueError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "errorInfo":{
+      "code":"DEVICE_JAMMED",
+      "description":"A custom description of the error.."
+    }
+  }
+}
+```
+
+##### UnableToSetValueError
+目的：表示尝试在目标设备上设置指定值时发生错误。当返回此错误时，适当的errorInfo.code值使得DuerOS能够适应不同类型的故障。您只需生成适用于目标设备的错误代码。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| errorInfo | 描述为什么不能设置值的错误对象。 | Yes |  
+| errorInfo.code | 字符串格式的错误代码。有效值是: DEVICE_AJAR：由于门打开，无法获取指定的状态。DEVICE_BUSY：设备正忙。DEVICE_JAMMED：设备卡住。DEVICE_OVERHEATED：设备过热。HARDWARE_FAILURE：由于未确定的硬件故障，请求失败。LOW_BATTERY：设备的电池电量不足。NOT_CALIBRATED：设备未校准。 | Yes | 
+| errorInfo.Description | 来自设备制造商的错误的自定义描述。 | No |  
+
+UnableToSetValueError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnableToSetValueError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "errorInfo":{
+      "code":"DEVICE_JAMMED",
+      "description":"A custom description of the error.."
+    }
+  }
+}
+```
+
+##### UnwillingToSetValueError
+目的：表示目标设备商不愿意在指定的设备上设置请求的值。使用此错误进行温度设置。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| errorInfo | 描述为什么不能设置值的错误对象。 | Yes |  
+| errorInfo.code | 字符串格式的错误代码。目前，代码的有效值为ThermostatIsOff，表示由于恒温器关闭，制造商不愿自动将其启动，因此被请求的操作被拒绝。 | Yes | 
+| errorInfo.Description | 来自设备制造商的错误的自定义描述。 | No |  
+
+UnwillingToSetValueError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnwillingToSetValueError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "errorInfo":{
+      "code":"ThermostatIsOff",
+      "description":"The requested operation is unsafe because it requires changing the mode."
+    }
+  }
+}
+```
+
+##### RateLimitExceededError
+目的：表示超出设备接受的最大请求数。此消息提供有关设备的最大请求数和这些请求的时间单位的信息。例如，如果设备每小时接受四个请求，则消息应分别指定4和HOUR作为rateLimit和timeUnit。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| rateLimit | Integer，表示设备在指定的时间单位中接受的最大请求数。 | Yes |  
+| timeUnit | 大写字符串，表示rateLimit的时间单位，如MINUTE，HOUR或DAY。 | Yes | 
+
+RateLimitExceededError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"RateLimitExceededError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "errorInfo":{
+      "rateLimit":"10",
+      "timeUnit":"HOUR"
+    }
+  }
+}
+```
+
+##### NotSupportedInCurrentModeError
+目的：表示目标设备处于无法通过DuerOS进行控制的模式，并提供有关设备当前模式的信息。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| currentDeviceMode | 表示设备当前模式的字符串。有效值为AUTO，AWAY，COLOR，COOL，HEAT和OTHER。 | Yes |  
+
+NotSupportedInCurrentModeError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"NotSupportedInCurrentModeError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "errorInfo":{
+      "currentDeviceMode":"COOL",
+    }
+  }
+}
+```
+
+#### 其他错误(Other Faults)
+当一个或多个请求输入无效DuerOS无法处理时，会发生以下错误。例如，访问令牌(access token)无效。
+
+##### ExpiredAccessTokenError
+目的：表示用于认证的访问令牌(access token)已过期，不再有效。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+ExpiredAccessTokenError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"ExpiredAccessTokenError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### InvalidAccessTokenError
+目的：表示用于身份验证的访问令牌(access token)无效，除了已过期的原因。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+InvalidAccessTokenError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"InvalidAccessTokenError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnsupportedTargetError
+目的：指示Bot不支持目标设备。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+UnsupportedTargetError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnsupportedTargetError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnsupportedOperationError
+目的：表示目标设备不支持请求的操作。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+UnsupportedOperationError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnsupportedOperationError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnsupportedTargetSettingError
+目的：表示所请求的设置对于指定的设备和操作无效。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |  
+
+UnsupportedTargetSettingError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnsupportedTargetSettingError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+  }
+}
+```
+
+##### UnexpectedInformationReceivedError
+目的：由于格式错误，Bot无法处理请求消息。
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| faultingParameter | 请求消息中的属性或字段格式错误，导致Bot无法处理。 | Yes |  
+
+UnexpectedInformationReceivedError 例子：
+```
+{
+  "header":{
+    "namespace":"DuerOS.ConnectedHome.Control",
+    "name":"UnexpectedInformationReceivedError",
+    "payloadVersion":"1",
+    "messageId":"917314cd-ca00-49ca-b75e-d6f65ac43503"
+  },
+  "payload":{
+    "faultingParameter": "value"
+  }
 }
 ```

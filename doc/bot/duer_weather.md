@@ -79,7 +79,8 @@
     ],
     "nlu": {
       "domain": "duer_weather",
-      "intent": "sys_weather",
+      "intent": "sys_weather",  //（还包括：SYS_AQI（空气指数）、SYS_CLOTHES(穿衣指数)、SYS_RAIN（下雨天）、SYS_SNOW（下雪天）
+、SYS_SUNNY（晴天）、SYS_TEMP（温度）、SYS_ULTRAVIOLET（紫外线指数）、SYS_WIND（刮风天）、SYS_LOW_TEMP（低温）、SYS_HIGH_TEMP（高温）、SYS_EXERCISE（运动指数）、SYS_TRIP（旅行指数）、SYS_WASH_CAR（洗车指数）、SYS_INFLUENZA（感冒指数），均为小写
       "slots": {
         "loc_city": "北京市",
         "loc_province": "北京市",
