@@ -64,8 +64,8 @@ vol_set_size|max: 最大；min: 最小
 ### ai.dueros.control.SetBrightness 屏幕控制
 slot key|slot value
 --------|----------
-up|代表声音增大
-down|代表声音变小
+up|代表屏幕亮度增大
+down|代表屏幕亮度变小
 
 屏幕亮度减小
 ```javascript
@@ -74,24 +74,6 @@ down|代表声音变小
     "intent": "ai.dueros.control.SetBrightness",
     "slots": {
         "up": "高"
-    }
-}
-```
-
-### ai.dueros.control.SysCommand  设备控制
-slots：
-
-slot key|slot value
---------|----------
-cmd|emit、change_color、close_light、change_shape、open_cap
-
-变色、变身
-```javascript
-{
-    "domain": "control",
-    "intent": "ai.dueros.control.SysCommand",
-    "slots": {
-        "cmd": "change_color"
     }
 }
 ```
@@ -133,5 +115,3 @@ open|代表打开，若缺失也代表打开app_name
     }
 }
 ```
-
-
