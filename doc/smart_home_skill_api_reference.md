@@ -57,7 +57,7 @@ Header必须包含以下属性：
 
 |Property | Description |
 |---|---|
-|messageID | 单个请求或响应的唯一标识符。 这用于跟踪目的，Bot应该记录此信息，尽管它不应用于支持业务逻辑。 来自Bot的每条消息都必须填充此字段。 任何字符串数字字符和短于128个字符的字符串都是有效的，但是推荐使用随机数生成的UUID版本4 UUID。 |
+|messageId | 单个请求或响应的唯一标识符。 这用于跟踪目的，Bot应该记录此信息，尽管它不应用于支持业务逻辑。 来自Bot的每条消息都必须填充此字段。 任何字符串数字字符和短于128个字符的字符串都是有效的，但是推荐使用随机数生成的UUID版本4 UUID。 |
 |name | 指令的名称，如 DiscoverAppliancesRequest 和 DiscoverAppliancesResponse |
 |namespace | 指定消息payload的类别。 目前的类别有： DuerOS.ConnectedHome.Discovery、DuerOS.ConnectedHome.Control、DuerOS.ConnectedHome.Query |
 |payloadVersion | 标识payload的版本号 |
@@ -287,7 +287,7 @@ DuerOS发送给Bot的打开设备的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 TurnOnRequest 例子：
@@ -364,7 +364,7 @@ DuerOS发送给Bot的打开设备的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳。 | No |
 
@@ -445,7 +445,7 @@ DuerOS发送给Bot的关闭设备的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 TurnOffRequest 例子：
@@ -524,7 +524,7 @@ DuerOS发送给Bot的调亮灯光的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | deltaBrightness | 表示设备的亮度提高的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备亮度调整的值，其有效范围为0.0000至1.0000。 | Yes |
 
@@ -616,7 +616,7 @@ DuerOS发送给Bot的调低灯光亮度的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | deltaBrightness | 表示设备的亮度提高的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备亮度调整的值，其有效范围为0.0000至1.0000。 | Yes |
 
@@ -710,7 +710,7 @@ DuerOS发送给Bot的调高温度的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | deltaTemperature | 表示设备的温度变化的量的对象。包含一个属性值，它指定一个数字。 | Yes |
 
@@ -810,7 +810,7 @@ DuerOS发送给Bot的调低温度的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | deltaTemperature | 表示设备的温度变化的量的对象。包含一个属性值，它指定一个数字。 | Yes |
 
@@ -910,7 +910,7 @@ DuerOS发送给Bot的设置温度的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | targetTemperature | 表示设备的温度设置的量的对象。包含一个属性值，它指定一个数字。 | Yes |
 
@@ -1012,7 +1012,7 @@ DuerOS发送给Bot的调高风速的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | deltaFanSpeed | 表示设备的风速变化的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备风速调整的值，其有效范围为0.0000至1.0000。 | Yes |
 
@@ -1112,7 +1112,7 @@ DuerOS发送给Bot的调低风速的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | deltaFanSpeed | 表示设备的风速变化的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备风速调整的值，其有效范围为0.0000至1.0000。 | Yes |
 
@@ -1212,7 +1212,7 @@ DuerOS发送给Bot的设置模式的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | mode | 表示设备的模式设置的量的对象。包含一个属性值，它指定一种模式。 | Yes |
 
@@ -1304,7 +1304,7 @@ DuerOS发送给Bot的设置模式的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | mode | 表示设备的模式设置的量的对象。包含一个属性值，它指定一种模式。 | Yes |
 | timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳。 | Yes |
@@ -1404,7 +1404,7 @@ DuerOS发送给Bot的设置模式的请求
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
 | appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceID | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 GetAirPM25Request 例子：
