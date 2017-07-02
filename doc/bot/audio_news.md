@@ -125,6 +125,7 @@ intent::audio.news.previous 上一条 |
 参数|类型|是否必须|备注
 ----|----|--------|----
 user_id|string|是|用户ID，用户的唯一标识
+appid|string|是|appid
 page|int|否|页码，默认为1
 page_size|int|否|每页数据量，默认为10
 
