@@ -5,10 +5,29 @@
 //query = 刘德华
 {
     "result": {
+        "hint": [
+            "梁朝伟和刘德华的演技谁比较好？",
+            "刘德华:一位我追了十二年的偶像",
+            "刘德华的八卦新闻",
+            "刘德华和周杰伦为什么不开微博？",
+            "刘德华电影全集国语优酷",
+            "刘德华演唱会"
+        ],
         "nlu": {
             "domain": "universal_search",
             "intent": "baike",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "image": "http://t12.baidu.com/it/u=2052923039,2278194179&fm=58&bpow=960&bpoh=633&u_exp_0=1993718624,2011089295&fm_exp_0=86",
+                "introduction": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》",
+                "media_url_new": null,
+                "speech": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》",
+                "title": "刘德华",
+                "url": "http://baike.baidu.com/item/%E5%88%98%E5%BE%B7%E5%8D%8E/114923"
+            },
+            "type": "baike"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -21,29 +40,29 @@
                 "type": "list",
                 "list": [
                     {
-                        "title": "刘德华_百度百科",
+                        "title": "刘德华",
                         "summary": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》",
-                        "url": "https://ss0.baidu.com/9rM4dzva2gU2pMbgoY3K/item/%E5%88%98%E5%BE%B7%E5%8D%8E/114923?fr=aladdin",
-                        "image": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2938670487,4139963420&fm=58"
+                        "url": "https://ss0.baidu.com/9rM4dzva2gU2pMbgoY3K/item/%E5%88%98%E5%BE%B7%E5%8D%8E/114923",
+                        "image": "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2052923039,2278194179&fm=58&bpow=960&bpoh=633&u_exp_0=1993718624,2011089295&fm_exp_0=86"
                     }
                 ]
             }
         ],
         "speech": {
             "type": "Text",
-            "content": " 刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》"
+            "content": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》"
         }
     },
-    "id": "1497432473_2428xywdg",
-    "logid": "14974324727514",
+    "id": "1499346291_835e16mgq",
+    "logid": "14993462911180",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497432473,
+    "time": 1499346291,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
     "se_query": "刘德华",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 802
+    "timeuse": 321
 }
 
 //query = 刘德华（纯文本输出）
@@ -62,6 +81,17 @@
             "intent": "baike",
             "slots": {}
         },
+        "resource": {
+            "data": {
+                "image": "http://t12.baidu.com/it/u=2052923039,2278194179&fm=58&bpow=960&bpoh=633&u_exp_0=1993718624,2011089295&fm_exp_0=86",
+                "introduction": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》",
+                "media_url_new": null,
+                "speech": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》",
+                "title": "刘德华",
+                "url": "http://baike.baidu.com/item/%E5%88%98%E5%BE%B7%E5%8D%8E/114923"
+            },
+            "type": "baike"
+        },
         "bot_id": "aries_general",
         "bot_meta": {
             "version": "1.0.0",
@@ -71,24 +101,24 @@
         "views": [
             {
                 "type": "txt",
-                "content": " 刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》"
+                "content": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》"
             }
         ],
         "speech": {
             "type": "Text",
-            "content": " 刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》"
+            "content": "刘德华（Andy Lau），1961年9月27日出生于中国香港，演员、歌手、作词人、制片人。1981年出演电影处女作《彩云曲》。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录。1985年因拒签五年合约而被TVB雪藏。1988年将事业重心转向电影。1991年创办天幕电影公司。1994年担任剧情片《天与地》的制片人。2000年凭借警匪片《暗战》获得第19届香港电影金像奖最佳男主角奖。2004年凭借警匪片《无间道3：终极无间》获得第41届台湾金马奖最佳男主角奖。2005年获得香港UA院线颁发的“1985-2005年全港最高累积票房香港男演员”奖。2006年获得釜山国际电影节亚洲最有贡献电影人奖。2011年主演剧情片《桃姐》，并凭借该片先后获得台湾金马奖最佳男主角奖、香港电影金像奖最佳男主角奖；同年担任第49届台湾电影金马奖评审团主席。2017年主演警匪动作片《拆弹专家》"
         }
     },
-    "id": "1497432669_357347d5f",
-    "logid": "14974326698500",
+    "id": "1499346414_3836gdsao",
+    "logid": "14993464144485",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497432669,
+    "time": 1499346414,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
     "se_query": "刘德华",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 193
+    "timeuse": 251
 }
 ```
 ## 限行
@@ -559,13 +589,31 @@
 ```
 ## 翻译
 ```javascript
-//我爱你翻译
+//手机的翻译
 {
     "result": {
         "nlu": {
             "domain": "universal_search",
             "intent": "translator",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "entry": null,
+                "example_sentence": null,
+                "input": "手机怎么翻译",
+                "paraphrase": [
+                    "cellphone",
+                    "handset",
+                    "mobile phone",
+                    "Handphone"
+                ],
+                "phonetic_symbol": null,
+                "sound": null,
+                "speech": "1 cellphone; 2   handset; 3   mobile phone; 4   Handphone; ",
+                "url": "http://fanyi.baidu.com/#zh/en/%E6%89%8B%E6%9C%BA"
+            },
+            "type": "translator"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -579,36 +627,53 @@
                 "list": [
                     {
                         "title": "为你找到以下图片",
-                        "image": "http://xiaodu.baidu.com/img/pic?pic_id=54262186",
-                        "url": "http://justfortest.nj.m.baidu.com/uiapi/5f91a3/aladdin.html?from=1009717l&cip=61.135.169.80&count=1&os=1&usdata=1&target=_blank&word=%E6%88%91%E7%88%B1%E4%BD%A0%E7%BF%BB%E8%AF%91&loc=%7B%22crd%22%3A%2212957817.675767_4829432.896599_200%22%2C%22city%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%22%2C%22addr%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%5Cu897f%5Cu57ce%5Cu533a%5Cu897f%5Cu697c%5Cu5df715%5Cu53f7%22%2C%22city_code%22%3A131%7D&give=dictwisenew&pu=sz%401320_480%2Ccua%40_avLC_aE-i4qywoUfpw1zyaBXi4Xa2iLA%2Ccut%40_u2g8juSvh_Dh2IJgNvHtyN6moi5pQqAC%2Cosname%40baiduboxapp%2Cctv%402%2Ccfrom%40757b%2Ccen%40cuid_cua_cut%2Ccsrc%40app_dumi_voice"
+                        "image": "http://xiaodu.baidu.com/img/pic?pic_id=56993341",
+                        "url": "http://justfortest.nj.m.baidu.com/uiapi/0238fc/aladdin.html?from=1009717l&cip=61.135.169.80&count=1&os=1&usdata=1&target=_blank&word=%E6%89%8B%E6%9C%BA%E6%80%8E%E4%B9%88%E7%BF%BB%E8%AF%91&loc=%7B%22crd%22%3A%2212957817.404497_4829433.051660_200%22%2C%22city%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%22%2C%22addr%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%5Cu897f%5Cu57ce%5Cu533a%5Cu897f%5Cu697c%5Cu5df715%5Cu53f7%22%2C%22city_code%22%3A131%7D&give=dictwisenew&pu=sz%401320_480%2Ccua%40_avLC_aE-i4qywoUfpw1zyaBXi4Xa2iLA%2Ccut%40_u2g8juSvh_Dh2IJgNvHtyN6moi5pQqAC%2Cosname%40baiduboxapp%2Cctv%402%2Ccfrom%40757b%2Ccen%40cuid_cua_cut%2Ccsrc%40app_dumi_voice"
                     }
                 ]
             }
         ],
         "speech": {
             "type": "Text",
-            "content": "1 I love you; 2  <法>Je t’aime; 3  <德>Ich liebe Dich; 4  <日>わたしはあなたをあいしています。"
+            "content": "1 cellphone; 2   handset; 3   mobile phone; 4   Handphone; "
         }
     },
-    "id": "1497433114_412ga26o4",
-    "logid": "14974331131296",
+    "id": "1499346487_0864f1l85",
+    "logid": "14993464864465",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433114,
+    "time": 1499346487,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
-    "se_query": "我爱你翻译",
+    "se_query": "手机的翻译",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 833
+    "timeuse": 606
 }
-
-//我爱你翻译（纯文本输出）
+//手机的翻译（纯文本输出）
 {
     "result": {
         "nlu": {
             "domain": "universal_search",
             "intent": "translator",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "entry": null,
+                "example_sentence": null,
+                "input": "手机怎么翻译",
+                "paraphrase": [
+                    "cellphone",
+                    "handset",
+                    "mobile phone",
+                    "Handphone"
+                ],
+                "phonetic_symbol": null,
+                "sound": null,
+                "speech": "1 cellphone; 2   handset; 3   mobile phone; 4   Handphone; ",
+                "url": "http://fanyi.baidu.com/#zh/en/%E6%89%8B%E6%9C%BA"
+            },
+            "type": "translator"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -619,24 +684,24 @@
         "views": [
             {
                 "type": "txt",
-                "content": "1 I love you; 2  <法>Je t’aime; 3  <德>Ich liebe Dich; 4  <日>わたしはあなたをあいしています。"
+                "content": "1 cellphone; 2   handset; 3   mobile phone; 4   Handphone; "
             }
         ],
         "speech": {
             "type": "Text",
-            "content": "1 I love you; 2  <法>Je t’aime; 3  <德>Ich liebe Dich; 4  <日>わたしはあなたをあいしています。"
+            "content": "1 cellphone; 2   handset; 3   mobile phone; 4   Handphone; "
         }
     },
-    "id": "1497433157_937d0s6mt",
-    "logid": "14974331577477",
+    "id": "1499346528_705bdvsx1",
+    "logid": "14993465285169",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433157,
+    "time": 1499346528,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
-    "se_query": "我爱你翻译",
+    "se_query": "手机的翻译",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 246
+    "timeuse": 335
 }
 ```
 ## 计算
@@ -747,6 +812,23 @@
             "intent": "time",
             "slots": {}
         },
+        "resource": {
+            "data": {
+                "country": null,
+                "festival": null,
+                "festival_arrangement": null,
+                "location": null,
+                "lunar_calendar": null,
+                "solar_calendar": null,
+                "specific_time": null,
+                "speech": "后天是星期六，2017年7月8日",
+                "time_period": null,
+                "time_zone": null,
+                "url": null,
+                "weekday": null
+            },
+            "type": "time"
+        },
         "bot_id": "aries_general",
         "bot_meta": {
             "version": "1.0.0",
@@ -756,24 +838,24 @@
         "views": [
             {
                 "type": "txt",
-                "content": "后天是星期五，2017年6月16日"
+                "content": "后天是星期六，2017年7月8日"
             }
         ],
         "speech": {
             "type": "Text",
-            "content": "后天是星期五，2017年6月16日"
+            "content": "后天是星期六，2017年7月8日"
         }
     },
-    "id": "1497433387_3367ow2dk",
-    "logid": "14974333866325",
+    "id": "1499346566_6879o3kh3",
+    "logid": "14993465669051",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433387,
+    "time": 1499346566,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
     "se_query": "后天是星期几",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 692
+    "timeuse": 290
 }
 
 //纽约时间（世界时间）
@@ -819,90 +901,7 @@
     "timeuse": 551
 }
 ```
-## 明星问答
-```javascript
-//刘德华的老婆是谁
-{
-    "result": {
-        "nlu": {
-            "domain": "universal_search",
-            "intent": "kg",
-            "slots": {}
-        },
-        "bot_id": "aries_general",
-        "bot_meta": {
-            "version": "1.0.0",
-            "type": "其他",
-            "description": "desc"
-        },
-        "views": [
-            {
-                "type": "list",
-                "list": [
-                    {
-                        "title": "刘德华妻子 朱丽倩",
-                        "summary": "朱丽倩（Carol），1966年4月6日出生于马来西亚槟城。选美小姐，平面模特，刘德华妻子。1984年，她和姐妹参加当地的“新潮小姐”选美获得季军，之后赴香港学美容；1985年至1987年间做过平面模特；2008年6月23日与刘德华在拉斯维加斯注册结婚；2012年5月9日，朱丽倩在香港养和医院产下女儿刘向蕙，刘德华也正式升格成为爸爸。",
-                        "url": "https://ss0.baidu.com/9rM4dzva2gU2pMbgoY3K/item/%E6%9C%B1%E4%B8%BD%E5%80%A9/10364866",
-                        "image": "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3326600681,3785049593&fm=58"
-                    }
-                ]
-            }
-        ],
-        "speech": {
-            "type": "Text",
-            "content": "刘德华的妻子是朱丽倩"
-        }
-    },
-    "id": "1497433650_695adwurw",
-    "logid": "14974336508340",
-    "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433650,
-    "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
-    "se_query": "刘德华的老婆是谁",
-    "msg": "ok",
-    "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
-    "status": 0,
-    "timeuse": 484
-}
-
-//刘德华的老婆是谁（纯文本）
-{
-    "result": {
-        "nlu": {
-            "domain": "universal_search",
-            "intent": "kg",
-            "slots": {}
-        },
-        "bot_id": "aries_general",
-        "bot_meta": {
-            "version": "1.0.0",
-            "type": "其他",
-            "description": "desc"
-        },
-        "views": [
-            {
-                "type": "txt",
-                "content": "刘德华的妻子是朱丽倩"
-            }
-        ],
-        "speech": {
-            "type": "Text",
-            "content": "刘德华的妻子是朱丽倩"
-        }
-    },
-    "id": "1497433708_526fpmqgz",
-    "logid": "14974337085267",
-    "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433708,
-    "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
-    "se_query": "刘德华的老婆是谁",
-    "msg": "ok",
-    "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
-    "status": 0,
-    "timeuse": 250
-}
-```
-## 汉语问答
+## 诗词问答
 ```javascript
 //清明时节雨纷纷的下一句
 {
@@ -911,6 +910,38 @@
             "domain": "universal_search",
             "intent": "kg",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "answer": [
+                    {
+                        "author": {
+                            "key": "作者",
+                            "value": "杜牧"
+                        },
+                        "content": {
+                            "key": "全文",
+                            "value": "清明时节雨纷纷，路上行人欲断魂。\n借问酒家何处有？牧童遥指杏花村。"
+                        },
+                        "dynasty": {
+                            "key": "朝代",
+                            "value": "唐"
+                        },
+                        "etype": "poemline",
+                        "source": {
+                            "key": "出处",
+                            "value": "清明"
+                        },
+                        "value": "路上行人欲断魂"
+                    }
+                ],
+                "property": "下一句",
+                "query": "清明时节雨纷纷的下一句",
+                "source_link": "http://hanyu.baidu.com/shici/detail?pid=62bd01655ee04c60b01c1ee41bce805b&query=%E6%B8%85%E6%98%8E%E6%97%B6%E8%8A%82%E9%9B%A8%E7%BA%B7%E7%BA%B7%E7%9A%84%E4%B8%8B%E4%B8%80%E5%8F%A5&srcid=28239&from=kg2",
+                "source_name": "百度汉语",
+                "title": "清明时节雨纷纷的下一句"
+            },
+            "type": "property"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -930,16 +961,16 @@
             "content": "清明时节雨纷纷的下一句是路上行人欲断魂"
         }
     },
-    "id": "1497433727_3789c0vpf",
-    "logid": "14974337265925",
+    "id": "1499346644_3267wyml0",
+    "logid": "14993466435013",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433727,
+    "time": 1499346644,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
     "se_query": "清明时节雨纷纷的下一句",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 823
+    "timeuse": 591
 }
 
 //清明时节雨纷纷的下一句（纯文本输出）
@@ -949,6 +980,38 @@
             "domain": "universal_search",
             "intent": "kg",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "answer": [
+                    {
+                        "author": {
+                            "key": "作者",
+                            "value": "杜牧"
+                        },
+                        "content": {
+                            "key": "全文",
+                            "value": "清明时节雨纷纷，路上行人欲断魂。\n借问酒家何处有？牧童遥指杏花村。"
+                        },
+                        "dynasty": {
+                            "key": "朝代",
+                            "value": "唐"
+                        },
+                        "etype": "poemline",
+                        "source": {
+                            "key": "出处",
+                            "value": "清明"
+                        },
+                        "value": "路上行人欲断魂"
+                    }
+                ],
+                "property": "下一句",
+                "query": "清明时节雨纷纷的下一句",
+                "source_link": "http://hanyu.baidu.com/shici/detail?pid=62bd01655ee04c60b01c1ee41bce805b&query=%E6%B8%85%E6%98%8E%E6%97%B6%E8%8A%82%E9%9B%A8%E7%BA%B7%E7%BA%B7%E7%9A%84%E4%B8%8B%E4%B8%80%E5%8F%A5&srcid=28239&from=kg2",
+                "source_name": "百度汉语",
+                "title": "清明时节雨纷纷的下一句"
+            },
+            "type": "property"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -967,27 +1030,51 @@
             "content": "清明时节雨纷纷的下一句是路上行人欲断魂"
         }
     },
-    "id": "1497433766_452f3pz32",
-    "logid": "14974337659799",
+    "id": "1499346689_9166axryw",
+    "logid": "14993466897314",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433766,
+    "time": 1499346689,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
     "se_query": "清明时节雨纷纷的下一句",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 561
+    "timeuse": 349
 }
 ```
-## 常识问答
+## 汉字问答
 ```javascript
-//世界上最高的山
+//三个牛是什么字
 {
     "result": {
         "nlu": {
             "domain": "universal_search",
             "intent": "kg",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "answer": [
+                    {
+                        "definition": {
+                            "key": "释义",
+                            "value": "[bēn]"
+                        },
+                        "etype": "word",
+                        "spell": {
+                            "key": "拼音",
+                            "value": "[bēn]"
+                        },
+                        "url": "http://hanyu.baidu.com/zici/s?wd=%E7%8A%87&query=%E4%B8%89%E4%B8%AA%E7%89%9B%E6%98%AF%E4%BB%80%E4%B9%88%E5%AD%97&srcid=28238&from=kg2&from=kg2",
+                        "value": "犇"
+                    }
+                ],
+                "query": "三个牛是什么字",
+                "source_link": "http://hanyu.baidu.com/zici/s?wd=%E7%8A%87&query=%E4%B8%89%E4%B8%AA%E7%89%9B%E6%98%AF%E4%BB%80%E4%B9%88%E5%AD%97&srcid=28238&from=kg2&from=kg2",
+                "source_name": "百度汉语",
+                "title": "犇"
+            },
+            "type": "entity"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -1000,37 +1087,61 @@
                 "type": "list",
                 "list": [
                     {
-                        "title": "为你找到以下图片",
-                        "image": "http://xiaodu.baidu.com/img/pic?pic_id=54263824",
-                        "url": "https://sp3.baidu.com/84oIbT3kAMgDnd_/&pu=sz%401320_480%2Ccua%40_avLC_aE-i4qywoUfpw1zyaBXi4Xa2iLA%2Ccut%40_u2g8juSvh_Dh2IJgNvHtyN6moi5pQqAC%2Cosname%40baiduboxapp%2Cctv%402%2Ccfrom%40757b%2Ccen%40cuid_cua_cut%2Ccsrc%40app_dumi_voice/s?word=%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E9%AB%98%E7%9A%84%E5%B1%B1&give=ks_general"
+                        "title": "犇_百度汉语",
+                        "summary": "读音: [bēn]\n解释: 同“奔bēn”。",
+                        "url": "http://hanyu.baidu.com/zici/s?wd=%E7%8A%87&query=%E4%B8%89%E4%B8%AA%E7%89%9B%E6%98%AF%E4%BB%80%E4%B9%88%E5%AD%97&srcid=28238&from=kg2&from=kg2",
+                        "image": "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3977785258,837525944&fm=58"
                     }
                 ]
             }
         ],
         "speech": {
             "type": "Text",
-            "content": "世界上最高的山峰是珠穆朗玛峰，高度为8844.46米。"
+            "content": "这个字是 犇，意思是同“奔bēn”。"
         }
     },
-    "id": "1497433797_414azaxl1",
-    "logid": "14974337965407",
+    "id": "1499346781_0467yn8e3",
+    "logid": "14993467803335",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433797,
+    "time": 1499346781,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
-    "se_query": "世界上最高的山",
+    "se_query": "三个牛是什么字",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 911
+    "timeuse": 460
 }
-
-//世界上最高的山（纯文本输出）
+//三个牛是什么字（纯文本）
 {
     "result": {
         "nlu": {
             "domain": "universal_search",
             "intent": "kg",
             "slots": {}
+        },
+        "resource": {
+            "data": {
+                "answer": [
+                    {
+                        "definition": {
+                            "key": "释义",
+                            "value": "[bēn]"
+                        },
+                        "etype": "word",
+                        "spell": {
+                            "key": "拼音",
+                            "value": "[bēn]"
+                        },
+                        "url": "http://hanyu.baidu.com/zici/s?wd=%E7%8A%87&query=%E4%B8%89%E4%B8%AA%E7%89%9B%E6%98%AF%E4%BB%80%E4%B9%88%E5%AD%97&srcid=28238&from=kg2&from=kg2",
+                        "value": "犇"
+                    }
+                ],
+                "query": "三个牛是什么字",
+                "source_link": "http://hanyu.baidu.com/zici/s?wd=%E7%8A%87&query=%E4%B8%89%E4%B8%AA%E7%89%9B%E6%98%AF%E4%BB%80%E4%B9%88%E5%AD%97&srcid=28238&from=kg2&from=kg2",
+                "source_name": "百度汉语",
+                "title": "犇"
+            },
+            "type": "entity"
         },
         "bot_id": "aries_general",
         "bot_meta": {
@@ -1041,24 +1152,24 @@
         "views": [
             {
                 "type": "txt",
-                "content": "世界上最高的山峰是珠穆朗玛峰，高度为8844.46米。"
+                "content": "这个字是 犇，意思是同“奔bēn”。"
             }
         ],
         "speech": {
             "type": "Text",
-            "content": "世界上最高的山峰是珠穆朗玛峰，高度为8844.46米。"
+            "content": "这个字是 犇，意思是同“奔bēn”。"
         }
     },
-    "id": "1497433840_8793ftgm8",
-    "logid": "14974338407166",
+    "id": "1499346855_763b0zf67",
+    "logid": "14993468557645",
     "user_id": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138768",
-    "time": 1497433840,
+    "time": 1499346855,
     "cuid": "DAFABB5EBE29BC13C7CBAADBEF6BD166|234418820138123",
-    "se_query": "世界上最高的山",
+    "se_query": "三个牛是什么字",
     "msg": "ok",
     "client_msg_id": "c9bfe944-992b-45b1-8afe-dc2cdaee622a",
     "status": 0,
-    "timeuse": 274
+    "timeuse": 339
 }
 ```
 ## 通用搜索
@@ -1186,4 +1297,22 @@ drugs => 药品
 baike => 百科
 time => 时间
 general_aladdin => 其他泛阿拉丁
+```
+## 知识图谱
+```javascript
+度秘知识谱图服务包含多种子服务，比较重要的几个大类目：
+汉语  ai.dueros.bot.knowledge_graph_chinese
+诗词  ai.dueros.bot.knowledge_graph_poetry
+人物  ai.dueros.bot.knowledge_graph_personage
+影视  ai.dueros.bot.knowledge_graph_film_tv
+地理  ai.dueros.bot.knowledge_graph_geography
+历史  ai.dueros.bot.knowledge_graph_history
+音乐  ai.dueros.bot.knowledge_graph_music
+世界之最    ai.dueros.bot.knowledge_graph_world_top
+动物  ai.dueros.bot.knowledge_graph_animal    
+植物  ai.dueros.bot.knowledge_graph_plant
+体育  ai.dueros.bot.knowledge_graph_sport
+
+其中，每个类目的resource输出对应着不同的schema格式，具体见：
+http://wiki.baidu.com/pages/viewpage.action?pageId=345971498
 ```
