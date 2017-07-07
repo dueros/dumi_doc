@@ -140,6 +140,7 @@
     }
   ],
 */
+  "safe_mode":false,  //儿童模式开关，true为打开状态，fasle为关闭状态
   "bot_sessions": [
     {
       "action": "get",

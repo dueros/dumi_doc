@@ -439,8 +439,9 @@ close | 代表`关闭`的操作意图
 
 slot key|slot value
 --------|----------
-up | 亮度变大
-down | 亮度变小
+up | 代表亮度变大
+down | 代表亮度变小
+bright_set_size|max: 代表最大音量；min: 代表最小音量
 
 屏幕太暗
 ```javascript
