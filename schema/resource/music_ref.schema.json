@@ -1,0 +1,35 @@
+{
+    "type":"object",
+    "id":"https://xiaodu.baidu.com/schema/music_ref.schema.json",
+    "properties":{
+        "type":{
+            "type":"string",
+            "enum":["music_ref"]
+        },
+        "data":{
+            "type":"object",
+            "required":["api","media"],
+            "properties":{
+                "api":{
+                    "type":"object",
+                    "properties":{
+                        "method":{"type":"string"},
+                        "url":{"type":"string"}
+                    }
+                },
+                "media":{
+                    "type":"object",
+                    "properties":{
+                        "artist":{
+                            "type":"array",
+                            "items":{"type":"string"}
+                        },
+                        "type":{"type":"string"}
+                    }
+                }
+            }
+        }
+    }
+}
+
+
