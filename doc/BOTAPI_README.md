@@ -224,7 +224,10 @@
     "target_device_id":"xxxxxx",
     "device_interface":{
         "Alerts":{},
-        "AudioPlayer":{},
+        "AudioPlayer":{
+            //"no_pause":1,
+            //"no_seek":1,
+        },
         "PlaybackController":{},
         "Speaker":{},
         "Settings":{},

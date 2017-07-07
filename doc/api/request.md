@@ -63,7 +63,10 @@
     "device_model":"iphone 6s", //设备具体型号 （目前只有对外sdk有该字段）ios取 设备型号字符串 sysctlbyname("hw.machine", name, &size, NULL, 0);，安卓取android.os.Build.MODEL
     "device_interface":{
         "Alerts":{},
-        "AudioPlayer":{},
+        "AudioPlayer":{
+            "no_pause":1,
+            "no_seek":1,
+        },
         "PlaybackController":{},
         "Speaker":{},
         "Settings":{},
@@ -147,6 +150,8 @@
  
   * device_interface 标识客户端有哪些能力
     * AudioPlayer
+      * no_pause 说明客户端不支持暂停、继续
+      * no_seek 说明客户端不支持快进、快退、定位播放
     * SpeechSynthesizer
     * Speaker
   * device_event 客户端事件的类型和内容。只有query_type==30的时候，才会有device_event，此时会忽略query字段（没有文本query），比如下面的端能力，里面都有相关事件的定义
