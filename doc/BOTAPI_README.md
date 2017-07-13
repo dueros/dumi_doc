@@ -140,7 +140,7 @@
     }
   ],
 */
-  "safe_mode":false,  //儿童模式开关，true为打开状态，fasle为关闭状态
+  "system_mode":"CHILD",  //儿童模式CHILD，现在只有一个模式
   "bot_sessions": [
     {
       "action": "get",
@@ -391,6 +391,8 @@
     }
   ]
 */
+  "system_mode":"CHILD",  //儿童模式CHILD，现在只有一个模式
+
   "bot_sessions": [
     {
       "status": 0,
