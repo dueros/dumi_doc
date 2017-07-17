@@ -781,3 +781,437 @@ page_size|int|否|每页数据量，默认为10
 ```
  其中status 为0返回正常，其它异常
 
+### 歌单检索(返回歌曲列表)
+  * 接口地址：url：http://s.xiaodu.baidu.com/v20161223/resource/sheetsonglist?name=网络歌曲
+  * 请求方式：GET
+  * 请求参数：
+  
+参数|类型|是否必须|备注
+----|----|--------|----
+name|string|是|歌单名字
+page|int|否|页码，默认为1
+page_size|int|否|每页数据量，默认为10
+
+
+返回值：
+```javascript
+
+{
+  "status": 0,
+  "code": "",
+  "data": {
+    "total_page": 4,
+    "page": "1",
+    "list": [
+     {
+        "id": "1004785648",
+        "duration": "215",
+        "name": "告白气球",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/266322553",
+                "album_url_md5": "4ff9f62e9bdc0bfc4361efe9d219f86d",
+                "album_id": "1045401856",
+                "album_name": "周杰伦的床边故事"
+            }
+        ],
+        "genre": [
+            "R&B",
+            "节奏布鲁斯"
+        ],
+        "tag": [
+            "RnB",
+            "节奏怨曲",
+            "R&B",
+            "节奏蓝调",
+            "好听",
+            "节奏布鲁斯"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/266322598",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/7d093104b5e3c0a92a95eea7e24456ff/273945517/273945517.jpg",
+        "score": "0",
+        "publish_time": "2016-06-24",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "854092",
+        "from_site": "baidu"
+     },
+     {
+        "id": "998002844",
+        "duration": "240",
+        "name": "青花瓷",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/68674",
+                "album_url_md5": "8ddd52a97c2aaeff6ca774c607573f03",
+                "album_id": "1054918835",
+                "album_name": "我很忙"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/354387",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E9%9D%92%E8%8A%B1%E7%93%B7",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/1df84db0f1cc0f7d92c9925b47e7fa7d/88389089/88389089.jpg",
+        "score": "0",
+        "publish_time": "2007-11-02",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "93427",
+        "from_site": "baidu"
+     },
+     {
+        "id": "964861563",
+        "duration": "270",
+        "name": "晴天",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/72257",
+                "album_url_md5": "67a675d5ce7e9c2501f77855c9e69ec3",
+                "album_id": "1011284556",
+                "album_name": "叶惠美"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/816477",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E6%99%B4%E5%A4%A9",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/115434572/115434572.jpg",
+        "score": "0",
+        "publish_time": "2003-07-31",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "70453",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1009088399",
+        "duration": "229",
+        "name": "夜曲",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/697896",
+                "album_url_md5": "e8a4fd90e081275d4c2c00c6e06b6730",
+                "album_id": "1011290034",
+                "album_name": "十一月的萧邦"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "寂寞",
+            "纯音乐",
+            "孤独",
+            "孤单",
+            "流行",
+            "Absolute"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1191265",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E5%A4%9C%E6%9B%B2",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/2ff7ed1d61b5473cd64d805577ddab36/115457137/115457137.jpg",
+        "score": "0",
+        "publish_time": "2005-11-01",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "106174",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1003959977",
+        "duration": "224",
+        "name": "稻香",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/116177",
+                "album_url_md5": "224c2d8eee1ea941a6cbd342a0c3d0d1",
+                "album_id": "1009252782",
+                "album_name": "魔杰座"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1390840",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%A8%BB%E9%A6%99",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/97be3c1753fbf496315d4b4953e06ee2/274049124/274049124.jpg",
+        "score": "0",
+        "publish_time": "2008-10-14",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "21893",
+        "from_site": "baidu"
+     },
+     {
+        "id": "997036570",
+        "duration": "269",
+        "name": "简单爱",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/10735646",
+                "album_url_md5": "94c999d194215d8204e9e80b873acf7c",
+                "album_id": "1043072482",
+                "album_name": "婚礼歌手 幸福情歌精选"
+            }
+        ],
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/10736444",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%AE%80%E5%8D%95%E7%88%B1",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/a882d5cbbc469ba95f3b6442a9db2aa3/117628079/117628079.jpg",
+        "score": "0",
+        "publish_time": "2010-02-08",
+        "publish_company": "SONY MUSIC",
+        "is_need_pay_listen": 0,
+        "hot": "66379",
+        "from_site": "baidu"
+     },
+     {
+        "id": "996977531",
+        "duration": "302",
+        "name": "发如雪",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/697896",
+                "album_url_md5": "e8a4fd90e081275d4c2c00c6e06b6730",
+                "album_id": "1011290034",
+                "album_name": "十一月的萧邦"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "中国风",
+            "伴奏",
+            "Absolute",
+            "流行",
+            "纯音乐"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1147070",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E5%8F%91%E5%A6%82%E9%9B%AA",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/2ff7ed1d61b5473cd64d805577ddab36/115457137/115457137.jpg",
+        "score": "0",
+        "publish_time": "2005-11-01",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "56316",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1005362249",
+        "duration": "276",
+        "name": "红尘客栈",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/31496572",
+                "album_url_md5": "2bb5adb0bb278e9169adcf97ecc8f63d",
+                "album_id": "1054909997",
+                "album_name": "十二新作"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/31496563",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%BA%A2%E5%B0%98%E5%AE%A2%E6%A0%88",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/1b62c0ccc53edc47a1152d9f004a31ce/115744261/115744261.jpg",
+        "score": "0",
+        "publish_time": "2012-12-06",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "47853",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1006041007",
+        "duration": "257",
+        "name": "说好的幸福呢",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/116177",
+                "album_url_md5": "224c2d8eee1ea941a6cbd342a0c3d0d1",
+                "album_id": "1009252782",
+                "album_name": "魔杰座"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/1392875",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E8%AF%B4%E5%A5%BD%E7%9A%84%E5%B9%B8%E7%A6%8F%E5%91%A2",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/97be3c1753fbf496315d4b4953e06ee2/274049124/274049124.jpg",
+        "score": "0",
+        "publish_time": "2008-10-14",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "34673",
+        "from_site": "baidu"
+     },
+     {
+        "id": "1016008345",
+        "duration": "263",
+        "name": "烟花易冷",
+        "alias": "",
+        "singer_name": [
+            "周杰伦"
+        ],
+        "original_singer": [],
+        "primitive_singer": [
+            "周杰伦"
+        ],
+        "album_info": [
+            {
+                "album_url": "http://music.baidu.com/album/67834",
+                "album_url_md5": "c07513e19430c434d69618d15a0a9959",
+                "album_id": "1050554398",
+                "album_name": "跨时代"
+            }
+        ], 
+        "genre": [
+            "流行"
+        ],
+        "tag": [
+            "流行"
+        ],
+        "language": "",
+        "composer": [],
+        "lyricist": [],
+        "url": "http://music.baidu.com/song/228393",
+        "same_name_url": "http://music.baidu.com/search?fm=altg_new3&key=%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7",
+        "head_image_url": "http://qukufile2.qianqian.com/data2/pic/21d4d618a2b1a077bb7332cb6d09fe0b/274045307/274045307.jpg",
+        "score": "0",
+        "publish_time": "2010-05-18",
+        "publish_company": "杰威尔JVR音乐有限公司",
+        "is_need_pay_listen": 0,
+        "hot": "49779",
+        "from_site": "baidu"
+     }
+    ]
+  },
+  "message": ""
+}
+```
+ 其中status 为0返回正常，其它异常
+
