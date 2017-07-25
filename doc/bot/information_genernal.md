@@ -2018,3 +2018,18 @@ general_aladdin => 其他泛阿拉丁
 其中，每个类目的resource输出对应着不同的schema格式，具体见：
 http://wiki.baidu.com/pages/viewpage.action?pageId=345971498
 ```
+## 阿拉丁拆分子类目
+```javascript
+阿拉丁比较重要的几个大类目：
+ai.dueros.bot.baike => 百科
+ai.dueros.bot.time => 时间
+ai.dueros.bot.translator =>翻译
+ai.dueros.bot.calculator => 计算器
+ai.dueros.bot.stock => 股票
+ai.dueros.bot.exchange_rate => 汇率
+ai.dueros.bot.image_search => 图片
+ai.dueros.bot.traffic_restriction => 限行
+ai.dueros.bot.knowledge_graph => 知识图谱（问答/人物/诗词/汉语...）
+ai.dueros.bot.lottery => 彩票
+ai.dueros.bot.constellation => 星座
+```
