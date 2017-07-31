@@ -219,7 +219,6 @@ dish|菜名
 ### cookbook.video
 食谱视频
 
-
 slot key|slot value
 --------|----------
 dish|菜名
@@ -233,6 +232,27 @@ dish|菜名
   "intent": "cookbook.video",
   "slots": {
     "dish": "水煮鱼"
+  }
+}
+```
+
+### cookbook.material
+食材操作
+
+slot key|slot value
+--------|----------
+open|代表打开食材操作，如:"看"
+close|代表关闭食材操作，如:"关闭"
+
+- 我要看菜谱中有的食材
+- 关闭食材用料列表
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.material",
+  "slots": {
+    "open": "看"
   }
 }
 ```
