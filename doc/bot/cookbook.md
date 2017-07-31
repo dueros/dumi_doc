@@ -163,15 +163,26 @@ symptom|症状
 }
 ```
 
+### cookbook.health
+健康类饮食
+
+slot key|slot value
+--------|----------
+health|健康用途, 如: "补肾"、"美白"
+suited|代表适合
+unsuited|代表不适合
+
 - 补肾食谱
 - 美白应该吃什么
+- 拉肚子不应该吃什么
 
 ```javascript
 {
   "domain": "cookbook",
-  "intent": "cookbook.open",
+  "intent": "cookbook.health",
   "slots": {
-    "symptom": "补肾"
+    "health": "补肾",
+    "suited": "应该",
   }
 }
 ```
