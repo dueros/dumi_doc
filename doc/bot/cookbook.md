@@ -212,6 +212,12 @@ dish|菜名
 ### cookbook.collect
 查看收藏
 
+slot key|slot value
+--------|----------
+open|打开
+collect|收藏
+cancel|取消
+
 - 查看收藏
 - 打开收藏的菜谱
 - 看看收藏菜谱
@@ -223,6 +229,7 @@ dish|菜名
   "domain": "cookbook",
   "intent": "cookbook.collect",
   "slots": {
+    "open": "收藏"
   }
 }
 ```
@@ -233,7 +240,13 @@ dish|菜名
 slot key|slot value
 --------|----------
 dish|菜名
+open|打开
+close|关闭
+pause|暂停
 
+- 播放菜谱视频
+- 暂停菜谱视频
+- 关闭菜谱视频
 - 水煮鱼的视频
 - 水煮鱼视频教学
 
@@ -264,6 +277,20 @@ close|代表关闭食材操作，如:"关闭"
   "intent": "cookbook.material",
   "slots": {
     "open": "看"
+  }
+}
+```
+
+### cookbook.close
+关闭菜谱
+
+- 关闭菜谱
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.close",
+  "slots": {
   }
 }
 ```
