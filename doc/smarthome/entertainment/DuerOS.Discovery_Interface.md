@@ -5,6 +5,7 @@ DuerOS.Discovery 接口描述了用于请求和识别与客户设备帐户相关
 以下列表表示了指令支持的技能类型。
 
 |Directive|Skill Type|
+|---|---|
 |Discover|Smart Home, Video|
 
 ### Discover
