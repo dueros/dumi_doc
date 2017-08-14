@@ -70,7 +70,7 @@ Payload的内容取决于在Header中的name值。
 |Task | Namespace | Message Names |
 |---|---|---|
 |Discover connected devices | DuerOS.ConnectedHome.Discovery | DiscoverAppliancesRequest、DiscoverAppliancesResponse|
-|Control connected devices; turn things off and on and change settings | DuerOS.ConnectedHome.Control |TurnOnRequest、TimingTurnOnRequest、TurnOffRequest、IncrementBrightnessRequest、DecrementBrightnessRequest、IncrementTemperatureRequest、DecrementTemperatureRequest、SetTemperatureRequest、IncrementFanSpeedRequest、DecrementFanSpeedRequest、SetModeRequest、TimingSetModeRequest |
+|Control connected devices; turn things off and on and change settings | DuerOS.ConnectedHome.Control |TurnOnRequest、TimingTurnOnRequest、TurnOffRequest、IncrementBrightnessRequest、DecrementBrightnessRequest、SetColorRequest、IncrementTemperatureRequest、DecrementTemperatureRequest、SetTemperatureRequest、IncrementFanSpeedRequest、DecrementFanSpeedRequest、SetModeRequest、TimingSetModeRequest |
 |Query connected devices for their current state | DuerOS.ConnectedHome.Query | GetAirPM25Request |
 
 ### 发现设备(Discovery Message)
@@ -684,6 +684,104 @@ DecrementBrightnessConfirmation 例子：
             "value": 0.5
         }
     }
+}
+```
+
+##### SetColorRequest
+
+**例子：**
+“小度小度，把卧室的灯设置为红色”
+
+**目的：**
+DuerOS发送给Bot的灯光调色的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|SetColorRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| color object | 描述为灯设置的颜色。在[色相、饱和度、亮度（HSB）颜色模型](https://en.wikipedia.org/wiki/HSL_and_HSV)中指定。 | Yes |
+| color.hue | doule类型，表示色相设置。有效范围为0.00〜360.00（含）。 | Yes
+| color.saturation | doule类型，指示饱和度设置。有效范围为0.0000至1.0000（含）。 | Yes
+| color.brightness | doule类型，指示亮度设置。有效范围为0.0000至1.0000（含）。 | Yes
+
+SetColorRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "SetColorRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]",
+        },
+        "color": {
+          "hue": 0.0,
+          "saturation": 1.0000,
+          "brightness": 1.0000
+        }
+    }
+}
+```
+
+##### SetColorConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已设置成功”
+
+**目的：**
+表示设备已成功更改颜色。从Bot发送给DuerOS的对SetColorRequest的预期响应。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| SetColorConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| achievedState object | 指示颜色更改后设备的状态。此对象是必需的，但请注意，如果无法查询设备的状态，或者不希望引起查询的额外延迟，则可以返回SetColorRequest中发送的值。| Yes
+| achievedState.color object | 表示颜色变化后设备的颜色。| Yes
+| color.hue | doule类型，表示色相设置。有效范围为0.00〜360.00（含）。 | Yes
+| color.saturation | doule类型，指示饱和度设置。有效范围为0.0000至1.0000（含）。 | Yes
+| color.brightness | doule类型，指示亮度设置。有效范围为0.0000至1.0000（含）。 | Yes
+
+SetColorConfirmation 例子：
+```
+{
+    "header": {
+      "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+      "name": "SetColorConfirmation",
+      "namespace": "DuerOS.ConnectedHome.Control",
+      "payloadVersion": "1"
+    },
+    "payload": {
+      "achievedState": {
+      "color": {
+        "hue": 0.0,
+        "saturation": 1.0000,
+        "brightness": 1.0000
+      }
+    }
+  }
 }
 ```
 

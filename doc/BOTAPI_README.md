@@ -140,6 +140,7 @@
     }
   ],
 */
+  "system_mode":"CHILD",  //儿童模式CHILD，现在只有一个模式
   "bot_sessions": [
     {
       "action": "get",
@@ -224,7 +225,10 @@
     "target_device_id":"xxxxxx",
     "device_interface":{
         "Alerts":{},
-        "AudioPlayer":{},
+        "AudioPlayer":{
+            //"no_pause":1,
+            //"no_seek":1,
+        },
         "PlaybackController":{},
         "Speaker":{},
         "Settings":{},
@@ -387,6 +391,8 @@
     }
   ]
 */
+  "system_mode":"CHILD",  //儿童模式CHILD，现在只有一个模式
+
   "bot_sessions": [
     {
       "status": 0,

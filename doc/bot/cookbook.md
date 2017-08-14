@@ -163,15 +163,26 @@ symptom|症状
 }
 ```
 
+### cookbook.health
+健康类饮食
+
+slot key|slot value
+--------|----------
+health|健康用途, 如: "补肾"、"美白"
+suited|代表适合
+unsuited|代表不适合
+
 - 补肾食谱
 - 美白应该吃什么
+- 拉肚子不应该吃什么
 
 ```javascript
 {
   "domain": "cookbook",
-  "intent": "cookbook.open",
+  "intent": "cookbook.health",
   "slots": {
-    "symptom": "补肾"
+    "health": "补肾",
+    "suited": "应该",
   }
 }
 ```
@@ -201,6 +212,12 @@ dish|菜名
 ### cookbook.collect
 查看收藏
 
+slot key|slot value
+--------|----------
+open|打开
+collect|收藏
+cancel|取消
+
 - 查看收藏
 - 打开收藏的菜谱
 - 看看收藏菜谱
@@ -212,6 +229,7 @@ dish|菜名
   "domain": "cookbook",
   "intent": "cookbook.collect",
   "slots": {
+    "open": "收藏"
   }
 }
 ```
@@ -219,11 +237,16 @@ dish|菜名
 ### cookbook.video
 食谱视频
 
-
 slot key|slot value
 --------|----------
 dish|菜名
+open|打开
+close|关闭
+pause|暂停
 
+- 播放菜谱视频
+- 暂停菜谱视频
+- 关闭菜谱视频
 - 水煮鱼的视频
 - 水煮鱼视频教学
 
@@ -233,6 +256,41 @@ dish|菜名
   "intent": "cookbook.video",
   "slots": {
     "dish": "水煮鱼"
+  }
+}
+```
+
+### cookbook.material
+食材操作
+
+slot key|slot value
+--------|----------
+open|代表打开食材操作，如:"看"
+close|代表关闭食材操作，如:"关闭"
+
+- 我要看菜谱中有的食材
+- 关闭食材用料列表
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.material",
+  "slots": {
+    "open": "看"
+  }
+}
+```
+
+### cookbook.close
+关闭菜谱
+
+- 关闭菜谱
+
+```javascript
+{
+  "domain": "cookbook",
+  "intent": "cookbook.close",
+  "slots": {
   }
 }
 ```
