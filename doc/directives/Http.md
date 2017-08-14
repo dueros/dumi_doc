@@ -13,7 +13,7 @@
 ### 消息样例
 
 ```json
-"directive": {
+{
   "header": {
     "namespace": "ai.dueros.device_interface.http",
     "name": "DoHttpRequest",
@@ -67,21 +67,23 @@
 ### 消息样例
 
 ```json
-"event": {
-  "header": {
-    "namespace": "ai.dueros.device_interface.http",
-    "name": "HttpRequestSucceeded",
-    "message_id": "{{STRING}}"
-  },
-  "payload": {
-    "token": "{{STRING}}",
-    "code": "{{STRING}}",
-    "headers": {
-      "{{STRING}}": "{{STRING}}"
+{
+  "device_event": {
+    "header": {
+      "namespace": "ai.dueros.device_interface.http",
+      "name": "HttpRequestSucceeded",
+      "message_id": "{{STRING}}"
     },
-    "body": {
-      "data_type": "{{STRING}}",
-      "data": "{{STRING}}"
+    "payload": {
+      "token": "{{STRING}}",
+      "code": "{{STRING}}",
+      "headers": {
+        "{{STRING}}": "{{STRING}}"
+      },
+      "body": {
+        "data_type": "{{STRING}}",
+        "data": "{{STRING}}"
+      }
     }
   }
 }
@@ -114,16 +116,18 @@
 ### 消息样例
 
 ```json
-"event": {
-  "header": {
-    "namespace": "ai.dueros.device_interface.http",
-    "name": "HttpRequestFailed",
-    "message_id": "{{STRING}}"
-  },
-  "payload": {
-    "token": "{{STRING}}",
-    "reason": "{{STRING}}",
-    "error_message": "{{STRING}}"
+{
+  "device_event": {
+    "header": {
+      "namespace": "ai.dueros.device_interface.http",
+      "name": "HttpRequestFailed",
+      "message_id": "{{STRING}}"
+    },
+    "payload": {
+      "token": "{{STRING}}",
+      "reason": "{{STRING}}",
+      "error_message": "{{STRING}}"
+    }
   }
 }
 ```
