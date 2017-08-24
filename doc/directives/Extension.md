@@ -43,3 +43,21 @@
 }
 ```
 
+### 查看版本号
+
+用户对端说“查看版本号”，会返回如下指令，name表示为查询。
+
+说明：对于端的控制，只支持查询指令，payload指出intent为查询version。
+
+```json
+{
+	"header": {
+		"namespace": "Extension.device.control",
+		"name": "Query",
+		"message_id": "{{STRING}}"
+	},
+	"payload": {
+		"intent": "version"
+	}
+}
+```
