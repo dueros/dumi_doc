@@ -1092,6 +1092,9 @@ IncrementBrightnessPercentageRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
+| brightness | double类型，表示亮度增加后的值。 | Yes |
+| previousState object | 表示亮度变化之前的对象  | Yes |
+| previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
 
 IncrementBrightnessPercentageConfirmation 例子：
 ```
@@ -1103,6 +1106,14 @@ IncrementBrightnessPercentageConfirmation 例子：
         "payloadVersion": "1"
     },
     "payload": {
+        "previousState": {
+            "brightness": {
+                "value": 0.5
+            }
+        },
+        "brightness": {
+            "value": 1.0
+        }
     }
 }
 ```
@@ -1174,6 +1185,9 @@ DecrementBrightnessPercentageRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
+| brightness | double类型，表示亮度增加后的值。 | Yes |
+| previousState object | 表示亮度变化之前的对象  | Yes |
+| previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
 
 DecrementBrightnessPercentageConfirmation 例子：
 ```
@@ -1185,6 +1199,14 @@ DecrementBrightnessPercentageConfirmation 例子：
         "payloadVersion": "1"
     },
     "payload": {
+        "previousState": {
+            "brightness": {
+                "value": 0.5
+            }
+        },
+        "brightness": {
+            "value": 1.0
+        }
     }
 }
 ```
@@ -1358,10 +1380,10 @@ IncrementTemperatureRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | temperature | double类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.temperature | double类型，表示设置之前的值。 | Yes |
 
 IncrementTemperatureConfirmation 例子：
@@ -1461,10 +1483,10 @@ DecrementTemperatureRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | temperature | double类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.temperature | double类型，表示设置之前的值。 | Yes |
 
 DecrementTemperatureConfirmation 例子：
@@ -1561,10 +1583,10 @@ SetTemperatureRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | temperature | double类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.temperature | double类型，表示设置之前的值。 | Yes |
 
 SetTemperatureConfirmation 例子：
@@ -1664,10 +1686,10 @@ IncrementFanSpeedRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | fanSpeed | int类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.fanSpeed | int类型，表示设置之前的值。 | Yes |
 
 IncrementFanSpeedConfirmation 例子：
@@ -1765,10 +1787,10 @@ DecrementFanSpeedRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | fanSpeed | int类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.fanSpeed | int类型，表示设置之前的值。 | Yes |
 
 DecrementFanSpeedConfirmation 例子：
@@ -2343,6 +2365,7 @@ DecrementPowerConfirmation 例子：
     "payload": {
     }
 }
+```
 
 ### 查询状态(Query Message)
 
