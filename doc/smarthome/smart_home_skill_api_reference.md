@@ -74,7 +74,7 @@ Payload的内容取决于在Header中的name值。
 |Task | Namespace | Message Names |
 |---|---|---|
 |Discover connected devices | DuerOS.ConnectedHome.Discovery | DiscoverAppliancesRequest、DiscoverAppliancesResponse|
-|Control connected devices; turn things off and on and change settings | DuerOS.ConnectedHome.Control |TurnOnRequest、TimingTurnOnRequest、TurnOffRequest、TimingTurnOnRequest、PauseRequest、IncrementBrightnessPercentageRequest、DecrementBrightnessPercentageRequest、IncrementPowerRequest、DecrementPowerRequest、SetColorRequest、IncrementTemperatureRequest、DecrementTemperatureRequest、SetTemperatureRequest、IncrementFanSpeedRequest、DecrementFanSpeedRequest、SetAirCleanerModeRequest、SetModeRequest、TimingSetModeRequest |
+|Control connected devices; turn things off and on and change settings | DuerOS.ConnectedHome.Control |TurnOnRequest、TimingTurnOnRequest、TurnOffRequest、TimingTurnOnRequest、PauseRequest、IncrementBrightnessPercentageRequest、DecrementBrightnessPercentageRequest、IncrementPowerRequest、DecrementPowerRequest、SetColorRequest、IncrementTemperatureRequest、DecrementTemperatureRequest、SetTemperatureRequest、IncrementFanSpeedRequest、DecrementFanSpeedRequest、SetModeRequest、TimingSetModeRequest |
 |Query connected devices for their current state | DuerOS.ConnectedHome.Query | GetAirPM25Request、GetTargetTemperatureRequest、GetTemperatureReadingRequest |
 
 ### 发现设备(Discovery Message)
@@ -148,7 +148,7 @@ DiscoverAppliancesRequest例子：
 |discoveredAppliance.friendlyName | 用户用来识别设备的名称。 此值不能超过128个字符，不应包含特殊字符或标点符号。| Yes |
 |discoveredAppliance.friendlyDescription | 设备的可读描述。 此值不能超过128个字符。 描述应包含设备连接方式的描述。 例如，“通过Wink连接的WiFi温控器”。| Yes |
 |discoveredAppliance.isReachable | true表示设备当前可达; 否则，false。| Yes |
-|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause</br> <br>incrementBrightness<br/> <br>decrementBrightness<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setTemperatureMode<br/> <br>timingSetMode<br/> <br>setAirCleanerMode<br/> <br>timingSetMode<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
+|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>timingSetMode<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
 |discoveredAppliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 设备 和 场景 类型:
@@ -650,7 +650,7 @@ TurnOffRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -983,7 +983,7 @@ AdjustOrientationRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "orientation": "LEFT"
     }
@@ -1064,7 +1064,7 @@ IncrementBrightnessPercentageRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "deltaPercentage": {
             "value": 10.0
@@ -1146,7 +1146,7 @@ DecrementBrightnessPercentageRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "deltaPercentage": {
             "value": 10.0
@@ -1230,7 +1230,7 @@ SetColorRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "color": {
           "hue": 0.0,
@@ -1312,6 +1312,9 @@ DuerOS发送给Bot的调高温度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| deltaValue object | 表示温度信息 | No，当值为空时表示用户没有指定调高的具体值 |
+| deltaValue.value | 浮点数表示温度值 | 在deltaValue不为空时为Yes |
+| deltaValue.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | 在deltaValue不为空时为Yes |
 
 IncrementTemperatureRequest 例子：
 ```
@@ -1326,7 +1329,11 @@ IncrementTemperatureRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaValue": {
+            "value": 60.0,
+            "scale": "CELSIUS"
         }
     }
 }
@@ -1408,6 +1415,9 @@ DuerOS发送给Bot的调低温度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| deltaValue object | 表示温度信息 | No，当值为空时表示用户没有指定调低的具体值 |
+| deltaValue.value | 浮点数表示温度值 | 在deltaValue不为空时为Yes |
+| deltaValue.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | 在deltaValue不为空时为Yes |
 
 DecrementTemperatureRequest 例子：
 ```
@@ -1422,7 +1432,11 @@ DecrementTemperatureRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaValue": {
+            "value": 60.0,
+            "scale": "CELSIUS"
         }
     }
 }
@@ -1522,7 +1536,7 @@ SetTemperatureRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -1622,7 +1636,7 @@ IncrementFanSpeedRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "deltaValue" : {
             "value" : 1
@@ -1723,7 +1737,7 @@ DecrementFanSpeedRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "deltaValue" : {
             "value" : 1
@@ -1826,7 +1840,7 @@ SetFanSpeedRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -1920,7 +1934,7 @@ SetModeRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2017,7 +2031,7 @@ UnsetModeRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2119,7 +2133,7 @@ TimingSetModeRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2211,7 +2225,7 @@ IncrementPowerRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2288,7 +2302,7 @@ DecrementPowerRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2371,7 +2385,7 @@ GetAirQualityIndexRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2453,7 +2467,7 @@ GetAirPM25Request 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2536,7 +2550,7 @@ GetTemperatureRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2619,7 +2633,7 @@ GetHumidityRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2701,7 +2715,7 @@ GetTemperatureReadingRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -2788,7 +2802,7 @@ GetTargetTemperatureRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
