@@ -1887,9 +1887,9 @@ SetFanSpeedRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| fanSpeed | double类型，表示设置之后的值。 | Yes |
+| fanSpeed | int类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.fanSpeed | double类型，表示设置之前的值。 | Yes |
+| previousState.fanSpeed | int类型，表示设置之前的值。 | Yes |
 
 SetFanSpeedConfirmation 例子：
 ```
@@ -1903,11 +1903,11 @@ SetFanSpeedConfirmation 例子：
     "payload": {
         "previousState": {
             "fanSpeed": {
-                "value": 1.0
+                "value": 1
             }
         },
         "fanSpeed": {
-            "value": 0.5
+            "value": 2
         }
     }
 }
@@ -2048,7 +2048,7 @@ UnsetModeRequest 例子：
     "payload": {
         "mode": {
             "value": "AUTO"
-            "deviceType": "AIR_CONDITION",
+            "deviceType": "AIR_CONDITION"
         },
         "accessToken": "[OAuth token here]",
         "appliance": {
@@ -2529,89 +2529,6 @@ GetAirPM25Response 例子：
     "payload": {
         "PM25": {
             "value": 100
-        }
-    }
-}
-```
-
-#### 查询当前温度
-
-##### GetTemperatureRequest
-
-**例子：**
-“小度小度，查一下空调温度”
-
-**目的：**
-DuerOS发送给Bot的设置模式的请求
-
-###### Header
-
-|Property|Value|
-|---|---|
-|name|GetTemperatureRequest|
-|namespace|DuerOS.ConnectedHome.Query|
-
-###### Payload
-
-|Property|Description|Required|
-|---|---|---|
-| accessToken | 从设备云端取到的access token | Yes |
-| appliance object | 表示具体操作指令 | Yes |
-| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
-| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-
-GetTemperatureRequest 例子：
-```
-{
-    "header": {
-        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
-        "name": "GetTemperatureRequest",
-        "namespace": "DuerOS.ConnectedHome.Query",
-        "payloadVersion": "1"
-    },
-    "payload": {
-        "accessToken": "[OAuth token here]",
-        "appliance": {
-            "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]"
-        }
-    }
-}
-```
-
-##### GetTemperatureResponse
-
-**度秘返回的结果例子：**
-“当前空调为25度”
-
-**目的：**
-表示设备查询结果成功。表示Bot返回给DuerOS的成功的结果
-
-###### Header
-
-|Property|Value|
-|---|---|
-|name| GetTemperatureResponse |
-|namespace| DuerOS.ConnectedHome.Query |
-
-###### Payload
-
-|Property|Description|Required|
-|---|---|---|
-| temperature | 表示当前温度的数值。 | Yes |
-
-GetTemperatureResponse 例子：
-```
-{
-    "header": {
-        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
-        "name": "GetTemperatureResponse",
-        "namespace": "DuerOS.ConnectedHome.Query",
-        "payloadVersion": "1"
-    },
-    "payload": {
-        "temperature": {
-            "value": 25
         }
     }
 }
