@@ -1085,9 +1085,6 @@ IncrementBrightnessRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| brightness | double类型，表示亮度增加后的值。 | Yes |
-| previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
 
 IncrementBrightnessConfirmation 例子：
 ```
@@ -1099,14 +1096,6 @@ IncrementBrightnessConfirmation 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "previousState": {
-            "brightness": {
-                "value": 0.5
-            }
-        },
-        "brightness": {
-            "value": 1.0
-        }
     }
 }
 ```
@@ -1134,7 +1123,6 @@ DuerOS发送给Bot的调低灯光亮度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaBrightness | 表示设备的亮度提高的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备亮度调整的值，其有效范围为0.0000至1.0000。 | Yes |
 
 DecrementBrightnessRequest 例子：
 ```
@@ -1146,9 +1134,6 @@ DecrementBrightnessRequest 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaBrightness": {
-            "value": 0.500
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
@@ -1177,9 +1162,6 @@ DecrementBrightnessRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| brightness | double类型，表示亮度增加后的值。 | Yes |
-| previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
 
 DecrementBrightnessConfirmation 例子：
 ```
@@ -1191,14 +1173,6 @@ DecrementBrightnessConfirmation 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "previousState": {
-            "brightness": {
-                "value": 1.0
-            }
-        },
-        "brightness": {
-            "value": 0.5
-        }
     }
 }
 ```
