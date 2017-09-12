@@ -1540,7 +1540,9 @@ DuerOS发送给Bot的设置温度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| targetTemperature | 表示设备的温度设置的量的对象。包含一个属性值，它指定一个数字。 | Yes |
+| targetTemperature | 表示设备的温度设置的量的对象。 | Yes |
+| targetTemperature.value | 包含一个属性值，它指定一个数字，表示目标温度。 | Yes |
+| targetTemperature.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | 在targetTemperature不为空时为Yes |
 
 SetTemperatureRequest 例子：
 ```
@@ -1553,7 +1555,8 @@ SetTemperatureRequest 例子：
     },
     "payload": {
         "targetTemperature": {
-            "value": 2.0
+            "value": 23,
+            "scale": "CELSIUS"
         },
         "accessToken": "[OAuth token here]",
         "appliance": {
@@ -2133,7 +2136,7 @@ DuerOS发送给Bot的定时设置模式的请求
 | mode | 表示设备的模式设置的量的对象。| Yes |
 | mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
 | mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
-| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳。 | Yes |
+| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳，单位是秒。 | Yes |
 
 TimingSetModeRequest 例子：
 ```
@@ -2167,7 +2170,7 @@ TimingSetModeRequest 例子：
 “*设备name*已设置成功”
 
 **目的：**
-表示设备模式设置成功。表示Bot返回给DuerOS的成功的结果
+表示设备模式定时成功。表示Bot返回给DuerOS的成功的结果
 
 ###### Header
 
@@ -2684,7 +2687,7 @@ GetTemperatureReadingRequest 例子：
 | temperatureReading object | 表示温度信息 | Yes |
 | temperatureReading.value | 浮点数表示温度值 | Yes |
 | temperatureReading.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | No |
-| applianceResponseTimestamp | 表示从设备上获取到温度的时间，用于估计温度值的时新度；ISO 8601格式 | No |
+| applianceResponseTimestamp | 表示从设备上获取到温度的时间，用于估计温度值的刷新事件；ISO 8601格式 | No |
 
 GetTemperatureReadingResponse 例子：
 ```
@@ -2780,7 +2783,7 @@ GetTargetTemperatureRequest 例子：
 | temperatureMode object | 表示温控模式 | Yes |
 | temperatureMode.value | 表示温控模式，COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠), CUSTOM(设备厂商特有模式) | Yes |
 | temperatureMode.friendlyName | 在value为CUSTOM时，表示该模式的可阅读的名称 | Yes |
-| applianceResponseTimestamp | 表示从设备上获取到温度的时间，用于估计温度值的时新度；ISO 8601格式 | No |
+| applianceResponseTimestamp | 表示从设备上获取到温度的时间，用于估计温度值的刷新时间；ISO 8601格式 | No |
 
 GetTargetTemperatureResponse 例子：
 ```
