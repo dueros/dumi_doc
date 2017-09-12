@@ -11,12 +11,16 @@
     - [DiscoverAppliancesRequest](#discoverappliancesrequest)
     - [DiscoverAppliancesResponse](#discoverappliancesresponse)
   - [控制设备\(Control Message\)](#%E6%8E%A7%E5%88%B6%E8%AE%BE%E5%A4%87control-message)
+    - [门锁控制及查询消息\(Door Lock Control and Query Messages\)](#%E9%97%A8%E9%94%81%E6%8E%A7%E5%88%B6%E5%8F%8A%E6%9F%A5%E8%AF%A2%E6%B6%88%E6%81%AFdoor-lock-control-and-query-messages)
     - [打开关闭设备\(On/Off Messages\)](#%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD%E8%AE%BE%E5%A4%87onoff-messages)
+    - [摄像机设备消息\(Smart Home Camera Messages \)](#%E6%91%84%E5%83%8F%E6%9C%BA%E8%AE%BE%E5%A4%87%E6%B6%88%E6%81%AFsmart-home-camera-messages-)
     - [可控灯光设备\(Tunable Lighting Control Messages\)](#%E5%8F%AF%E6%8E%A7%E7%81%AF%E5%85%89%E8%AE%BE%E5%A4%87tunable-lighting-control-messages)
     - [可控温度设备\(Temperature Control Messages\)](#%E5%8F%AF%E6%8E%A7%E6%B8%A9%E5%BA%A6%E8%AE%BE%E5%A4%87temperature-control-messages)
     - [可控风速设备\(Fan Speed Control Messages\)](#%E5%8F%AF%E6%8E%A7%E9%A3%8E%E9%80%9F%E8%AE%BE%E5%A4%87fan-speed-control-messages)
   - [查询状态\(Query Message\)](#%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81query-message)
     - [查询空气质量](#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F)
+    - [查询当前温度](#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E6%B8%A9%E5%BA%A6)
+    - [查询当前湿度](#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E6%B9%BF%E5%BA%A6)
   - [错误消息\(Error Message\)](#%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AFerror-message)
     - [用户故障\(User Faults\)](#%E7%94%A8%E6%88%B7%E6%95%85%E9%9A%9Cuser-faults)
     - [Bot故障\(Bot Faults\)](#bot%E6%95%85%E9%9A%9Cbot-faults)
@@ -26,7 +30,7 @@
 
 ## 简介
 
-该协议实现度秘终端互联互通的目的，达到通过使用支持DuerOS能力的设备，控制灯泡等被控设备的效果。
+该协议实现度秘终端互联互通的目的，达到通过使用支持DuerOS能力的设备，控制灯泡等被控设备的效果。协议是使用JSON消息格式。
 
 ## 认证
 
@@ -70,8 +74,8 @@ Payload的内容取决于在Header中的name值。
 |Task | Namespace | Message Names |
 |---|---|---|
 |Discover connected devices | DuerOS.ConnectedHome.Discovery | DiscoverAppliancesRequest、DiscoverAppliancesResponse|
-|Control connected devices; turn things off and on and change settings | DuerOS.ConnectedHome.Control |TurnOnRequest、TimingTurnOnRequest、TurnOffRequest、IncrementBrightnessRequest、DecrementBrightnessRequest、SetColorRequest、IncrementTemperatureRequest、DecrementTemperatureRequest、SetTemperatureRequest、IncrementFanSpeedRequest、DecrementFanSpeedRequest、SetModeRequest、TimingSetModeRequest |
-|Query connected devices for their current state | DuerOS.ConnectedHome.Query | GetAirPM25Request |
+|Control connected devices; turn things off and on and change settings | DuerOS.ConnectedHome.Control |TurnOnRequest、TimingTurnOnRequest、TurnOffRequest、TimingTurnOnRequest、PauseRequest、IncrementBrightnessPercentageRequest、DecrementBrightnessPercentageRequest、IncrementPowerRequest、DecrementPowerRequest、SetColorRequest、IncrementTemperatureRequest、DecrementTemperatureRequest、SetTemperatureRequest、IncrementFanSpeedRequest、DecrementFanSpeedRequest、SetModeRequest、TimingSetModeRequest |
+|Query connected devices for their current state | DuerOS.ConnectedHome.Query | GetLockStateRequest、GetAirQualityIndexRequest、GetHumidityRequest、GetAirPM25Request、GetTargetTemperatureRequest、GetTemperatureReadingRequest |
 
 ### 发现设备(Discovery Message)
 
@@ -144,7 +148,7 @@ DiscoverAppliancesRequest例子：
 |discoveredAppliance.friendlyName | 用户用来识别设备的名称。 此值不能超过128个字符，不应包含特殊字符或标点符号。| Yes |
 |discoveredAppliance.friendlyDescription | 设备的可读描述。 此值不能超过128个字符。 描述应包含设备连接方式的描述。 例如，“通过Wink连接的WiFi温控器”。| Yes |
 |discoveredAppliance.isReachable | true表示设备当前可达; 否则，false。| Yes |
-|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>incrementBrightness<br/> <br>decrementBrightness<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>timingSetMode<br/> <br>getAirPM25<br/>| Yes |
+|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>timingSetMode<br/> <br>getLockState<br/> <br>getAirQualityIndex<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
 |discoveredAppliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 设备 和 场景 类型:
@@ -153,6 +157,11 @@ DiscoverAppliancesRequest例子：
 |---|---|---|
 |WASHING_MACHINE| 洗衣机等设备 ||
 |AIR_CONDITION| 空调等设备 ||
+|AIR_PURIFIER| 空气净化器 ||
+|WATER_HEATER| 热水器 ||
+|SOCKET| 插座 ||
+|INDUCTION_COOKER| 电磁炉 ||
+|GAS_STOVE| 燃气灶 ||
 |RANGE_HOOD | 抽油烟机等设备 | |
 |LIGHT| 代表光源的设备 ||
 |CURTAIN | 窗帘等设备 | |
@@ -186,8 +195,8 @@ DiscoverAppliancesResponse 例子：
           "actions":[
             "turnOn",
             "turnOff",
-            "incrementBrightness",
-            "decrementBrightness"
+            "incrementBrightnessPercentage",
+            "decrementBrightnessPercentage"
           ],
           "applianceTypes":[
              "LIGHT"
@@ -256,6 +265,182 @@ DiscoverAppliancesResponse 例子：
 
 ### 控制设备(Control Message)
 
+#### 门锁控制及查询消息(Door Lock Control and Query Messages)
+
+这些消息让您能够查询及更改当前锁的状态。
+
+* GetLockStateRequest
+* GetLockStateResponse
+* SetLockStateRequest
+* SetLockStateConfirmation
+
+##### GetLockStateRequest
+
+**例子：**
+“小度小度，**锁的名字** 是否锁了？”
+
+**目的：**
+从DuerOS发送到厂商bot，请求指定设备的锁定状态。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|GetLockStateRequest|
+|namespace|DuerOS.ConnectedHome.Query|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+GetLockStateRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "GetLockStateRequest",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### GetLockStateResponse 
+
+**度秘返回的结果例子：**
+“前门已经锁了”
+
+**目的：**
+指定设备的锁定状态。对GetLockStateRequest的预期响应，并从厂商Bot发送到DuerOS。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| GetLockStateResponse |
+|namespace|DuerOS.ConnectedHome.Query|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| lockState | 指定设备的锁定状态。有效值为LOCKED，UNLOCKED | Yes |
+| applianceResponseTimestamp | 可选。表示上次从目标设备检索到lockState的时间。这表明了状态的新鲜度，这会影响DuerOS的响应。该值的精度是特定于设备的，可以由Bot预估。有效值是标准ISO 8601格式，UTC时间，精度为1秒。RFC 3399变体是首选，但不允许使用负偏移。例如，YYYY-MM-DDThh：mm：ssZ | No |
+
+GetLockStateResponse 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "GetLockStateResponse",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "lockState":"LOCKED",
+        "applianceResponseTimestamp":"2017-01-12T23:20:50.52Z"
+    }
+}
+```
+
+##### SetLockStateRequest 
+
+**例子：**
+“小度小度，帮我把**锁的名字**锁了”
+
+**目的：**
+将指定的设备设置为锁定。从DuerOS发送到Bot。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|SetLockStateRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| lockState | 表示所请求的指定设备的锁定状态。此请求的有效值为LOCKED。|
+
+SetLockStateRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "SetLockStateRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken":"[OAuth Token here]",
+        "appliance":{
+            "applianceId":"[Device ID for front door lock appliance]",
+            "additionalApplianceDetails":{
+                "extraDetail1":"optionalDetailForSkillAdapterToReferenceThisDevice",
+                "extraDetail2":"There can be multiple entries",
+                "extraDetail3":"but they should only be used for reference purposes.",
+                "extraDetail4":"This is not a suitable place to maintain current device state"
+            }
+        },
+        "lockState":"LOCKED"
+    }
+}
+```
+
+##### SetLockStateConfirmation 
+
+**度秘返回的结果例子：**
+“前门现在已经锁了”
+
+**目的：**
+表示指定设备的锁定状态。返回的锁定状态值应与SetLockStateRequest中请求的锁定状态相匹配，否则代表发生错误。并从厂商Bot发送到DuerOS。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| GetLockStateResponse |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| lockState | 指定设备的锁定状态。有效值为LOCKED，UNLOCKED | Yes |
+
+SetLockStateConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "SetLockStateConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "lockState":"LOCKED"
+    }
+}
+```
+
 #### 打开关闭设备(On/Off Messages)
 
 消息类型打开或关闭目标设备。这些消息通常由几种不同类型的设备使用。
@@ -265,6 +450,10 @@ DiscoverAppliancesResponse 例子：
 * TimingTurnOnConfirmation
 * TurnOffRequest
 * TurnOffConfirmation
+* TimingTurnOffRequest
+* TimingTurnOffConfirmation
+* PauseRequest
+* PauseConfirmation
 
 ##### TurnOnRequest
 
@@ -366,7 +555,7 @@ DuerOS发送给Bot的打开设备的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳。 | No |
+| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳，单位是秒。 | Yes |
 
 TimingTurnOnRequest 例子：
 ```
@@ -396,7 +585,7 @@ TimingTurnOnRequest 例子：
 “*设备name*已定时成功”
 
 **目的：**
-表示设备已经被成功定时。表示Bot返回给DuerOS的打开成功的结果
+表示设备已经被成功定时。表示Bot返回给DuerOS的定时打开成功的结果
 
 ###### Header
 
@@ -461,7 +650,7 @@ TurnOffRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -501,9 +690,342 @@ TurnOffConfirmation 例子：
 }
 ```
 
+##### TimingTurnOffRequest
+
+**例子：**
+“小度小度，定时1分钟后关闭 *设备名*”
+
+**目的：**
+DuerOS发送给Bot的定时关闭设备的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|TimingTurnOffRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳，单位是秒。 | Yes |
+
+TimingTurnOffRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "TimingTurnOffRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "timestamp": {
+            "value": 1496741861
+        },
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### TimingTurnOffConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已经定时关闭成功”
+
+**目的：**
+表示设备已经被成功定时。表示Bot返回给DuerOS定时关闭成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| TimingTurnOffConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |
+
+TimingTurnOffConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "26fa11a8-accb-4f66-a272-8b1ff7abd722",
+        "name": "TimingTurnOffConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {}
+}
+```
+
+##### PauseRequest
+
+**例子：**
+“小度小度，暂停 *设备名*”
+
+**目的：**
+DuerOS发送给Bot的暂停设备的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|PauseRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+PauseRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "PauseRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### PauseConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已暂停”
+
+**目的：**
+表示设备已经被成功打开。表示Bot返回给DuerOS的打开成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| PauseConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |
+
+PauseConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "26fa11a8-accb-4f66-a272-8b1ff7abd722",
+        "name": "PauseConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {}
+}
+```
+
+#### 摄像机设备消息(Smart Home Camera Messages )
+这些消息是查询摄像机，然后返回视频流的URI。有关为摄像机构建智能家居技术的更多信息和技术要求，请参阅构建智能家居相机技能。
+* RetrieveCameraStreamUriRequest
+* RetrieveCameraStreamUriResponse
+* AdjustOrientationRequest
+* AdjustOrientationConfirmation
+
+##### RetrieveCameraStreamUriRequest
+
+**例子：**
+“小度小度，给我看下**摄像机的名字**”
+
+**目的：**
+为了获得相机视频流的URI，用于在DuerOS设备中显示。这是从DuerOS发送到Bot。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|RetrieveCameraStreamUriRequest|
+|namespace|DuerOS.ConnectedHome.Query|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+RetrieveCameraStreamUriRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "RetrieveCameraStreamUriRequest",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken":"[OAuth Token here]",
+        "appliance": {
+            "applianceId": "[Device ID for the camera]",
+            "additionalApplianceDetails": {
+                "extraDetail1": "optionalDetailForSkillAdapterToReferenceThisDevice",
+                "extraDetail2": "There can be multiple entries",
+                "extraDetail3": "but they should only be used for reference purposes.",
+                "extraDetail4": "Not a suitable place to maintain current device state"
+            }
+        }
+    }
+}
+```
+
+##### RetrieveCameraStreamUriResponse 
+
+**例子：**
+“OK, 已经获得**摄像机的名字**”
+
+**目的：**
+返回在DuerOS的设备中显示的相机视频流的URI。这是从Bot发送到DuerOS。
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|RetrieveCameraStreamUriResponse |
+|namespace|DuerOS.ConnectedHome.Query|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| uri | 请求中指定的摄像机的视频流的URI。此URI的主机名作为一个公用名称或主题备用名称，必须是可以用你的SSL证书进行验证。包含IP地址的主机名将被拒绝。 | Yes |
+| imageUri | 来自请求中指定的相机的先前视频流的静态图像的URI。此URI的主机名作为一个公用名称或主题备用名称，必须是可以用你的SSL证书进行验证。包含IP地址的主机名将被拒绝。 | Yes |
+
+RetrieveCameraStreamUriResponse 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "RetrieveCameraStreamUriResponse",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "uri": {
+            "value":"rtsp://link.to.video:443/feed.mp4"
+        },
+        "imageUri": {
+            "value":"https://link.to.image/image.jpg"
+        }
+    }
+}
+```
+
+##### AdjustOrientationRequest
+
+**例子：**
+“小度小度，把 *设备名* 往左转”
+
+**目的：**
+DuerOS发送给Bot的关闭设备的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|AdjustOrientationRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| orientation | 指定设备的调整方向。有效值为LEFT, RIGHT | Yes |
+
+AdjustOrientationRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "AdjustOrientationRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "orientation": "LEFT"
+    }
+}
+```
+
+##### AdjustOrientationConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已调整完毕”
+
+**目的：**
+表示设备已经被调整完成。表示Bot返回给DuerOS的关闭成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| AdjustOrientationConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| N/A | N/A | N/A |
+
+AdjustOrientationConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "26fa11a8-accb-4f66-a272-8b1ff7abd722",
+        "name": "AdjustOrientationConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {}
+}
+```
 #### 可控灯光设备(Tunable Lighting Control Messages)
 
-##### IncrementBrightnessRequest
+##### IncrementBrightnessPercentageRequest
 
 **例子：**
 “小度小度，把卧室的灯调亮一点”
@@ -515,7 +1037,7 @@ DuerOS发送给Bot的调亮灯光的请求
 
 |Property|Value|
 |---|---|
-|name|IncrementBrightnessRequest|
+|name|IncrementBrightnessPercentageRequest|
 |namespace|DuerOS.ConnectedHome.Control|
 
 ###### Payload
@@ -526,31 +1048,32 @@ DuerOS发送给Bot的调亮灯光的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaBrightness | 表示设备的亮度提高的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备亮度调整的值，其有效范围为0.0000至1.0000。 | Yes |
+| deltaPercentage | 增加的百分比的对象 | No，在没有给这个值时，表示用户没有指定需要增加的百分比 |
+| deltaPercentage.value | 增加的百分比值，float类型，范围是0 - 100； | 在deltaPercentage不为空时，取值Yes |
 
-TurnOnRequest 例子：
+IncrementBrightnessPercentageRequest 例子：
 ```
 {
     "header": {
         "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
-        "name": "IncrementBrightnessRequest",
+        "name": "IncrementBrightnessPercentageRequest",
         "namespace": "DuerOS.ConnectedHome.Control",
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaBrightness": {
-            "value": 0.500
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaPercentage": {
+            "value": 10.0
         }
     }
 }
 ```
 
-##### IncrementBrightnessConfirmation
+##### IncrementBrightnessPercentageConfirmation
 
 **度秘返回的结果例子：**
 “*设备name*已设置成功”
@@ -562,7 +1085,7 @@ TurnOnRequest 例子：
 
 |Property|Value|
 |---|---|
-|name| IncrementBrightnessConfirmation |
+|name| IncrementBrightnessPercentageConfirmation |
 |namespace|DuerOS.ConnectedHome.Control|
 
 ###### Payload
@@ -570,15 +1093,15 @@ TurnOnRequest 例子：
 |Property|Description|Required|
 |---|---|---|
 | brightness | double类型，表示亮度增加后的值。 | Yes |
-| previousState object | 表示亮度变化之前的对象 | Yes |
+| previousState object | 表示亮度变化之前的对象  | Yes |
 | previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
 
-TurnOnConfirmation 例子：
+IncrementBrightnessPercentageConfirmation 例子：
 ```
 {
     "header": {
         "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
-        "name": "IncrementBrightnessConfirmation",
+        "name": "IncrementBrightnessPercentageConfirmation",
         "namespace": "DuerOS.ConnectedHome.Control",
         "payloadVersion": "1"
     },
@@ -595,7 +1118,7 @@ TurnOnConfirmation 例子：
 }
 ```
 
-##### DecrementBrightnessRequest
+##### DecrementBrightnessPercentageRequest
 
 **例子：**
 “小度小度，把卧室的灯调暗一点”
@@ -607,7 +1130,7 @@ DuerOS发送给Bot的调低灯光亮度的请求
 
 |Property|Value|
 |---|---|
-|name|DecrementBrightnessRequest|
+|name|DecrementBrightnessPercentageRequest|
 |namespace|DuerOS.ConnectedHome.Control|
 
 ###### Payload
@@ -618,31 +1141,32 @@ DuerOS发送给Bot的调低灯光亮度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaBrightness | 表示设备的亮度提高的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备亮度调整的值，其有效范围为0.0000至1.0000。 | Yes |
+| deltaPercentage | 减少的百分比的对象 | No，在没有给这个值时，表示用户没有指定需要减少的百分比 |
+| deltaPercentage.value | 减少的百分比值，float类型，范围是0 - 100；| 在deltaPercentage不为空时，取值Yes |
 
-DecrementBrightnessRequest 例子：
+DecrementBrightnessPercentageRequest 例子：
 ```
 {
     "header": {
         "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
-        "name": "DecrementBrightnessRequest",
+        "name": "DecrementBrightnessPercentageRequest",
         "namespace": "DuerOS.ConnectedHome.Control",
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaBrightness": {
-            "value": 0.500
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaPercentage": {
+            "value": 10.0
         }
     }
 }
 ```
 
-##### DecrementBrightnessConfirmation
+##### DecrementBrightnessPercentageConfirmation
 
 **度秘返回的结果例子：**
 “*设备name*已设置成功”
@@ -654,7 +1178,7 @@ DecrementBrightnessRequest 例子：
 
 |Property|Value|
 |---|---|
-|name| DecrementBrightnessConfirmation |
+|name| DecrementBrightnessPercentageConfirmation |
 |namespace|DuerOS.ConnectedHome.Control|
 
 ###### Payload
@@ -662,26 +1186,26 @@ DecrementBrightnessRequest 例子：
 |Property|Description|Required|
 |---|---|---|
 | brightness | double类型，表示亮度增加后的值。 | Yes |
-| previousState object | 表示亮度变化之前的对象 | Yes |
+| previousState object | 表示亮度变化之前的对象  | Yes |
 | previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
 
-DecrementBrightnessConfirmation 例子：
+DecrementBrightnessPercentageConfirmation 例子：
 ```
 {
     "header": {
         "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
-        "name": "DecrementBrightnessConfirmation",
+        "name": "DecrementBrightnessPercentageConfirmation",
         "namespace": "DuerOS.ConnectedHome.Control",
         "payloadVersion": "1"
     },
     "payload": {
         "previousState": {
             "brightness": {
-                "value": 1.0
+                "value": 0.5
             }
         },
         "brightness": {
-            "value": 0.5
+            "value": 1.0
         }
     }
 }
@@ -728,7 +1252,7 @@ SetColorRequest 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         },
         "color": {
           "hue": 0.0,
@@ -775,11 +1299,11 @@ SetColorConfirmation 例子：
     },
     "payload": {
       "achievedState": {
-      "color": {
-        "hue": 0.0,
-        "saturation": 1.0000,
-        "brightness": 1.0000
-      }
+        "color": {
+          "hue": 0.0,
+          "saturation": 1.0000,
+          "brightness": 1.0000
+        }
     }
   }
 }
@@ -810,7 +1334,9 @@ DuerOS发送给Bot的调高温度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaTemperature | 表示设备的温度变化的量的对象。包含一个属性值，它指定一个数字。 | Yes |
+| deltaValue object | 表示温度信息 | No，当值为空时表示用户没有指定调高的具体值 |
+| deltaValue.value | 浮点数表示温度值 | 在deltaValue不为空时为Yes |
+| deltaValue.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | 在deltaValue不为空时为Yes |
 
 IncrementTemperatureRequest 例子：
 ```
@@ -822,13 +1348,14 @@ IncrementTemperatureRequest 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaTemperature": {
-            "value": 2.0
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaValue": {
+            "value": 60.0,
+            "scale": "CELSIUS"
         }
     }
 }
@@ -853,10 +1380,10 @@ IncrementTemperatureRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | temperature | double类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.temperature | double类型，表示设置之前的值。 | Yes |
 
 IncrementTemperatureConfirmation 例子：
@@ -910,7 +1437,9 @@ DuerOS发送给Bot的调低温度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaTemperature | 表示设备的温度变化的量的对象。包含一个属性值，它指定一个数字。 | Yes |
+| deltaValue object | 表示温度信息 | No，当值为空时表示用户没有指定调低的具体值 |
+| deltaValue.value | 浮点数表示温度值 | 在deltaValue不为空时为Yes |
+| deltaValue.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | 在deltaValue不为空时为Yes |
 
 DecrementTemperatureRequest 例子：
 ```
@@ -922,13 +1451,14 @@ DecrementTemperatureRequest 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaTemperature": {
-            "value": 2.0
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaValue": {
+            "value": 60.0,
+            "scale": "CELSIUS"
         }
     }
 }
@@ -953,10 +1483,10 @@ DecrementTemperatureRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | temperature | double类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.temperature | double类型，表示设置之前的值。 | Yes |
 
 DecrementTemperatureConfirmation 例子：
@@ -1010,7 +1540,9 @@ DuerOS发送给Bot的设置温度的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| targetTemperature | 表示设备的温度设置的量的对象。包含一个属性值，它指定一个数字。 | Yes |
+| targetTemperature | 表示设备的温度设置的量的对象。 | Yes |
+| targetTemperature.value | 包含一个属性值，它指定一个数字，表示目标温度。 | Yes |
+| targetTemperature.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | 在targetTemperature不为空时为Yes |
 
 SetTemperatureRequest 例子：
 ```
@@ -1023,12 +1555,13 @@ SetTemperatureRequest 例子：
     },
     "payload": {
         "targetTemperature": {
-            "value": 2.0
+            "value": 23,
+            "scale": "CELSIUS"
         },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -1053,10 +1586,10 @@ SetTemperatureRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
 | temperature | double类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
 | previousState.temperature | double类型，表示设置之前的值。 | Yes |
 
 SetTemperatureConfirmation 例子：
@@ -1092,7 +1625,7 @@ SetTemperatureConfirmation 例子：
 ##### IncrementFanSpeedRequest
 
 **例子：**
-“小度小度，把空调的风速增加一点”
+“小度小度，把空调的风速增加一点”(调高一档)
 
 **目的：**
 DuerOS发送给Bot的调高风速的请求
@@ -1112,7 +1645,8 @@ DuerOS发送给Bot的调高风速的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaFanSpeed | 表示设备的风速变化的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备风速调整的值，其有效范围为0.0000至1.0000。 | Yes |
+| deltaValue | 增加风速的对象。 | No，在没有指定该对象时，表示用户没有指定需要增大具体值 |
+| deltaValue.value | 增加风速的具体值，int类型，如果该值加上原值越界，返回ValueOutOfRangeError | 当deltaValue不为空时为Yes |
 
 IncrementFanSpeedRequest 例子：
 ```
@@ -1124,13 +1658,13 @@ IncrementFanSpeedRequest 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaFanSpeed": {
-            "value": 0.5
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaValue" : {
+            "value" : 1
         }
     }
 }
@@ -1155,11 +1689,11 @@ IncrementFanSpeedRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
-| fanSpeed | double类型，表示设置之后的值。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
+| fanSpeed | int类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
-| previousState.fanSpeed | double类型，表示设置之前的值。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
+| previousState.fanSpeed | int类型，表示设置之前的值。 | Yes |
 
 IncrementFanSpeedConfirmation 例子：
 ```
@@ -1176,11 +1710,11 @@ IncrementFanSpeedConfirmation 例子：
                 "value": "AUTO"
             },
             "fanSpeed": {
-                "value": 0.5
+                "value": 1
             }
         },
         "fanSpeed": {
-            "value": 1.0
+            "value": 2
         },
         "mode": {
             "value": "AUTO"
@@ -1192,7 +1726,7 @@ IncrementFanSpeedConfirmation 例子：
 ##### DecrementFanSpeedRequest
 
 **例子：**
-“小度小度，把空调的风速降低一点”
+“小度小度，把空调的风速降低一点”(风速慢一档)
 
 **目的：**
 DuerOS发送给Bot的调低风速的请求
@@ -1212,7 +1746,8 @@ DuerOS发送给Bot的调低风速的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| deltaFanSpeed | 表示设备的风速变化的量的对象。包含一个属性值，它指定一个double类型的数字，表示设备风速调整的值，其有效范围为0.0000至1.0000。 | Yes |
+| deltaValue | 增加风速的对象。 | No，在没有指定该对象时，表示用户没有指定需要增大具体值 |
+| deltaValue.value | 增加风速的具体值，int类型，如果该值加上原值越界，返回ValueOutOfRangeError | 当deltaValue不为空时为Yes |
 
 DecrementFanSpeedRequest 例子：
 ```
@@ -1224,13 +1759,13 @@ DecrementFanSpeedRequest 例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "deltaFanSpeed": {
-            "value": 0.5
-        },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
+        },
+        "deltaValue" : {
+            "value" : 1
         }
     }
 }
@@ -1255,11 +1790,11 @@ DecrementFanSpeedRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
-| fanSpeed | double类型，表示设置之后的值。 | Yes |
+| mode | 表示设置之后的设备模式。 | No |
+| fanSpeed | int类型，表示设置之后的值。 | Yes |
 | previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
-| previousState.fanSpeed | double类型，表示设置之前的值。 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | No |
+| previousState.fanSpeed | int类型，表示设置之前的值。 | Yes |
 
 DecrementFanSpeedConfirmation 例子：
 ```
@@ -1276,11 +1811,11 @@ DecrementFanSpeedConfirmation 例子：
                 "value": "AUTO"
             },
             "fanSpeed": {
-                "value": 1.0
+                "value": 2
             }
         },
         "fanSpeed": {
-            "value": 0.5
+            "value": 1
         },
         "mode": {
             "value": "AUTO"
@@ -1289,6 +1824,97 @@ DecrementFanSpeedConfirmation 例子：
 }
 ```
 
+##### SetFanSpeedRequest
+
+**例子：**
+“小度小度，把空调的风速设为2档”
+
+**目的：**
+DuerOS发送给Bot的设置风速的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|SetFanSpeedRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| fanSpeed | 表示设备的风速设置的值的对象。包含一个属性值，有效值为1~10 | Yes |
+
+SetFanSpeedRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "SetFanSpeedRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "fanSpeed": {
+            "value": 1
+        },
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### SetFanSpeedConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已设置成功”
+
+**目的：**
+表示设备风速调低成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| SetFanSpeedConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| fanSpeed | int类型，表示设置之后的值。 | Yes |
+| previousState object | 表示亮度变化之前的对象 | Yes |
+| previousState.fanSpeed | int类型，表示设置之前的值。 | Yes |
+
+SetFanSpeedConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "SetFanSpeedConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "previousState": {
+            "fanSpeed": {
+                "value": 1
+            }
+        },
+        "fanSpeed": {
+            "value": 2
+        }
+    }
+}
+```
 ##### SetModeRequest
 
 **例子：**
@@ -1312,7 +1938,9 @@ DuerOS发送给Bot的设置模式的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| mode | 表示设备的模式设置的量的对象。包含一个属性值，它指定一种模式。 | Yes |
+| mode | 表示设备的模式设置的量的对象。| Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
 
 SetModeRequest 例子：
 ```
@@ -1325,12 +1953,13 @@ SetModeRequest 例子：
     },
     "payload": {
         "mode": {
+            "deviceType": "AIR_CONDITION",
             "value": "AUTO"
         },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -1371,11 +2000,111 @@ SetModeConfirmation 例子：
     "payload": {
         "previousState": {
             "mode": {
+                "deviceType": "AIR_CONDITION",
+                "value": "AUTO"
+            }
+        },
+        "mode": {
+            "deviceType": "AIR_CONDITION",
+            "value": "COOL"
+        }
+    }
+}
+```
+
+##### UnsetModeRequest
+
+**例子：**
+“小度小度，取消**模式名字**”
+
+**目的：**
+DuerOS发送给Bot的设置模式的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|UnsetModeRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+| mode | 表示设备的模式设置的量的对象。| Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
+
+UnsetModeRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "UnsetModeRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "mode": {
+            "value": "AUTO"
+            "deviceType": "AIR_CONDITION"
+        },
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### UnsetModeConfirmation
+
+**度秘返回的结果例子：**
+“*模式名字*已取消成功”
+
+**目的：**
+表示设备模式设置成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| UnsetModeConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| mode | 表示设置之后的设备模式。 | Yes |
+| previousState object | 表示亮度变化之前的对象 | Yes |
+| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| previousState.deviceType | 表示设置之前的设备类型。 | Yes |
+
+UnsetModeConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "UnsetModeConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "previousState": {
+            "mode": {
+                "deviceType": "AIR_CONDITION",
                 "value": "COOL"
             }
         },
         "mode": {
-            "value": "AUTO"
+            "deviceType": "AIR_CONDITION",
+            "value": "COOL"
         }
     }
 }
@@ -1387,7 +2116,7 @@ SetModeConfirmation 例子：
 “小度小度，1分钟后把空调的模式调整为制冷”
 
 **目的：**
-DuerOS发送给Bot的设置模式的请求
+DuerOS发送给Bot的定时设置模式的请求
 
 ###### Header
 
@@ -1404,8 +2133,10 @@ DuerOS发送给Bot的设置模式的请求
 | appliance object | 表示具体操作指令 | Yes |
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
-| mode | 表示设备的模式设置的量的对象。包含一个属性值，它指定一种模式。 | Yes |
-| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳。 | Yes |
+| mode | 表示设备的模式设置的量的对象。| Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
+| timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳，单位是秒。 | Yes |
 
 TimingSetModeRequest 例子：
 ```
@@ -1418,15 +2149,16 @@ TimingSetModeRequest 例子：
     },
     "payload": {
         "mode": {
+            "deviceType": "AIR_CONDITION",
             "value": "AUTO"
         },
         "timestamp": {
-            "value": 2.0
+            "value": 1496741861
         },
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
@@ -1438,7 +2170,7 @@ TimingSetModeRequest 例子：
 “*设备name*已设置成功”
 
 **目的：**
-表示设备模式设置成功。表示Bot返回给DuerOS的成功的结果
+表示设备模式定时成功。表示Bot返回给DuerOS的成功的结果
 
 ###### Header
 
@@ -1451,9 +2183,9 @@ TimingSetModeRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| mode | 表示设置之后的设备模式。 | Yes |
-| previousState object | 表示亮度变化之前的对象 | Yes |
-| previousState.mode | 表示设置之前的设备模式。 | Yes |
+| mode | 表示设备的模式设置的量的对象。| Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
 
 TimingSetModeConfirmation 例子：
 ```
@@ -1467,12 +2199,173 @@ TimingSetModeConfirmation 例子：
     "payload": {
         "previousState": {
             "mode": {
+                "deviceType": "AIR_CONDITION",
                 "value": "COOL"
             }
         },
         "mode": {
-            "value": "AUTO"
+            "deviceType": "AIR_CONDITION",
+            "value": "COOL"
         }
+    }
+}
+```
+
+#### 可控功率设备(Tunable Power Control Messages)
+
+##### IncrementPowerRequest
+
+**例子：**
+“小度小度，把电磁炉功率调大一点”
+
+**目的：**
+DuerOS发送给Bot的调大功率、火力的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|IncrementPowerRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+IncrementPowerRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "IncrementPowerRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### IncrementPowerConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已设置成功”
+
+**目的：**
+表示设备功率调高成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| IncrementPowerConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+
+IncrementPowerConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "IncrementPowerConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+    }
+}
+```
+
+##### DecrementPowerRequest
+
+**例子：**
+“小度小度，把电磁炉功率调低一点”
+
+**目的：**
+DuerOS发送给Bot的调低功率的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|DecrementPowerRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+DecrementPowerRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "DecrementPowerRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### DecrementPowerConfirmation
+
+**度秘返回的结果例子：**
+“*设备name*已设置成功”
+
+**目的：**
+表示设备功率调低成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| DecrementPowerConfirmation |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| brightness | double类型，表示亮度增加后的值。 | Yes |
+| previousState object | 表示亮度变化之前的对象 | Yes |
+| previousState.brightness | double类型，表示亮度增加前的值。 | Yes |
+
+DecrementPowerConfirmation 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "DecrementPowerConfirmation",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
     }
 }
 ```
@@ -1481,6 +2374,87 @@ TimingSetModeConfirmation 例子：
 
 #### 查询空气质量
 
+##### GetAirQualityIndexRequest
+
+**例子：**
+“小度小度，查一下卧室空气质量”
+
+**目的：**
++DuerOS发送给Bot的查询空气质量的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|GetAirQualityIndexRequest|
+|namespace|DuerOS.ConnectedHome.Query|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+GetAirQualityIndexRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "GetAirQualityIndexRequest",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### GetAirQualityIndexResponse
+
+**度秘返回的结果例子：**
+“当前卧室空气质量为10”
+
+**目的：**
+表示设备查询结果成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| GetAirQualityIndexResponse |
+|namespace| DuerOS.ConnectedHome.Query |
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| AQI | 表示当前空气质量 | Yes |
+
+GetAirQualityIndexResponse 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "GetAirQualityIndexResponse",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "AQI": {
+            "value": 10
+        }
+    }
+}
+```
+
 ##### GetAirPM25Request
 
 **例子：**
@@ -1488,6 +2462,7 @@ TimingSetModeConfirmation 例子：
 
 **目的：**
 DuerOS发送给Bot的设置模式的请求
++DuerOS发送给Bot的查询空气质量的请求
 
 ###### Header
 
@@ -1518,13 +2493,13 @@ GetAirPM25Request 例子：
         "accessToken": "[OAuth token here]",
         "appliance": {
             "additionalApplianceDetails": {},
-            "applianceId": "[Device ID for Ceiling Fan]",
+            "applianceId": "[Device ID for Ceiling Fan]"
         }
     }
 }
 ```
 
-##### GetAirPM25Confirmation
+##### GetAirPM25Response
 
 **度秘返回的结果例子：**
 “当前卧室pm2.5为100”
@@ -1536,7 +2511,7 @@ GetAirPM25Request 例子：
 
 |Property|Value|
 |---|---|
-|name| GetAirPM25Confirmation |
+|name| GetAirPM25Response |
 |namespace| DuerOS.ConnectedHome.Query |
 
 ###### Payload
@@ -1545,18 +2520,289 @@ GetAirPM25Request 例子：
 |---|---|---|
 | PM25 | 表示当前PM2.5的数值。 | Yes |
 
-GetAirPM25Confirmation 例子：
+GetAirPM25Response 例子：
 ```
 {
     "header": {
         "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
-        "name": "GetAirPM25Confirmation",
+        "name": "GetAirPM25Response",
         "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
         "PM25": {
             "value": 100
+        }
+    }
+}
+```
+
+#### 查询当前湿度
+
+##### GetHumidityRequest
+
+**例子：**
+“小度小度，查一下卧室湿度”
+
+**目的：**
+DuerOS发送给Bot的设置模式的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|GetHumidityRequest|
+|namespace|DuerOS.ConnectedHome.Query|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+GetHumidityRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "GetHumidityRequest",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### GetHumidityResponse
+
+**度秘返回的结果例子：**
+“当前卧室湿度为50%”
+
+**目的：**
+表示设备查询结果成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| GetHumidityResponse |
+|namespace| DuerOS.ConnectedHome.Query |
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| humidity | 表示当前相对湿度值。有效值：0.0000 ~ 1.0000 | Yes |
+
+GetHumidityResponse 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "GetHumidityResponse",
+        "namespace": "DuerOS.ConnectedHome.Query",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "humidity": {
+            "value": 0.5
+        }
+    }
+}
+```
+
+#### 查询温度
+##### GetTemperatureReadingRequest
+
+**例子：**
+“小度小度，热水器现在水温是多少度？”
+
+**目的：**
+DuerOS发送给Bot的查询设备当前温度的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|GetTemperatureReadingRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+GetTemperatureReadingRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "GetTemperatureReadingRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### GetTemperatureReadingResponse
+
+**度秘返回的结果例子：**
+“*设备name*现在温度是60度”
+
+**目的：**
+表查询成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| GetTemperatureReadingResponse |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| mode | 表示设置之后的设备模式。 | Yes |
+| temperatureReading object | 表示温度信息 | Yes |
+| temperatureReading.value | 浮点数表示温度值 | Yes |
+| temperatureReading.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | No |
+| applianceResponseTimestamp | 表示从设备上获取到温度的时间，用于估计温度值的刷新事件；ISO 8601格式 | No |
+
+GetTemperatureReadingResponse 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "GetTemperatureReadingResponse",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "temperatureReading": {
+            "value": 60.0,
+            "scale": "CELSIUS"
+        },
+        "applianceResponseTimestamp": "2017-08-12T11:20:50.52Z"
+    }
+}
+```
+
+##### GetTargetTemperatureRequest
+
+**例子：**
+“小度小度，热水器设置的水温是多少度？”
+
+**目的：**
+DuerOS发送给Bot的查询设备目标温度的请求
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name|GetTargetTemperatureRequest|
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| accessToken | 从设备云端取到的access token | Yes |
+| appliance object | 表示具体操作指令 | Yes |
+| appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
+| appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+GetTargetTemperatureRequest 例子：
+```
+{
+    "header": {
+        "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
+        "name": "GetTargetTemperatureRequest",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "[OAuth token here]",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID for Ceiling Fan]"
+        }
+    }
+}
+```
+
+##### GetTargetTemperatureResponse
+
+**度秘返回的结果例子：**
+“*设备name*设置的温度是60度”
+
+**目的：**
+表查询成功。表示Bot返回给DuerOS的成功的结果
+
+###### Header
+
+|Property|Value|
+|---|---|
+|name| GetTargetTemperatureResponse |
+|namespace|DuerOS.ConnectedHome.Control|
+
+###### Payload
+
+|Property|Description|Required|
+|---|---|---|
+| mode | 表示设置之后的设备模式。 | Yes |
+| targetTemperature object | 表示温度信息 | No |
+| targetTemperature.value | 浮点数表示温度值 | Yes，在targetTemperature object有值时必须 |
+| targetTemperature.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | No |
+| coolingTargetTemperature object | 表示制冷温度信息，在制冷加热可以同时开的双模式下使用，一般与heatingTargetTemperature同时出现 | No |
+| coolingTargetTemperature.value | 浮点数表示温度值 | Yes，在coolingTargetTemperature object有值时必须 |
+| coolingTargetTemperature.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | No |
+| coolingTargetTemperature object | 表示加热温度信息，在制冷加热可以同时开的双模式下使用，一般与coolingTargetTemperature同时出现 | No |
+| heatingTargetTemperature.value | 浮点数表示温度值 | Yes，在heatingTargetTemperature object有值时必须 |
+| heatingTargetTemperature.scale | 表示温度计量标准，CELSIUS(摄氏温度), FAHRENHEIT(华氏温度), 默认是CELSIUS | No |
+| temperatureMode object | 表示温控模式 | Yes |
+| temperatureMode.value | 表示温控模式，COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠), CUSTOM(设备厂商特有模式) | Yes |
+| temperatureMode.friendlyName | 在value为CUSTOM时，表示该模式的可阅读的名称 | Yes |
+| applianceResponseTimestamp | 表示从设备上获取到温度的时间，用于估计温度值的刷新时间；ISO 8601格式 | No |
+
+GetTargetTemperatureResponse 例子：
+```
+{
+    "header": {
+        "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
+        "name": "GetTargetTemperatureResponse",
+        "namespace": "DuerOS.ConnectedHome.Control",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "targetTemperature": {
+            "value": 60.0,
+            "scale": "CELSIUS"
+        },
+        "applianceResponseTimestamp": "2017-08-12T11:20:50.52Z",
+        "temperatureMode": {
+            "value": "CUSTOM",
+            "friendlyName": "Required device-specific mode name"
         }
     }
 }
