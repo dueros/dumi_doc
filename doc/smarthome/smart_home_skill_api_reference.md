@@ -1941,8 +1941,7 @@ DuerOS发送给Bot的设置模式的请求
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | mode | 表示设备的模式设置的量的对象。| Yes |
 | mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
-| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家),AUTO (自动), MANUAL(手动), MUTE(静音), INTELLIGENT(智能
-), HIGHSPEED(急速); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家),AUTO (自动), MANUAL(手动), MUTE(静音), INTELLIGENT(智能),HIGHSPEED(急速); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
 
 SetModeRequest 例子：
 ```
