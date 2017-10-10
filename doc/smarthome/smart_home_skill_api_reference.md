@@ -167,6 +167,7 @@ DiscoverAppliancesRequest例子：
 |CURTAIN | 窗帘等设备 | |
 |ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1)打开电视机; (2)打开HDMI1。| |
 |SCENE_TRIGGER| 描述设置为特定状态的设备的组合，状态不必以特定顺序变更。 例如睡眠模式可能包括关闭灯光和拉上窗帘，但是顺序不重要。| |
+|TV_SET | 电视机 | |
 
 注：在 场景 类型的appliance下，需对 friendlyDescription 和 friendlyName 的命名有一定规范：
 
