@@ -2792,7 +2792,7 @@ GetTargetTemperatureResponse 例子：
     "header": {
         "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
         "name": "GetTargetTemperatureResponse",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
