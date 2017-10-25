@@ -2641,7 +2641,7 @@ DuerOS发送给Bot的查询设备当前温度的请求
 |Property|Value|
 |---|---|
 |name|GetTemperatureReadingRequest|
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
@@ -2658,7 +2658,7 @@ GetTemperatureReadingRequest 例子：
     "header": {
         "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
         "name": "GetTemperatureReadingRequest",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
@@ -2684,7 +2684,7 @@ GetTemperatureReadingRequest 例子：
 |Property|Value|
 |---|---|
 |name| GetTemperatureReadingResponse |
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
@@ -2702,7 +2702,7 @@ GetTemperatureReadingResponse 例子：
     "header": {
         "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
         "name": "GetTemperatureReadingResponse",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
@@ -2728,7 +2728,7 @@ DuerOS发送给Bot的查询设备目标温度的请求
 |Property|Value|
 |---|---|
 |name|GetTargetTemperatureRequest|
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
@@ -2745,7 +2745,7 @@ GetTargetTemperatureRequest 例子：
     "header": {
         "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
         "name": "GetTargetTemperatureRequest",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
@@ -2771,7 +2771,7 @@ GetTargetTemperatureRequest 例子：
 |Property|Value|
 |---|---|
 |name| GetTargetTemperatureResponse |
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
