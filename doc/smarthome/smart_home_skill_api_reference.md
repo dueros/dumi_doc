@@ -148,7 +148,7 @@ DiscoverAppliancesRequest例子：
 |discoveredAppliance.friendlyName | 用户用来识别设备的名称。 此值不能超过128个字符，不应包含特殊字符或标点符号。| Yes |
 |discoveredAppliance.friendlyDescription | 设备的可读描述。 此值不能超过128个字符。 描述应包含设备连接方式的描述。 例如，“通过Wink连接的WiFi温控器”。| Yes |
 |discoveredAppliance.isReachable | true表示设备当前可达; 否则，false。| Yes |
-|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>timingSetMode<br/> <br>getLockState<br/> <br>getAirQualityIndex<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
+|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>incrementVolumn<br/> <br>decrementVolumn<br/>  <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>unSetMode<br/> <br>setColor<br/> <br>setFanSpeed<br/> <br>setVolume<br/> <br>timingSetMode<br/> <br>getLockState<br/> <br>getAirQualityIndex<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
 |discoveredAppliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
 设备 和 场景 类型:
@@ -160,6 +160,7 @@ DiscoverAppliancesRequest例子：
 |AIR_PURIFIER| 空气净化器 ||
 |WATER_HEATER| 热水器 ||
 |SOCKET| 插座 ||
+|SWITCH | 开关 | |
 |INDUCTION_COOKER| 电磁炉 ||
 |GAS_STOVE| 燃气灶 ||
 |RANGE_HOOD | 抽油烟机等设备 | |
@@ -168,6 +169,7 @@ DiscoverAppliancesRequest例子：
 |ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1)打开电视机; (2)打开HDMI1。| |
 |SCENE_TRIGGER| 描述设置为特定状态的设备的组合，状态不必以特定顺序变更。 例如睡眠模式可能包括关闭灯光和拉上窗帘，但是顺序不重要。| |
 |TV_SET | 电视机 | |
+
 
 注：在 场景 类型的appliance下，需对 friendlyDescription 和 friendlyName 的命名有一定规范：
 
@@ -2437,7 +2439,8 @@ GetAirQualityIndexRequest 例子：
 
 |Property|Description|Required|
 |---|---|---|
-| AQI | 表示当前空气质量 | Yes |
+| AQI | 表示当前空气质量 | no |
+| level | 表示当前空气质量水平,一级优(1)，二级良(2)，三级轻度污染(3)，四级中度污染(4)，直至五级重度污染(5)，六级严重污染(6) | Yes |  
 
 GetAirQualityIndexResponse 例子：
 ```
@@ -2451,6 +2454,9 @@ GetAirQualityIndexResponse 例子：
     "payload": {
         "AQI": {
             "value": 10
+        },
+        "level":{
+            "value":1
         }
     }
 }
@@ -2635,7 +2641,7 @@ DuerOS发送给Bot的查询设备当前温度的请求
 |Property|Value|
 |---|---|
 |name|GetTemperatureReadingRequest|
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
@@ -2652,7 +2658,7 @@ GetTemperatureReadingRequest 例子：
     "header": {
         "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
         "name": "GetTemperatureReadingRequest",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
@@ -2678,7 +2684,7 @@ GetTemperatureReadingRequest 例子：
 |Property|Value|
 |---|---|
 |name| GetTemperatureReadingResponse |
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
@@ -2696,7 +2702,7 @@ GetTemperatureReadingResponse 例子：
     "header": {
         "messageId": "780013dd-99d0-4c69-9e35-db0457f9f2a7",
         "name": "GetTemperatureReadingResponse",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
@@ -2722,7 +2728,7 @@ DuerOS发送给Bot的查询设备目标温度的请求
 |Property|Value|
 |---|---|
 |name|GetTargetTemperatureRequest|
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
@@ -2739,7 +2745,7 @@ GetTargetTemperatureRequest 例子：
     "header": {
         "messageId": "01ebf625-0b89-4c4d-b3aa-32340e894688",
         "name": "GetTargetTemperatureRequest",
-        "namespace": "DuerOS.ConnectedHome.Control",
+        "namespace": "DuerOS.ConnectedHome.Query",
         "payloadVersion": "1"
     },
     "payload": {
@@ -2765,7 +2771,7 @@ GetTargetTemperatureRequest 例子：
 |Property|Value|
 |---|---|
 |name| GetTargetTemperatureResponse |
-|namespace|DuerOS.ConnectedHome.Control|
+|namespace|DuerOS.ConnectedHome.Query|
 
 ###### Payload
 
