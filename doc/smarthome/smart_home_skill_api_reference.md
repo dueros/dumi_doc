@@ -103,6 +103,7 @@ Payload的内容取决于在Header中的name值。
 |Property | Description | Required |
 |---|---|---|
 |accessToken | 与用户设备云帐号相关的access token | Yes |
+|openUid | 被授权的百度账号开放ID,与设备云账号一一对应 | Yes |
 
 DiscoverAppliancesRequest例子：
 ```
@@ -114,7 +115,8 @@ DiscoverAppliancesRequest例子：
         "payloadVersion": "1"
     },
     "payload": {
-        "accessToken": "*OAuth Token here*"
+        "accessToken": "*OAuth Token here*",
+        "openUid":"3bf120698b6ded09540922d8d96f3d7r"
     }
 }
 ```
