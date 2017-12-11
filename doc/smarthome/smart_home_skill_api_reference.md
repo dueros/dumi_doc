@@ -303,7 +303,7 @@ DiscoverAppliancesResponse 例子：
                 "extraDetail2": "another detail about group",
                 "extraDetail3": "only be used for reference group."
              }
-        },
+        }
     ]
  }
 }
