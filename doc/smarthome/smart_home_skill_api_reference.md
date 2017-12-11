@@ -153,6 +153,17 @@ DiscoverAppliancesRequest例子：
 |discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>incrementVolumn<br/> <br>decrementVolumn<br/>  <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>unSetMode<br/> <br>setColor<br/> <br>setFanSpeed<br/> <br>setVolume<br/> <br>timingSetMode<br/> <br>getLockState<br/> <br>getAirQualityIndex<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
 |discoveredAppliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 
+分组发现
+
+|Property | Description | Required |
+|---|---|---|
+|discoveredGroups | discoveredGroups 对象的数组，该对象包含可发现分组，与用户设备帐户相关联的。 如果没有与用户帐户关联的分组，此属性应包含一个空数组。 如果发生错误，该属性可以为null。 阵列中允许的最大项目数量为10。discoveredGroups对象的每个属性如下所示| yes |
+|discoveredGroups.groupName | 分组名称,可读性描述, 不应包含特殊字符或标点符号,长度不超过20字节。| Yes |
+|discoveredGroups.applianceIds | 分组所包含设备ID的数组,要求设备ID必须是上边设备同步中的,否则会同步失败,每个分组设备ID数量不超过50。| Yes |
+|discoveredGroups.groupNotes | 分组备注描述。此值不能超过128个字符。| Yes |
+|discoveredGroups.additionalGroupDetails  | 提供给Bot使用的分组相关的附加信息的键值对。该属性的内容不能超过2000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
+
 设备 和 场景 类型:
 
 |Value | Description | Notes |
@@ -263,6 +274,36 @@ DiscoverAppliancesResponse 例子：
         "modelName": "提供场景的设备型号",
         "version": "your software version number here."
       }
+    ],
+    discoveredGroups:[
+       {
+            "groupName":"客厅",
+            "applianceIds":[
+                "001",
+                "002",
+                "003"
+            ],
+            "groupNotes":"客厅照明分组控制",
+            "additionalGroupDetails": {
+                "extraDetail1": "detail about the group",
+                "extraDetail2": "another detail about group",
+                "extraDetail3": "only be used for reference group."
+             }
+        },
+        {
+            "groupName":"卧室",
+            "applianceIds":[
+                "004",
+                "005",
+                "006"
+            ],
+             "groupNotes":"卧室空调的分组控制",
+             "additionalGroupDetails": {
+                "extraDetail1": "detail about the group",
+                "extraDetail2": "another detail about group",
+                "extraDetail3": "only be used for reference group."
+             }
+        },
     ]
  }
 }
