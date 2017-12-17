@@ -168,20 +168,26 @@ DiscoverAppliancesRequest例子：
 
 |Value | Description | Notes |
 |---|---|---|
-|WASHING_MACHINE| 洗衣机等设备 ||
-|AIR_CONDITION| 空调等设备 ||
+|LIGHT| 灯 |代表光源的设备|
+|SWITCH | 开关 | |
+|SOCKET| 插座 ||
+|CURTAIN | 窗帘 | |
+|AIR_CONDITION| 空调 ||
+|TV_SET | 电视机 | |
 |AIR_PURIFIER| 空气净化器 ||
 |WATER_HEATER| 热水器 ||
-|SOCKET| 插座 ||
-|SWITCH | 开关 | |
+|WASHING_MACHINE| 洗衣机 ||
 |INDUCTION_COOKER| 电磁炉 ||
 |GAS_STOVE| 燃气灶 ||
-|RANGE_HOOD | 抽油烟机等设备 | |
-|LIGHT| 代表光源的设备 ||
-|CURTAIN | 窗帘等设备 | |
+|RANGE_HOOD | 抽油烟机 | |
+|OVEN| 烤箱 ||
+|MICROWAVE_OVEN| 微波炉 ||
+|PRESSURE_COOKER| 压力锅||
+|RICE_COOKER| 电饭煲|电饭锅|
+|COOKING_MACHINE| 烹饪机||
+|HIGH_SPEED_BLENDER| 破壁料理机||
 |ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1)打开电视机; (2)打开HDMI1。| |
 |SCENE_TRIGGER| 描述设置为特定状态的设备的组合，状态不必以特定顺序变更。 例如睡眠模式可能包括关闭灯光和拉上窗帘，但是顺序不重要。| |
-|TV_SET | 电视机 | |
 
 
 注：在 场景 类型的appliance下，需对 friendlyDescription 和 friendlyName 的命名有一定规范：
