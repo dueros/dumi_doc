@@ -177,6 +177,9 @@ DiscoverAppliancesRequest例子：
 |TV_SET | 电视机 | |
 |AIR_PURIFIER| 空气净化器 ||
 |WATER_HEATER| 热水器 ||
+|HEATER| 取暖器 ||
+|FAN| 电风扇 ||
+|SWEEPING_ROBOT| 扫地机器人 ||
 |WASHING_MACHINE| 洗衣机 ||
 |INDUCTION_COOKER| 电磁炉 ||
 |GAS_STOVE| 燃气灶 ||
