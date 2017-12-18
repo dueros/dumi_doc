@@ -150,8 +150,9 @@ DiscoverAppliancesRequest例子：
 |discoveredAppliance.friendlyName | 用户用来识别设备的名称。 此值不能超过128个字符，不应包含特殊字符或标点符号。| Yes |
 |discoveredAppliance.friendlyDescription | 设备的可读描述。 此值不能超过128个字符。 描述应包含设备连接方式的描述。 例如，“通过Wink连接的WiFi温控器”。| Yes |
 |discoveredAppliance.isReachable | true表示设备当前可达; 否则，false。| Yes |
-|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>incrementVolumn<br/> <br>decrementVolumn<br/>  <br>setTemperature<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setMode<br/> <br>unSetMode<br/> <br>setColor<br/> <br>setFanSpeed<br/> <br>setVolume<br/> <br>timingSetMode<br/> <br>getLockState<br/> <br>getAirQualityIndex<br/> <br>getAirPM25<br/> <br>getTemperatureReading<br/> <br>getTargetTemperature<br/> <br>getHumidity<br/>| Yes |
+|discoveredAppliance.actions | 设备可支持的action的数组。合法的action包括： <br>turnOn<br/> <br>timingTurnOn<br/> <br>turnOff<br/> <br>timingTurnOff<br/> <br>pause<br/> <br>incrementBrightnessPercentage<br/> <br>decrementBrightnessPercentage<br/> <br>incrementPower<br/> <br>decrementPower<br/> <br>incrementTemperature<br/> <br>decrementTemperature<br/> <br>incrementVolumn<br/> <br>decrementVolumn<br/>  <br>setTemperature温度设置<br/> <br>incrementFanSpeed<br/> <br>decrementFanSpeed<br/> <br>setDirectide<br/> <br>unSetMode<br/> <br>setColor<br/> <br>setFanSpeed<br/> <br>setVolume<br/> <br>timingSetMode 查询空气质量<br/> <br>getLockState<br/> <br>getAirQualityIndex 查询空气质量<br/> <br>getAirPM25<br/> <br>getTemperatureReading 温度查询<br/> <br>getTargetTemperature 查询目标温度 <br/> <br>getHumidity 查询湿度 <br/><br>setDirective 设置方向 <br/><br>setCharging 充电功能<br/><br>setSwing 摇摆功能<br/><br>setPurification 净化功能<br/><br>setNegativeIon净化器负离子<br/>| Yes |
 |discoveredAppliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
+
 
 分组发现
 
@@ -168,20 +169,26 @@ DiscoverAppliancesRequest例子：
 
 |Value | Description | Notes |
 |---|---|---|
-|WASHING_MACHINE| 洗衣机等设备 ||
-|AIR_CONDITION| 空调等设备 ||
+|LIGHT| 灯 |代表光源的设备|
+|SWITCH | 开关 | |
+|SOCKET| 插座 ||
+|CURTAIN | 窗帘 | |
+|AIR_CONDITION| 空调 ||
+|TV_SET | 电视机 | |
 |AIR_PURIFIER| 空气净化器 ||
 |WATER_HEATER| 热水器 ||
-|SOCKET| 插座 ||
-|SWITCH | 开关 | |
+|WASHING_MACHINE| 洗衣机 ||
 |INDUCTION_COOKER| 电磁炉 ||
 |GAS_STOVE| 燃气灶 ||
-|RANGE_HOOD | 抽油烟机等设备 | |
-|LIGHT| 代表光源的设备 ||
-|CURTAIN | 窗帘等设备 | |
+|RANGE_HOOD | 抽油烟机 | |
+|OVEN| 烤箱 ||
+|MICROWAVE_OVEN| 微波炉 ||
+|PRESSURE_COOKER| 压力锅||
+|RICE_COOKER| 电饭煲|电饭锅|
+|INDUCTION_COOKER| 电磁炉|烹饪机|
+|HIGH_SPEED_BLENDER| 破壁料理机||
 |ACTIVITY_TRIGGER| 描述设置为特定状态的设备的组合，状态必须以特定顺序变更。例如，“观看优酷视频”场景可能需要 (1)打开电视机; (2)打开HDMI1。| |
 |SCENE_TRIGGER| 描述设置为特定状态的设备的组合，状态不必以特定顺序变更。 例如睡眠模式可能包括关闭灯光和拉上窗帘，但是顺序不重要。| |
-|TV_SET | 电视机 | |
 
 
 注：在 场景 类型的appliance下，需对 friendlyDescription 和 friendlyName 的命名有一定规范：
@@ -1977,7 +1984,6 @@ DuerOS发送给Bot的设置模式的请求
 |namespace|DuerOS.ConnectedHome.Control|
 
 ###### Payload
-
 |Property|Description|Required|
 |---|---|---|
 | accessToken | 从设备云端取到的access token | Yes |
@@ -1985,8 +1991,9 @@ DuerOS发送给Bot的设置模式的请求
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | mode | 表示设备的模式设置的量的对象。| Yes |
-| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
-| mode.value | 它指定一种模式，模式的值与设备类型相关。<br>**AIR_CONDITION** 的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠);<br> **AIR_PURIFIER** 的值包括SLEEP(睡眠)、 HOME(回家)、OUT(离家)、AUTO (自动)、MANUAL(手动)、MUTE(静音)、 INTELLIGENT(智能)、HIGHSPEED(急速);<br> **INDUCTION_COOKER** 的值包括FAST(快速火)、SLOW(温火)、 FRY(煎炸)、 STEWING(蒸煮)、 SOAP(汤粥)、 HOT_POT(火锅);<br>**Fan** 的值包括NORMAL(正常风)、MUTE(静音风)、NATURAL(自然风)、BABY(宝宝风)、COMFORTABLE(舒适风)、FEEL(人感风);<br>**SWEEPING_ROBOT** 的值包括RANDOM(随机)、AUTO(自动)、Focus(重点)、EDGE(沿边)、BOW(弓形)| Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉),详细请参见设备类型列表| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。<br>**AIR_CONDITION(空调)** 的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); <br> **AIR_PURIFIER(空气净化器)** 的值包括SLEEP(睡眠)、HOME(回家)、OUT(离家)、AUTO (自动)、MANUAL(手动)、MUTE(静音)、 INTELLIGENT(智能)、HIGHSPEED(急速);<br> **INDUCTION_COOKER(电磁炉/烹饪机)** 的值包括FAST(快速火)、SLOW(温火)、FRYING(煎炸)、STEWING(蒸煮/炖煮)、SOUP(汤粥/煲汤)、HOT_POT(火锅)、COOKING(炒菜); <br>**Fan(电风扇)** 的值包括NORMAL(正常风)、MUTE(静音风)、NATURAL(自然风)、BABY(宝宝风)、COMFORTABLE(舒适风)、FEEL(人感风);<br>**SWEEPING_ROBOT(扫地机器人)** 的值包括RANDOM(随机)、AUTO(自动)、Focus(重点)、EDGE(沿边)、BOW(弓形); <br>**MICROWAVE_OVEN(微波炉)** 的值包括MICROWAVE(微波)、BARBECUE(烧烤)、THAW(解冻); <br> **OVEN(烤箱)** 的值包括FERMENTATION(发酵)、DOUBLE_TUBE(双管); <br>**RICE_COOKER(电饭煲)** 的值包括HOTTING(加热/热饭/再加热)、INSULATED(保温)、SOUP(煮粥/煲汤/杂粮粥)、FAST_SOUP(快速粥)、STEWING(蒸煮/炖煮/美味蒸)、STREAMED_RICE(蒸米饭)、MIXED_RICE(杂粮饭)、SMALL_RICE(小米饭))、GERMINATED_RICE(发芽饭); <br> **PRESSURE_COOKER(压力锅)** 的值包括INSULATED(保温)、EXHAUST(排气)、HOTTING(加热/热饭/再加热)、SOUP(煮粥/煲汤/杂粮粥)、STREAMED_RICE(蒸米饭)、FAST_RICE(快速饭)、FAST_SOUP(快速粥)、BEEF(牛肉/炖牛肉)、STREAMED_RICE(蒸米饭/营养蒸)、CLEAN(清洁); <br> **HIGH_SPEED_BLENDER(破壁机)** 的值包括 SOUP(汤/粥/糊类)、SOYMILK(豆浆)、MILKSHAKE(奶昔)、GRIND(研磨)、HOTTING(加热)、CLEAN(清洁)、STIR(搅拌)、F&V(果蔬);| Yes |
+
 
 SetModeRequest 例子：
 ```
@@ -2082,8 +2089,8 @@ DuerOS发送给Bot的设置模式的请求
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | mode | 表示设备的模式设置的量的对象。| Yes |
-| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
-| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉),详细请参见支持的设备类型列表| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。<br>**AIR_CONDITION(空调)** 的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); <br> **AIR_PURIFIER(空气净化器)** 的值包括SLEEP(睡眠)、HOME(回家)、OUT(离家)、AUTO (自动)、MANUAL(手动)、MUTE(静音)、 INTELLIGENT(智能)、HIGHSPEED(急速);<br> **INDUCTION_COOKER(电磁炉/烹饪机)** 的值包括FAST(快速火)、SLOW(温火)、FRYING(煎炸)、STEWING(蒸煮/炖煮)、SOUP(汤粥/煲汤)、HOT_POT(火锅)、COOKING(炒菜); <br>**Fan(电风扇)** 的值包括NORMAL(正常风)、MUTE(静音风)、NATURAL(自然风)、BABY(宝宝风)、COMFORTABLE(舒适风)、FEEL(人感风);<br>**SWEEPING_ROBOT(扫地机器人)** 的值包括RANDOM(随机)、AUTO(自动)、Focus(重点)、EDGE(沿边)、BOW(弓形); <br>**MICROWAVE_OVEN(微波炉)** 的值包括MICROWAVE(微波)、BARBECUE(烧烤)、THAW(解冻); <br> **OVEN(烤箱)** 的值包括FERMENTATION(发酵)、DOUBLE_TUBE(双管); <br>**RICE_COOKER(电饭煲)** 的值包括HOTTING(加热/热饭/再加热)、INSULATED(保温)、SOUP(煮粥/煲汤/杂粮粥)、FAST_SOUP(快速粥)、STEWING(蒸煮/炖煮/美味蒸)、STREAMED_RICE(蒸米饭)、MIXED_RICE(杂粮饭)、SMALL_RICE(小米饭))、GERMINATED_RICE(发芽饭); <br> **PRESSURE_COOKER(压力锅)** 的值包括INSULATED(保温)、EXHAUST(排气)、HOTTING(加热/热饭/再加热)、SOUP(煮粥/煲汤/杂粮粥)、STREAMED_RICE(蒸米饭)、FAST_RICE(快速饭)、FAST_SOUP(快速粥)、BEEF(牛肉/炖牛肉)、STREAMED_RICE(蒸米饭/营养蒸)、CLEAN(清洁); <br> **HIGH_SPEED_BLENDER(破壁机)** 的值包括 SOUP(汤/粥/糊类)、SOYMILK(豆浆)、MILKSHAKE(奶昔)、GRIND(研磨)、HOTTING(加热)、CLEAN(清洁)、STIR(搅拌)、F&V(果蔬);| Yes |
 
 UnsetModeRequest 例子：
 ```
@@ -2180,8 +2187,8 @@ DuerOS发送给Bot的定时设置模式的请求
 | appliance.applianceId | 设备标识符。标识符在用户拥有的所有设备上必须是唯一的。此外，标识符需要在同一设备的多个发现请求之间保持一致。标识符可以包含任何字母或数字和以下特殊字符：_ - =＃; ：？ @＆。标识符不能超过256个字符。 | Yes |
 | appliance.additionalApplianceDetails | 提供给Bot使用的设备或场景相关的附加信息的键值对。该属性的内容不能超过5000字节。而且DuerOS也不了解或使用这些数据。 | Yes，但可以为空 |
 | mode | 表示设备的模式设置的量的对象。| Yes |
-| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
-| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉),详细请参见支持的设备类型列表| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。<br>**AIR_CONDITION(空调)** 的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); <br> **AIR_PURIFIER(空气净化器)** 的值包括SLEEP(睡眠)、HOME(回家)、OUT(离家)、AUTO (自动)、MANUAL(手动)、MUTE(静音)、 INTELLIGENT(智能)、HIGHSPEED(急速);<br> **INDUCTION_COOKER(电磁炉/烹饪机)** 的值包括FAST(快速火)、SLOW(温火)、FRYING(煎炸)、STEWING(蒸煮/炖煮)、SOUP(汤粥/煲汤)、HOT_POT(火锅)、COOKING(炒菜); <br>**Fan(电风扇)** 的值包括NORMAL(正常风)、MUTE(静音风)、NATURAL(自然风)、BABY(宝宝风)、COMFORTABLE(舒适风)、FEEL(人感风);<br>**SWEEPING_ROBOT(扫地机器人)** 的值包括RANDOM(随机)、AUTO(自动)、Focus(重点)、EDGE(沿边)、BOW(弓形); <br>**MICROWAVE_OVEN(微波炉)** 的值包括MICROWAVE(微波)、BARBECUE(烧烤)、THAW(解冻); <br> **OVEN(烤箱)** 的值包括FERMENTATION(发酵)、DOUBLE_TUBE(双管); <br>**RICE_COOKER(电饭煲)** 的值包括HOTTING(加热/热饭/再加热)、INSULATED(保温)、SOUP(煮粥/煲汤/杂粮粥)、FAST_SOUP(快速粥)、STEWING(蒸煮/炖煮/美味蒸)、STREAMED_RICE(蒸米饭)、MIXED_RICE(杂粮饭)、SMALL_RICE(小米饭))、GERMINATED_RICE(发芽饭); <br> **PRESSURE_COOKER(压力锅)** 的值包括INSULATED(保温)、EXHAUST(排气)、HOTTING(加热/热饭/再加热)、SOUP(煮粥/煲汤/杂粮粥)、STREAMED_RICE(蒸米饭)、FAST_RICE(快速饭)、FAST_SOUP(快速粥)、BEEF(牛肉/炖牛肉)、STREAMED_RICE(蒸米饭/营养蒸)、CLEAN(清洁); <br> **HIGH_SPEED_BLENDER(破壁机)** 的值包括 SOUP(汤/粥/糊类)、SOYMILK(豆浆)、MILKSHAKE(奶昔)、GRIND(研磨)、HOTTING(加热)、CLEAN(清洁)、STIR(搅拌)、F&V(果蔬);| Yes |
 | timestamp | 表示设备定时设置的量的对象。包含一个属性值，它指定一个数字，代表时间戳，单位是秒。 | Yes |
 
 TimingSetModeRequest 例子：
@@ -2230,8 +2237,8 @@ TimingSetModeRequest 例子：
 |Property|Description|Required|
 |---|---|---|
 | mode | 表示设备的模式设置的量的对象。| Yes |
-| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉)| Yes |
-| mode.value | 它指定一种模式，模式的值与设备类型相关。AIR_CONDITION的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); AIR_PURIFIER的值包括SLEEP(睡眠), HOME(回家), OUT(离家); INDUCTION_COOKER的值包括FAST(快速火), SLOW(温火), FRY(煎炸), STEWING(蒸煮), SOAP(汤粥), HOT_POT(火锅) | Yes |
+| mode.deviceType | 表示设备类型。AIR_CONDITION(空调), AIR_PURIFIER(空气净化器), INDUCTION_COOKER(电磁炉),详细请参见支持的设备类型列表| Yes |
+| mode.value | 它指定一种模式，模式的值与设备类型相关。<br>**AIR_CONDITION(空调)** 的值包括：COOL(制冷)、HEAT(制热)、AUTO(自动)、FAN(送风)、DEHUMIDIFICATION(除湿)、SLEEP(睡眠); <br> **AIR_PURIFIER(空气净化器)** 的值包括SLEEP(睡眠)、HOME(回家)、OUT(离家)、AUTO (自动)、MANUAL(手动)、MUTE(静音)、 INTELLIGENT(智能)、HIGHSPEED(急速);<br> **INDUCTION_COOKER(电磁炉/烹饪机)** 的值包括FAST(快速火)、SLOW(温火)、FRYING(煎炸)、STEWING(蒸煮/炖煮)、SOUP(汤粥/煲汤)、HOT_POT(火锅)、COOKING(炒菜); <br>**Fan(电风扇)** 的值包括NORMAL(正常风)、MUTE(静音风)、NATURAL(自然风)、BABY(宝宝风)、COMFORTABLE(舒适风)、FEEL(人感风);<br>**SWEEPING_ROBOT(扫地机器人)** 的值包括RANDOM(随机)、AUTO(自动)、Focus(重点)、EDGE(沿边)、BOW(弓形); <br>**MICROWAVE_OVEN(微波炉)** 的值包括MICROWAVE(微波)、BARBECUE(烧烤)、THAW(解冻); <br> **OVEN(烤箱)** 的值包括FERMENTATION(发酵)、DOUBLE_TUBE(双管); <br>**RICE_COOKER(电饭煲)** 的值包括HOTTING(加热/热饭/再加热)、INSULATED(保温)、SOUP(煮粥/煲汤/杂粮粥)、FAST_SOUP(快速粥)、STEWING(蒸煮/炖煮/美味蒸)、STREAMED_RICE(蒸米饭)、MIXED_RICE(杂粮饭)、SMALL_RICE(小米饭))、GERMINATED_RICE(发芽饭); <br> **PRESSURE_COOKER(压力锅)** 的值包括INSULATED(保温)、EXHAUST(排气)、HOTTING(加热/热饭/再加热)、SOUP(煮粥/煲汤/杂粮粥)、STREAMED_RICE(蒸米饭)、FAST_RICE(快速饭)、FAST_SOUP(快速粥)、BEEF(牛肉/炖牛肉)、STREAMED_RICE(蒸米饭/营养蒸)、CLEAN(清洁); <br> **HIGH_SPEED_BLENDER(破壁机)** 的值包括 SOUP(汤/粥/糊类)、SOYMILK(豆浆)、MILKSHAKE(奶昔)、GRIND(研磨)、HOTTING(加热)、CLEAN(清洁)、STIR(搅拌)、F&V(果蔬); | Yes |
 
 TimingSetModeConfirmation 例子：
 ```
