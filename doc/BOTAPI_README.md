@@ -261,6 +261,21 @@
             "offset_ms":20000,//播放到多少ms了
             "player_activity":"IDLE PAUSED PLAYING BUFFER_UNDERRUN FINISHED STOPPED"
         },
+
+        "UiControl":{
+            "items":[
+                {
+                    "label":"",
+                    "type":"input",
+                    "params":{
+                    },
+                    "url":"",
+                }
+            ],
+        },
+        "ai.dueros.device_interface.screen":{
+            "token":""
+        },
     }
 }
 ```
