@@ -89,6 +89,16 @@
   "log_id": "5969bdd5126d493387a6b127d8c45ce7", //串起整个请求的id
   "request_type": "dumi", //现在的策略分支
   "params": {
+    "asr_extended_info": {
+      "nbest_recog_result": [
+        {
+          "confident": 99,
+          "word": ""  //此处query是gbk编码的，因为是透传下来的数据，请注意
+        }
+      ]
+    },
+    "appid": "dm758A9F6A51BBEAED",
+    "ua": "DcsSdk\/1.6.0.1",
     "loc": "%7B%22crd%22%3A%2212944500.486221_4845580.669330_200%22%2C%22city%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%22%2C%22addr%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%5Cu6d77%5Cu6dc0%5Cu533a%5Cu8f6f%5Cu4ef6%5Cu56ed%5Cu897f%5Cu4e09%5Cu8def%22%7D",//其实是地址信息，但有了location之后这个已经没用了
     "cip": "1.2.2.1",//客户端ip
     "bear_params": {
