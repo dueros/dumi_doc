@@ -493,6 +493,17 @@
 
 ```
 
+无结果的情况下，请返回以下格式：
+```javascript
+{
+  "status": 5,
+  "msg": "NO_RESULT",
+  "data": {
+  },
+}
+
+```
+
 #### 和策略相关的字段
   * data.result_list[].stategy_middle_data.bot_intent.query_score，取值0-100 ，标识内容的质量
   * data.result_list[].confidence，取值0-100 ，标识和query的匹配度
