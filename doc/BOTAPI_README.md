@@ -498,8 +498,6 @@
 {
   "status": 5,
   "msg": "NO_RESULT",
-  "data": {
-  },
 }
 
 ```
