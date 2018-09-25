@@ -167,6 +167,24 @@
   "new_bot_session" :{
       "value":"{\"empty\":true}" //需要写入到session中的内容
   },
+
+  "bot_config":{
+    "bot_name": "audio_news",
+    "logic_bots": [
+      "ai.dueros.bot.news.video",
+      "ai.dueros.bot.news.audio",
+      "ai.dueros.bot.news.tts"
+    ],
+    "content_attribute": {
+      "tts_is_audioplayer": "0",
+      "is_play_renderlist": "1",
+      "video_is_autoswitch_tab": "1",
+      "is_noresult_rendercard": "1",
+      "enable_display_controller_context":"1",
+      "slots_for_list_title" : "0"
+    }
+  },
+
   //如果是百度登录用户的话，会有信息
   "user_info": {
     "user_id": "",
