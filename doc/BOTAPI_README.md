@@ -58,7 +58,8 @@
   "bot_name": "ai.dueros.bot.information_general",
   "launch":true,//标识是第一次open这个bot的请求，默认是false
   "end_session":true,//标识是第一次open这个bot的请求，默认是false
-  "user_id": "3101", ///用户id，如果非登录用户会改成
+  "user_id": "3101", ///用户id，如果非登录用户，值会改成cuid
+  "baiduid": "123456", ///passport uid
   "query": "张岩", //原始query
   "version": 1, //版本号
   "msg": {   ///老的协议格式，原始的msg，不知为何result_content是个字符串
